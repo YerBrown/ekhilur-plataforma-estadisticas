@@ -53,4 +53,21 @@ async function login(req, res) {
     }
 }
 
-export default { register, login };
+async function logout(req, res) {
+    try {
+        res.clearCookie("authToken", {
+            httpOnly: true,
+            // secure: true, // Solo si usas HTTPS
+            sameSite: "strict",
+        });
+        return res
+            .status(200)
+            .json({ message: "Sesión cerrada correctamente" });
+    } catch (error) {
+        return res
+            .status(ERRORS.INTERNAL_SERVER_ERROR.statusCode)
+            .json({ message: ERRORS.INTERNAL_SERVER_ERROR.message });
+    }
+}
+
+export default { register, login, logout };

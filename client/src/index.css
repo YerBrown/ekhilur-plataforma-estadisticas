@@ -1,0 +1,72 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--color-dark);
+  background-color: var(--background-color-dark);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+
+  /*Colors*/
+  --background-color-light: white;
+  --background-color-dark: #1e1e1e;
+  --color-light: #1e1e1e;
+  --color-dark: white;
+
+}
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  width: 100%;
+  flex: 1;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+}
+
+header {
+  padding: 20px;
+  background-color: #242323;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  flex: 1;
+}
+
+footer {
+  padding: 20px;
+  background-color: #242323;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--color-light);
+    background-color: var(--background-color-light);
+  }
+}
