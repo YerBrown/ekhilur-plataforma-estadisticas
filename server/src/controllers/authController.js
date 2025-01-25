@@ -12,7 +12,7 @@ async function register(username, email, password, passwordRepeat) {
     // Crear nuevo usuario
     const newUser = await userController.create(username, email, password);
 
-    // TODO: Generar token
+    // Generar token
     const token = jwt.sign(
         {
             userId: newUser._id,

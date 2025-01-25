@@ -19,10 +19,24 @@ const ERRORS = {
     // AUTHENTICATION
     INVALID_CREDENTIALS: new CustomError("Credenciales inválidas", 401),
     PASSWORDS_MISMATCH: new CustomError("Las contraseñas no coinciden", 400),
+    INVALID_PASSWORD: new CustomError("La contraseña no es correcta", 401),
     CREDENTIALS_NOT_COMPLETE: new CustomError(
         "Se requiere username o email, y contraseña",
         400
     ),
+    TOKEN_EXPIRED: new CustomError(
+        "El token ha expirado. Por favor inicie sesión nuevamente",
+        401
+    ),
+    ACCESS_DENIED: new CustomError(
+        "No tiene permisos para acceder a este recurso",
+        403
+    ),
+    MISSING_TOKEN: new CustomError(
+        "Token de autenticación no encontrado. Por favor, proporcione un token válido.",
+        401
+    ),
+    INVALID_TOKEN: new CustomError("El token proporcionado no es válido", 401),
     // VALIDATION
     INVALID_EMAIL_FORMAT: new CustomError(
         "El correo electrónico no tiene un formato válido",
