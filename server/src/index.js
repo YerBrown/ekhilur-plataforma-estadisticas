@@ -4,6 +4,8 @@ import connectDb from "./config/connectDb.js";
 import router from "./routes/router.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import { requestLogger } from "./helpers/middleware.js";
+
 dotenv.config();
 
 const PORT = 3000;
@@ -20,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(cookieParser());
+app.use(requestLogger);
 app.use("/", router);
 
 async function startServer() {
