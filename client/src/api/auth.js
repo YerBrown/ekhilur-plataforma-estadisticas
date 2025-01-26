@@ -6,8 +6,7 @@ async function register(userData) {
         console.log("Response:", response);
         return response;
     } catch (error) {
-        console.error("Error al registrar al usuario:", error);
-        throw new Error("Error al registrar al usuario");
+        throw new Error(error);
     }
 }
 
@@ -23,13 +22,22 @@ async function login(credentials) {
 
 async function logout() {
     try {
-        const response = await apiRequest("/logout", "POST");
+        const response = await apiRequest("/auth/logout", "POST");
         console.log("Response:", response);
         return response;
     } catch (error) {
-        console.error("Error al cerrar sesión:", error);
         throw new Error("Error al cerrar sesión");
     }
 }
 
-export { register, login, logout };
+async function verify() {
+    try {
+        const response = await apiRequest("/auth/verify", "GET");
+        console.log("Response:", response);
+        return response;
+    } catch (error) {
+        throw new Error("Error al comprobar inicio de sesion");
+    }
+}
+
+export { register, login, logout, verify };

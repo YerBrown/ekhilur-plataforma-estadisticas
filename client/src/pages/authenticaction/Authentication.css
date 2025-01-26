@@ -1,6 +1,7 @@
 .auth-window {
     border-radius: 25px;
     border: 2px solid #535353;
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -8,7 +9,21 @@
     width: 100%;
     max-width: 500px;
     box-sizing: border-box;
+    transition: opacity 0.2s ease-out;
+    overflow: hidden;
 }
+
+
+.auth-window.fade-in {
+    opacity: 1;
+    /* Contenido visible */
+}
+
+.auth-window.fade-out {
+    opacity: 0;
+    /* Contenido invisible */
+}
+
 
 .auth-window header {
     background-color: transparent;
@@ -37,9 +52,11 @@
     border: 2px solid #535353;
     width: 100%;
     box-sizing: border-box;
+    font-family: "Noway", Arial, sans-serif;
+
 }
 
-.auth-window .form-container button {
+.auth-window .form-container .main-button {
     border-radius: 10px;
     padding: 10px;
     font-weight: bold;
@@ -48,12 +65,20 @@
     border: 2px solid #535353;
 }
 
-.auth-window .form-container .error-message {
-    color: red;
+.auth-window .form-container .message {
     margin: 0;
     padding: 5px;
     font-size: .8rem;
 }
+
+.message.success {
+    color: rgb(60, 255, 0);
+}
+
+.message.failed {
+    color: red;
+}
+
 
 .auth-window .form-container .password-data {
     display: grid;
@@ -69,8 +94,17 @@
     margin: 0;
 }
 
-.auth-window .form-container .password-data input {
+.auth-window .form-container .password-data .password-input {
     grid-column: span 2;
+}
+
+.auth-window .change-form button {
+    background-color: transparent;
+    border: none;
+}
+
+.auth-window .change-form button:hover {
+    text-decoration: underline;
 }
 
 @media (prefers-color-scheme: light) {
@@ -78,5 +112,21 @@
         background-color: var(--background-color-dark);
         color: var(--color-dark);
         border: 2px solid #535353;
+    }
+}
+
+@media (max-width: 600px) {
+    .auth-window.register {
+        height: 560px;
+    }
+
+    .auth-window .form-container .password-data {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        gap: 0;
+    }
+
+    .auth-window .form-container .password-data .password-input {
+        grid-column: span 1;
     }
 }

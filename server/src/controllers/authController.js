@@ -56,4 +56,23 @@ async function login(usernameOrEmail, password) {
     return token;
 }
 
-export default { register, login };
+async function verifyToken(token) {
+    try {
+        if (!token) {
+            throw ERRORS.UNAUTHENTICATED;
+        }
+        const user = jwt.verify(token, process.env.JWT_SECRET);
+        return user;
+    } catch (error) {
+        // Manejar errores específicos de JWT
+        if (error.name === "TokenExpiredError") {
+            throw ERRORS.TOKEN_EXPIRED;
+        } else if (error.name === "JsonWebTokenError") {
+            throw ERRORS.INVALID_TOKEN;
+        } else {
+            throw ERRORS.INTERNAL_SERVER_ERROR;
+        }
+    }
+}
+
+export default { register, login, verifyToken };

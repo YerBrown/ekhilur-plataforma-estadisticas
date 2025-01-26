@@ -28,6 +28,10 @@ const ERRORS = {
         "El token ha expirado. Por favor inicie sesión nuevamente",
         401
     ),
+    UNAUTHENTICATED: new CustomError(
+        "No está autenticado. Por favor inicie sesión.",
+        401
+    ),
     ACCESS_DENIED: new CustomError(
         "No tiene permisos para acceder a este recurso",
         403
