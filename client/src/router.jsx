@@ -26,6 +26,15 @@ const router = createBrowserRouter([
                 path: "*",
                 element: <ErrorBoundary />,
             },
+            {
+                path: "/sales",
+                element: <sales />,
+            },
+
+            {
+                path: "/bonifications",
+                element: <bonifications />,
+            },
             // {
             //     path: "/user",
             //     element: <ContactPage />,
