@@ -1,3 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import Layout from "./Layout";
 import "./Bonifications.css";
+
+const Bonifications = () => {
+  return (
+    <Layout title="Bonificaciones">
+      
+    </Layout>
+  );
+};
+
+export default Bonifications;
