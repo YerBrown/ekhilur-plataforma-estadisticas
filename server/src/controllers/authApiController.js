@@ -21,8 +21,8 @@ async function register(req, res) {
     } catch (error) {
         if (error instanceof Error) {
             return res
-                .status(error.statusCode)
-                .json({ message: error.message });
+                .status(ERRORS.INVALID_CREDENTIALS.statusCode)
+                .json({ message: ERRORS.INVALID_CREDENTIALS.message });
         }
         return res
             .status(ERRORS.INTERNAL_SERVER_ERROR.statusCode)
