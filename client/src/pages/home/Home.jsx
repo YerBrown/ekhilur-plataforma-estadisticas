@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import "./Home.css";
 import { verify } from "../../api/auth";
 import Navbar from "../../components/navbar/Navbar";
+import Example from "../../components/charts/DonutChart";
 const Home = () => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -40,6 +41,7 @@ const Home = () => {
             <main>
                 <h1>Bienvenido, {user?.username}!</h1>
                 <p>Esta es la pagina principal</p>
+                <Example />
             </main>
             <footer>Footer</footer>
         </>
