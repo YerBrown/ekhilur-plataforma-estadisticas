@@ -12,8 +12,6 @@ const SearchBar = ({ onSearch }) => {
     const [endDate, setEndDate] = useState(null);
     const [minAmount, setMinAmount] = useState("");
     const [maxAmount, setMaxAmount] = useState("");
-    const [showDateFilters, setShowDateFilters] = useState(false);
-    const [showAmountFilters, setShowAmountFilters] = useState(false);
 
     const handleSearch = () => {
         const filters = {
@@ -53,7 +51,7 @@ const SearchBar = ({ onSearch }) => {
     return (
         <div className="search-bar-container">
             <button className="search-button" onClick={() => setIsOpen(!isOpen)}>
-                <GoSearch />
+                <GoSearch className="search-icon" size={24} />
             </button>
 
             {isOpen && (
