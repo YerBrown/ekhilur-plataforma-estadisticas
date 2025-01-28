@@ -4,19 +4,25 @@
 }
 
 .toggle-button {
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
+  padding: 10px 20px;
+  background-color: #0047ba; /* Color corporativo azul */
+  color: #ffffff; /* Color corporativo blanco */
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-button:hover {
+  background-color: #003399; /* Un tono más oscuro del azul corporativo */
 }
 
 .date-filter-content {
   position: absolute;
   top: 40px;
   left: 0;
-  background-color: white;
+  background-color: #ffffff; /* Color corporativo blanco */
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
@@ -32,6 +38,7 @@
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
+  color: #0047ba; /* Color corporativo azul */
 }
 
 .date-filter-scroll {
@@ -45,7 +52,7 @@
   overflow-y: auto;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: #ffffff; /* Color corporativo blanco */
 }
 
 .scroll-list {
@@ -58,24 +65,32 @@
   padding: 10px;
   text-align: center;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
+  color: #0047ba; /* Color corporativo azul */
 }
 
 .scroll-item:hover {
-  background-color: #e0e0e0;
+  background-color: #ff9012; /* Color corporativo naranja */
+  color: #ffffff; /* Color corporativo blanco */
 }
 
 .scroll-item.selected {
-  background-color: #007bff;
-  color: white;
+  background-color: #0047ba; /* Color corporativo azul */
+  color: #ffffff; /* Color corporativo blanco */
 }
 
 .date-filter-button {
   padding: 10px;
-  background-color: #28a745;
-  color: white;
+  background-color: #ff9012; /* Color corporativo naranja */
+  color: #ffffff; /* Color corporativo blanco */
   border: none;
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.date-filter-button:hover {
+  background-color: #e68000; /* Un tono más oscuro del naranja corporativo */
 }
