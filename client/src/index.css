@@ -66,9 +66,7 @@ body {
   flex: 1;
 }
 
-header {
-  background-color: #242323;
-}
+header {}
 
 main {
   display: flex;
