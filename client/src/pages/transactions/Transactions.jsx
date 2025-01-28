@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Layout from "../../pages/layout/Layout";
 import TransactionList from "../../components/transactions-list/TransactionsList";
 import mockTransactions from "../../components/transactions-list/mockData.js";
 import SearchBar from "../../components/search-bar/SearchBar";
@@ -21,10 +22,10 @@ const Transactions = () => {
     };
 
     return (
-        <>
+        <Layout title="Transacciones">
             <SearchBar onSearch={handleSearch} />
             <TransactionList transactions={filteredTransactions} />
-        </>
+        </Layout>
     );
 };
 
