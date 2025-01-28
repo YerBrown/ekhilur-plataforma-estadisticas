@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import "./DateFilter.css";
 
 const DateFilter = ({ onFilter }) => {
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [startMonth, setStartMonth] = useState(new Date().getMonth() + 1); // Mes actual
+  const [startYear, setStartYear] = useState(new Date().getFullYear()); // Año actual
   const [isOpen, setIsOpen] = useState(false);
 
   const handleApplyFilter = () => {
     if (onFilter && typeof onFilter === "function") {
-      onFilter({ startDate, endDate });
+      const startDate = `${startYear}-${String(startMonth).padStart(2, "0")}`;
+      onFilter({ startDate });
     }
   };
 
@@ -16,37 +17,73 @@ const DateFilter = ({ onFilter }) => {
     setIsOpen(!isOpen);
   };
 
+  const months = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
+  ];
+
+  const generateYears = () => {
+    const currentYear = new Date().getFullYear();
+    const years = [];
+    for (let i = currentYear - 5; i <= currentYear; i++) {
+      years.push(i);
+    }
+    return years;
+  };
+
+  const renderScrollSelector = (items, value, onChange) => (
+    <div className="scroll-selector">
+      <ul className="scroll-list">
+        {items.map((item, index) => (
+          <li
+            key={index}
+            className={`scroll-item ${value === item ? "selected" : ""}`}
+            onClick={() => onChange(item)}
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+
+  // Texto del botón: muestra el mes y año seleccionado
+  const buttonText = isOpen
+    ? "Cerrar Filtros"
+    : `${months[startMonth - 1]} ${startYear}`;
+
   return (
     <div className="date-filter-container">
       <button className="toggle-button" onClick={toggleFilter}>
-        {isOpen ? "Cerrar Filtros" : "Abrir Filtros"}
+        {buttonText}
       </button>
 
       {isOpen && (
         <div className="date-filter-content">
           <div className="date-filter-group">
-            <label htmlFor="start-date" className="date-filter-label">
-              Mes y Año Inicio:
-            </label>
-            <input
-              type="month"
-              id="start-date"
-              className="date-filter-input"
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-            />
-          </div>
-          <div className="date-filter-group">
-            <label htmlFor="end-date" className="date-filter-label">
-              Mes y Año Fin:
-            </label>
-            <input
-              type="month"
-              id="end-date"
-              className="date-filter-input"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-            />
+            <label className="date-filter-label">Mes y Año Inicio:</label>
+            <div className="date-filter-scroll">
+              {renderScrollSelector(
+                months,
+                months[startMonth - 1],
+                (month) => setStartMonth(months.indexOf(month) + 1)
+              )}
+              {renderScrollSelector(
+                generateYears(),
+                startYear,
+                (year) => setStartYear(year)
+              )}
+            </div>
           </div>
           <button className="date-filter-button" onClick={handleApplyFilter}>
             Aplicar Filtro
