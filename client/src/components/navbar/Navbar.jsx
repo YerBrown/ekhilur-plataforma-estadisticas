@@ -14,7 +14,7 @@ const Navbar = ({ username }) => {
     return (
         <nav className="navbar">
             <div className="navbar-left">
-                <Link to="/home">Home</Link>
+                <Link to="/">Home</Link>
                 <Link to="/my-profile">My Profile</Link>
                 <Link to="/map">Map</Link>
             </div>
