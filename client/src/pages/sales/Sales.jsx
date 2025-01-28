@@ -8,7 +8,7 @@ const Sales = () => {
   return (
     <Layout title="Ventas">
       <p>Esto es la pagina de ventas</p>
-      
+      <DateFilter />
     </Layout>
   );
 
