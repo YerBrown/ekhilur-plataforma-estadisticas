@@ -16,6 +16,7 @@ const Navbar = ({ username }) => {
             <div className="navbar-left">
                 <Link to="/home">Home</Link>
                 <Link to="/my-profile">My Profile</Link>
+                <Link to="/map">Map</Link>
             </div>
             <div className="navbar-right">
                 <span className="username">{username}</span>

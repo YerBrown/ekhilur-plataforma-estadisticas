@@ -5,6 +5,8 @@ import Authentication from "./pages/authenticaction/Authentication";
 import Home from "./pages/home/home";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ErrorBoundary from "./pages/errorBoundary/ErrorBoundary";
+import MapPage from "./pages/map/MapPage";
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -25,6 +27,10 @@ const router = createBrowserRouter([
             {
                 path: "*",
                 element: <ErrorBoundary />,
+            },
+            {
+                path: "/map",
+                element: <MapPage  />,
             },
             // {
             //     path: "/user",
