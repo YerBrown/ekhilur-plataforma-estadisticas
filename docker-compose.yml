@@ -3,8 +3,6 @@ services:
         container_name: mongo_ekhidata
         image: mongo:4.0
         restart: unless-stopped
-        env_file:
-            - ./server/.env
         environment:
             MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
             MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
@@ -20,8 +18,6 @@ services:
         build: ./server
         container_name: ${APP_HOST}
         restart: unless-stopped
-        env_file:
-            - ./server/.env
         ports:
             - ${APP_PORT}:3000
         depends_on:
