@@ -1,0 +1,84 @@
+/* Estilos generales */
+.transaction-list-container {
+    padding: 16px;
+    background-color: #f9f9f9;
+}
+
+.transaction-group-container {
+    margin-bottom: 24px;
+}
+
+.transaction-group-header {
+    margin-bottom: 12px;
+}
+
+.transaction-group-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Lista de transacciones */
+.transaction-group-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.transaction-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-item-image-container {
+    flex-shrink: 0;
+}
+
+.transaction-item-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.transaction-item-details {
+    flex: 1;
+    margin-left: 12px;
+}
+
+.transaction-item-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    margin: 0;
+}
+
+.transaction-item-description {
+    font-size: 14px;
+    color: #666;
+    margin: 4px 0 0;
+}
+
+.transaction-item-amounts-container {
+    text-align: right;
+}
+
+.transaction-item-amount {
+    font-size: 16px;
+    font-weight: bold;
+    color: #007bff;
+    background-color: #3333332d;
+    border-radius: 5px;
+    padding: 0.2rem;
+}
+
+.transaction-item-remaining {
+    font-size: 14px;
+    color: #666;
+    margin-top: 4px;
+}
