@@ -1,12 +1,20 @@
 .date-filter-container {
-  position: relative;
   display: inline-block;
+  width: 100%;
+  padding: 10px;
+  background-color: #0047ba;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin-bottom: 20px;
+  box-sizing: border-box;
 }
 
 .toggle-button {
   padding: 10px 20px;
-  background-color: #0047ba; /* Color corporativo azul */
-  color: #ffffff; /* Color corporativo blanco */
+  background-color: #0047ba;
+  color: #ffffff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -15,14 +23,16 @@
 }
 
 .toggle-button:hover {
-  background-color: #003399; /* Un tono más oscuro del azul corporativo */
+  background-color: #003399;
+
 }
 
 .date-filter-content {
   position: absolute;
   top: 40px;
   left: 0;
-  background-color: #ffffff; /* Color corporativo blanco */
+  background-color: #ffffff;
+
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
@@ -38,7 +48,8 @@
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  color: #0047ba; /* Color corporativo azul */
+  color: #0047ba;
+
 }
 
 .date-filter-scroll {
@@ -52,7 +63,8 @@
   overflow-y: auto;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #ffffff; /* Color corporativo blanco */
+  background-color: #ffffff;
+
 }
 
 .scroll-list {
@@ -66,23 +78,30 @@
   text-align: center;
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
-  color: #0047ba; /* Color corporativo azul */
+  color: #0047ba;
+
 }
 
 .scroll-item:hover {
-  background-color: #ff9012; /* Color corporativo naranja */
-  color: #ffffff; /* Color corporativo blanco */
+  background-color: #ff9012;
+
+  color: #ffffff;
+
 }
 
 .scroll-item.selected {
-  background-color: #0047ba; /* Color corporativo azul */
-  color: #ffffff; /* Color corporativo blanco */
+  background-color: #0047ba;
+
+  color: #ffffff;
+
 }
 
 .date-filter-button {
   padding: 10px;
-  background-color: #ff9012; /* Color corporativo naranja */
-  color: #ffffff; /* Color corporativo blanco */
+  background-color: #ff9012;
+
+  color: #ffffff;
+
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -92,5 +111,10 @@
 }
 
 .date-filter-button:hover {
-  background-color: #e68000; /* Un tono más oscuro del naranja corporativo */
+  background-color: #e68000;
+
+}
+
+.date-filter-container button:hover {
+  background-color: #002f7a;
 }
