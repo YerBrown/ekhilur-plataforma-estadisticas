@@ -5,6 +5,9 @@ import Authentication from "./pages/authenticaction/Authentication";
 import Home from "./pages/home/Home";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ErrorBoundary from "./pages/errorBoundary/ErrorBoundary";
+import Sales from "./pages/sales/Sales";
+import Bonifications from "./pages/bonifications/Bonifications";
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -25,6 +28,15 @@ const router = createBrowserRouter([
             {
                 path: "*",
                 element: <ErrorBoundary />,
+            },
+            {
+                path: "/sales",
+                element: <Sales />,
+            },
+
+            {
+                path: "/bonifications",
+                element: <Bonifications />,
             },
             // {
             //     path: "/user",
