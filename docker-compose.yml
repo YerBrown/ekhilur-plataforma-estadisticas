@@ -41,5 +41,3 @@ volumes:
     mongodb_data:
 networks:
     fullstack_network:
-    data_network:
-    api_network:
