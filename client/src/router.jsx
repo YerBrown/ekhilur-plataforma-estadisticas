@@ -2,9 +2,12 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Root from "./pages/root/Root";
 import Authentication from "./pages/authenticaction/Authentication";
-import Home from "./pages/home/home";
+import Home from "./pages/home/Home";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ErrorBoundary from "./pages/errorBoundary/ErrorBoundary";
+import Sales from "./pages/sales/Sales";
+import Bonifications from "./pages/bonifications/Bonifications";
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -28,12 +31,12 @@ const router = createBrowserRouter([
             },
             {
                 path: "/sales",
-                element: <sales />,
+                element: <Sales />,
             },
 
             {
                 path: "/bonifications",
-                element: <bonifications />,
+                element: <Bonifications />,
             },
             // {
             //     path: "/user",
