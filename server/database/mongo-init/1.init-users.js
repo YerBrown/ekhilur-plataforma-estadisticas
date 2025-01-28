@@ -1,4 +1,4 @@
-db = db.getSiblingDB("ekhilur");
+db = db.getSiblingDB("ekhidata");
 
 // USUARIOS
 db.users.insertMany([
