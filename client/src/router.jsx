@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Root from "./pages/root/Root";
 import Authentication from "./pages/authenticaction/Authentication";
-import Home from "./pages/home/home";
+import Home from "./pages/home/Home";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ErrorBoundary from "./pages/errorBoundary/ErrorBoundary";
 const router = createBrowserRouter([
