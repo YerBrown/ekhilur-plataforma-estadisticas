@@ -1,0 +1,20 @@
+/* Estilo para el input del Geocoder */
+.leaflet-control-geocoder input {
+    color: black;
+    background-color: white;
+    font-size: 14px;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.leaflet-control-geocoder button {
+    background-color: white;
+    color: black;
+    border-radius: 4px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.leaflet-control-geocoder button:hover {
+    background-color: #f0f0f0;
+}

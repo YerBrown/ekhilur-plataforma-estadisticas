@@ -18,6 +18,8 @@
         "@vis.gl/react-google-maps": "^1.5.0",
         "js-cookie": "^3.0.5",
         "leaflet": "^1.9.4",
+        "leaflet-control-geocoder": "^3.1.0",
+        "leaflet-routing-machine": "^3.2.12",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "react-leaflet": "^4.2.1",
