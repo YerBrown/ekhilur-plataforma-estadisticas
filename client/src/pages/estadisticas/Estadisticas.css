@@ -18,6 +18,7 @@
 }
 
 .label-ingresos, .label-gastos {
+    color: var(--color-letra);
     font-weight: bold;
     font-size: 24px;
     margin-bottom: 5px;

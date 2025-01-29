@@ -21,7 +21,7 @@ const Estadisticas = () => {
                 <span className="amount-gastos">{totalGastos} €</span>
                 </div>
             </div>
-            <DateFilter />
+           {/*  <DateFilter /> */}
             <div style={{ width: '100%', height: '400px' }}> {/* Contenedor con altura fija */}
                 <BarChartComponent />
             </div>

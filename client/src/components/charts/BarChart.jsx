@@ -21,7 +21,6 @@ const BarChartComponent = () => {
             });
         });
 
-        // Obtenemos los últimos 4 meses
         const ultimos3 = todosLosMeses.slice(-3);
 
         // Creamos los datos para el gráfico
