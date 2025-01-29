@@ -37,7 +37,7 @@
   --color-negro: rgba(0, 0, 0, 1);
   --color-placeholder-light: rgba(0, 0, 0, 0.6);
   --color-placeholder-dark: rgba(255, 255, 255, 0.6);
-  --color-letra-2: rgba(0, 0, 0, 0.6);
+  --color-letra-2-light: rgba(0, 0, 0, 0.6);
   --color-letra-2-dark: rgba(255, 255, 255, 0.6);
   --color-gasto: rgba(255, 0, 0, 0.4);
   --color-ingreso: rgba(0, 128, 0, 0.4);
@@ -46,7 +46,7 @@
   --background-color-principal: var(--background-color-light);
   --background-color-principal-05: var(--background-color-light-05);
   --color-letra: var(--color-light);
-  --color-letra-2: var(--color-letra-2);
+  --color-letra-2: var(--color-letra-2-light);
   --color-letra-blanca: var(--color-dark);
   --color-placeholder: var(--color-placeholder-light);
   --color-naranja-principal: var(--color-naranja);
