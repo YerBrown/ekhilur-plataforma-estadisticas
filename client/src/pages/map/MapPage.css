@@ -1,20 +1,72 @@
-/* Estilo para el input del Geocoder */
-.leaflet-control-geocoder input {
-    color: black;
-    background-color: white;
-    font-size: 14px;
-    border-radius: 4px;
-    padding: 5px;
+.map-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
 }
 
-.leaflet-control-geocoder button {
-    background-color: white;
-    color: black;
-    border-radius: 4px;
-    padding: 5px;
+/* Mapa ocupa todo el ancho */
+.map-container {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 300px;
+}
+
+/* Galería */
+.gallery {
+    text-align: center;
+}
+
+.gallery h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Cuatro columnas */
+    gap: 20px; /* Espacio entre elementos */
+}
+
+.gallery-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.gallery-item h3 {
+    margin: 10px 0 5px;
+    font-size: 18px;
+}
+
+.gallery-item p {
+    color: #555;
+    font-size: 14px;
+}
+
+.navigate-button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-.leaflet-control-geocoder button:hover {
-    background-color: #f0f0f0;
+.navigate-button:hover {
+    background-color: #0056b3;
 }

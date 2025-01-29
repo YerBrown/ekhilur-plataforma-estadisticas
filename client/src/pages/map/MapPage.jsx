@@ -5,6 +5,7 @@ import "leaflet-routing-machine";
 import "leaflet-control-geocoder";
 import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import L from "leaflet";
+import "./MapPage.css"; // Archivo CSS para diseño y estilos
 
 // Iconos personalizados
 const userLocationIcon = new L.Icon({
@@ -14,7 +15,7 @@ const userLocationIcon = new L.Icon({
     popupAnchor: [0, -32],
 });
 
-const defaultLocationIcon = new L.Icon({
+const businessIcon = new L.Icon({
     iconUrl: "https://cdn-icons-png.flaticon.com/512/854/854878.png",
     iconSize: [32, 32],
     iconAnchor: [16, 32],
@@ -23,35 +24,57 @@ const defaultLocationIcon = new L.Icon({
 
 const MapPage = () => {
     const [userLocation, setUserLocation] = useState(null); // Coordenadas del usuario
-    const [selectedLocation, setSelectedLocation] = useState(null); // Coordenada seleccionada para la ruta
-    const [showInstructions, setShowInstructions] = useState(true); // Estado para mostrar/ocultar instrucciones
+    const [selectedLocation, setSelectedLocation] = useState(null); // Coordenadas del destino seleccionado
+    const [mapInstance, setMapInstance] = useState(null); // Instancia del mapa para centrarlo
 
-    // Coordenadas predeterminadas para Basauri
-    const defaultLocations = [
-        { id: 1, position: [43.237, -2.889], title: "Centro de Basauri" },
-        { id: 2, position: [43.24, -2.885], title: "Parque Bizkotxalde" },
-        { id: 3, position: [43.234, -2.892], title: "Estación de Tren Basauri" },
-        { id: 4, position: [43.238, -2.895], title: "Iglesia de San Pedro" },
+    const businesses = [
+        { id: 1, name: "Cafetería Aroma", address: "Calle Mayor 12, Basauri", image: "https://via.placeholder.com/150", location: [43.237, -2.889] },
+        { id: 2, name: "Tienda Verde", address: "Av. Libertad 34, Basauri", image: "https://via.placeholder.com/150", location: [43.24, -2.885] },
+        { id: 3, name: "Librería Central", address: "Plaza Ariz 8, Basauri", image: "https://via.placeholder.com/150", location: [43.234, -2.892] },
+        { id: 4, name: "Restaurante Delicias", address: "Calle San Pedro 56, Basauri", image: "https://via.placeholder.com/150", location: [43.238, -2.895] },
+        { id: 5, name: "Panadería Dulce Hogar", address: "Calle Florida 22, Basauri", image: "https://via.placeholder.com/150", location: [43.235, -2.891] },
+        { id: 6, name: "Boutique Elegance", address: "Calle Estación 10, Basauri", image: "https://via.placeholder.com/150", location: [43.236, -2.888] },
+        { id: 7, name: "Peluquería Glamour", address: "Calle Ariz 3, Basauri", image: "https://via.placeholder.com/150", location: [43.237, -2.887] },
+        { id: 8, name: "Bar La Esquina", address: "Calle Principal 45, Basauri", image: "https://via.placeholder.com/150", location: [43.238, -2.884] },
+        { id: 9, name: "Zapatería Paso Fino", address: "Calle Nueva 4, Basauri", image: "https://via.placeholder.com/150", location: [43.239, -2.889] },
+        { id: 10, name: "Floristería Rosas", address: "Calle Flor 20, Basauri", image: "https://via.placeholder.com/150", location: [43.235, -2.893] },
     ];
 
-    // Obtener la ubicación en tiempo real del usuario
     useEffect(() => {
         if (navigator.geolocation) {
             navigator.geolocation.watchPosition(
                 (position) => {
                     const { latitude, longitude } = position.coords;
-                    setUserLocation([latitude, longitude]); // Actualizar la ubicación del usuario
+                    setUserLocation([latitude, longitude]);
                 },
-                (error) => {
-                    console.error("Error al obtener la ubicación:", error);
-                }
+                (error) => console.error("Error al obtener la ubicación:", error)
             );
-        } else {
-            console.error("La geolocalización no es compatible con este navegador.");
         }
     }, []);
 
-    // Componente para agregar el enrutamiento
+    const GeocoderControl = () => {
+        const map = useMap();
+
+        useEffect(() => {
+            const geocoder = L.Control.geocoder({
+                defaultMarkGeocode: false,
+            })
+                .on("markgeocode", (e) => {
+                    const latlng = e.geocode.center;
+                    setSelectedLocation([latlng.lat, latlng.lng]);
+                    map.setView(latlng, 15); // Centrar el mapa en la ubicación buscada
+                })
+                .addTo(map);
+
+            const input = document.querySelector(".leaflet-control-geocoder input");
+            if (input) input.style.color = "black"; // Asegurar texto negro en el cuadro de búsqueda
+
+            return () => map.removeControl(geocoder);
+        }, [map]);
+
+        return null;
+    };
+
     const RoutingMachine = () => {
         const map = useMap();
 
@@ -60,127 +83,96 @@ const MapPage = () => {
 
             const routingControl = L.Routing.control({
                 waypoints: [
-                    L.latLng(userLocation), // Ubicación del usuario
-                    L.latLng(selectedLocation), // Ubicación seleccionada
+                    L.latLng(userLocation), // Inicio (ubicación del usuario)
+                    L.latLng(selectedLocation), // Destino (ubicación seleccionada)
                 ],
-                routeWhileDragging: true, // Permitir mover puntos en tiempo real
-                showAlternatives: true, // Mostrar rutas alternativas
-                language: "es", // Idioma de las indicaciones (castellano)
+                routeWhileDragging: false, // No permitir arrastrar la línea
+                showAlternatives: false, // No mostrar rutas alternativas
+                language: "es",
                 lineOptions: {
-                    styles: [{ color: "#007bff", weight: 4 }], // Estilo de la línea
+                    styles: [{ color: "#007bff", weight: 4 }],
                 },
-                createMarker: () => null, // Evitar marcadores por defecto
+                createMarker: () => null, // Evitar marcadores automáticos
             }).addTo(map);
 
-            // Mostrar u ocultar instrucciones personalizadas
+            // Oculta las instrucciones del cuadro
             const instructions = document.querySelector(".leaflet-routing-container");
             if (instructions) {
-                instructions.style.display = showInstructions ? "block" : "none"; // Mostrar/ocultar
-                instructions.style.backgroundColor = "rgba(255, 255, 255, 0.9)"; // Fondo blanco semitransparente
-                instructions.style.color = "black"; // Texto negro
-                instructions.style.borderRadius = "8px"; // Bordes redondeados
-                instructions.style.padding = "10px"; // Espaciado interno
-                instructions.style.boxShadow = "0 2px 6px rgba(0, 0, 0, 0.2)"; // Sombra
-                instructions.style.zIndex = "1000"; // Asegurar que estén encima
+                instructions.style.display = "none";
             }
 
-            return () => map.removeControl(routingControl); // Limpia la ruta al desmontar
-        }, [map, userLocation, selectedLocation, showInstructions]);
+            return () => map.removeControl(routingControl);
+        }, [map, userLocation, selectedLocation]);
 
         return null;
     };
 
-    // Componente para la barra de búsqueda (Geocoder)
-    const Geocoder = () => {
-        const map = useMap();
-
-        useEffect(() => {
-            const geocoder = L.Control.geocoder({
-                defaultMarkGeocode: true,
-            })
-                .on("markgeocode", (e) => {
-                    const latlng = e.geocode.center;
-                    L.marker(latlng).addTo(map).bindPopup(e.geocode.name).openPopup();
-                    map.setView(latlng, map.getZoom());
-                })
-                .addTo(map);
-
-            return () => map.removeControl(geocoder);
-        }, [map]);
-
-        return null;
+    const handleBusinessClick = (location) => {
+        setSelectedLocation(location); // Establece la ubicación seleccionada
+        if (mapInstance) {
+            mapInstance.setView(location, 16); // Centra el mapa en el comercio seleccionado
+        }
     };
 
     return (
-        <div style={{ height: "100vh", width: "100%", position: "relative" }}>
-            <button
-                onClick={() => setShowInstructions(!showInstructions)}
-                style={{
-                    position: "absolute",
-                    top: "10px",
-                    right: "10px",
-                    zIndex: 1001,
-                    padding: "10px 15px",
-                    backgroundColor: "#007bff",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "5px",
-                    cursor: "pointer",
-                }}
-            >
-                {showInstructions ? "Cerrar Instrucciones" : "Mostrar Instrucciones"}
-            </button>
+        <div className="map-page">
+            {/* Mapa */}
+            <div className="map-container">
+                <MapContainer
+                    center={[43.237, -2.889]}
+                    zoom={15}
+                    style={{ height: "300px", width: "100%" }}
+                    whenCreated={(map) => setMapInstance(map)} // Guarda la instancia del mapa
+                >
+                    <TileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        attribution='&copy; OpenStreetMap contributors'
+                    />
+                    <GeocoderControl />
+                    {userLocation && (
+                        <Marker position={userLocation} icon={userLocationIcon}>
+                            <Popup>¡Aquí estás!</Popup>
+                        </Marker>
+                    )}
+                    {businesses.map((business) => (
+                        <Marker
+                            key={business.id}
+                            position={business.location}
+                            icon={businessIcon}
+                            eventHandlers={{
+                                click: () => setSelectedLocation(business.location), // Muestra la ruta al hacer clic
+                            }}
+                        >
+                            <Popup>
+                                <strong>{business.name}</strong>
+                                <br />
+                                {business.address}
+                            </Popup>
+                        </Marker>
+                    ))}
+                    <RoutingMachine />
+                </MapContainer>
+            </div>
 
-            <MapContainer center={[43.237, -2.889]} zoom={15} style={{ height: "100%", width: "100%" }}>
-                <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                />
-                {/* Barra de búsqueda */}
-                <Geocoder />
-
-                {/* Agregar enrutamiento */}
-                <RoutingMachine />
-
-                {/* Marcador para la ubicación del usuario */}
-                {userLocation && (
-                    <Marker position={userLocation} icon={userLocationIcon}>
-                        <Popup>
-                            <strong>¡Aquí estás!</strong>
-                        </Popup>
-                    </Marker>
-                )}
-
-                {/* Renderizar las ubicaciones predeterminadas */}
-                {defaultLocations.map((location) => (
-                    <Marker
-                        key={location.id}
-                        position={location.position}
-                        icon={defaultLocationIcon}
-                        eventHandlers={{
-                            click: () => setSelectedLocation(location.position), // Seleccionar ubicación al hacer clic
-                        }}
-                    >
-                        <Popup>
-                            {location.title} <br />
+            {/* Galería de comercios */}
+            <div className="gallery">
+                <h2>Comercios en Basauri</h2>
+                <div className="gallery-grid">
+                    {businesses.map((business) => (
+                        <div className="gallery-item" key={business.id}>
+                            <img src={business.image} alt={business.name} />
+                            <h3>{business.name}</h3>
+                            <p>{business.address}</p>
                             <button
-                                onClick={() => setSelectedLocation(location.position)}
-                                style={{
-                                    marginTop: "5px",
-                                    padding: "5px 10px",
-                                    backgroundColor: "#007bff",
-                                    color: "#fff",
-                                    border: "none",
-                                    borderRadius: "4px",
-                                    cursor: "pointer",
-                                }}
+                                onClick={() => handleBusinessClick(business.location)}
+                                className="navigate-button"
                             >
-                                ¿Cómo llegar?
+                                Ver en el mapa
                             </button>
-                        </Popup>
-                    </Marker>
-                ))}
-            </MapContainer>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 };
