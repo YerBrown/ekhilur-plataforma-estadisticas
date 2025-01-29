@@ -1,42 +1,78 @@
 import React, { PureComponent, useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { totalAño, totalMes, dataPruebas } from '../../api/dataPruebas.js';
-
+import { dataYears, dataMonths } from '../../api/dataPruebas.js';
+import DateFilter from '../DateFilter/DateFilter';
 const BarChartComponent = () => {
     const [chartData, setChartData] = useState([]);
 
     useEffect(() => {
-        // Obtenemos los años disponibles
-        const años = Object.keys(dataPruebas[0].movimientos_por_año);
+        const allMonths = dataMonths.flatMap(yearData =>
+            yearData.datos.map(monthData => ({
+                period: `${monthData.mes} ${yearData.año}`,
+                expenses: monthData.total_gastos,
+                income: monthData.total_ingresos,
+                year: yearData.año,
+                month: monthData.mes
+            }))
+        );
 
-        // Creamos un array con todos los meses disponibles y sus años
-        const todosLosMeses = [];
-        años.forEach(año => {
-            const mesesDelAño = Object.keys(dataPruebas[0].movimientos_por_año[año].meses);
-            mesesDelAño.forEach(mes => {
-                todosLosMeses.push({
-                    año: año,
-                    mes: mes
-                });
-            });
-        });
+        const lastThreeMonths = allMonths.slice(-3);
+        setChartData(lastThreeMonths);
 
-        const ultimos3 = todosLosMeses.slice(-3);
-
-        // Creamos los datos para el gráfico
-        const datos = ultimos3.map(({ año, mes }) => {
-            const totales = totalMes(año, mes);
-            return {
-                periodo: `${mes.charAt(0).toUpperCase() + mes.slice(1)} ${año}`,
-                ingresos: totales.ingresos,
-                gastos: totales.gastos
-            };
-        });
-
-        setChartData(datos);
+        const lastMonth = lastThreeMonths[lastThreeMonths.length - 1];
+        if (lastMonth) {
+            handleDateFilter({ year: lastMonth.year, month: lastMonth.month });
+        }
     }, []);
+
+    const handleDateFilter = ({ year, month }) => {
+        const allMonths = dataMonths.flatMap(yearData =>
+            yearData.datos.map(monthData => ({
+                period: `${monthData.mes} ${yearData.año}`,
+                expenses: monthData.total_gastos,
+                income: monthData.total_ingresos,
+                year: yearData.año,
+                month: monthData.mes
+            }))
+        );
+
+        const selectedIndex = allMonths.findIndex(
+            item => item.year === year && item.month === month
+        );
+
+        if (selectedIndex === -1) {
+            console.log("Mes no encontrado");
+            return;
+        }
+
+        let displayedMonths = [];
+
+        if (selectedIndex > 0) {
+            displayedMonths.push(allMonths[selectedIndex - 1]);
+        }
+
+        displayedMonths.push(allMonths[selectedIndex]);
+
+        if (selectedIndex < allMonths.length - 1) {
+            displayedMonths.push(allMonths[selectedIndex + 1]);
+        }
+
+        setChartData(displayedMonths);
+    };
+    /*const getLastThreeYears = () => {
+        return dataYears.slice(-3).map(year => ({
+            period: year.año,
+            expenses: Number(year.total_gastos),
+            income: Number(year.total_ingresos)
+        }));
+    }; */
+
+
+
+
     return (
         <>
+            <DateFilter onDateFilter={handleDateFilter} />
             <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                     width={500}
@@ -60,9 +96,9 @@ const BarChartComponent = () => {
                         </linearGradient>
                     </defs>
 
-                 
+
                     <XAxis
-                        dataKey="periodo"
+                        dataKey="period"
                         angle={0}  // Añadir esta línea para el angulo del texto de debajo de los gráficos
                         textAnchor="middle"  // Añadir esta línea para centrar texto
                         height={60}
@@ -87,7 +123,7 @@ const BarChartComponent = () => {
                         height={36}
                     />
                     <Bar
-                        dataKey="ingresos"
+                        dataKey="income"
                         fill="url(#ingresosGradient)"
                         name="Ingresos"
                         label={{
@@ -96,7 +132,7 @@ const BarChartComponent = () => {
                         }}
                     />
                     <Bar
-                        dataKey="gastos"
+                        dataKey="expenses"
                         fill="url(#gastosGradient)"
                         name="Gastos"
                         label={{

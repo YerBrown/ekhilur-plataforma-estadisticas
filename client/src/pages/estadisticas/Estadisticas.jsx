@@ -2,7 +2,6 @@ import React from "react";
 import Layout from "../layout/Layout";
 import "./Estadisticas.css";
 import BarChartComponent from "../../components/charts/BarChart";
-import DateFilter from "../../components/DateFilter/DateFilter";
 
 const totalIngresos = 1000;
 const totalGastos = 500;
@@ -21,7 +20,6 @@ const Estadisticas = () => {
                 <span className="amount-gastos">{totalGastos} €</span>
                 </div>
             </div>
-           {/*  <DateFilter /> */}
             <div style={{ width: '100%', height: '400px' }}> {/* Contenedor con altura fija */}
                 <BarChartComponent />
             </div>
