@@ -19,7 +19,6 @@
 }
 
 .search-bar {
-    background-color: transparent;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     mask-image: linear-gradient(to bottom, black 70%, transparent 110%);
@@ -49,19 +48,27 @@
     width: 100%;
 }
 
+input {
+    background-color: var(--background-color-principal-05);
+}
+
 .search-bar-name-input {
     width: 100%;
     border: none;
-    border-bottom: 2px solid var(--e-global-color-5c06632b);
-    padding: 8px 0;
+    border-bottom: 2px solid var(--color-naranja-principal);
+    padding: 0.5rem;
     font-size: 18px;
-    color: var(--color-light);
+    color: var(--color-letra);
     outline: none;
     transition: border-color 0.3s;
+    box-sizing: border-box;
+    border-radius: 4px;
 }
 
-.search-bar-name-input::placeholder {
-    color: #bbb;
+.search-bar-name-input::placeholder,
+.filter-input::placeholder,
+.search-bar-date-input::placeholder {
+    color: var(--color-placeholder);
 }
 
 .clear-icon {
@@ -71,7 +78,7 @@
     transform: translateY(-50%);
     cursor: pointer;
     font-size: 20px;
-    color: #aaa;
+    color: var(--color-placeholder);
     transition: color 0.3s;
 }
 
@@ -95,7 +102,7 @@
 
 .filter-label {
     font-size: 16px;
-    color: #333;
+    color: var(--color-letra);
     font-weight: bold;
 }
 
@@ -108,7 +115,7 @@
 
 .search-bar-date-input,
 .filter-input {
-    border: 1px solid #ccc;
+    border: 0.5px solid var(--color-placeholder);
     border-radius: 8px;
     padding: 10px;
     font-size: 16px;
@@ -118,5 +125,5 @@
 
 .search-bar-date-input:focus,
 .filter-input:focus {
-    border-color: var(--e-global-color-5c06632b);
+    border-color: var(--color-naranja-principal);
 }

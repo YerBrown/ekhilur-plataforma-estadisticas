@@ -1,7 +1,9 @@
 /* Estilos generales */
 .transaction-list-container {
-    padding: 16px;
-    background-color: #f9f9f9;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.2);
+    background-color: var(--background-color-principal);
 }
 
 .transaction-group-container {
@@ -15,7 +17,8 @@
 .transaction-group-title {
     font-size: 18px;
     font-weight: bold;
-    color: #333;
+    color: var(--color-letra);
+    padding-left: 1rem;
 }
 
 /* Lista de transacciones */
@@ -29,8 +32,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #fff;
-    padding: 16px;
+    background-color: var(--background-color-principal-05);
+    padding: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -54,13 +59,13 @@
 .transaction-item-name {
     font-size: 16px;
     font-weight: 500;
-    color: #333;
+    color: var(--color-letra);
     margin: 0;
 }
 
 .transaction-item-description {
     font-size: 14px;
-    color: #666;
+    color: var(--color-letra);
     margin: 4px 0 0;
 }
 
@@ -71,14 +76,14 @@
 .transaction-item-amount {
     font-size: 16px;
     font-weight: bold;
-    color: #007bff;
-    background-color: #3333332d;
+    color: var(--color-letra);
+    background-color: rgba(0, 128, 0, 0.4);
     border-radius: 5px;
     padding: 0.2rem;
 }
 
 .transaction-item-remaining {
     font-size: 14px;
-    color: #666;
+    color: var(--color-letra-2);
     margin-top: 4px;
 }
