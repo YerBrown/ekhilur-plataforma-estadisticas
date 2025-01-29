@@ -22,10 +22,10 @@ const BarChartComponent = () => {
         });
 
         // Obtenemos los últimos 4 meses
-        const ultimos4 = todosLosMeses.slice(-4);
+        const ultimos3 = todosLosMeses.slice(-3);
 
         // Creamos los datos para el gráfico
-        const datos = ultimos4.map(({ año, mes }) => {
+        const datos = ultimos3.map(({ año, mes }) => {
             const totales = totalMes(año, mes);
             return {
                 periodo: `${mes.charAt(0).toUpperCase() + mes.slice(1)} ${año}`,
@@ -61,21 +61,21 @@ const BarChartComponent = () => {
                         </linearGradient>
                     </defs>
 
-                    <CartesianGrid strokeDasharray="3 3" />
+                 
                     <XAxis
-                        dataKey="periodo"  // Cambiar 'mes' por 'periodo' (no se porque se me corta)
+                        dataKey="periodo"
                         angle={0}  // Añadir esta línea para el angulo del texto de debajo de los gráficos
                         textAnchor="middle"  // Añadir esta línea para centrar texto
-                        height={60}  // Añadir esta línea
+                        height={60}
                         label={{
-                            value: 'Periodos',  // Añadir esta línea
                             position: 'bottom',
                             offset: 0
                         }}
                     />
                     <YAxis
+                        ticks={[0, 800]}
+                        domain={[0, 800]}
                         label={{
-                            value: 'Importe',
                             angle: -90,
                             position: 'insideLeft',
                             offset: -5
@@ -91,11 +91,19 @@ const BarChartComponent = () => {
                         dataKey="ingresos"
                         fill="url(#ingresosGradient)"
                         name="Ingresos"
+                        label={{
+                            position: 'top',
+                            formatter: (value, _, __) => `${Number(value).toFixed(2)}€`
+                        }}
                     />
                     <Bar
                         dataKey="gastos"
                         fill="url(#gastosGradient)"
                         name="Gastos"
+                        label={{
+                            position: 'top',
+                            formatter: (value, _, __) => `${Number(value).toFixed(2)}€`
+                        }}
                     />
                 </BarChart>
             </ResponsiveContainer>

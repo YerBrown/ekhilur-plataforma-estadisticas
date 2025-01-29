@@ -4,8 +4,8 @@ import "./Estadisticas.css";
 import BarChartComponent from "../../components/charts/BarChart";
 import DateFilter from "../../components/DateFilter/DateFilter";
 
-const totalIngresos = 1000; //aquí habría que poner una función que sume el total de ingresos
-const totalGastos = 500; //aquí habría que poner una función que sume el total de gastos
+const totalIngresos = 1000;
+const totalGastos = 500;
 
 const Estadisticas = () => {
     return (
