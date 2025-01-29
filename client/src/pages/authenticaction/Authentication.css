@@ -1,0 +1,132 @@
+.auth-window {
+    border-radius: 25px;
+    border: 2px solid #535353;
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    transition: opacity 0.2s ease-out;
+    overflow: hidden;
+}
+
+
+.auth-window.fade-in {
+    opacity: 1;
+    /* Contenido visible */
+}
+
+.auth-window.fade-out {
+    opacity: 0;
+    /* Contenido invisible */
+}
+
+
+.auth-window header {
+    background-color: transparent;
+    padding: 0;
+}
+
+.auth-window header h3 {
+    margin: 0;
+}
+
+.auth-window .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.auth-window .form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.auth-window .form-container input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #535353;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: "Noway", Arial, sans-serif;
+
+}
+
+.auth-window .form-container .main-button {
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+    background-color: var(--background-color-light);
+    color: var(--color-light);
+    border: 2px solid #535353;
+}
+
+.auth-window .form-container .message {
+    margin: 0;
+    padding: 5px;
+    font-size: .8rem;
+}
+
+.message.success {
+    color: rgb(60, 255, 0);
+}
+
+.message.failed {
+    color: red;
+}
+
+
+.auth-window .form-container .password-data {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 0;
+
+}
+
+.auth-window .form-container .password-data p {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+}
+
+.auth-window .form-container .password-data .password-input {
+    grid-column: span 2;
+}
+
+.auth-window .change-form button {
+    background-color: transparent;
+    border: none;
+}
+
+.auth-window .change-form button:hover {
+    text-decoration: underline;
+}
+
+@media (prefers-color-scheme: light) {
+    .auth-window .form-container button {
+        background-color: var(--background-color-dark);
+        color: var(--color-dark);
+        border: 2px solid #535353;
+    }
+}
+
+@media (max-width: 600px) {
+    .auth-window.register {
+        height: 560px;
+    }
+
+    .auth-window .form-container .password-data {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        gap: 0;
+    }
+
+    .auth-window .form-container .password-data .password-input {
+        grid-column: span 1;
+    }
+}

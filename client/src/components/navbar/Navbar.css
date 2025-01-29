@@ -1,0 +1,58 @@
+/* Estilo para la barra de navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+/* Contenedor de enlaces a la izquierda */
+.navbar .navbar-left {
+    display: flex;
+    gap: 20px;
+}
+
+/* Estilo de los enlaces */
+.navbar .navbar-left a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+/* Hover sobre los enlaces */
+.navbar .navbar-left a:hover {
+    color: #00bcd4;
+
+}
+
+/* Contenedor del usuario y el botón de logout a la derecha */
+.navbar .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+
+/* Estilo del nombre de usuario */
+.navbar .navbar-right .username {
+    font-size: 16px;
+}
+
+/* Estilo del botón de logout */
+.navbar .navbar-right .logout-button {
+    padding: 5px 10px;
+    background-color: var(--e-global-color-5c06632b);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover sobre el botón de logout */
+.navbar .navbar-right .logout-button:hover {
+    background-color: #d32f2f;
+}
