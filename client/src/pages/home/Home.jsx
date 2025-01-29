@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { verify } from "../../api/auth";
 import DonutChart from "../../components/charts/DonutChart";
-import CategoryChart from "../../components/charts/CategoryCharts";
 import ProfileAvatar from "../../components/ProfileAvatar";
 import "./Home.css";
 
@@ -89,8 +88,7 @@ const Home = () => {
         },
         elements: {
             arc: {
-                borderWidth: 1, // Grosor del borde del arco
-                borderColor: "#fff", // Color del borde (opcional)
+                borderWidth: 0, // Grosor del borde del arco
             },
         },
 
@@ -114,8 +112,7 @@ const Home = () => {
             </header>
             <main>
                 <h1>Bienvenido, {user?.username}!</h1>
-                <p>Esta es la pagina principal</p>
-                <CategoryChart />
+                <h3>Monedero</h3>
                 <div className="wallet-chart">
                     <DonutChart data={walletData} options={walletOptions} />
                 </div>
