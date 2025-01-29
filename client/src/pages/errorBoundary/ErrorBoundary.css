@@ -1,0 +1,37 @@
+/* Contenedor principal del Error Boundary */
+.error-boundary {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 600px;
+}
+
+/* Título principal */
+.error-boundary-title {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Descripción secundaria */
+.error-boundary-description {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Estilo del enlace de redirección */
+.error-boundary-link {
+    font-size: 1rem;
+    color: var(--e-global-color-5743e3e4);
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid var(--e-global-color-5743e3e4);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Hover del enlace */
+.error-boundary-link:hover {
+    background-color: var(--e-global-color-5743e3e4);
+    color: #fff;
+}
