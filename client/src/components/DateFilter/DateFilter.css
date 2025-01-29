@@ -1,10 +1,9 @@
 .date-filter-container {
-  display: inline-block;
+  justify-content: space-around;
+  display: flex;
   width: 100%;
   padding: 10px;
-  background-color: #0047ba;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  position: sticky;
   top: 0;
   z-index: 1000;
   margin-bottom: 20px;
@@ -12,8 +11,13 @@
 }
 
 .toggle-button {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  height: 40px;
+  font-size: 16px;
   padding: 10px 20px;
-  background-color: #0047ba;
+  background-color: var(--color-naranja-background);
   color: #ffffff;
   border: none;
   border-radius: 5px;
