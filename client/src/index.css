@@ -28,8 +28,8 @@
   --color-light: #1e1e1e;
   --color-dark: white;
   /*Ekhilur colors - No cambiar*/
-  --e-global-color-5743e3e4: #0047BA;
-  --e-global-color-5c06632b: #FF9012;
+  --e-global-color-5743e3e4: rgb(0, 71, 186);
+  --e-global-color-5c06632b: rgb(255, 144, 18);
   --e-global-color-490e56ae: #222222;
   --e-global-color-58968a1c: #020101;
   --e-global-color-4879d4b4: #000;
