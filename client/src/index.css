@@ -24,16 +24,40 @@
 
   /*Colors*/
   --background-color-light: white;
-  --background-color-dark: #1e1e1e;
-  --color-light: #1e1e1e;
-  --color-dark: white;
+  --background-color-light-05: rgba(255, 255, 255, 0.5);
+  --background-color-dark: rgb(30, 30, 30);
+  --background-color-dark-05: rgba(94, 94, 94, 0.2);
+  --color-light: rgba(30, 30, 30);
+  --color-dark: rgba(255, 255, 255);
+  --color-naranja: rgba(255, 144, 18, 1);
+  --color-naranja-background: rgba(255, 144, 18, 0.8);
+  --color-azul: rgba(0, 71, 184, 1);
+  --color-azul-background: rgba(0, 71, 184, 0.8);
+  --color-blanco: rgba(255, 255, 255, 1);
+  --color-negro: rgba(0, 0, 0, 1);
+  --color-placeholder-light: rgba(0, 0, 0, 0.6);
+  --color-placeholder-dark: rgba(255, 255, 255, 0.6);
+  --color-letra-2: rgba(0, 0, 0, 0.6);
+  --color-letra-2-dark: rgba(255, 255, 255, 0.6);
+  --color-gasto: rgba(255, 0, 0, 0.4);
+  --color-ingreso: rgba(0, 128, 0, 0.4);
+
+  /*THEME COLORS (LOS QUE HAY USAR)*/
+  --background-color-principal: var(--background-color-light);
+  --background-color-principal-05: var(--background-color-light-05);
+  --color-letra: var(--color-light);
+  --color-letra-2: var(--color-letra-2);
+  --color-letra-blanca: var(--color-dark);
+  --color-placeholder: var(--color-placeholder-light);
+  --color-naranja-principal: var(--color-naranja);
+  --color-naranja-principal-background: var(--color-naranja-background);
   /*Ekhilur colors - No cambiar*/
-  --e-global-color-5743e3e4: #0047BA;
-  --e-global-color-5c06632b: #FF9012;
-  --e-global-color-490e56ae: #222222;
-  --e-global-color-58968a1c: #020101;
-  --e-global-color-4879d4b4: #000;
-  --e-global-color-2db7b2b0: #FFF;
+  
+  
+  --e-global-color-490e56ae: rgba(34, 34, 34);
+  --e-global-color-58968a1c: rgba(2, 1, 1);
+  --e-global-color-4879d4b4: rgba(0, 0, 0);
+  --e-global-color-2db7b2b0: rgba(255, 255, 255);
   --e-global-typography-primary-font-family: "Noway Medium";
   --e-global-typography-primary-font-weight: normal;
   --e-global-typography-secondary-font-family: "Noway Medium";
@@ -66,10 +90,6 @@ body {
   flex: 1;
 }
 
-header {
-  background-color: #242323;
-}
-
 main {
   display: flex;
   flex-direction: column;
@@ -91,9 +111,15 @@ button {
   font-family: "Noway", Arial, sans-serif;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
-    color: var(--color-light);
-    background-color: var(--background-color-light);
+    --background-color-principal: var(--background-color-dark);
+    --background-color-principal-05: var(--background-color-dark-05);
+    --color-letra: var(--color-dark);
+    --color-letra-2: var(--color-letra-2-dark);
+    --color-letra-blanca: var(--color-light);
+    --color-placeholder: var(--color-placeholder-dark);
+    --color-naranja-principal: var(--color-azul);
+    --color-naranja-principal-background: var(--color-azul-background);
   }
 }

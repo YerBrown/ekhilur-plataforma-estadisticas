@@ -1,5 +1,5 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
+import { IoIosArrowBack } from "react-icons/io";
 import "./Layout.css";
 
 const Layout = ({ title, children }) => {
@@ -9,15 +9,24 @@ const Layout = ({ title, children }) => {
     navigate(-1);
   };
 
+  const handleScrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+  };
+
   return (
-    <div className="layout-container">
-      <header className="layout-header">
-        <button className="back-button" onClick={handleBack}>
-          ← Atrás
-        </button>
-        <h1 className="layout-title">{title}</h1>
+    <div className="page-container" onClick={handleScrollToTop}>
+      <header className="page-header">
+        <div className="page-header-content">
+          <button className="back-button" onClick={handleBack}>
+            <IoIosArrowBack className="back-icon" size={24} />
+          </button>
+          <h1 className="page-title">{title}</h1>
+        </div>
       </header>
-      <main className="layout-content">{children}</main>
+      <main className="page-content">{children}</main>
     </div>
   );
 };
