@@ -1,22 +1,194 @@
-const mockTransactions = [
-    { date: "2025-01-25", image: "/ekhilur/Ekhilur_isotipo.png", name: "Supermercado ABC", amount: "-45.20€", remainingBalance: "954.80€", description: "Compra semanal" },
-    { date: "2025-01-25", image: "/ekhilur/Ekhilur_isotipo.png", name: "Cafetería La Plaza", amount: "-5.50€", remainingBalance: "960.30€", description: "Café con amigos" },
-    { date: "2025-01-24", image: "/ekhilur/Ekhilur_isotipo.png", name: "Tienda Electrónica XYZ", amount: "-120.00€", remainingBalance: "1,065.80€", description: "Auriculares inalámbricos" },
-    { date: "2025-01-24", image: "/ekhilur/Ekhilur_isotipo.png", name: "Librería Central", amount: "-30.00€", remainingBalance: "1,095.80€", description: "Libro de desarrollo personal" },
-    { date: "2025-01-23", image: "/ekhilur/Ekhilur_isotipo.png", name: "Restaurante Gourmet", amount: "-85.00€", remainingBalance: "1,180.80€", description: "Cena con la familia" },
-    { date: "2025-01-23", image: "/ekhilur/Ekhilur_isotipo.png", name: "Gasolinera Repsol", amount: "-60.00€", remainingBalance: "1,240.80€", description: "Llenado del tanque" },
-    { date: "2025-01-22", image: "/ekhilur/Ekhilur_isotipo.png", name: "Farmacia Salud", amount: "-15.00€", remainingBalance: "1,300.80€", description: "Medicinas" },
-    { date: "2025-01-22", image: "/ekhilur/Ekhilur_isotipo.png", name: "Bar El Rincón", amount: "-20.00€", remainingBalance: "1,315.80€", description: "Tapas y cervezas" },
-    { date: "2025-01-21", image: "/ekhilur/Ekhilur_isotipo.png", name: "Supermercado ABC", amount: "-35.40€", remainingBalance: "1,335.80€", description: "Compra de frutas y verduras" },
-    { date: "2025-01-21", image: "/ekhilur/Ekhilur_isotipo.png", name: "Cafetería La Plaza", amount: "-7.00€", remainingBalance: "1,371.20€", description: "Desayuno" },
-    { date: "2025-01-20", image: "/ekhilur/Ekhilur_isotipo.png", name: "Restaurante Gourmet", amount: "-65.00€", remainingBalance: "1,378.20€", description: "Almuerzo ejecutivo" },
-    { date: "2025-01-20", image: "/ekhilur/Ekhilur_isotipo.png", name: "Vending Snacks", amount: "-2.50€", remainingBalance: "1,443.20€", description: "Bebida y snack" },
-    { date: "2025-01-19", image: "/ekhilur/Ekhilur_isotipo.png", name: "Gasolinera Repsol", amount: "-70.00€", remainingBalance: "1,445.70€", description: "Gasolina" },
-    { date: "2025-01-19", image: "/ekhilur/Ekhilur_isotipo.png", name: "Librería Central", amount: "-10.00€", remainingBalance: "1,515.70€", description: "Material escolar" },
-    { date: "2025-01-18", image: "/ekhilur/Ekhilur_isotipo.png", name: "Tienda Electrónica XYZ", amount: "-99.99€", remainingBalance: "1,525.70€", description: "Disco duro externo" },
-    { date: "2025-01-18", image: "/ekhilur/Ekhilur_isotipo.png", name: "Farmacia Salud", amount: "-12.00€", remainingBalance: "1,625.69€", description: "Cuidado personal" },
-    { date: "2025-01-17", image: "/ekhilur/Ekhilur_isotipo.png", name: "Cafetería La Plaza", amount: "-5.00€", remainingBalance: "1,637.69€", description: "Café solo" },
-    { date: "2025-01-17", image: "/ekhilur/Ekhilur_isotipo.png", name: "Supermercado ABC", amount: "-80.20€", remainingBalance: "1,642.69€", description: "Compra quincenal" }
+const mockData = [
+    {
+        "fecha": "2022-05-09",
+        "hora": "11:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "15,00",
+        "concepto": "Ekhilur kuota urtebete",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "15,00",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2022-05-09",
+        "hora": "11:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,00",
+        "concepto": "Froga",
+        "usuario_asociado": "Alejandro Lopez Morgado",
+        "saldo": "16,00",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-05-09",
+        "hora": "11:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-1,00",
+        "concepto": "froga",
+        "usuario_asociado": "Alejandro Lopez Morgado",
+        "saldo": "15,00",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-05-13",
+        "hora": "11:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-1,00",
+        "concepto": "froga",
+        "usuario_asociado": "Herrilur Kontsumo Elkartea",
+        "saldo": "14,00",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2022-05-13",
+        "hora": "11:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,00",
+        "concepto": "",
+        "usuario_asociado": "Herrilur Kontsumo Elkartea",
+        "saldo": "15,00",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-05-17",
+        "hora": "11:11",
+        "movimiento": "Recarga por tarjeta",
+        "cantidad": "50,00",
+        "concepto": "",
+        "usuario_asociado": "",
+        "saldo": "65,00",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2022-05-17",
+        "hora": "11:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-32,55",
+        "concepto": "aliprox",
+        "usuario_asociado": "Aliprox",
+        "saldo": "32,45",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2022-05-19",
+        "hora": "11:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-1,40",
+        "concepto": "",
+        "usuario_asociado": "Tripontzi Jatetxea",
+        "saldo": "31,05",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2022-05-20",
+        "hora": "11:11",
+        "movimiento": "Recarga por tarjeta",
+        "cantidad": "100,00",
+        "concepto": "",
+        "usuario_asociado": "",
+        "saldo": "131,05",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2022-05-23",
+        "hora": "11:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-7,30",
+        "concepto": "",
+        "usuario_asociado": "On Bit Informatika",
+        "saldo": "123,75",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2022-05-23",
+        "hora": "11:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-1,00",
+        "concepto": "froga",
+        "usuario_asociado": "Herrilur Kontsumo Elkartea",
+        "saldo": "122,75",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-05-23",
+        "hora": "11:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,00",
+        "concepto": "Bueltan",
+        "usuario_asociado": "Herrilur Kontsumo Elkartea",
+        "saldo": "123,75",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2022-05-24",
+        "hora": "11:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-1,00",
+        "concepto": "froga",
+        "usuario_asociado": "Galarreta Pilotalekua",
+        "saldo": "122,75",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2022-05-24",
+        "hora": "11:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,00",
+        "concepto": "froga buelta",
+        "usuario_asociado": "Galarreta Pilotalekua",
+        "saldo": "123,75",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-05-24",
+        "hora": "11:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-1,00",
+        "concepto": "droga",
+        "usuario_asociado": "Ereñozuko denda (Coviran)",
+        "saldo": "122,75",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-05-24",
+        "hora": "11:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,00",
+        "concepto": "Devolucion",
+        "usuario_asociado": "Ereñozuko denda (Coviran)",
+        "saldo": "123,75",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-05-25",
+        "hora": "11:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-15,94",
+        "concepto": "",
+        "usuario_asociado": "Artola Harategia",
+        "saldo": "107,81",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2022-05-27",
+        "hora": "11:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-1,00",
+        "concepto": "froga",
+        "usuario_asociado": "Gaindituz Fisioterapia",
+        "saldo": "106,81",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2022-05-27",
+        "hora": "11:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,00",
+        "concepto": "",
+        "usuario_asociado": "Gaindituz Fisioterapia",
+        "saldo": "107,81",
+        "cuenta": "Ekhi"
+    }
 ];
 
-export default mockTransactions;
+export default mockData;
