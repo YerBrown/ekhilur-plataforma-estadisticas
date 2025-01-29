@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import { verify } from "../../api/auth";
 import DonutChart from "../../components/charts/DonutChart";
 import ProfileAvatar from "../../components/ProfileAvatar";
+import { useTheme } from "../../contexts/ThemeContext";
 import "./Home.css";
 
 const walletDataJson = [
@@ -12,6 +13,7 @@ const walletDataJson = [
 ];
 
 const Home = () => {
+    const { theme } = useTheme();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -69,10 +71,10 @@ const Home = () => {
                 },
             },
             datalabels: {
-                color: "#fff", // Color del texto
+                color: theme === "light" ? "#000000" : "#ffffff", // Color del texto
                 font: {
                     size: 14,
-                    weight: "bold", // Aplica negrita al texto
+                    family: "Noway",
                 },
                 formatter: (value, context) => {
                     const label = context.chart.data.labels[context.dataIndex];
@@ -83,7 +85,8 @@ const Home = () => {
                 offset: 10,
             },
             centerText: {
-                total: `Total: ${walletTotalValue}€`, // Pasar el total calculado
+                color: theme === "light" ? "#000000" : "#ffffff",
+                total: `${walletTotalValue}€`, // Pasar el total calculado
             },
         },
         elements: {
@@ -107,17 +110,22 @@ const Home = () => {
     return (
         <div className="home-page">
             <header>
-                <img src="" alt="Logo Ekhidata" />
+                <img
+                    src="/public/ekhilur/Ekhilur_isotipo.png"
+                    alt="Logo Ekhidata"
+                />
                 <ProfileAvatar />
             </header>
             <main>
                 <h1>Bienvenido, {user?.username}!</h1>
-                <h3>Monedero</h3>
                 <div className="wallet-chart">
+                    <h3>Monedero</h3>
                     <DonutChart data={walletData} options={walletOptions} />
                 </div>
+                <div>Bonificaciones</div>
+                <div>Estadisticas</div>
+                <div>Transacciones</div>
             </main>
-            <footer>Footer</footer>
         </div>
     );
 };
