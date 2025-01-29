@@ -1,0 +1,45 @@
+.category-charts {
+    box-shadow: 0px 5px 10px black;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+    height: 90vh;
+}
+
+.categories-spend-donut {
+    height: 250px;
+}
+
+.category-charts .category-extra {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.category-charts .category-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-charts .category-item {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20px;
+    height: 100px;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.category-charts .category-item h4 {
+    width: 30%;
+}
+
+.category-charts .category-item .donut {
+    width: 30%;
+    height: 100%;
+}

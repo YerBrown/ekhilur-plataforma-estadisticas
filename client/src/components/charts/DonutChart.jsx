@@ -9,14 +9,14 @@ ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels, {
         const { width } = chart;
         const { height } = chart;
         const ctx = chart.ctx;
-        const total = chart.config.options.plugins.centerText?.total || 0; // Obtener el total desde las opciones del gráfico
+        const total = chart.config.options.plugins.centerText?.total || ""; // Obtener el total desde las opciones del gráfico
 
         ctx.save();
         ctx.font = "bold 16px Arial"; // Estilo del texto
         ctx.fillStyle = "#fff"; // Color del texto
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText(`Total: ${total} €`, width / 2, height / 2); // Texto en el centro
+        ctx.fillText(total, width / 2, height / 2); // Texto en el centro
         ctx.restore();
     },
 });

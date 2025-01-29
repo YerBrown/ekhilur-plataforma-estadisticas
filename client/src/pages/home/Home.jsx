@@ -2,14 +2,16 @@ import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { verify } from "../../api/auth";
 import DonutChart from "../../components/charts/DonutChart";
+import CategoryChart from "../../components/charts/CategoryCharts";
 import ProfileAvatar from "../../components/ProfileAvatar";
 import "./Home.css";
 
-const dataJson = [
+const walletDataJson = [
     { label: "Euro", value: 400, color: "#FF6384" },
     { label: "Ekhi", value: 300, color: "#36A2EB" },
     { label: "Ekhi Hernani", value: 300, color: "#FFCE56" },
 ];
+
 const Home = () => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -30,22 +32,26 @@ const Home = () => {
 
         fetchUserdata();
     }, []);
-    const labels = dataJson.map((item) => item.label);
-    const values = dataJson.map((item) => item.value);
-    const colors = dataJson.map((item) => item.color);
-    const data = {
-        labels: labels,
+    const walletLabels = walletDataJson.map((item) => item.label);
+    const walletValues = walletDataJson.map((item) => item.value);
+    const walletColors = walletDataJson.map((item) => item.color);
+    const walletData = {
+        labels: walletLabels,
         datasets: [
             {
                 label: "Wallet",
-                data: values,
-                backgroundColor: colors,
-                hoverBackgroundColor: colors,
+                data: walletValues,
+                backgroundColor: walletColors,
+                hoverBackgroundColor: walletColors,
             },
         ],
     };
-    const totalValue = dataJson.reduce((acc, item) => acc + item.value, 0);
-    const options = {
+
+    const walletTotalValue = walletDataJson.reduce(
+        (acc, item) => acc + item.value,
+        0
+    );
+    const walletOptions = {
         responsive: true,
         maintainAspectRatio: false, // Permitir personalizar ancho y alto
         plugins: {
@@ -77,6 +83,9 @@ const Home = () => {
                 align: "end", // Alineación externa
                 offset: 10,
             },
+            centerText: {
+                total: `Total: ${walletTotalValue}€`, // Pasar el total calculado
+            },
         },
         elements: {
             arc: {
@@ -84,9 +93,7 @@ const Home = () => {
                 borderColor: "#fff", // Color del borde (opcional)
             },
         },
-        centerText: {
-            total: totalValue, // Pasar el total calculado
-        },
+
         cutout: "70%", // Ajusta el tamaño del agujero central del donut (más grande o más pequeño)
         radius: "60%",
     };
@@ -108,8 +115,9 @@ const Home = () => {
             <main>
                 <h1>Bienvenido, {user?.username}!</h1>
                 <p>Esta es la pagina principal</p>
+                <CategoryChart />
                 <div className="wallet-chart">
-                    <DonutChart data={data} options={options} />
+                    <DonutChart data={walletData} options={walletOptions} />
                 </div>
             </main>
             <footer>Footer</footer>
