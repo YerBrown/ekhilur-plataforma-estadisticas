@@ -1,21 +1,21 @@
 import { useState } from "react";
 import Layout from "../../pages/layout/Layout";
 import TransactionList from "../../components/transactions-list/TransactionsList";
-import mockTransactions from "../../components/transactions-list/mockData.js";
+import mockData from "../../components/transactions-list/mockData.js";
 import SearchBar from "../../components/search-bar/SearchBar";
 import TransactionsFilter from "../../components/buttons/transactions-filter/TransactionsFilter.jsx";
 import "./Transactions.css";
 
 const Transactions = () => {
-    const [filteredTransactions, setFilteredTransactions] = useState(mockTransactions);
+    const [filteredTransactions, setFilteredTransactions] = useState(mockData);
 
     const handleSearch = ({ term, filter }) => {
-        const filtered = mockTransactions.filter((transaction) => {
-            if (filter === "date") {
+        const filtered = mockData.filter((transaction) => {
+            if (filter === "fecha") {
                 return transaction.date.toLowerCase().includes(term);
-            } else if (filter === "name") {
+            } else if (filter === "usuario_asociado") {
                 return transaction.name.toLowerCase().includes(term);
-            } else if (filter === "amount") {
+            } else if (filter === "cantidad") {
                 return transaction.amount.toLowerCase().includes(term);
             }
             return true;
@@ -25,11 +25,11 @@ const Transactions = () => {
 
     const handleFilterChange = (filter) => {
         if (filter === "Todas") {
-            setFilteredTransactions(mockTransactions);
+            setFilteredTransactions(mockData);
         } else if (filter === "Ingresos") {
-            setFilteredTransactions(mockTransactions.filter(transaction => !transaction.amount.toString().includes('-')));
+            setFilteredTransactions(mockData.filter(transaction => !transaction.cantidad.toString().includes('-')));
         } else if (filter === "Gastos") {
-            setFilteredTransactions(mockTransactions.filter(transaction => transaction.amount.toString().includes('-')));
+            setFilteredTransactions(mockData.filter(transaction => transaction.cantidad.toString().includes('-')));
         }
     };
 

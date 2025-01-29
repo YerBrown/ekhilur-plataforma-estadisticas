@@ -1,0 +1,30 @@
+.logout-modal {
+    position: absolute;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+    background-color: var(--background-color-dark);
+    top: 70px;
+    right: 20px;
+}
+
+button.user-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+}
+
+.logout-modal.active {
+    opacity: 1;
+}
+
+.logout-modal button {
+    background-color: var(--e-global-color-5c06632b);
+    border-radius: 20px;
+}
+
+.logout-modal button:hover {
+    text-decoration: underline;
+}
