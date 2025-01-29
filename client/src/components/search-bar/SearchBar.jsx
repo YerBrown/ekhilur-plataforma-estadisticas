@@ -50,12 +50,16 @@ const SearchBar = ({ onSearch }) => {
 
     return (
         <div className="search-bar-container">
-            <button className="search-button" onClick={() => setIsOpen(!isOpen)}>
+            <button className="search-button" onClick={(e) => {
+                e.stopPropagation();
+                setIsOpen(!isOpen)
+            }}
+            >
                 <GoSearch className="search-icon" size={24} />
             </button>
 
             {isOpen && (
-                <div className="search-bar">
+                <div className="search-bar" onClick={(e) => e.stopPropagation()}>
                     <div className="search-bar-name">
                         <div className="search-bar-name-input-container">
                             <input
