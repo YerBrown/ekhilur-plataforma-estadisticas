@@ -90,11 +90,6 @@ body {
   flex: 1;
 }
 
-<<<<<<< HEAD
-header {}
-
-=======
->>>>>>> feature/full
 main {
   display: flex;
   flex-direction: column;

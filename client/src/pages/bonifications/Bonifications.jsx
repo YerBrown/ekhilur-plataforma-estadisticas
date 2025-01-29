@@ -10,18 +10,18 @@ const Bonifications = () => {
 
       <div className="bonifications-container">
         <div className="content-container">
-          <div className="image-container">
-            <img
+          
+            <img className="image-container"
               src="https://python-charts.com/es/parte-todo/grafico-barras-apiladas-matplotlib_files/figure-html/grafico-barras-apiladas-matplotlib.png"
               alt="Gráfico de barras"
             />
-          </div>
-          <div className="image-container">
-            <img
+          
+          
+            <img className="image-container"
               src="https://python-charts.com/es/parte-todo/grafico-barras-apiladas-matplotlib_files/figure-html/grafico-barras-apiladas-matplotlib.png"
               alt="Resumen de transacciones"
             />
-          </div>
+          
         </div>
       </div>
     </Layout>
