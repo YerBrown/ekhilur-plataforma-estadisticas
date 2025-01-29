@@ -6,10 +6,9 @@ import DateFilter from "../../components/DateFilter/DateFilter";
 const Bonifications = () => {
   return (
     <Layout title="Bonificaciones">
+      <DateFilter />
+
       <div className="bonifications-container">
-        <div className="date-filter-container">
-          <DateFilter />
-        </div>
         <div className="content-container">
           <div className="image-container">
             <img
