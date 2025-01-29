@@ -43,7 +43,8 @@
     position: absolute;
 }
 
-.home-page main>div {
+.home-page main>button {
+    border: none;
     width: 100%;
     background-color: var(--background-color-principal-05);
     padding: 1rem;

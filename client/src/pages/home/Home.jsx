@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import { verify } from "../../api/auth";
 import DonutChart from "../../components/charts/DonutChart";
 import ProfileAvatar from "../../components/ProfileAvatar";
@@ -18,6 +18,11 @@ const Home = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
+    const navigate = useNavigate();
+
+    const handleNavigate = (path) => {
+        navigate(path);
+    };
     useEffect(() => {
         const fetchUserdata = async () => {
             try {
@@ -122,9 +127,15 @@ const Home = () => {
                     <h3>Monedero</h3>
                     <DonutChart data={walletData} options={walletOptions} />
                 </div>
-                <div>Bonificaciones</div>
-                <div>Estadisticas</div>
-                <div>Transacciones</div>
+                <button onClick={() => handleNavigate("/bonifications")}>
+                    Bonificaciones
+                </button>
+                <button onClick={() => handleNavigate("/transactions")}>
+                    Estadisticas
+                </button>
+                <button onClick={() => handleNavigate("/transactions")}>
+                    Transacciones
+                </button>
             </main>
         </div>
     );

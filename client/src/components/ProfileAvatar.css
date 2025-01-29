@@ -16,6 +16,8 @@ button.user-avatar {
     height: 100%;
     aspect-ratio: 1/1;
     background-color: var(--color-naranja-principal);
+    color:
+        var(--color-blanco);
 }
 
 .logout-modal.active {
