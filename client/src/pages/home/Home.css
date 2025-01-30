@@ -13,7 +13,9 @@
 
 .home-page header img {
     height: 100%;
+    width: 50%;
     object-fit: contain;
+    object-position: left;
 }
 
 .home-page main {
