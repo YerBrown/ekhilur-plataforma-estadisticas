@@ -9,14 +9,33 @@ const DateFilter = ({ onDateFilter }) => {
   const [isYearOpen, setIsYearOpen] = useState(false);
   const [availableYears, setAvailableYears] = useState([]);
   const [availableMonths, setAvailableMonths] = useState([]);
-
+  const monthOrder = [
+    "enero",
+    "febrero",
+    "marzo",
+    "abril",
+    "mayo",
+    "junio",
+    "julio",
+    "agosto",
+    "septiembre",
+    "octubre",
+    "noviembre",
+    "diciembre"
+  ];
   useEffect(() => {
-    const years = [...new Set(dataMonths.map(year => year.año))];
+    const years = [...new Set(dataMonths.map(year => year.año))].sort((a, b) => b - a);
+    // Ordenar años de mayor a menor
     const months = [...new Set(dataMonths.flatMap(year =>
       year.datos.map(data => data.mes)
     ))];
+     
+      const orderedMonths = months.sort((a, b) => 
+        monthOrder.indexOf(a) - monthOrder.indexOf(b)
+      );  // Ordenar meses según el orden definido
+
     setAvailableYears(years);
-    setAvailableMonths(months);
+    setAvailableMonths(monthOrder);
   }, []);
 
   const handleMonthSelect = (month) => {
