@@ -53,6 +53,49 @@ const DateFilter = ({ onDateFilter }) => {
     }
   };
 
+  const months = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
+  ];
+
+  const generateYears = () => {
+    const currentYear = new Date().getFullYear();
+    const years = [];
+    for (let i = currentYear - 5; i <= currentYear; i++) {
+      years.push(i);
+    }
+    return years;
+  };
+
+  const renderScrollSelector = (items, value, onChange) => (
+    <div className="scroll-selector">
+      <ul className="scroll-list">
+        {items.map((item, index) => (
+          <li
+            key={index}
+            className={`scroll-item ${value === item ? "selected" : ""}`}
+            onClick={() => onChange(item)}
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+
+
+  const buttonText = `${months[selectedMonth - 1]} ${selectedYear}`;
+
   return (
     <div className="date-filter-container">
       <div className="date-filter-group">
