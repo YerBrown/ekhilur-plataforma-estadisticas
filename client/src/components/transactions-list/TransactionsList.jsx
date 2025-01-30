@@ -42,9 +42,9 @@ const TransactionList = ({ transactions }) => {
                                                 alt={transaction.usuario_asociado || transaction.movimiento}
                                                 className="transaction-item-image"
                                             />
-                                        </div>
-                                        <div className="transaction-item-name-container">
-                                            <p className="transaction-item-name">{transaction.usuario_asociado || transaction.movimiento}</p>
+                                            <div className="transaction-item-name-container">
+                                                <p className="transaction-item-name">{transaction.usuario_asociado || transaction.movimiento}</p>
+                                            </div>
                                         </div>
                                         <div className="transaction-item-amounts-container">
                                             <p className={`transaction-item-amount ${transaction.cantidad.toString().includes('-') ? 'negative' : 'positive'}`}>

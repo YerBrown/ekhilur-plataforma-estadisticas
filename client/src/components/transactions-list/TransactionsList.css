@@ -51,11 +51,18 @@
     align-items: center;
 }
 
+.transaction-item-image-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
 .transaction-item-image {
     width: 50px;
     height: 50px;
     object-fit: contain;
     padding-top: 0.4rem;
+    margin-right: 0.5rem;
 }
 
 .transaction-item-details {
@@ -78,6 +85,7 @@
 
 .transaction-item-amounts-container {
     text-align: right;
+    margin-left: 0.5rem;
 }
 
 .transaction-item-amount {
