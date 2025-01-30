@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLanguage } from "../../contexts/LanguageContext.jsx";
 import Layout from "../../pages/layout/Layout";
 import TransactionList from "../../components/transactions-list/TransactionsList";
 import mockData from "../../components/transactions-list/mockData.js";
@@ -7,6 +8,7 @@ import TransactionsFilter from "../../components/buttons/transactions-filter/Tra
 import "./Transactions.css";
 
 const Transactions = () => {
+    const { t, toggleLanguage } = useLanguage();
     const [filteredTransactions, setFilteredTransactions] = useState(mockData);
 
     useEffect(() => {
@@ -81,7 +83,8 @@ const Transactions = () => {
     };
 
     return (
-        <Layout title="Transacciones">
+        <Layout title={t.transactionTitle}>
+            <button onClick={toggleLanguage}>IDIOMA</button>
             <div className="transactions-content-container">
                 <SearchBar onSearch={handleSearch} />
                 <TransactionsFilter onFilterChange={handleFilterChange} />
