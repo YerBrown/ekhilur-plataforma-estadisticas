@@ -14,22 +14,22 @@ const Bonifications = () => {
 
       <div className="bonifications-container">
         <div className="content-container">
-          
-            <img className="image-container"
-              src="https://python-charts.com/es/parte-todo/grafico-barras-apiladas-matplotlib_files/figure-html/grafico-barras-apiladas-matplotlib.png"
-              alt="Gráfico de barras"
-            />
-          
-          
-            <img className="image-container"
-              src="https://python-charts.com/es/parte-todo/grafico-barras-apiladas-matplotlib_files/figure-html/grafico-barras-apiladas-matplotlib.png"
-              alt="Resumen de transacciones"
-            />
-          
+
+          <img className="image-container"
+            src="https://python-charts.com/es/parte-todo/grafico-barras-apiladas-matplotlib_files/figure-html/grafico-barras-apiladas-matplotlib.png"
+            alt="Gráfico de barras"
+          />
+
+
+          <img className="image-container"
+            src="https://python-charts.com/es/parte-todo/grafico-barras-apiladas-matplotlib_files/figure-html/grafico-barras-apiladas-matplotlib.png"
+            alt="Resumen de transacciones"
+          />
+
         </div>
       </div>
       <TransactionList transactions={bonificationTransactions} />
-      
+
     </Layout>
   );
 };

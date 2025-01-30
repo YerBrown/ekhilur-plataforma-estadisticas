@@ -94,7 +94,7 @@ const DateFilter = ({ onDateFilter }) => {
   );
 
 
-  const buttonText = `${months[startMonth - 1]} ${startYear}`;
+  const buttonText = `${months[selectedMonth - 1]} ${selectedYear}`;
 
   return (
     <div className="date-filter-container">
