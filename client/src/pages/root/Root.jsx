@@ -3,10 +3,6 @@ import { Outlet, useLocation } from "react-router-dom";
 import "./Root.css";
 
 const Root = () => {
-    return (
-        <>
-            <Outlet />
-        </>
-    );
+    return <Outlet />;
 };
 export default Root;

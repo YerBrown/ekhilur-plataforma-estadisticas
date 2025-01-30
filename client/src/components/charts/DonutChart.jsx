@@ -10,10 +10,10 @@ ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels, {
         const { height } = chart;
         const ctx = chart.ctx;
         const total = chart.config.options.plugins.centerText?.total || ""; // Obtener el total desde las opciones del gráfico
-
+        const color = chart.config.options.plugins.centerText?.color || "#fff"; // Obtener el color desde las opciones del gráfico
         ctx.save();
-        ctx.font = "bold 16px Arial"; // Estilo del texto
-        ctx.fillStyle = "#fff"; // Color del texto
+        ctx.font = "bold 16px Noway"; // Estilo del texto
+        ctx.fillStyle = color;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillText(total, width / 2, height / 2); // Texto en el centro
