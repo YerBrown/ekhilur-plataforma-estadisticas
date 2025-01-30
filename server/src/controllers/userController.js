@@ -21,10 +21,6 @@ async function create(username, email, password) {
     if (!emailRegex.test(email)) {
         throw ERRORS.INVALID_EMAIL_FORMAT;
     }
-    console.log(password);
-    if (!passwordRegex.test(password)) {
-        throw ERRORS.INVALID_PASSWORD_FORMAT;
-    }
     // Check if username already exists
     const existingUser = await User.findOne({ username });
     if (existingUser) {

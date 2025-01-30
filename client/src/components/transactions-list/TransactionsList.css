@@ -30,18 +30,25 @@
 
 .transaction-item {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     background-color: var(--background-color-principal-05);
     padding: 1rem;
     margin-left: 1rem;
     margin-right: 1rem;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
 }
 
-.transaction-item-image-container {
-    flex-shrink: 0;
+.transaction-item-time {
+    font-size: 14px;
+    color: var(--color-letra-2);
+    margin: 0;
+}
+
+.transaction-item-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .transaction-item-image {
@@ -77,13 +84,22 @@
     font-size: 16px;
     font-weight: bold;
     color: var(--color-letra);
-    background-color: rgba(0, 128, 0, 0.4);
     border-radius: 5px;
-    padding: 0.2rem;
+    padding: 0.3rem;
+    margin-top: 0;
+}
+
+.transaction-item-amount.positive {
+    background-color: var(--color-ingreso); /* Verde */
+}
+
+.transaction-item-amount.negative {
+    background-color: var(--color-gasto); /* Rojo */
 }
 
 .transaction-item-remaining {
     font-size: 14px;
     color: var(--color-letra-2);
     margin-top: 4px;
+    padding-right: 0.3rem;
 }
