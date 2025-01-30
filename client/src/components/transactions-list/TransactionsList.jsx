@@ -14,11 +14,12 @@ const TransactionList = ({ transactions }) => {
     // FORMATEAR FECHAS PARA EL TITULO
     const formatDate = (dateString) => {
         const date = new Date(dateString);
-        return date.toLocaleDateString("es-ES", {
+        const formattedDate = date.toLocaleDateString("es-ES", {
             weekday: "long",
             day: "numeric",
             month: "long"
         });
+        return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
     };
 
     return (

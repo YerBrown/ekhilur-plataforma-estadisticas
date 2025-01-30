@@ -19,6 +19,8 @@
     font-weight: bold;
     color: var(--color-letra);
     padding-left: 1rem;
+    padding-top: 1rem;
+    margin: 0;
 }
 
 /* Lista de transacciones */
