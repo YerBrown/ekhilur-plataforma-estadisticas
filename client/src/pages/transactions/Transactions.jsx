@@ -82,7 +82,7 @@ const Transactions = () => {
 
     return (
         <Layout title="Transacciones">
-            <div className="content-container">
+            <div className="transactions-content-container">
                 <SearchBar onSearch={handleSearch} />
                 <TransactionsFilter onFilterChange={handleFilterChange} />
                 <TransactionList transactions={filteredTransactions} />
