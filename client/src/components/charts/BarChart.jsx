@@ -1,4 +1,4 @@
-import React, { PureComponent, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import "./BarChart.css";
 const BarChartComponent = ({ selectedPeriod, dataBars }) => {
@@ -8,15 +8,32 @@ const BarChartComponent = ({ selectedPeriod, dataBars }) => {
         const maxIncome = Math.max(...data.map(item => item.income));
         const maxExpenses = Math.max(...data.map(item => item.expenses));
         const maxValue = Math.max(maxIncome, maxExpenses);
-        return Math.ceil(maxValue / 1000) * 1000;
+        return maxValue === 0 ? 1000 : Math.ceil(maxValue / 1000) * 1000;
     };
 
+    const getAbbreviatedMonth = (month) => {
+        const abbreviations = {
+            'enero': 'ene',
+            'febrero': 'feb',
+            'marzo': 'mar',
+            'abril': 'abr',
+            'mayo': 'may',
+            'junio': 'jun',
+            'julio': 'jul',
+            'agosto': 'ago',
+            'septiembre': 'sep',
+            'octubre': 'oct',
+            'noviembre': 'nov',
+            'diciembre': 'dic'
+        };
+        return abbreviations[month.toLowerCase()] || month;
+    };
     useEffect(() => {
         if (!selectedPeriod) return;
 
         const allMonths = dataBars.flatMap(yearData =>
             yearData.datos.map(monthData => ({
-                period: `${monthData.mes}`,
+                period: getAbbreviatedMonth(monthData.mes),
                 expenses: Number(monthData.total_gastos.replace(',', '.')),
                 income: Number(monthData.total_ingresos.replace(',', '.')),
                 year: yearData.año,
@@ -54,9 +71,9 @@ const BarChartComponent = ({ selectedPeriod, dataBars }) => {
                     data={chartData}
                     margin={{
                         top: 20,
-                        right: 35,
-                        left: 3,
-                        bottom: 20,
+                        right: 20,
+                        left: -25,
+                        bottom: 0
                     }}
                 >
 
@@ -71,48 +88,35 @@ const BarChartComponent = ({ selectedPeriod, dataBars }) => {
                         }}
                     />
                     <YAxis
-                        ticks={[0, maxValue]}
-                        domain={[0, maxValue]}
-                        label={{
-                            angle: -90,
-                            position: 'insideLeft',
-                            offset: -5
+                        domain={[0, maxValue || 1000]} // Aseguramos un dominio mínimo
+                        axisLine={true}
+                        tickLine={false}
+                        ticks={maxValue === 0 ? [0, 1000] : [0, maxValue]}
+                        interval="preserveEnd"
+                        tickFormatter={(value) => value}
+                        minTickGap={0}
+                        allowDecimals={false}
+                        hide={false}
+                        style={{
+                            fontSize: '12px'  // Aquí puedes ajustar el tamaño que desees
                         }}
-                        allowDataOverflow={true}
-                        scale="linear"
-                        axisLine={true}      
-                        tickLine={false}    
-                        tick={(props) => {
-                            const { x, y, payload } = props;
-                            // Solo mostramos el tick si es 0 o el valor máximo
-                            if (payload.value === 0 || payload.value === maxValue) {
-                                return (
-                                    <text x={x} y={y} dy={5} textAnchor="end" fontSize={12}>
-                                        {payload.value}
-                                    </text>
-                                );
-                            }
-                            return null;
-                        }} 
-                        
                     />
-
                     <Bar
                         dataKey="income"
                         radius={[6, 6, 0, 0]}
                         fill="var(--color-grafico-naranja)"
-                        
+
                     />
                     <Bar
                         dataKey="expenses"
                         radius={[6, 6, 0, 0]}
                         fill="var(--color-grafico-naranja-claro)"
-                   
+
                     />
                 </BarChart>
             </ResponsiveContainer>
 
-       </div>
+        </div>
     );
 };
 
