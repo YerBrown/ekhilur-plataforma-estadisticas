@@ -4,6 +4,7 @@ import TaskAltRoundedIcon from "@mui/icons-material/TaskAltRounded";
 import PanoramaFishEyeRoundedIcon from "@mui/icons-material/PanoramaFishEyeRounded";
 import { register, login } from "../../api/auth";
 import PasswordInput from "../../components/inputs/PasswordInput";
+import CryptoJS from "crypto-js";
 import "./Authentication.css";
 const Authentication = () => {
     const [isLogin, setIsLogin] = useState(true);
@@ -49,10 +50,11 @@ const LoginForm = () => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const formValues = Object.fromEntries(formData.entries());
+        const hashedPassword = CryptoJS.SHA256(formValues.password).toString();
         try {
             const response = await login({
                 usernameOrEmail: formValues.usernameOrEmail,
-                password: formValues.password,
+                password: hashedPassword,
             });
             console.log("Login exitoso:", response);
             setResponseMessage({
@@ -120,6 +122,12 @@ const RegisterForm = () => {
 
         const formData = new FormData(e.target);
         const formValues = Object.fromEntries(formData.entries());
+        const hashedPassword = CryptoJS.SHA256(formValues.password).toString();
+        const hashedPasswordRepeat = CryptoJS.SHA256(
+            formValues.passwordRepeat
+        ).toString();
+        formValues.password = hashedPassword;
+        formValues.passwordRepeat = hashedPasswordRepeat;
         try {
             const response = await register(formValues);
             console.log("Registro exitoso:", response);
