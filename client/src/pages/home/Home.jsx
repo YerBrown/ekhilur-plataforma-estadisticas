@@ -130,7 +130,7 @@ const Home = () => {
                 <button onClick={() => handleNavigate("/bonifications")}>
                     Bonificaciones
                 </button>
-                <button onClick={() => handleNavigate("/transactions")}>
+                <button onClick={() => handleNavigate("/estadistics")}>
                     Estadisticas
                 </button>
                 <button onClick={() => handleNavigate("/transactions")}>
