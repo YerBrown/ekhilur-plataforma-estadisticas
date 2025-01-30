@@ -7,22 +7,22 @@
     flex-direction: column;
     align-items: flex-end;
     margin-right: 2rem;
-    padding-top: 1.5rem;
     z-index: 2;
 }
 
 .search-button {
-    position: relative;
+    position: absolute;
     border: none;
     background-color: transparent;
     padding-right: 1rem;
+    top: 20px;
 }
 
 .search-bar {
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    mask-image: linear-gradient(to bottom, black 70%, transparent 110%);
-    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
     mask-repeat: no-repeat;
     -webkit-mask-repeat: no-repeat;
     mask-size: 100% 100%;
@@ -30,10 +30,12 @@
 }
 
 .search-bar {
+    position: absolute;
+    top: 60px;
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0rem 1rem 4rem 1rem;
+    padding: 0rem 1rem 1rem 1rem;
     align-items: center;
     box-sizing: border-box;
 }
@@ -56,7 +58,7 @@ input {
     width: 100%;
     border: none;
     border-bottom: 2px solid var(--color-naranja-principal);
-    padding: 0.5rem;
+    padding: 0.5rem 0.8rem 0.5rem 0.8rem;
     font-size: 18px;
     color: var(--color-letra);
     outline: none;
@@ -80,6 +82,7 @@ input {
     font-size: 20px;
     color: var(--color-placeholder);
     transition: color 0.3s;
+    padding-right: 0.5rem;
 }
 
 .clear-icon:hover {
@@ -88,7 +91,12 @@ input {
 
 .search-bar-filters {
     display: flex;
+    justify-content: center;
+    width: 100%;
     flex-direction: row;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    gap: 1rem;
 }
 
 /* Grupo de filtros */
@@ -97,7 +105,7 @@ input {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    padding: 1rem;
+
 }
 
 .filter-label {

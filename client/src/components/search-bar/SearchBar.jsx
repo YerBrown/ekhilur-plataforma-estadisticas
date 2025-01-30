@@ -1,8 +1,6 @@
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { GoSearch } from "react-icons/go";
 import { IoCloseOutline } from "react-icons/io5";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import "./SearchBar.css";
 
 const SearchBar = ({ onSearch }) => {
@@ -12,12 +10,64 @@ const SearchBar = ({ onSearch }) => {
     const [endDate, setEndDate] = useState(null);
     const [minAmount, setMinAmount] = useState("");
     const [maxAmount, setMaxAmount] = useState("");
+    const searchBarRef = useRef(null);
+    const buttonRef = useRef(null);
 
-    const handleSearch = () => {
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                searchBarRef.current &&
+                !searchBarRef.current.contains(event.target) &&
+                buttonRef.current &&
+                !buttonRef.current.contains(event.target)
+            ) {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+    const toggleMenu = (e) => {
+        e.stopPropagation();
+        setIsOpen((prev) => !prev);
+    };
+
+    // Convierte el valor introducido en un formato con dos decimales
+    const formatToCurrency = (value) => {
+        const numericValue = value.replace(/\D/g, ""); // Elimina cualquier carácter no numérico
+        if (!numericValue) return ""; // Si está vacío, retorna una cadena vacía
+
+        const integerPart = numericValue.slice(0, -2) || "0"; // Parte entera
+        const decimalPart = numericValue.slice(-2).padStart(2, "0"); // Parte decimal
+
+        return `${parseInt(integerPart, 10).toLocaleString("es-ES")},${decimalPart}`;
+    };
+
+    // Maneja los cambios en los campos de importe
+    const handleAmountChange = (value, type) => {
+        const formattedValue = formatToCurrency(value);
+        if (type === "min") {
+            setMinAmount(formattedValue);
+        } else {
+            setMaxAmount(formattedValue);
+        }
+
+        // Actualiza la búsqueda con los valores actuales
+        handleSearch(
+            type === "min" ? formattedValue : minAmount,
+            type === "max" ? formattedValue : maxAmount
+        );
+    };
+
+    const handleSearch = (min = minAmount, max = maxAmount) => {
         const filters = {
             date: startDate || endDate ? { startDate, endDate } : null,
             name: searchTerm ? searchTerm : null,
-            amount: minAmount || maxAmount ? { minAmount, maxAmount } : null,
+            amount: min || max ? { minAmount: min, maxAmount: max } : null,
         };
         onSearch(filters);
     };
@@ -27,16 +77,41 @@ const SearchBar = ({ onSearch }) => {
         handleSearch();
     };
 
-    const handleDateChange = (start, end) => {
-        setStartDate(start);
-        setEndDate(end);
-        handleSearch();
+    const formatDate = (value) => {
+        // Elimina caracteres no numéricos
+        const numericValue = value.replace(/\D/g, "");
+
+        // Separa los valores en DD, MM y AAAA
+        let day = numericValue.slice(0, 2);
+        let month = numericValue.slice(2, 4);
+        let year = numericValue.slice(4, 8);
+
+        // Construye la fecha con el formato DD/MM/AAAA
+        let formattedDate = day;
+        if (month) formattedDate += `/${month}`;
+        if (year) formattedDate += `/${year}`;
+
+        return formattedDate;
     };
 
-    const handleAmountChange = (min, max) => {
-        setMinAmount(min);
-        setMaxAmount(max);
-        handleSearch();
+    const handleDateInput = (event, type) => {
+        const formattedDate = formatDate(event.target.value);
+        if (type === "start") {
+            setStartDate(formattedDate);
+        } else {
+            setEndDate(formattedDate);
+        }
+        if (formattedDate.length === 10 && (type === "start" ? endDate : startDate)?.length === 10) {
+            handleSearch();
+        }
+    };
+
+    const getCurrentDate = () => {
+        const today = new Date();
+        const day = String(today.getDate()).padStart(2, "0");
+        const month = String(today.getMonth() + 1).padStart(2, "0"); // Los meses van de 0 a 11
+        const year = today.getFullYear();
+        return `${day}/${month}/${year}`;
     };
 
     const clearFilters = () => {
@@ -45,21 +120,17 @@ const SearchBar = ({ onSearch }) => {
         setEndDate(null);
         setMinAmount("");
         setMaxAmount("");
-        handleSearch();
+        onSearch({ date: null, name: null, amount: null });
     };
 
     return (
         <div className="search-bar-container">
-            <button className="search-button" onClick={(e) => {
-                e.stopPropagation();
-                setIsOpen(!isOpen)
-            }}
-            >
+            <button className="search-button" ref={buttonRef} onClick={toggleMenu}>
                 <GoSearch className="search-icon" size={24} />
             </button>
 
             {isOpen && (
-                <div className="search-bar" onClick={(e) => e.stopPropagation()}>
+                <div className="search-bar" onClick={(e) => e.stopPropagation()} ref={searchBarRef}>
                     <div className="search-bar-name">
                         <div className="search-bar-name-input-container">
                             <input
@@ -78,18 +149,22 @@ const SearchBar = ({ onSearch }) => {
 
                     <div className="search-bar-filters">
                         <div className="filter-group">
-                            <label className="filter-label">Periodo:</label>
+                            <label className="filter-label">Periodo</label>
                             <div className="filter-dates">
-                                <DatePicker
-                                    selected={startDate}
-                                    onChange={(date) => handleDateChange(date, endDate)}
-                                    placeholderText="Desde"
+                                <input
+                                    type="text"
+                                    placeholder={getCurrentDate()}
+                                    value={startDate || ""}
+                                    onChange={(e) => handleDateInput(e, "start")}
+                                    maxLength="10"
                                     className="search-bar-date-input"
                                 />
-                                <DatePicker
-                                    selected={endDate}
-                                    onChange={(date) => handleDateChange(startDate, date)}
-                                    placeholderText="Hasta"
+                                <input
+                                    type="text"
+                                    placeholder={getCurrentDate()}
+                                    value={endDate || ""}
+                                    onChange={(e) => handleDateInput(e, "end")}
+                                    maxLength="10"
                                     className="search-bar-date-input"
                                 />
                             </div>
@@ -99,17 +174,17 @@ const SearchBar = ({ onSearch }) => {
                             <label className="filter-label">Importe</label>
                             <div className="filter-amounts">
                                 <input
-                                    type="number"
-                                    placeholder="Min."
+                                    type="text"
+                                    placeholder="Mín."
                                     value={minAmount}
-                                    onChange={(e) => handleAmountChange(e.target.value, maxAmount)}
+                                    onChange={(e) => handleAmountChange(e.target.value, "min")}
                                     className="filter-input"
                                 />
                                 <input
-                                    type="number"
-                                    placeholder="Max."
+                                    type="text"
+                                    placeholder="Máx."
                                     value={maxAmount}
-                                    onChange={(e) => handleAmountChange(minAmount, e.target.value)}
+                                    onChange={(e) => handleAmountChange(e.target.value, "max")}
                                     className="filter-input"
                                 />
                             </div>
