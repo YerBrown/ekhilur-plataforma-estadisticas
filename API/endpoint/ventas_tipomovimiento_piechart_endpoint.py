@@ -1,76 +1,156 @@
-from flask import Flask, jsonify, send_file, request
+from flask import Blueprint, jsonify, send_file, request
 import sqlite3
 import pandas as pd
+import matplotlib
+# Configurar backend no interactivo antes de importar pyplot
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import io
-
-app = Flask(__name__)
-
-# Define the path to the SQLite database
-db_path = "datos_sqlite.db"
-
-@app.route('/ventas_tipo_movimiento_pie', methods=['GET'])
-def ventas_tipo_movimiento_pie():
-    # Get the "mes" and "anio" parameters from the query string
-    mes_param = request.args.get('mes', default=None, type=str)
-    anio_param = request.args.get('anio', default=None, type=int)
-
-    # Connect to the SQLite database
-    conn = sqlite3.connect(db_path)
-
-    # Query to get sales by movement type, month, and year
-    query_ventas_tipo_movimiento = """
-    SELECT Año, Mes, Movimiento, SUM(Cantidad) AS Total_Ventas
-    FROM fotostorres
-    WHERE (Movimiento = 'Pago a usuario' AND Cantidad > 0)
-       OR (Movimiento = 'Cobro desde QR' AND Cantidad > 0)
-    GROUP BY Año, Mes, Movimiento
-    ORDER BY Año, Mes, Movimiento;
+import os
+# Crear el blueprint
+ventas_pie_bp = Blueprint('ventas_pie', __name__)
+# Ruta relativa de la base de datos SQLite
+DATABASE_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'db')
+DATABASE_PATH = os.path.join(DATABASE_DIR, 'datos_sqlite.db')
+# Asegurarnos de que el directorio existe
+os.makedirs(DATABASE_DIR, exist_ok=True)
+@ventas_pie_bp.route('/ventas_tipo_movimiento_pie/<string:tabla_usuario>', methods=['GET'])
+def ventas_tipo_movimiento_pie(tabla_usuario):
     """
-
-    # Execute the query
-    ventas_tipo_movimiento_df = pd.read_sql(query_ventas_tipo_movimiento, conn)
-
-    # Close the database connection
-    conn.close()
-
-    # Rename the column "Año" to "anio"
-    ventas_tipo_movimiento_df.rename(columns={"A\u00f1o": "anio"}, inplace=True)
-
-    # Filter by year and month if parameters are provided
-    if mes_param and anio_param:
-        # Normalize the month name to lowercase for comparison
-        mes_param = mes_param.lower()
-        # Filter data for the specified year and month
-        ventas_tipo_movimiento_df = ventas_tipo_movimiento_df[
-            (ventas_tipo_movimiento_df['anio'] == anio_param) &
-            (ventas_tipo_movimiento_df['Mes'].str.lower() == mes_param)
+    Endpoint para generar gráfico de pie de ventas por tipo de movimiento
+    """
+    try:
+        # Validamos que la tabla esté permitida
+        tablas_permitidas = {"ilandatxe", "fotostorres", "alomorga", "categorias"}
+        if tabla_usuario not in tablas_permitidas:
+            return jsonify({"error": "Nombre de tabla no permitido."}), 400
+        # Obtener y validar parámetros de la URL
+        mes_param = request.args.get('mes', default=None, type=str)
+        anio_param = request.args.get('anio', default=None, type=int)
+        print(f"Parámetros recibidos - mes: {mes_param}, año: {anio_param}")  # Debug
+        # Conectar a la base de datos
+        conexion = sqlite3.connect(DATABASE_PATH)
+        print(f"Conexión establecida con: {DATABASE_PATH}")  # Debug
+        # Query mejorada para obtener ventas
+        query = f"""
+        WITH ventas_tipo AS (
+            SELECT
+                strftime('%Y', Fecha) as anio,
+                strftime('%m', Fecha) as mes,
+                Movimiento,
+                SUM(CASE
+                    WHEN Cantidad > 0 THEN Cantidad
+                    ELSE 0
+                END) as total_ventas
+            FROM {tabla_usuario}
+            WHERE Movimiento IN ('Pago a usuario', 'Cobro desde QR')
+            GROUP BY anio, mes, Movimiento
+        )
+        SELECT
+            anio,
+            mes,
+            Movimiento,
+            ROUND(total_ventas, 2) as total_ventas
+        FROM ventas_tipo
+        WHERE 1=1
+        {f"AND anio = '{anio_param}'" if anio_param else ""}
+        {f"AND mes = '{int(mes_param):02d}'" if mes_param else ""}
+        ORDER BY anio DESC, mes DESC, Movimiento;
+        """
+        print(f"Ejecutando query: {query}")  # Debug
+        # Ejecutar la consulta
+        df = pd.read_sql_query(query, conexion)
+        print(f"Datos obtenidos: {len(df)} filas")  # Debug
+        if df.empty:
+            return jsonify({"message": "No hay datos de ventas disponibles."}), 404
+        # Calcular totales por tipo de movimiento
+        ventas_por_tipo = df.groupby('Movimiento')['total_ventas'].sum()
+        print(f"Ventas por tipo: {ventas_por_tipo}")  # Debug
+        # Asegurarse de que no hay figuras abiertas
+        plt.switch_backend('Agg')
+        plt.clf()
+        plt.close('all')
+        # Configurar el estilo y tema del gráfico
+        plt.style.use('seaborn-darkgrid')
+        # Crear figura con fondo transparente
+        fig = plt.figure(figsize=(12, 8), facecolor='white')
+        ax = fig.add_subplot(111)
+        # Definir colores personalizados
+        colors = ['#2ECC71', '#3498DB', '#E74C3C', '#F1C40F', '#9B59B6']
+        # Crear el gráfico de pie con mejoras visuales
+        wedges, texts, autotexts = plt.pie(
+            ventas_por_tipo,
+            labels=ventas_por_tipo.index,
+            autopct='%1.1f%%',
+            startangle=90,
+            shadow=True,
+            explode=[0.05] * len(ventas_por_tipo),
+            colors=colors,
+            textprops={'fontsize': 12},
+            wedgeprops={
+                'edgecolor': 'white',
+                'linewidth': 2,
+                'antialiased': True
+            }
+        )
+        # Mejorar el aspecto de los textos
+        plt.setp(autotexts, size=10, weight="bold", color="white")
+        plt.setp(texts, size=12)
+        # Configurar título y aspecto
+        titulo = 'Distribución de Ventas por Tipo de Movimiento'
+        if mes_param and anio_param:
+            titulo += f'\n{int(mes_param):02d}/{anio_param}'
+        elif anio_param:
+            titulo += f'\nAño {anio_param}'
+        plt.title(titulo, pad=20, size=16, weight='bold')
+        # Añadir leyenda
+        total_ventas = ventas_por_tipo.sum()
+        legend_labels = [
+            f'{tipo}\n{valor:,.2f}€ ({(valor/total_ventas)*100:.1f}%)'
+            for tipo, valor in ventas_por_tipo.items()
         ]
-    elif mes_param:  # If only month is provided
-        ventas_tipo_movimiento_df = ventas_tipo_movimiento_df[
-            ventas_tipo_movimiento_df['Mes'].str.lower() == mes_param.lower()
-        ]
-    elif anio_param:  # If only year is provided
-        ventas_tipo_movimiento_df = ventas_tipo_movimiento_df[
-            ventas_tipo_movimiento_df['anio'] == anio_param
-        ]
-
-    # Summing the total sales for each movement type
-    ventas_tipo_movimiento_total = ventas_tipo_movimiento_df.groupby('Movimiento')['Total_Ventas'].sum()
-
-    # Plotting the pie chart
-    plt.figure(figsize=(8, 8))
-    plt.pie(ventas_tipo_movimiento_total, labels=ventas_tipo_movimiento_total.index, autopct='%1.1f%%', startangle=90)
-    plt.title(f'Distribución de Ventas por Tipo de Movimiento - Mes: {mes_param.capitalize()} Año: {anio_param}')
-    plt.axis('equal')  # Equal aspect ratio ensures that pie chart is drawn as a circle.
-
-    # Save the plot to a BytesIO object so it can be sent as a response
-    img = io.BytesIO()
-    plt.savefig(img, format='png')
-    img.seek(0)  # Move to the beginning of the BytesIO object
-
-    # Send the image as a response
-    return send_file(img, mimetype='image/png')
-
-if __name__ == '__main__':
-    app.run(debug=True)
+        plt.legend(
+            wedges,
+            legend_labels,
+            title="Tipos de Movimiento",
+            loc="center left",
+            bbox_to_anchor=(1, 0, 0.5, 1)
+        )
+        # Ajustar el layout para que quepa la leyenda
+        plt.tight_layout()
+        # Guardar el gráfico en memoria con alta calidad
+        img = io.BytesIO()
+        plt.savefig(
+            img,
+            format='png',
+            bbox_inches='tight',
+            dpi=300,
+            facecolor='white',
+            edgecolor='none',
+            pad_inches=0.3
+        )
+        # Asegurarse de cerrar la figura y liberar memoria
+        img.seek(0)
+        plt.close(fig)
+        return send_file(
+            img,
+            mimetype='image/png',
+            as_attachment=False,
+            download_name='ventas_pie_chart.png'
+        )
+    except Exception as e:
+        plt.close('all')  # Cerrar todas las figuras en caso de error
+        print(f"Error detallado: {str(e)}")
+        import traceback
+        print(f"Traceback: {traceback.format_exc()}")
+        return jsonify({
+            "error": "Error al generar el gráfico",
+            "detalles": str(e),
+            "tipo": str(type(e))
+        }), 500
+    finally:
+        try:
+            conexion.close()
+            plt.close('all')  # Asegurarse de cerrar todas las figuras
+        except:
+            pass

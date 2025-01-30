@@ -1,37 +1,95 @@
-from flask import Flask, jsonify
+from flask import Blueprint, jsonify
 import sqlite3
 import pandas as pd
-
-app = Flask(__name__)
-
-# Define the path to the SQLite database
-db_path = "datos_sqlite.db"
-
-@app.route('/ventas_tipo_movimiento', methods=['GET'])
-def get_ventas_tipo_movimiento():
-    # Connect to the SQLite database
-    conn = sqlite3.connect(db_path)
-
-    # Query to get sales by movement type, month and year
-    query_ventas_tipo_movimiento = """
-    SELECT Año, Mes, Movimiento, SUM(Cantidad) AS Total_Ventas
-    FROM fotostorres
-    WHERE (Movimiento = 'Pago a usuario' AND Cantidad > 0)
-       OR (Movimiento = 'Cobro desde QR' AND Cantidad > 0)
-    GROUP BY Año, Mes, Movimiento
-    ORDER BY Año, Mes, Movimiento;
+import os
+# Crear el blueprint
+ventas_tipo_mes_bp = Blueprint('ventas_tipo_mes', __name__)
+# Ruta relativa de la base de datos SQLite
+DATABASE_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'db')
+DATABASE_PATH = os.path.join(DATABASE_DIR, 'datos_sqlite.db')
+# Asegurarnos de que el directorio existe
+os.makedirs(DATABASE_DIR, exist_ok=True)
+@ventas_tipo_mes_bp.route('/ventas_tipo_movimiento_mes/<string:tabla_usuario>', methods=['GET'])
+def get_ventas_tipo_movimiento(tabla_usuario):
     """
-
-    # Execute the query
-    ventas_tipo_movimiento_df = pd.read_sql(query_ventas_tipo_movimiento, conn)
-
-    # Close the database connection
-    conn.close()
-
-    ventas_tipo_movimiento_df.rename(columns={"A\u00f1o": "anio"}, inplace=True)
-
-    # Convert the dataframe to a JSON response
-    return jsonify(ventas_tipo_movimiento_df.to_dict(orient='records'))
-
-if __name__ == '__main__':
-    app.run(debug=True)
+    Endpoint para obtener ventas por tipo de movimiento, mes y año
+    """
+    # Validamos que la tabla esté permitida
+    tablas_permitidas = {"ilandatxe", "fotostorres", "alomorga", "categorias"}
+    if tabla_usuario not in tablas_permitidas:
+        return jsonify({"error": "Nombre de tabla no permitido."}), 400
+    try:
+        # Conectar a la base de datos
+        conexion = sqlite3.connect(DATABASE_PATH)
+    except sqlite3.Error as e:
+        return jsonify({
+            "error": "Error de conexión a la base de datos",
+            "detalles": str(e)
+        }), 500
+    try:
+        # Query mejorada para obtener ventas por tipo de movimiento y mes
+        query = f"""
+        WITH ventas_tipo_mes AS (
+            SELECT
+                strftime('%Y', Fecha) as anio,
+                strftime('%m', Fecha) as mes,
+                Movimiento,
+                SUM(CASE
+                    WHEN Cantidad > 0 THEN Cantidad
+                    ELSE 0
+                END) as total_ventas,
+                COUNT(CASE
+                    WHEN Cantidad > 0 THEN 1
+                END) as num_transacciones,
+                AVG(CASE
+                    WHEN Cantidad > 0 THEN Cantidad
+                END) as venta_promedio
+            FROM {tabla_usuario}
+            WHERE Movimiento IN ('Pago a usuario', 'Cobro desde QR')
+            GROUP BY anio, mes, Movimiento
+        )
+        SELECT
+            anio,
+            mes,
+            Movimiento as tipo_movimiento,
+            ROUND(total_ventas, 2) as total_ventas,
+            num_transacciones,
+            ROUND(venta_promedio, 2) as venta_promedio,
+            ROUND(total_ventas / CASE
+                WHEN num_transacciones = 0 THEN 1
+                ELSE num_transacciones
+            END, 2) as ticket_promedio
+        FROM ventas_tipo_mes
+        ORDER BY anio DESC, mes DESC, tipo_movimiento;
+        """
+        # Ejecutar la consulta
+        df = pd.read_sql_query(query, conexion)
+        if df.empty:
+            return jsonify({"message": "No hay datos de ventas disponibles."}), 404
+        # Convertir todos los datos a tipos simples
+        resultado = []
+        for _, row in df.iterrows():
+            # Manejar valores NaN
+            venta_promedio = 0.0 if pd.isna(row['venta_promedio']) else float(row['venta_promedio'])
+            ticket_promedio = 0.0 if pd.isna(row['ticket_promedio']) else float(row['ticket_promedio'])
+            resultado.append({
+                "anio": str(row['anio']),
+                "mes": str(row['mes']),
+                "tipo_movimiento": str(row['tipo_movimiento']),
+                "total_ventas": float(row['total_ventas']),
+                "num_transacciones": int(row['num_transacciones']),
+                "venta_promedio": venta_promedio,
+                "ticket_promedio": ticket_promedio
+            })
+        # Devolver respuesta
+        return jsonify({
+            "status": "success",
+            "data": resultado
+        })
+    except Exception as e:
+        return jsonify({
+            "error": "Error al ejecutar la consulta",
+            "detalles": str(e)
+        }), 500
+    finally:
+        conexion.close()

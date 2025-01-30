@@ -1,96 +1,90 @@
-from flask import Flask, jsonify
+from flask import Blueprint, jsonify
 import sqlite3
 import pandas as pd
-
-app = Flask(__name__)
-
-# Define the path to the SQLite database
-db_path = "datos_sqlite.db"
-
-@app.route('/ventas_3meses', methods=['GET'])
-def get_ventas_3meses():
-    # Connect to the SQLite database
-    conn = sqlite3.connect(db_path)
-
-    # Query to get sales from January 2022 to January 2025 and calculate the total of the last 3 months
-    query_ventas_3meses_detalle_fecha = """
-    WITH ventas_acumuladas AS (
-        SELECT Año, 
-               CASE Mes
-                   WHEN 'enero' THEN 1
-                   WHEN 'febrero' THEN 2
-                   WHEN 'marzo' THEN 3
-                   WHEN 'abril' THEN 4
-                   WHEN 'mayo' THEN 5
-                   WHEN 'junio' THEN 6
-                   WHEN 'julio' THEN 7
-                   WHEN 'agosto' THEN 8
-                   WHEN 'septiembre' THEN 9
-                   WHEN 'octubre' THEN 10
-                   WHEN 'noviembre' THEN 11
-                   WHEN 'diciembre' THEN 12
-                   ELSE 0
-               END AS Mes_Num,
-               Mes,
-               Año,
-               SUM(Cantidad) AS Total_Ventas
-        FROM fotostorres
-        WHERE (Movimiento = 'Pago a usuario' AND Cantidad > 0)
-            OR (Movimiento = 'Cobro desde QR' AND Cantidad > 0)
-        GROUP BY Año, Mes
-    )
-    SELECT A.Año, A.Mes, A.Total_Ventas,
-           CASE
-               WHEN A.Mes = 'diciembre' THEN 
-                   IFNULL(A.Total_Ventas, 0) + 
-                   IFNULL((SELECT Total_Ventas FROM ventas_acumuladas 
-                           WHERE Año = A.Año AND Mes_Num = 11), 0) + 
-                   IFNULL((SELECT Total_Ventas FROM ventas_acumuladas 
-                           WHERE Año = A.Año AND Mes_Num = 10), 0)
-               WHEN A.Mes = 'enero' THEN 
-                   IFNULL(A.Total_Ventas, 0) + 
-                   IFNULL((SELECT Total_Ventas FROM ventas_acumuladas 
-                           WHERE Año = A.Año - 1 AND Mes_Num = 12), 0) + 
-                   IFNULL((SELECT Total_Ventas FROM ventas_acumuladas 
-                           WHERE Año = A.Año - 1 AND Mes_Num = 11), 0)
-               ELSE
-                   IFNULL(A.Total_Ventas, 0) + 
-                   IFNULL((SELECT Total_Ventas FROM ventas_acumuladas 
-                           WHERE Año = A.Año AND Mes_Num = A.Mes_Num - 1), 0) + 
-                   IFNULL((SELECT Total_Ventas FROM ventas_acumuladas 
-                           WHERE Año = A.Año AND Mes_Num = A.Mes_Num - 2), 0)
-           END AS Total_3_Meses
-    FROM ventas_acumuladas A
-    WHERE A.Año >= 2022
-    ORDER BY A.Año, A.Mes_Num;
+import os
+# Crear el blueprint
+ventas_bp = Blueprint('ventas', __name__)
+# Ruta relativa de la base de datos SQLite
+DATABASE_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'db')
+DATABASE_PATH = os.path.join(DATABASE_DIR, 'datos_sqlite.db')
+# Asegurarnos de que el directorio existe
+os.makedirs(DATABASE_DIR, exist_ok=True)
+@ventas_bp.route('/ventas_3meses/<string:tabla_usuario>', methods=['GET'])
+def get_ventas_3meses(tabla_usuario):
     """
-
-    # Execute the query
-    ventas_3meses_detalle_fecha_df = pd.read_sql(query_ventas_3meses_detalle_fecha, conn)
-
-    # Close the database connection
-    conn.close()
-
-    # Rename the "Año" column to "anio"
-    ventas_3meses_detalle_fecha_df.rename(columns={"A\u00f1o": "anio"}, inplace=True)
-
-    # Convert the dataframe to a JSON response
-    return jsonify(ventas_3meses_detalle_fecha_df.to_dict(orient='records'))
-
-if __name__ == '__main__':
-    app.run(debug=True)
-Contraer
-
-
-
-17:38
-Arman
-Consulta para obtener ventas por año y calcular el total de los últimos 3 años
-ventas_3anios.py
- 
-from flask import Flask, jsonify
-import sqlite3
-import pandas as pd
-
-app = Flask(__name__)
-Haz clic para expandir contenido en línea (48 líneas)
+    Endpoint para obtener ventas mensuales y el total de los últimos 3 meses
+    """
+    # Validamos que la tabla esté permitida
+    tablas_permitidas = {"ilandatxe", "fotostorres", "alomorga", "categorias"}
+    if tabla_usuario not in tablas_permitidas:
+        return jsonify({"error": "Nombre de tabla no permitido."}), 400
+    try:
+        # Conectar a la base de datos
+        conexion = sqlite3.connect(DATABASE_PATH)
+    except sqlite3.Error as e:
+        return jsonify({
+            "error": "Error de conexión a la base de datos",
+            "detalles": str(e)
+        }), 500
+    try:
+        # Query mejorada para obtener ventas
+        query = f"""
+        WITH ventas_mensuales AS (
+            SELECT
+                strftime('%Y', Fecha) as año,
+                strftime('%m', Fecha) as mes,
+                SUM(CASE
+                    WHEN Movimiento IN ('Pago a usuario', 'Cobro desde QR')
+                    AND Cantidad > 0 THEN Cantidad
+                    ELSE 0
+                END) as total_ventas
+            FROM {tabla_usuario}
+            GROUP BY año, mes
+        ),
+        ventas_con_totales AS (
+            SELECT
+                v1.año,
+                v1.mes,
+                v1.total_ventas as ventas_mes_actual,
+                (
+                    v1.total_ventas +
+                    IFNULL(v2.total_ventas, 0) +
+                    IFNULL(v3.total_ventas, 0)
+                ) as total_ultimos_3_meses,
+                COUNT(*) OVER (
+                    PARTITION BY v1.año
+                    ORDER BY v1.mes
+                    ROWS BETWEEN CURRENT ROW AND 2 FOLLOWING
+                ) as meses_disponibles
+            FROM ventas_mensuales v1
+            LEFT JOIN ventas_mensuales v2
+                ON (v1.año = v2.año AND CAST(v1.mes AS INTEGER) = CAST(v2.mes AS INTEGER) + 1)
+                OR (v1.año = CAST(v2.año AS INTEGER) + 1 AND v1.mes = '01' AND v2.mes = '12')
+            LEFT JOIN ventas_mensuales v3
+                ON (v1.año = v3.año AND CAST(v1.mes AS INTEGER) = CAST(v3.mes AS INTEGER) + 2)
+                OR (v1.año = CAST(v3.año AS INTEGER) + 1 AND v1.mes = '01' AND v3.mes = '11')
+                OR (v1.año = CAST(v3.año AS INTEGER) + 1 AND v1.mes = '02' AND v3.mes = '12')
+        )
+        SELECT
+            año,
+            mes,
+            ROUND(ventas_mes_actual, 2) as ventas_mes_actual,
+            ROUND(total_ultimos_3_meses, 2) as total_ultimos_3_meses,
+            meses_disponibles
+        FROM ventas_con_totales
+        WHERE año >= '2022'
+        ORDER BY año DESC, mes DESC;
+        """
+        # Ejecutar la consulta
+        df = pd.read_sql_query(query, conexion)
+        if df.empty:
+            return jsonify({"message": "No hay datos de ventas disponibles."}), 404
+        # Convertir a diccionario y devolver respuesta
+        return jsonify(df.to_dict(orient='records'))
+    except Exception as e:
+        return jsonify({
+            "error": "Error al ejecutar la consulta",
+            "detalles": str(e)
+        }), 500
+    finally:
+        conexion.close()
