@@ -83,7 +83,7 @@ const BarChartComponent = ({ selectedPeriod }) => {
                     <Bar
                         dataKey="income"
                         radius={[6, 6, 0, 0]} 
-                        fill="rgb(0, 71, 186)"
+                        fill="rgb(0, 71, 186, 0.7)"
                         label={{
                             position: 'top',
                             formatter: (value, _, __) => {
@@ -95,7 +95,7 @@ const BarChartComponent = ({ selectedPeriod }) => {
                     <Bar
                         dataKey="expenses"
                         radius={[6, 6, 0, 0]} 
-                        fill="rgb(255, 144, 18)"
+                        fill="rgb(255, 144, 18,0.7)"
                         label={{
                             position: 'top',
                             formatter: (value, _, __) => {
