@@ -38,7 +38,7 @@ const TransactionList = ({ transactions }) => {
                                     <div className="transaction-item-content">
                                         <div className="transaction-item-image-container">
                                             <img
-                                                src="/ekhilur/Ekhilur_isotipo.png"
+                                                src="/isotipo.png"
                                                 alt={transaction.usuario_asociado || transaction.movimiento}
                                                 className="transaction-item-image"
                                             />

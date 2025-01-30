@@ -52,10 +52,10 @@
 }
 
 .transaction-item-image {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    padding-top: 0.4rem;
 }
 
 .transaction-item-details {
@@ -85,16 +85,17 @@
     font-weight: bold;
     color: var(--color-letra);
     border-radius: 5px;
-    padding: 0.3rem;
+    padding: 0.2rem 0.4rem 0.2rem 0.4rem;
     margin-top: 0;
 }
 
 .transaction-item-amount.positive {
-    background-color: var(--color-ingreso); /* Verde */
+    background-color: var(--color-naranja-principal-background);
+    color: white;
 }
 
 .transaction-item-amount.negative {
-    background-color: var(--color-gasto); /* Rojo */
+    background-color: none;
 }
 
 .transaction-item-remaining {
