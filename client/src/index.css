@@ -29,10 +29,12 @@
   --background-color-dark-05: rgba(94, 94, 94, 0.2);
   --color-light: rgba(30, 30, 30);
   --color-dark: rgba(255, 255, 255);
-  --color-naranja: rgba(255, 144, 18, 1);
+  --color-naranja: rgba(255, 144, 18, 1); 
   --color-naranja-background: rgba(255, 144, 18, 0.8);
+  --color-naranja-background-2:rgb(252, 197, 138);
   --color-azul: rgba(0, 71, 184, 1);
   --color-azul-background: rgba(0, 71, 184, 0.8);
+  --color-azul-background-2:  rgba(152, 178, 226);
   --color-blanco: rgba(255, 255, 255, 1);
   --color-negro: rgba(0, 0, 0, 1);
   --color-placeholder-light: rgba(0, 0, 0, 0.6);
@@ -51,6 +53,9 @@
   --color-placeholder: var(--color-placeholder-light);
   --color-naranja-principal: var(--color-naranja);
   --color-naranja-principal-background: var(--color-naranja-background);
+  --color-grafico-naranja: var(--color-naranja-background);
+  --color-grafico-naranja-claro: var(--color-naranja-background-2);
+  --color-grafico-azul: var(--color-azul-background);
   /*Ekhilur colors - No cambiar*/
 
 
@@ -121,5 +126,8 @@ button {
     --color-placeholder: var(--color-placeholder-dark);
     --color-naranja-principal: var(--color-azul);
     --color-naranja-principal-background: var(--color-azul-background);
+    --color-grafico-naranja: var(--color-azul-background);
+    --color-grafico-naranja-claro: var(--color-azul-background-2);
+  
   }
 }
