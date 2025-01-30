@@ -1,31 +1,31 @@
-import React, { PureComponent, useState, useEffect } from 'react';
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
-import { dataMonths } from '../../api/dataPruebas.js';
+import React, { PureComponent, useState, useEffect } from "react";
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
+import { dataMonths } from "../../api/dataPruebas.js";
 const BarChartComponent = ({ selectedPeriod }) => {
     const [chartData, setChartData] = useState([]);
     const [maxValue, setMaxValue] = useState(0);
     const calculateMaxValue = (data) => {
-        const maxIncome = Math.max(...data.map(item => item.income));
-        const maxExpenses = Math.max(...data.map(item => item.expenses));
+        const maxIncome = Math.max(...data.map((item) => item.income));
+        const maxExpenses = Math.max(...data.map((item) => item.expenses));
         return Math.ceil(Math.max(maxIncome, maxExpenses) * 1.1);
     };
-
 
     useEffect(() => {
         if (!selectedPeriod) return;
 
-        const allMonths = dataMonths.flatMap(yearData =>
-            yearData.datos.map(monthData => ({
+        const allMonths = dataMonths.flatMap((yearData) =>
+            yearData.datos.map((monthData) => ({
                 period: `${monthData.mes} ${yearData.año}`,
-                expenses: Number(monthData.total_gastos.replace(',', '.')),
-                income: Number(monthData.total_ingresos.replace(',', '.')),
+                expenses: Number(monthData.total_gastos.replace(",", ".")),
+                income: Number(monthData.total_ingresos.replace(",", ".")),
                 year: yearData.año,
-                month: monthData.mes
+                month: monthData.mes,
             }))
         );
 
         const selectedIndex = allMonths.findIndex(
-            item => item.year === selectedPeriod.year &&
+            (item) =>
+                item.year === selectedPeriod.year &&
                 item.month === selectedPeriod.month
         );
 
@@ -59,15 +59,14 @@ const BarChartComponent = ({ selectedPeriod }) => {
                         bottom: 5,
                     }}
                 >
-
                     <XAxis
                         dataKey="period"
-                        angle={0}  // Añadir esta línea para el angulo del texto de debajo de los gráficos
-                        textAnchor="middle"  // Añadir esta línea para centrar texto
+                        angle={0} // Añadir esta línea para el angulo del texto de debajo de los gráficos
+                        textAnchor="middle" // Añadir esta línea para centrar texto
                         height={60}
                         label={{
-                            position: 'bottom',
-                            offset: 0
+                            position: "bottom",
+                            offset: 0,
                         }}
                     />
                     <YAxis
@@ -75,38 +74,41 @@ const BarChartComponent = ({ selectedPeriod }) => {
                         domain={[0, maxValue]}
                         label={{
                             angle: -90,
-                            position: 'insideLeft',
-                            offset: -5
+                            position: "insideLeft",
+                            offset: -5,
                         }}
                     />
 
                     <Bar
                         dataKey="income"
-                        radius={[6, 6, 0, 0]} 
+                        radius={[6, 6, 0, 0]}
                         fill="rgb(0, 71, 186, 0.7)"
                         label={{
-                            position: 'top',
+                            position: "top",
                             formatter: (value, _, __) => {
                                 const num = Number(value);
-                                return `${Number.isInteger(num) ? num : num.toFixed(1)}€`;
-                            }
+                                return `${
+                                    Number.isInteger(num) ? num : num.toFixed(1)
+                                }€`;
+                            },
                         }}
                     />
                     <Bar
                         dataKey="expenses"
-                        radius={[6, 6, 0, 0]} 
+                        radius={[6, 6, 0, 0]}
                         fill="rgb(255, 144, 18,0.7)"
                         label={{
-                            position: 'top',
+                            position: "top",
                             formatter: (value, _, __) => {
                                 const num = Number(value);
-                                return `-${Number.isInteger(num) ? num : num.toFixed(1)}€`;
-                            }
+                                return `-${
+                                    Number.isInteger(num) ? num : num.toFixed(1)
+                                }€`;
+                            },
                         }}
                     />
                 </BarChart>
             </ResponsiveContainer>
-
         </>
     );
 };
