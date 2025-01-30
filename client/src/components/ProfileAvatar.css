@@ -2,9 +2,9 @@
     position: absolute;
     opacity: 0;
     transition: opacity .2s ease-in-out;
-    background-color: var(--color-naranja-principal);
-    top: 70px;
-    right: 20px;
+    background-color: transparent;
+    top: 40px;
+    right: 100px;
 }
 
 button.user-avatar {
@@ -16,6 +16,7 @@ button.user-avatar {
     height: 100%;
     aspect-ratio: 1/1;
     background-color: var(--color-naranja-principal);
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
 }
 
 .logout-modal.active {
@@ -23,8 +24,11 @@ button.user-avatar {
 }
 
 .logout-modal button {
-    background-color: var(--e-global-color-5c06632b);
+    background-color: var(--color-naranja-principal);
     border-radius: 20px;
+    padding: .5rem;
+    border: none;
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
 }
 
 .logout-modal button:hover {
