@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Layout from "../../pages/layout/Layout";
 import TransactionList from "../../components/transactions-list/TransactionsList";
 import mockData from "../../components/transactions-list/mockData.js";
@@ -9,19 +9,66 @@ import "./Transactions.css";
 const Transactions = () => {
     const [filteredTransactions, setFilteredTransactions] = useState(mockData);
 
-    const handleSearch = ({ term, filter }) => {
-        const filtered = mockData.filter((transaction) => {
-            if (filter === "fecha") {
-                return transaction.date.toLowerCase().includes(term);
-            } else if (filter === "usuario_asociado") {
-                return transaction.name.toLowerCase().includes(term);
-            } else if (filter === "cantidad") {
-                return transaction.amount.toLowerCase().includes(term);
+    useEffect(() => {
+        const handleTopClick = (event) => {
+            if (event.clientY < 50) {
+                window.scrollTo({ top: 0, behavior: "smooth" });
             }
-            return true;
-        });
+        };
+        document.addEventListener("click", handleTopClick);
+        return () => {
+            document.removeEventListener("click", handleTopClick);
+        };
+    }, []);
+
+    const parseDate = (dateString) => {
+        if (!dateString) return null;
+        const [day, month, year] = dateString.split("/").map(Number);
+        return new Date(year, month - 1, day); // Meses en JS van de 0 a 11
+    };
+
+    const handleSearch = ({ date, name, amount }) => {
+        if (!date && !name && !amount) {
+            setFilteredTransactions(mockData);
+            return;
+        }
+
+        let filtered = mockData;
+
+        // FILTRAR POR NOMBRE
+        if (name) {
+            filtered = filtered.filter(transaction =>
+                transaction.usuario_asociado.toLowerCase().includes(name.toLowerCase()) || transaction.movimiento.toLowerCase().includes(name.toLowerCase()));
+        }
+
+        // FILTRAR POR FECHA
+        if (date && (date.startDate || date.endDate)) {
+            filtered = filtered.filter(transaction => {
+                const transactionDate = parseDate(transaction.fecha);
+                const startDate = date.startDate ? parseDate(date.startDate) : null;
+                const endDate = date.endDate ? parseDate(date.endDate) : null;
+
+                return (!startDate || transactionDate >= startDate) &&
+                    (!endDate || transactionDate <= endDate);
+            });
+        }
+
+        // FILTRAR POR IMPORTE
+        if (amount && amount.minAmount && amount.maxAmount) {
+            filtered = filtered.filter(transaction => {
+                // Convertimos los valores de transacción y los filtros a números reales
+                const transactionAmount = parseFloat(transaction.cantidad.replace(/\./g, "").replace(",", "."));
+                const minAmount = parseFloat(amount.minAmount.replace(/\./g, "").replace(",", "."));
+                const maxAmount = parseFloat(amount.maxAmount.replace(/\./g, "").replace(",", "."));
+
+                // Aseguramos que los valores negativos también se incluyan
+                return transactionAmount >= minAmount && transactionAmount <= maxAmount;
+            });
+        }
+
         setFilteredTransactions(filtered);
     };
+
 
     const handleFilterChange = (filter) => {
         if (filter === "Todas") {
@@ -35,9 +82,11 @@ const Transactions = () => {
 
     return (
         <Layout title="Transacciones">
-            <SearchBar onSearch={handleSearch} />
-            <TransactionsFilter onFilterChange={handleFilterChange}/>
-            <TransactionList transactions={filteredTransactions} />
+            <div className="content-container">
+                <SearchBar onSearch={handleSearch} />
+                <TransactionsFilter onFilterChange={handleFilterChange} />
+                <TransactionList transactions={filteredTransactions} />
+            </div>
         </Layout>
     );
 };
