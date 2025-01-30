@@ -29,8 +29,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/transactions",
-                element:
-                    <Transactions />
+                element: <Transactions />,
             },
             {
                 path: "*",
@@ -50,11 +49,6 @@ const router = createBrowserRouter([
                 path: "/estadistics",
                 element: <Estadisticas />,
             },
-
-            // {
-            //     path: "/user",
-            //     element: <ContactPage />,
-            // },
         ],
     },
 ]);

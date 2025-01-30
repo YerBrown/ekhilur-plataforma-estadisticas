@@ -28,17 +28,10 @@ services:
             - .env:/app/.env
         networks:
             - fullstack_network
-    frontend:
-        build: ./client
-        container_name: frontend
-        restart: unless-stopped
-        ports:
-            - 5173:5173
-        volumes:
-            - ./client:/app
-            - /app/node_modules
+            - full_api_network
 
 volumes:
     mongodb_data:
 networks:
     fullstack_network:
+    full_api_network:

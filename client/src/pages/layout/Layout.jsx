@@ -5,19 +5,12 @@ import "./Layout.css";
 const Layout = ({ title, children }) => {
   const navigate = useNavigate();
 
-  const handleBack = () => {
-    navigate(-1);
-  };
-
-  const handleScrollToTop = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+  const handleBack = (e) => {
+    navigate("/", { replace: true });
   };
 
   return (
-    <div className="page-container" onClick={handleScrollToTop}>
+    <div className="page-container">
       <header className="page-header">
         <div className="page-header-content">
           <button className="back-button" onClick={handleBack}>

@@ -14,11 +14,12 @@ const TransactionList = ({ transactions }) => {
     // FORMATEAR FECHAS PARA EL TITULO
     const formatDate = (dateString) => {
         const date = new Date(dateString);
-        return date.toLocaleDateString("es-ES", {
+        const formattedDate = date.toLocaleDateString("es-ES", {
             weekday: "long",
             day: "numeric",
             month: "long"
         });
+        return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
     };
 
     return (
@@ -38,13 +39,13 @@ const TransactionList = ({ transactions }) => {
                                     <div className="transaction-item-content">
                                         <div className="transaction-item-image-container">
                                             <img
-                                                src="/ekhilur/Ekhilur_isotipo.png"
+                                                src="/isotipo.png"
                                                 alt={transaction.usuario_asociado || transaction.movimiento}
                                                 className="transaction-item-image"
                                             />
-                                        </div>
-                                        <div className="transaction-item-name-container">
-                                            <p className="transaction-item-name">{transaction.usuario_asociado || transaction.movimiento}</p>
+                                            <div className="transaction-item-name-container">
+                                                <p className="transaction-item-name">{transaction.usuario_asociado || transaction.movimiento}</p>
+                                            </div>
                                         </div>
                                         <div className="transaction-item-amounts-container">
                                             <p className={`transaction-item-amount ${transaction.cantidad.toString().includes('-') ? 'negative' : 'positive'}`}>
