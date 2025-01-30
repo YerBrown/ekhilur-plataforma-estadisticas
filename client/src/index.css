@@ -13,8 +13,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: var(--color-dark);
-  background-color: var(--background-color-dark);
+  color: var(--color-letra);
+  background-color: var(--background-color-principal);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -52,8 +52,8 @@
   --color-naranja-principal: var(--color-naranja);
   --color-naranja-principal-background: var(--color-naranja-background);
   /*Ekhilur colors - No cambiar*/
-  
-  
+
+
   --e-global-color-490e56ae: rgba(34, 34, 34);
   --e-global-color-58968a1c: rgba(2, 1, 1);
   --e-global-color-4879d4b4: rgba(0, 0, 0);
