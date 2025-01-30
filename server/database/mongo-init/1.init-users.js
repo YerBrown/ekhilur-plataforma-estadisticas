@@ -7,7 +7,7 @@ db.users.insertMany([
         username: "Alice Johnson",
         email: "alice@example.com",
         password:
-            "$2a$10$uNyBDKZqTXxVz2TcOCL5NOR0WKaugbjXWrUTg3azJqiJbn9QqObQO",
+            "$2a$10$80u1oHEBZ46kE3WVAObuH.udCnl6BsR1iM2RpLee56tFDq/fO.E5S",
         role: "user",
     },
     {
@@ -15,7 +15,7 @@ db.users.insertMany([
         username: "Bob Smith",
         email: "bob@example.com",
         password:
-            "$2a$10$uNyBDKZqTXxVz2TcOCL5NOR0WKaugbjXWrUTg3azJqiJbn9QqObQO",
+            "$2a$10$80u1oHEBZ46kE3WVAObuH.udCnl6BsR1iM2RpLee56tFDq/fO.E5S",
         role: "user",
     },
     {
@@ -23,7 +23,7 @@ db.users.insertMany([
         username: "Carol Williams",
         email: "carol@example.com",
         password:
-            "$2a$10$uNyBDKZqTXxVz2TcOCL5NOR0WKaugbjXWrUTg3azJqiJbn9QqObQO",
+            "$2a$10$80u1oHEBZ46kE3WVAObuH.udCnl6BsR1iM2RpLee56tFDq/fO.E5S",
         role: "user",
     },
     {
@@ -31,7 +31,7 @@ db.users.insertMany([
         username: "Dave Brown",
         email: "dave@example.com",
         password:
-            "$2a$10$uNyBDKZqTXxVz2TcOCL5NOR0WKaugbjXWrUTg3azJqiJbn9QqObQO",
+            "$2a$10$80u1oHEBZ46kE3WVAObuH.udCnl6BsR1iM2RpLee56tFDq/fO.E5S",
         role: "user",
     },
     {
@@ -39,7 +39,7 @@ db.users.insertMany([
         username: "Eve Davis",
         email: "eve@example.com",
         password:
-            "$2a$10$uNyBDKZqTXxVz2TcOCL5NOR0WKaugbjXWrUTg3azJqiJbn9QqObQO",
+            "$2a$10$80u1oHEBZ46kE3WVAObuH.udCnl6BsR1iM2RpLee56tFDq/fO.E5S",
         role: "user",
     },
     {
@@ -47,7 +47,7 @@ db.users.insertMany([
         username: "Frank Moore",
         email: "frank@example.com",
         password:
-            "$2a$10$uNyBDKZqTXxVz2TcOCL5NOR0WKaugbjXWrUTg3azJqiJbn9QqObQO",
+            "$2a$10$80u1oHEBZ46kE3WVAObuH.udCnl6BsR1iM2RpLee56tFDq/fO.E5S",
         role: "user",
     },
     {
@@ -55,7 +55,7 @@ db.users.insertMany([
         username: "Grace Lee",
         email: "grace@example.com",
         password:
-            "$2a$10$uNyBDKZqTXxVz2TcOCL5NOR0WKaugbjXWrUTg3azJqiJbn9QqObQO",
+            "$2a$10$80u1oHEBZ46kE3WVAObuH.udCnl6BsR1iM2RpLee56tFDq/fO.E5S",
         role: "user",
     },
     {
@@ -63,14 +63,14 @@ db.users.insertMany([
         username: "Henry White",
         email: "henry@example.com",
         password:
-            "$2a$10$uNyBDKZqTXxVz2TcOCL5NOR0WKaugbjXWrUTg3azJqiJbn9QqObQO",
+            "$2a$10$80u1oHEBZ46kE3WVAObuH.udCnl6BsR1iM2RpLee56tFDq/fO.E5S",
     },
     {
         _id: ObjectId("507f1f77bcf86cd799439019"),
         username: "Irene Clark",
         email: "irene@example.com",
         password:
-            "$2a$10$uNyBDKZqTXxVz2TcOCL5NOR0WKaugbjXWrUTg3azJqiJbn9QqObQO",
+            "$2a$10$80u1oHEBZ46kE3WVAObuH.udCnl6BsR1iM2RpLee56tFDq/fO.E5S",
         role: "user",
     },
     {
@@ -78,7 +78,7 @@ db.users.insertMany([
         username: "Jack Thompson",
         email: "jack@example.com",
         password:
-            "$2a$10$uNyBDKZqTXxVz2TcOCL5NOR0WKaugbjXWrUTg3azJqiJbn9QqObQO",
+            "$2a$10$80u1oHEBZ46kE3WVAObuH.udCnl6BsR1iM2RpLee56tFDq/fO.E5S",
         role: "user",
     },
 ]);

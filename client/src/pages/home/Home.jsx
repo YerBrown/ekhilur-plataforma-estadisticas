@@ -115,10 +115,7 @@ const Home = () => {
     return (
         <div className="home-page">
             <header>
-                <img
-                    src="/public/ekhilur/Ekhilur_isotipo.png"
-                    alt="Logo Ekhidata"
-                />
+                <img src="logo_dos.png" alt="Logo Ekhidata" />
                 <ProfileAvatar />
             </header>
             <main>
