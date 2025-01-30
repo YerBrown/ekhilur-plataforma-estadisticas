@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../layout/Layout";
 import "./Bonifications.css";
 import DateFilter from "../../components/DateFilter/DateFilter";
+import TransactionList from "../../components/transactions-list/TransactionsList";
+import mockData from "../../components/transactions-list/mockData.js";
+
 
 const Bonifications = () => {
+  const [bonificationTransactions, setbonificationTransactions] = useState(mockData);
   return (
     <Layout title="Bonificaciones">
       <DateFilter />
@@ -24,6 +28,8 @@ const Bonifications = () => {
           
         </div>
       </div>
+      <TransactionList transactions={bonificationTransactions} />
+      
     </Layout>
   );
 };
