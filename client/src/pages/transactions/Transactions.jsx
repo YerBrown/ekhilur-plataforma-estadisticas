@@ -82,9 +82,11 @@ const Transactions = () => {
 
     return (
         <Layout title="Transacciones">
-            <SearchBar onSearch={handleSearch} />
-            <TransactionsFilter onFilterChange={handleFilterChange} />
-            <TransactionList transactions={filteredTransactions} />
+            <div className="content-container">
+                <SearchBar onSearch={handleSearch} />
+                <TransactionsFilter onFilterChange={handleFilterChange} />
+                <TransactionList transactions={filteredTransactions} />
+            </div>
         </Layout>
     );
 };
