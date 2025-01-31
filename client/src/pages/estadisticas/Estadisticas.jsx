@@ -155,11 +155,19 @@ const Estadisticas = () => {
     // Inicializar con el último mes disponible
     useEffect(() => {
         if (dataMonths.length > 0) {
-            const lastYear = dataMonths[dataMonths.length - 1];
-            const lastMonth = lastYear.datos[lastYear.datos.length - 1];
+            const years = [...dataMonths].sort((a, b) => b.año - a.año);
+            const lastYear = years[0];
+            const monthOrder = [
+                "enero", "febrero", "marzo", "abril", "mayo", "junio",
+                "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+            ];
+            // Obtener el último mes ordenado correctamente
+            const lastMonthData = [...lastYear.datos]
+                .sort((a, b) => monthOrder.indexOf(b.mes) - monthOrder.indexOf(a.mes))[0];
+
             handleDateFilter({
                 year: lastYear.año,
-                month: lastMonth.mes,
+                month: lastMonthData.mes
             });
         }
     }, []);
@@ -183,14 +191,14 @@ const Estadisticas = () => {
                         </span>
                     </div>
                 </div>
-                <div style={{ width: "100%", height: "400px" }}>
-                    <BarChartComponent
-                        selectedPeriod={selectedPeriod}
-                        dataBars={dataMonths}
-                    />
+                <div className="chart-section">
+                    <BarChartComponent selectedPeriod={selectedPeriod} dataBars={dataMonths} />
                 </div>
                 <div>
                     <CategoryChart categoryDataJson={categoryOptions} />
+                </div>
+                <div>
+
                 </div>
             </Layout>
         </div>
