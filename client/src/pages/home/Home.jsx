@@ -3,6 +3,7 @@ import { Link, useNavigate, Navigate } from "react-router-dom";
 import { verify } from "../../api/auth";
 import DonutChart from "../../components/charts/DonutChart";
 import ProfileAvatar from "../../components/ProfileAvatar";
+import BarChartComponent from "../../components/charts/BarChart";
 import { useTheme } from "../../contexts/ThemeContext";
 import "./Home.css";
 
@@ -17,7 +18,10 @@ const Home = () => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
-
+    const [selectedPeriod, setSelectedPeriod] = useState({
+        month: new Date().getMonth + 1,
+        year: new Date().getFullYear,
+    });
     const navigate = useNavigate();
 
     const handleNavigate = (path) => {
@@ -125,13 +129,16 @@ const Home = () => {
                     <DonutChart data={walletData} options={walletOptions} />
                 </div>
                 <button onClick={() => handleNavigate("/bonifications")}>
-                    Bonificaciones
+                    <h3>Bonificaciones</h3>
+                    <BarChartComponent selectedPeriod={selectedPeriod} />
                 </button>
                 <button onClick={() => handleNavigate("/estadistics")}>
-                    Estadisticas
+                    <h3>Estadisticas</h3>
+                    <BarChartComponent selectedPeriod={selectedPeriod} />
                 </button>
                 <button onClick={() => handleNavigate("/transactions")}>
-                    Transacciones
+                    <h3>Transacciones</h3>
+                    <BarChartComponent selectedPeriod={selectedPeriod} />
                 </button>
             </main>
         </div>
