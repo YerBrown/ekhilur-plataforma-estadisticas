@@ -130,15 +130,15 @@ const Home = () => {
                 </div>
                 <button onClick={() => handleNavigate("/bonifications")}>
                     <h3>Bonificaciones</h3>
-                    <BarChartComponent selectedPeriod={selectedPeriod} />
+                    {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                 </button>
                 <button onClick={() => handleNavigate("/estadistics")}>
                     <h3>Estadisticas</h3>
-                    <BarChartComponent selectedPeriod={selectedPeriod} />
+                    {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                 </button>
                 <button onClick={() => handleNavigate("/transactions")}>
                     <h3>Transacciones</h3>
-                    <BarChartComponent selectedPeriod={selectedPeriod} />
+                    {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                 </button>
             </main>
         </div>
