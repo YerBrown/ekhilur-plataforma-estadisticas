@@ -1,12 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useLanguage } from "../contexts/LanguageContext.jsx";
 import { logout } from "../api/auth";
-import { FaUserSecret } from "react-icons/fa";
+import { FaUser } from "react-icons/fa6";
 import "./ProfileAvatar.css";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const ProfileAvatar = () => {
+    const { t } = useLanguage();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const navigate = useNavigate();
+    const modalRef = useRef(null);
+
     const handleLogout = async () => {
         await logout();
         navigate("/authentication"); // Redirige al login después de cerrar sesión
@@ -15,14 +19,33 @@ const ProfileAvatar = () => {
         setIsModalOpen((prev) => !prev);
     };
 
+    const handleClickOutside = (event) => {
+        if (modalRef.current && !modalRef.current.contains(event.target)) {
+            setIsModalOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        if (isModalOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+        } else {
+            document.removeEventListener("mousedown", handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [isModalOpen]);
+
     return (
         <>
             <button className="user-avatar" onClick={handleOpenModal}>
                 {/* <img src="" alt="User Profile Avatar" /> */}
-                <FaUserSecret size={24} />
+                <FaUser size={30} />
             </button>
-            <div className={`logout-modal ${isModalOpen ? "active" : ""}`}>
-                <button onClick={handleLogout}>Cerrar Sesion</button>
+            <div ref={modalRef} className={`logout-modal ${isModalOpen ? "active" : ""}`}>
+                <button onClick={handleLogout}>{t.logout}</button>
+                <button>{t.viewProfile}</button>
             </div>
         </>
     );
