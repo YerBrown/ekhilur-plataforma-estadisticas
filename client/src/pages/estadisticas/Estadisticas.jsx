@@ -114,13 +114,13 @@ const fakeApiData = [
     },
 ];
 
-
 const Estadisticas = () => {
     const [selectedPeriod, setSelectedPeriod] = useState(null);
     const [statistics, setStatistics] = useState({
         totalIngresos: 0,
-        totalGastos: 0
+        totalGastos: 0,
     });
+
     // Función de utilidad para formatear números
     const formatCurrency = (value) => {
         const num = Number(value);
@@ -136,13 +136,17 @@ const Estadisticas = () => {
         setSelectedPeriod({ year, month });
 
         // Buscar los datos correspondientes al período seleccionado
-        const yearData = dataMonths.find(y => y.año === year);
+        const yearData = dataMonths.find((y) => y.año === year);
         if (yearData) {
-            const monthData = yearData.datos.find(m => m.mes === month);
+            const monthData = yearData.datos.find((m) => m.mes === month);
             if (monthData) {
                 setStatistics({
-                    totalIngresos: Number(monthData.total_ingresos.replace(',', '.')),
-                    totalGastos: Number(monthData.total_gastos.replace(',', '.'))
+                    totalIngresos: Number(
+                        monthData.total_ingresos.replace(",", ".")
+                    ),
+                    totalGastos: Number(
+                        monthData.total_gastos.replace(",", ".")
+                    ),
                 });
             }
         }

@@ -5,8 +5,8 @@ const BarChartComponent = ({ selectedPeriod, dataBars }) => {
     const [chartData, setChartData] = useState([]);
     const [maxValue, setMaxValue] = useState(0);
     const calculateMaxValue = (data) => {
-        const maxIncome = Math.max(...data.map(item => item.income));
-        const maxExpenses = Math.max(...data.map(item => item.expenses));
+        const maxIncome = Math.max(...data.map((item) => item.income));
+        const maxExpenses = Math.max(...data.map((item) => item.expenses));
         const maxValue = Math.max(maxIncome, maxExpenses);
         return maxValue === 0 ? 1000 : Math.ceil(maxValue / 1000) * 1000;
     };
@@ -37,12 +37,13 @@ const BarChartComponent = ({ selectedPeriod, dataBars }) => {
                 expenses: Number(monthData.total_gastos.replace(',', '.')),
                 income: Number(monthData.total_ingresos.replace(',', '.')),
                 year: yearData.año,
-                month: monthData.mes
+                month: monthData.mes,
             }))
         );
 
         const selectedIndex = allMonths.findIndex(
-            item => item.year === selectedPeriod.year &&
+            (item) =>
+                item.year === selectedPeriod.year &&
                 item.month === selectedPeriod.month
         );
 
@@ -76,15 +77,14 @@ const BarChartComponent = ({ selectedPeriod, dataBars }) => {
                         bottom: 0
                     }}
                 >
-
                     <XAxis
                         dataKey="period"
-                        angle={0}  // Añadir esta línea para el angulo del texto de debajo de los gráficos
-                        textAnchor="middle"  // Añadir esta línea para centrar texto
+                        angle={0} // Añadir esta línea para el angulo del texto de debajo de los gráficos
+                        textAnchor="middle" // Añadir esta línea para centrar texto
                         height={60}
                         label={{
-                            position: 'bottom',
-                            offset: 0
+                            position: "bottom",
+                            offset: 0,
                         }}
                     />
                     <YAxis
