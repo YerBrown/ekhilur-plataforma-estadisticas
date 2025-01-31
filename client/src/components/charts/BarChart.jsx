@@ -12,28 +12,14 @@ const BarChartComponent = ({ selectedPeriod, dataBars }) => {
     };
 
     const getAbbreviatedMonth = (month) => {
-        const abbreviations = {
-            'enero': 'ene',
-            'febrero': 'feb',
-            'marzo': 'mar',
-            'abril': 'abr',
-            'mayo': 'may',
-            'junio': 'jun',
-            'julio': 'jul',
-            'agosto': 'ago',
-            'septiembre': 'sep',
-            'octubre': 'oct',
-            'noviembre': 'nov',
-            'diciembre': 'dic'
-        };
-        return abbreviations[month.toLowerCase()] || month;
+        const abbreviations = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+        return abbreviations[month] || month;
     };
     useEffect(() => {
         if (!selectedPeriod) return;
-
         const allMonths = dataBars.flatMap(yearData =>
             yearData.datos.map(monthData => ({
-                period: getAbbreviatedMonth(monthData.mes),
+                period: getAbbreviatedMonth(parseInt(monthData.mes, 10) - 1),
                 expenses: Number(monthData.total_gastos.replace(',', '.')),
                 income: Number(monthData.total_ingresos.replace(',', '.')),
                 year: yearData.año,
@@ -43,10 +29,11 @@ const BarChartComponent = ({ selectedPeriod, dataBars }) => {
 
         const selectedIndex = allMonths.findIndex(
             (item) =>
-                item.year === selectedPeriod.year &&
-                item.month === selectedPeriod.month
+                item.year == selectedPeriod.year &&
+            parseInt(item.month, 10) === selectedPeriod.month + 1
         );
 
+        console.log("allMonths", allMonths);
         if (selectedIndex === -1) return;
 
         // Obtener los meses adyacentes
