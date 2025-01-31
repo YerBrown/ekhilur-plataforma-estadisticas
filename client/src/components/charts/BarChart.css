@@ -1,9 +1,6 @@
 .chart-section {
     width: 100%;
-    max-width: 80%;
     height: 400px;
-    margin: 0 auto;
-    margin-bottom: 1rem;
     padding: 1.5rem;
     background-color: var(--background-color-principal);
     border-radius: 8px;
@@ -11,6 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .chart-container {

@@ -131,14 +131,14 @@ const Estadisticas = () => {
     const getAmountStyle = (value, isGasto = false) => {
         return isGasto ? `-${formatCurrency(value)}` : formatCurrency(value);
     };
+
     const handleDateFilter = ({ year, month }) => {
         // Actualizar el período seleccionado
         setSelectedPeriod({ year, month });
-
         // Buscar los datos correspondientes al período seleccionado
-        const yearData = dataMonths.find((y) => y.año === year);
+        const yearData = dataMonths.find((y) => y.año == year);
         if (yearData) {
-            const monthData = yearData.datos.find((m) => m.mes === month);
+            const monthData = yearData.datos.find((m) => parseInt(m.mes, 10) == month + 1);
             if (monthData) {
                 setStatistics({
                     totalIngresos: Number(
@@ -152,25 +152,6 @@ const Estadisticas = () => {
         }
     };
 
-    // Inicializar con el último mes disponible
-    useEffect(() => {
-        if (dataMonths.length > 0) {
-            const years = [...dataMonths].sort((a, b) => b.año - a.año);
-            const lastYear = years[0];
-            const monthOrder = [
-                "enero", "febrero", "marzo", "abril", "mayo", "junio",
-                "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
-            ];
-            // Obtener el último mes ordenado correctamente
-            const lastMonthData = [...lastYear.datos]
-                .sort((a, b) => monthOrder.indexOf(b.mes) - monthOrder.indexOf(a.mes))[0];
-
-            handleDateFilter({
-                year: lastYear.año,
-                month: lastMonthData.mes
-            });
-        }
-    }, []);
     return (
         <div className="estadisticas-page">
             <Layout title="Estadísticas">
@@ -194,9 +175,7 @@ const Estadisticas = () => {
                 <div className="chart-section">
                     <BarChartComponent selectedPeriod={selectedPeriod} dataBars={dataMonths} />
                 </div>
-                <div>
-                    <CategoryChart categoryDataJson={categoryOptions} />
-                </div>
+                <CategoryChart categoryDataJson={categoryOptions} />
                 <div>
 
                 </div>
