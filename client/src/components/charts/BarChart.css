@@ -1,0 +1,16 @@
+.chart-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.recharts-wrapper {
+    margin: 0 auto;  /* Esto ayuda al centrado horizontal */
+}
+
+.chart-responsive-container {
+    width: 90%;
+    height: 400px;
+}
