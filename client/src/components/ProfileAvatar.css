@@ -25,12 +25,17 @@ button.user-avatar {
     opacity: 1;
 }
 
+.logout-modal.active button {
+    pointer-events: all;
+}
+
 .logout-modal button {
     background-color: var(--color-naranja-principal);
     border-radius: 20px;
     padding: .5rem;
     border: none;
     box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
 }
 
 .logout-modal button:hover {

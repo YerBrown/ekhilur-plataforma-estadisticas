@@ -30,6 +30,22 @@ services:
             - fullstack_network
             - full_api_network
 
+    api:
+        build: ./API
+        container_name: api_ekhidata
+        ports:
+            - ${API_PORT}:5000
+        volumes:
+            - ./API:/app
+        environment:
+            - FLASK_APP=app.py
+            - FLASK_ENV=development
+        restart: always
+        networks:
+            - full_api_network
+        depends_on:
+            - backend
+
 volumes:
     mongodb_data:
 networks:
