@@ -11,6 +11,9 @@ const translations = {
     filterImport: "Importe",
     inputImportMin: "Mín.",
     inputImportMax: "Máx.",
+    logout: "Cerrar sesión",
+    viewProfile: "Ver perfil",
+    dateTranslations: {},
   },
   eus: {
     transactionTitle: "Transakzioak",
@@ -22,6 +25,12 @@ const translations = {
     filterImport: "Zenbatekoa",
     inputImportMin: "Min.",
     inputImportMax: "Max.",
+    logout: "Saioa Itxi",
+    viewProfile: "Ikusi Profila",
+    dateTranslations: {
+      Monday: "astelehena", Tuesday: "asteartea", Wednesday: "asteazkena", Thursday: "osteguna", Friday: "ostirala", Saturday: "larunbata", Sunday: "igandea",
+      January: "urtarrilak", February: "otsailak", March: "martxoak", April: "apirilak", May: "maiatzak", June: "ekainak", July: "uztailak", August: "abuztuak", September: "irailak", October: "urriak", November: "azaroak", December: "abenduak",
+    },
   },
 };
 
@@ -32,12 +41,11 @@ export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState("es");
 
   // Cambiar idioma
-  const toggleLanguage = () => {
-    setLanguage(language === "es" ? "eus" : "es");
-  };
+  const setSpanish = () => setLanguage("es");
+  const setBasque = () => setLanguage("eus");
 
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage, t: translations[language] }}>
+    <LanguageContext.Provider value={{ language, setSpanish, setBasque, t: translations[language] }}>
       {children}
     </LanguageContext.Provider>
   );

@@ -8,7 +8,7 @@ import TransactionsFilter from "../../components/buttons/transactions-filter/Tra
 import "./Transactions.css";
 
 const Transactions = () => {
-    const { t, toggleLanguage } = useLanguage();
+    const { t } = useLanguage();
     const [filteredTransactions, setFilteredTransactions] = useState(mockData);
 
     useEffect(() => {
@@ -84,7 +84,6 @@ const Transactions = () => {
 
     return (
         <Layout title={t.transactionTitle}>
-            <button onClick={toggleLanguage}>IDIOMA</button>
             <div className="transactions-content-container">
                 <SearchBar onSearch={handleSearch} />
                 <TransactionsFilter onFilterChange={handleFilterChange} />

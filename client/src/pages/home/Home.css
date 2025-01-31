@@ -11,6 +11,41 @@
     height: 60px;
 }
 
+.home-page .header-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem
+}
+
+@media screen and (max-width: 450px) {
+    .home-page .header-content {
+        gap: 0.5rem
+    }
+}
+
+.language-button-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.language-button-container p {
+    color: var(--color-naranja-principal)
+}
+
+.language-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.4rem;
+    color: var(--color-naranja-principal);
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.language-button:hover {
+    color: var(--color-naranja-principal-background);
+    transform: scale(1.1);
+}
+
 .home-page header img {
     height: 100%;
     width: 50%;
