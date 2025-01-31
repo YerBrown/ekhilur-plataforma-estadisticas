@@ -29,13 +29,25 @@ const DateFilter = ({ onDateFilter }) => {
     const months = [...new Set(dataMonths.flatMap(year =>
       year.datos.map(data => data.mes)
     ))];
-     
-      const orderedMonths = months.sort((a, b) => 
-        monthOrder.indexOf(a) - monthOrder.indexOf(b)
-      );  // Ordenar meses según el orden definido
+
+    const orderedMonths = months.sort((a, b) =>
+      monthOrder.indexOf(a) - monthOrder.indexOf(b)
+    );  // Ordenar meses según el orden definido
 
     setAvailableYears(years);
     setAvailableMonths(monthOrder);
+    const lastYear = years[0];  // Ya está ordenado de mayor a menor
+    const lastYearData = dataMonths.find(y => y.año === lastYear);
+    if (lastYearData) {
+      const lastMonthData = lastYearData.datos
+        .sort((a, b) => monthOrder.indexOf(b.mes) - monthOrder.indexOf(a.mes))[0];
+
+      if (lastMonthData) {
+        setSelectedYear(lastYear);
+        setSelectedMonth(lastMonthData.mes);
+        onDateFilter({ year: lastYear, month: lastMonthData.mes });
+      }
+    }
   }, []);
 
   const handleMonthSelect = (month) => {
@@ -68,30 +80,30 @@ const DateFilter = ({ onDateFilter }) => {
     "Diciembre",
   ];
 
-  const generateYears = () => {
-    const currentYear = new Date().getFullYear();
-    const years = [];
-    for (let i = currentYear - 5; i <= currentYear; i++) {
-      years.push(i);
-    }
-    return years;
-  };
+  /* const generateYears = () => {
+     const currentYear = new Date().getFullYear();
+     const years = [];
+     for (let i = currentYear - 5; i <= currentYear; i++) {
+       years.push(i);
+     }
+     return years;
+   };*/
 
-  const renderScrollSelector = (items, value, onChange) => (
-    <div className="scroll-selector">
-      <ul className="scroll-list">
-        {items.map((item, index) => (
-          <li
-            key={index}
-            className={`scroll-item ${value === item ? "selected" : ""}`}
-            onClick={() => onChange(item)}
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  /* const renderScrollSelector = (items, value, onChange) => (
+     <div className="scroll-selector">
+       <ul className="scroll-list">
+         {items.map((item, index) => (
+           <li
+             key={index}
+             className={`scroll-item ${value === item ? "selected" : ""}`}
+             onClick={() => onChange(item)}
+           >
+             {item}
+           </li>
+         ))}
+       </ul>
+     </div>
+   );*/
 
 
   const buttonText = `${months[selectedMonth - 1]} ${selectedYear}`;

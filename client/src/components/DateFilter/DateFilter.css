@@ -1,4 +1,3 @@
-
 .date-filter-container {
   display: flex;
   flex-direction: column;
@@ -6,7 +5,7 @@
   padding-top: 0px;
   padding-bottom: 20px;
   max-width: 300px;
-  margin: 0 0 10px 0;  /* top right bottom left */
+  margin: 0 0 0px 0;
 }
 
 /* El resto del CSS se mantiene igual */
@@ -41,26 +40,35 @@
   top: 100%;
   left: 0;
   right: 0;
-  color: var(--color-placeholder-light);
+ 
   margin-top: 0.5rem;
-  background-color: var(--background-color-principal);
-  border: 1px solid var(--color-naranja-principal);
+  background-color: transparent;
+  border-bottom: 2px solid var(--color-naranja-principal);
   border-radius: 4px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  display: grid;  /* Cambiamos a grid */
+  grid-template-columns: repeat(2, 1fr);  /* Dos columnas iguales */
+  width: 240px;  /* Ancho fijo para el dropdown */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(60px);
+  
 }
 
 .dropdown-item {
   width: 100%;
   padding: 0.5rem 1rem;
+  padding-right: 0px;
   font-size: 1rem;
-  color: #555;
+  color: var(--color-letra);
   background: none;
   border: none;
   text-align: left;
   cursor: pointer;
 }
 
+
 .dropdown-item:hover {
   background-color: #f5f5f5;
+  color: var(--color-naranja-principal);
 }
