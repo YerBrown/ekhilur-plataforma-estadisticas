@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { dataMonths } from "../../api/dataPruebas";
 import "./DateFilter.css";
 
 const DateFilter = ({ onDateFilter }) => {
-  const [selectedYear, setSelectedYear] = useState("");
-  const [selectedMonth, setSelectedMonth] = useState("");
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
   const [isMonthOpen, setIsMonthOpen] = useState(false);
   const [isYearOpen, setIsYearOpen] = useState(false);
   const [availableYears, setAvailableYears] = useState([]);
   const [availableMonths, setAvailableMonths] = useState([]);
-  const monthOrder = [
+  const months = [
     "enero",
     "febrero",
     "marzo",
@@ -24,89 +23,30 @@ const DateFilter = ({ onDateFilter }) => {
     "diciembre"
   ];
   useEffect(() => {
-    const years = [...new Set(dataMonths.map(year => year.año))].sort((a, b) => b - a);
-    // Ordenar años de mayor a menor
-    const months = [...new Set(dataMonths.flatMap(year =>
-      year.datos.map(data => data.mes)
-    ))];
-
-    const orderedMonths = months.sort((a, b) =>
-      monthOrder.indexOf(a) - monthOrder.indexOf(b)
-    );  // Ordenar meses según el orden definido
-
+    const currentYear = new Date().getFullYear();
+    const years = Array.from({ length: currentYear - 2020 + 1 }, (_, index) => 2020 + index);
     setAvailableYears(years);
-    setAvailableMonths(monthOrder);
-    const lastYear = years[0];  // Ya está ordenado de mayor a menor
-    const lastYearData = dataMonths.find(y => y.año === lastYear);
-    if (lastYearData) {
-      const lastMonthData = lastYearData.datos
-        .sort((a, b) => monthOrder.indexOf(b.mes) - monthOrder.indexOf(a.mes))[0];
-
-      if (lastMonthData) {
-        setSelectedYear(lastYear);
-        setSelectedMonth(lastMonthData.mes);
-        onDateFilter({ year: lastYear, month: lastMonthData.mes });
-      }
-    }
+    setAvailableMonths(months);
+    handleYearSelect(selectedYear);
+    handleMonthSelect(selectedMonth)
   }, []);
 
   const handleMonthSelect = (month) => {
     setSelectedMonth(month);
     setIsMonthOpen(false);
-    if (selectedYear && month) {
+    if (selectedYear && month >= 0) {
+      console.log("month", month, "year", selectedYear);
       onDateFilter({ year: selectedYear, month });
     }
   };
   const handleYearSelect = (year) => {
     setSelectedYear(year);
     setIsYearOpen(false);
-    if (selectedMonth && year) {
+    if (selectedMonth >= 0 && year) {
+      console.log("month", selectedMonth, "year", year);
       onDateFilter({ year, month: selectedMonth });
     }
   };
-
-  const months = [
-    "Enero",
-    "Febrero",
-    "Marzo",
-    "Abril",
-    "Mayo",
-    "Junio",
-    "Julio",
-    "Agosto",
-    "Septiembre",
-    "Octubre",
-    "Noviembre",
-    "Diciembre",
-  ];
-
-  /* const generateYears = () => {
-     const currentYear = new Date().getFullYear();
-     const years = [];
-     for (let i = currentYear - 5; i <= currentYear; i++) {
-       years.push(i);
-     }
-     return years;
-   };*/
-
-  /* const renderScrollSelector = (items, value, onChange) => (
-     <div className="scroll-selector">
-       <ul className="scroll-list">
-         {items.map((item, index) => (
-           <li
-             key={index}
-             className={`scroll-item ${value === item ? "selected" : ""}`}
-             onClick={() => onChange(item)}
-           >
-             {item}
-           </li>
-         ))}
-       </ul>
-     </div>
-   );*/
-
-
-  const buttonText = `${months[selectedMonth - 1]} ${selectedYear}`;
 
   return (
     <div className="date-filter-container">
@@ -120,15 +60,15 @@ const DateFilter = ({ onDateFilter }) => {
             }}
             className="date-filter-button"
           >
-            {selectedMonth || "MES"}
+            {months[selectedMonth] || "MES"}
           </button>
 
           {isMonthOpen && (
             <div className="dropdown-content">
-              {availableMonths.map((month) => (
+              {availableMonths.map((month, index) => (
                 <button
-                  key={month}
-                  onClick={() => handleMonthSelect(month)}
+                  key={index}
+                  onClick={() => handleMonthSelect(index)}
                   className="dropdown-item"
                 >
                   {month}

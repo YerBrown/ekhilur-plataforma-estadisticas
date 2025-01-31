@@ -3,62 +3,62 @@ export const dataMonths = [
         "año": "2022",
         "datos": [
             {
-                "mes": "enero",
+                "mes": "01",
                 "total_gastos": "1500,35",
                 "total_ingresos": "3200"
             },
             {
-                "mes": "febrero",
+                "mes": "02",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "marzo",
+                "mes": "03",
                 "total_gastos": "1800,50",
                 "total_ingresos": "3500"
             },
             {
-                "mes": "abril",
+                "mes": "04",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "mayo",
+                "mes": "05",
                 "total_gastos": "2100",
                 "total_ingresos": "3800"
             },
             {
-                "mes": "junio",
+                "mes": "06",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "julio",
+                "mes": "07",
                 "total_gastos": "2300",
                 "total_ingresos": "4100"
             },
             {
-                "mes": "agosto",
+                "mes": "08",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "septiembre",
+                "mes": "09",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "octubre",
+                "mes": "10",
                 "total_gastos": "2600",
                 "total_ingresos": "4500"
             },
             {
-                "mes": "noviembre",
+                "mes": "11",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "diciembre",
+                "mes": "12",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             }
@@ -83,47 +83,47 @@ export const dataMonths = [
                 "total_ingresos": "0"
             },
             {
-                "mes": "abril",
+                "mes": "04",
                 "total_gastos": "3000",
                 "total_ingresos": "5200"
             },
             {
-                "mes": "mayo",
+                "mes": "05",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "junio",
+                "mes": "06",
                 "total_gastos": "3200",
                 "total_ingresos": "5500"
             },
             {
-                "mes": "julio",
+                "mes": "07",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "agosto",
+                "mes": "08",
                 "total_gastos": "3400",
                 "total_ingresos": "5800"
             },
             {
-                "mes": "septiembre",
+                "mes": "09",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "octubre",
+                "mes": "10",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "noviembre",
+                "mes": "11",
                 "total_gastos": "3600",
                 "total_ingresos": "6100"
             },
             {
-                "mes": "diciembre",
+                "mes": "12",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             }
@@ -133,62 +133,62 @@ export const dataMonths = [
         "año": "2024",
         "datos": [
             {
-                "mes": "enero",
+                "mes": "01",
                 "total_gastos": "3800",
                 "total_ingresos": "6400"
             },
             {
-                "mes": "febrero",
+                "mes": "02",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "marzo",
+                "mes": "03",
                 "total_gastos": "4000",
                 "total_ingresos": "6700"
             },
             {
-                "mes": "abril",
+                "mes": "04",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "mayo",
+                "mes": "05",
                 "total_gastos": "4200",
                 "total_ingresos": "7000"
             },
             {
-                "mes": "junio",
+                "mes": "06",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "julio",
+                "mes": "07",
                 "total_gastos": "4400",
                 "total_ingresos": "7300"
             },
             {
-                "mes": "agosto",
+                "mes": "08",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "septiembre",
+                "mes": "09",
                 "total_gastos": "4600",
                 "total_ingresos": "7600"
             },
             {
-                "mes": "octubre",
+                "mes": "10",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "noviembre",
+                "mes": "11",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "diciembre",
+                "mes": "12",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             }
@@ -198,62 +198,62 @@ export const dataMonths = [
         "año": "2025",
         "datos": [
             {
-                "mes": "enero",
+                "mes": "01",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "febrero",
+                "mes": "02",
                 "total_gastos": "4800",
                 "total_ingresos": "7900"
             },
             {
-                "mes": "marzo",
+                "mes": "03",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "abril",
+                "mes": "04",
                 "total_gastos": "5000",
                 "total_ingresos": "8200"
             },
             {
-                "mes": "mayo",
+                "mes": "05",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "junio",
+                "mes": "06",
                 "total_gastos": "5200",
                 "total_ingresos": "8500"
             },
             {
-                "mes": "julio",
+                "mes": "07",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "agosto",
+                "mes": "08",
                 "total_gastos": "5400",
                 "total_ingresos": "8800"
             },
             {
-                "mes": "septiembre",
+                "mes": "09",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "octubre",
+                "mes": "10",
                 "total_gastos": "5600",
                 "total_ingresos": "9100"
             },
             {
-                "mes": "noviembre",
+                "mes": "11",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             },
             {
-                "mes": "diciembre",
+                "mes": "12",
                 "total_gastos": "0",
                 "total_ingresos": "0"
             }
