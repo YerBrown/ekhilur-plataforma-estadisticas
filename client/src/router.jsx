@@ -7,7 +7,7 @@ import Transactions from "./pages/transactions/Transactions";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ErrorBoundary from "./pages/errorBoundary/ErrorBoundary";
 import Sales from "./pages/sales/Sales";
-import Bonifications from "./pages/bonifications/Bonifications";
+import UserBonifications from "./pages/bonifications/UserBonifications";
 import Estadisticas from "./pages/estadisticas/Estadisticas";
 
 const router = createBrowserRouter([
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
 
             {
                 path: "/bonifications",
-                element: <Bonifications />,
+                element: <UserBonifications />,
             },
 
             {
