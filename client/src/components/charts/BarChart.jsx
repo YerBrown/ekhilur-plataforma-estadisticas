@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import "./BarChart.css";
+
 const BarChartComponent = ({ selectedPeriod, dataBars }) => {
     const [chartData, setChartData] = useState([]);
     const [maxValue, setMaxValue] = useState(0);
+
     const calculateMaxValue = (data) => {
-        const maxIncome = Math.max(...data.map((item) => item.income));
-        const maxExpenses = Math.max(...data.map((item) => item.expenses));
+        if (!data || data.length === 0) return 1000;
+        const maxIncome = Math.max(...data.map((item) => Number(item.income) || 0));
+        const maxExpenses = Math.max(...data.map((item) => Number(item.expenses) || 0));
         const maxValue = Math.max(maxIncome, maxExpenses);
         return maxValue === 0 ? 1000 : Math.ceil(maxValue / 1000) * 1000;
     };
@@ -15,40 +18,78 @@ const BarChartComponent = ({ selectedPeriod, dataBars }) => {
         const abbreviations = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
         return abbreviations[month] || month;
     };
+
     useEffect(() => {
-        if (!selectedPeriod) return;
-        const allMonths = dataBars.flatMap(yearData =>
-            yearData.datos.map(monthData => ({
-                period: getAbbreviatedMonth(parseInt(monthData.mes, 10) - 1),
-                expenses: Number(monthData.total_gastos.replace(',', '.')),
-                income: Number(monthData.total_ingresos.replace(',', '.')),
-                year: yearData.año,
-                month: monthData.mes,
-            }))
-        );
-
-        const selectedIndex = allMonths.findIndex(
-            (item) =>
-                item.year == selectedPeriod.year &&
-            parseInt(item.month, 10) === selectedPeriod.month + 1
-        );
-
-        console.log("allMonths", allMonths);
-        if (selectedIndex === -1) return;
-
-        // Obtener los meses adyacentes
-        const displayedMonths = [];
-        if (selectedIndex > 0) {
-            displayedMonths.push(allMonths[selectedIndex - 1]);
-        }
-        displayedMonths.push(allMonths[selectedIndex]);
-        if (selectedIndex < allMonths.length - 1) {
-            displayedMonths.push(allMonths[selectedIndex + 1]);
+        // Reset el estado cuando cambian las props
+        if (!selectedPeriod || !dataBars || !Array.isArray(dataBars)) {
+            setChartData([]);
+            setMaxValue(1000);
+            return;
         }
 
-        setChartData(displayedMonths);
-        setMaxValue(calculateMaxValue(displayedMonths));
-    }, [selectedPeriod]);
+        // Crear un array de meses para mostrar (mes anterior, actual y siguiente)
+        const selectedMonth = selectedPeriod.month;
+        const monthsToShow = [
+            selectedMonth > 0 ? selectedMonth - 1 : 11,
+            selectedMonth,
+            selectedMonth < 11 ? selectedMonth + 1 : 0
+        ];
+
+        // Crear datos base para los meses a mostrar
+        const baseMonths = monthsToShow.map(monthNum => ({
+            period: getAbbreviatedMonth(monthNum),
+            expenses: null,
+            income: null,
+            month: String(monthNum + 1).padStart(2, '0'),
+            year: selectedPeriod.year.toString(),
+            hasData: false
+        }));
+
+        // Buscar datos reales para cada mes
+        const processedMonths = baseMonths.map(baseMonth => {
+            const monthData = dataBars.find(data => 
+                data.año === baseMonth.year && 
+                data.mes === baseMonth.month
+            );
+
+            if (!monthData) return baseMonth;
+
+            const expenses = Number(monthData.gastos);
+            const income = Number(monthData.ingresos);
+
+            const validExpenses = !isNaN(expenses) && expenses > 0 ? expenses : null;
+            const validIncome = !isNaN(income) && income > 0 ? income : null;
+
+            return {
+                ...baseMonth,
+                expenses: validExpenses,
+                income: validIncome,
+                hasData: validExpenses !== null || validIncome !== null
+            };
+        });
+
+        setChartData(processedMonths);
+        
+        // Calcular maxValue solo con los datos válidos
+        const monthsWithData = processedMonths.filter(month => month.hasData);
+        setMaxValue(calculateMaxValue(monthsWithData));
+
+    }, [selectedPeriod, dataBars]);
+
+    const renderBar = (dataKey, color) => {
+        // Solo renderizar la barra si hay al menos un valor válido
+        const hasValues = chartData.some(item => item[dataKey] !== null && item[dataKey] > 0);
+        
+        if (!hasValues) return null;
+
+        return (
+            <Bar
+                dataKey={dataKey}
+                radius={[6, 6, 0, 0]}
+                fill={color}
+            />
+        );
+    };
 
     return (
         <div className="chart-container">
@@ -66,8 +107,8 @@ const BarChartComponent = ({ selectedPeriod, dataBars }) => {
                 >
                     <XAxis
                         dataKey="period"
-                        angle={0} // Añadir esta línea para el angulo del texto de debajo de los gráficos
-                        textAnchor="middle" // Añadir esta línea para centrar texto
+                        angle={0}
+                        textAnchor="middle"
                         height={60}
                         label={{
                             position: "bottom",
@@ -75,7 +116,7 @@ const BarChartComponent = ({ selectedPeriod, dataBars }) => {
                         }}
                     />
                     <YAxis
-                        domain={[0, maxValue || 1000]} // Aseguramos un dominio mínimo
+                        domain={[0, maxValue || 1000]}
                         axisLine={true}
                         tickLine={false}
                         ticks={maxValue === 0 ? [0, 1000] : [0, maxValue]}
@@ -85,24 +126,13 @@ const BarChartComponent = ({ selectedPeriod, dataBars }) => {
                         allowDecimals={false}
                         hide={false}
                         style={{
-                            fontSize: '12px'  // Aquí puedes ajustar el tamaño que desees
+                            fontSize: '12px'
                         }}
                     />
-                    <Bar
-                        dataKey="income"
-                        radius={[6, 6, 0, 0]}
-                        fill="var(--color-grafico-naranja)"
-
-                    />
-                    <Bar
-                        dataKey="expenses"
-                        radius={[6, 6, 0, 0]}
-                        fill="var(--color-grafico-naranja-claro)"
-
-                    />
+                    {renderBar("income", "var(--color-grafico-naranja)")}
+                    {renderBar("expenses", "var(--color-grafico-naranja-claro)")}
                 </BarChart>
             </ResponsiveContainer>
-
         </div>
     );
 };
