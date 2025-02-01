@@ -1,13 +1,89 @@
 import React, { useState } from "react";
 import DonutChart from "./DonutChart";
 import "./CategoryCharts.css";
-
-
-const CategoryChart = ({categoryDataJson}) => {
-    const [categories, setCategories] = useState(categoryDataJson);
+import {
+    FaAppleAlt,
+    FaCoffee,
+    FaTshirt,
+    FaHeart,
+    FaStore,
+    FaIndustry,
+    FaPaintBrush,
+    FaFutbol,
+    FaHandsHelping,
+} from "react-icons/fa";
+const categoryTemplate = [
+    {
+        label: "Alimentación",
+        color: "#0047ba",
+        "color-dark": "#001d4d",
+        icon: FaAppleAlt,
+    },
+    {
+        label: "Hostelería",
+        color: "#26C485",
+        "color-dark": "#0c402b",
+        icon: FaCoffee,
+    },
+    {
+        label: "Moda y Complementos",
+        color: "#54a9cd",
+        "color-dark": "#112f3b",
+        icon: FaTshirt,
+    },
+    {
+        label: "Salud y Estética",
+        color: "#ffc412",
+        "color-dark": "#4d3900",
+        icon: FaHeart,
+    },
+    {
+        label: "Servicios y Comercio General",
+        color: "#6f9ef0",
+        "color-dark": "#071e45",
+        icon: FaStore,
+    },
+    {
+        label: "Industria y Construcción",
+        color: "#ffef21",
+        "color-dark": "#4d4700",
+        icon: FaIndustry,
+    },
+    {
+        label: "Arte y Cultura",
+        color: "#ff9d6d",
+        "color-dark": "#4d1a00",
+        icon: FaPaintBrush,
+    },
+    {
+        label: "Deporte y Ocio",
+        color: "#382ef2",
+        "color-dark": "#080548",
+        icon: FaFutbol,
+    },
+    {
+        label: "Asociaciones y Cooperativas",
+        color: "#ff9012",
+        "color-dark": "#4d2900",
+        icon: FaHandsHelping,
+    },
+];
+const matchValues = (categoryValues) => {
+    const matchedCategories = categoryValues
+        .map((categoryValue) => {
+            const match = categoryTemplate.find(
+                (category) => category.label === categoryValue.label
+            );
+            return match ? { ...match, ...categoryValue } : null;
+        })
+        .filter((category) => category !== null);
+    return matchedCategories;
+};
+const CategoryChart = ({ categoryDataJson }) => {
+    const [categories, setCategories] = useState(matchValues(categoryDataJson));
 
     const getDataOptions = () => {
-        const ategoryData = categories.map((category) => ({
+        const categoryData = categories.map((category) => ({
             datasets: [
                 {
                     label: "Single Category",
@@ -20,7 +96,7 @@ const CategoryChart = ({categoryDataJson}) => {
                 },
             ],
         }));
-        const ategoryOption = categories.map((category) => ({
+        const categoryOption = categories.map((category) => ({
             responsive: true,
             maintainAspectRatio: false, // Permitir personalizar ancho y alto
             plugins: {
@@ -50,8 +126,8 @@ const CategoryChart = ({categoryDataJson}) => {
         for (let i = 0; i < categories.length; i++) {
             dataAndOptions.push({
                 categoryJson: categories[i],
-                data: ategoryData[i],
-                options: ategoryOption[i],
+                data: categoryData[i],
+                options: categoryOption[i],
             });
         }
         return dataAndOptions;
