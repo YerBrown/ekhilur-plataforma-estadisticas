@@ -6,7 +6,7 @@ import Home from "./pages/home/Home";
 import Transactions from "./pages/transactions/Transactions";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ErrorBoundary from "./pages/errorBoundary/ErrorBoundary";
-import Sales from "./pages/sales/Sales";
+import SalesCommerce from "./pages/sales/SalesCommerce";
 import UserBonifications from "./pages/bonifications/UserBonifications";
 import Estadisticas from "./pages/estadisticas/Estadisticas";
 
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/sales",
-                element: <Sales />,
+                element: <SalesCommerce />,
             },
 
             {
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
             },
 
             {
-                path: "/estadistics",
+                path: "/statistics",
                 element: <Estadisticas />,
             },
         ],
