@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DonutChart from "./DonutChart";
+import { useTheme } from "../../contexts/ThemeContext";
 import "./CategoryCharts.css";
 import {
     FaAppleAlt,
@@ -81,7 +82,7 @@ const matchValues = (categoryValues) => {
 };
 const CategoryChart = ({ categoryDataJson }) => {
     const [categories, setCategories] = useState(matchValues(categoryDataJson));
-
+    const { theme } = useTheme();
     const getDataOptions = () => {
         const categoryData = categories.map((category) => ({
             datasets: [
@@ -107,6 +108,7 @@ const CategoryChart = ({ categoryDataJson }) => {
                     enabled: false, // Deshabilitar tooltips
                 },
                 centerText: {
+                    color: theme === "light" ? "#000000" : "#ffffff",
                     total: `${category.value} €`, // Pasar el total calculado
                 },
                 datalabels: {
@@ -133,47 +135,10 @@ const CategoryChart = ({ categoryDataJson }) => {
         return dataAndOptions;
     };
 
-    const categoryLabels = categories.map((item) => item.label);
     const categoryValues = categories.map((item) => item.value);
-    const categoryColors = categories.map((item) => item.color);
     const totalCategoryValue = categoryValues.reduce(
         (acc, currentValue) => (acc += currentValue)
     );
-    const categoryData = {
-        labels: categoryLabels,
-        datasets: [
-            {
-                label: "Wallet",
-                data: categoryValues,
-                backgroundColor: categoryColors,
-                hoverBackgroundColor: categoryColors,
-            },
-        ],
-    };
-
-    const categoryOptions = {
-        responsive: true,
-        maintainAspectRatio: false, // Permitir personalizar ancho y alto
-        plugins: {
-            legend: {
-                display: false, // Ocultar leyenda
-            },
-            tooltip: {
-                enabled: false, // Deshabilitar tooltips
-            },
-            drawIcons: {}, // Plugin para dibujar iconos
-            datalabels: {
-                display: false,
-            },
-        },
-        elements: {
-            arc: {
-                borderWidth: 0,
-            },
-        },
-        cutout: "70%", // Ajustar el tamaño del agujero central
-        radius: "90%",
-    };
     return (
         <div className="category-charts">
             <h2>Categorias</h2>
