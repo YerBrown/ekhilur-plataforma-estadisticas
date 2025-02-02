@@ -29,6 +29,9 @@
   border-radius: 4px;
   cursor: pointer;
   text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .date-filter-button:hover {
@@ -40,19 +43,22 @@
   top: 100%;
   left: 0;
   right: 0;
- 
+
   margin-top: 0.5rem;
   background-color: transparent;
   border-bottom: 2px solid var(--color-naranja-principal);
   border-radius: 4px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  display: grid;  /* Cambiamos a grid */
-  grid-template-columns: repeat(2, 1fr);  /* Dos columnas iguales */
-  width: 240px;  /* Ancho fijo para el dropdown */
+  display: grid;
+  /* Cambiamos a grid */
+  grid-template-columns: repeat(2, 1fr);
+  /* Dos columnas iguales */
+  width: 240px;
+  /* Ancho fijo para el dropdown */
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(60px);
-  
+
 }
 
 .dropdown-item {
@@ -70,4 +76,10 @@
 
 .dropdown-item:hover {
   color: var(--color-naranja-principal);
+}
+
+.icon-small {
+  width: 16px;
+  height: 16px;
+  padding-top: 4px;
 }

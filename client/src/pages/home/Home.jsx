@@ -141,12 +141,16 @@ const Home = () => {
                     <h3>Bonificaciones</h3>
                     {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                 </button>
-                <button onClick={() => handleNavigate("/estadistics")}>
+                <button onClick={() => handleNavigate("/statistics")}>
                     <h3>Estadisticas</h3>
                     {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                 </button>
                 <button onClick={() => handleNavigate("/transactions")}>
                     <h3>Transacciones</h3>
+                    {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                </button>
+                <button onClick={() => handleNavigate("/sales")}>
+                    <h3>Ventas</h3>
                     {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                 </button>
             </main>
