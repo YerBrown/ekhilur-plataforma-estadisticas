@@ -132,29 +132,29 @@ const Home = () => {
                 </div>
             </header>
             <main>
-                <h1>Bienvenido, {user?.username}!</h1>
+                <h1>{t.welcome}, {user?.username}!</h1>
                 <div className="wallet-chart">
-                    <h3>Monedero</h3>
+                    <h3>{t.wallet}</h3>
                     <DonutChart data={walletData} options={walletOptions} />
                 </div>
                 <button onClick={() => handleNavigate("/bonifications")}>
-                    <h3>Bonificaciones</h3>
+                    <h3>{t.bonificationTitle}</h3>
                     {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                 </button>
                 <button onClick={() => handleNavigate("/bonifications-shop")}>
-                    <h3>Bonificaciones Comercio</h3>
+                    <h3>Denda {t.bonificationTitle}</h3>
                     {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                 </button>
                 <button onClick={() => handleNavigate("/statistics")}>
-                    <h3>Estadisticas</h3>
+                    <h3>{t.statisticsTitle}</h3>
                     {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                 </button>
                 <button onClick={() => handleNavigate("/transactions")}>
-                    <h3>Transacciones</h3>
+                    <h3>{t.transactionTitle}</h3>
                     {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                 </button>
                 <button onClick={() => handleNavigate("/sales")}>
-                    <h3>Ventas</h3>
+                    <h3>{t.salesTitle}</h3>
                     {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                 </button>
             </main>

@@ -2,6 +2,7 @@ import { createContext, useState, useContext } from "react";
 
 const translations = {
   es: {
+    welcome: "Bienvenido",
     transactionTitle: "Transacciones",
     bonificationTitle: "Bonificaciones",
     statisticsTitle: "Estadísticas",
@@ -18,6 +19,7 @@ const translations = {
     logout: "Cerrar sesión",
     viewProfile: "Ver perfil",
     wallet: "Monedero",
+    salesTitle: "Ventas",
     statisticsTitle: "Estadísticas",
     categoriesTitle: "Categorias",
     category1: "Alimentación",
@@ -34,6 +36,7 @@ const translations = {
     dateTranslations: {},
   },
   eus: {
+    welcome: "Ongi etorri",
     transactionTitle: "Transakzioak",
     bonificationTitle: "???",
     statisticsTitle: "Estatistikak",
@@ -50,6 +53,7 @@ const translations = {
     logout: "Saioa Itxi",
     viewProfile: "Ikusi Profila",
     wallet: "Diru-zorroa",
+    salesTitle: "Salmentak",
     statisticsTitle: "Estatistikak",
     categoriesTitle: "Kategoriak",
     category1: "Alimentazioa",
