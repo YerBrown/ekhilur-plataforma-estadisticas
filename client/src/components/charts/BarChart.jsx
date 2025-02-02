@@ -1,54 +1,89 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import "./BarChart.css";
-const BarChartComponent = ({ selectedPeriod, dataBars }) => {
+
+const getAbbreviatedMonth = (month) => {
+    const abbreviations = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+    return abbreviations[month] || month;
+};
+
+const calculateMaxValue = (data, primaryKey, secondaryKey, showSecondary) => {
+    if (!data || data.length === 0) return 1000;
+    const maxPrimary = Math.max(...data.map((item) => Number(item[primaryKey]) || 0));
+    const maxSecondary = showSecondary ? Math.max(...data.map((item) => Number(item[secondaryKey]) || 0)) : 0;
+    const maxValue = Math.max(maxPrimary, maxSecondary);
+    return maxValue === 0 ? 1000 : Math.ceil(maxValue / 1000) * 1000;
+};
+
+const BarChartComponent = ({
+    selectedPeriod,
+    dataBars,
+    dataKeys = {
+        primary: 'income',
+        secondary: 'expenses'
+    },
+    colors = {
+        primary: "var(--color-grafico-naranja)",
+        secondary: "var(--color-grafico-naranja-claro)"
+    },
+    mappingKeys = {
+        year: 'año',
+        month: 'mes'
+    },
+    showSecondaryBar = true
+}) => {
     const [chartData, setChartData] = useState([]);
-    const [maxValue, setMaxValue] = useState(0);
-    const calculateMaxValue = (data) => {
-        const maxIncome = Math.max(...data.map((item) => item.income));
-        const maxExpenses = Math.max(...data.map((item) => item.expenses));
-        const maxValue = Math.max(maxIncome, maxExpenses);
-        return maxValue === 0 ? 1000 : Math.ceil(maxValue / 1000) * 1000;
-    };
+    const [maxValue, setMaxValue] = useState(1000);
 
-    const getAbbreviatedMonth = (month) => {
-        const abbreviations = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
-        return abbreviations[month] || month;
-    };
     useEffect(() => {
-        if (!selectedPeriod) return;
-        const allMonths = dataBars.flatMap(yearData =>
-            yearData.datos.map(monthData => ({
-                period: getAbbreviatedMonth(parseInt(monthData.mes, 10) - 1),
-                expenses: Number(monthData.total_gastos.replace(',', '.')),
-                income: Number(monthData.total_ingresos.replace(',', '.')),
-                year: yearData.año,
-                month: monthData.mes,
-            }))
-        );
-
-        const selectedIndex = allMonths.findIndex(
-            (item) =>
-                item.year == selectedPeriod.year &&
-            parseInt(item.month, 10) === selectedPeriod.month + 1
-        );
-
-        console.log("allMonths", allMonths);
-        if (selectedIndex === -1) return;
-
-        // Obtener los meses adyacentes
-        const displayedMonths = [];
-        if (selectedIndex > 0) {
-            displayedMonths.push(allMonths[selectedIndex - 1]);
-        }
-        displayedMonths.push(allMonths[selectedIndex]);
-        if (selectedIndex < allMonths.length - 1) {
-            displayedMonths.push(allMonths[selectedIndex + 1]);
+        if (!selectedPeriod || !dataBars || !Array.isArray(dataBars)) {
+            setChartData([]);
+            setMaxValue(1000);
+            return;
         }
 
-        setChartData(displayedMonths);
-        setMaxValue(calculateMaxValue(displayedMonths));
-    }, [selectedPeriod]);
+        const selectedMonth = selectedPeriod.month;
+        const monthsToShow = [
+            selectedMonth > 0 ? selectedMonth - 1 : 11,
+            selectedMonth,
+            selectedMonth < 11 ? selectedMonth + 1 : 0
+        ];
+
+        // Crear datos base para los meses a mostrar
+        const processedData = monthsToShow.map(monthNum => {
+            const baseMonth = {
+                period: getAbbreviatedMonth(monthNum),
+                month: String(monthNum + 1).padStart(2, '0'),
+                year: selectedPeriod.year.toString(),
+                hasData: false,
+                [dataKeys.primary]: null
+            };
+
+            if (showSecondaryBar) {
+                baseMonth[dataKeys.secondary] = null;
+            }
+
+            const monthData = dataBars.find(data =>
+                data[mappingKeys.year] === baseMonth.year &&
+                data[mappingKeys.month] === baseMonth.month
+            );
+
+            if (!monthData) return baseMonth;
+
+            const primaryValue = Number(monthData[dataKeys.primary]);
+            const secondaryValue = showSecondaryBar ? Number(monthData[dataKeys.secondary]) : 0;
+
+            return {
+                ...baseMonth,
+                [dataKeys.primary]: !isNaN(primaryValue) && primaryValue > 0 ? primaryValue : null,
+                [dataKeys.secondary]: showSecondaryBar && !isNaN(secondaryValue) && secondaryValue > 0 ? secondaryValue : null,
+                hasData: true
+            };
+        });
+
+        setChartData(processedData);
+        setMaxValue(calculateMaxValue(processedData, dataKeys.primary, dataKeys.secondary, showSecondaryBar));
+    }, [selectedPeriod, dataBars, dataKeys.primary, dataKeys.secondary, mappingKeys.year, mappingKeys.month, showSecondaryBar]);
 
     return (
         <div className="chart-container">
@@ -66,8 +101,8 @@ const BarChartComponent = ({ selectedPeriod, dataBars }) => {
                 >
                     <XAxis
                         dataKey="period"
-                        angle={0} // Añadir esta línea para el angulo del texto de debajo de los gráficos
-                        textAnchor="middle" // Añadir esta línea para centrar texto
+                        angle={0}
+                        textAnchor="middle"
                         height={60}
                         label={{
                             position: "bottom",
@@ -75,34 +110,33 @@ const BarChartComponent = ({ selectedPeriod, dataBars }) => {
                         }}
                     />
                     <YAxis
-                        domain={[0, maxValue || 1000]} // Aseguramos un dominio mínimo
+                        domain={[0, maxValue]}
                         axisLine={true}
                         tickLine={false}
-                        ticks={maxValue === 0 ? [0, 1000] : [0, maxValue]}
+                        ticks={[0, maxValue]}
                         interval="preserveEnd"
                         tickFormatter={(value) => value}
                         minTickGap={0}
                         allowDecimals={false}
                         hide={false}
                         style={{
-                            fontSize: '12px'  // Aquí puedes ajustar el tamaño que desees
+                            fontSize: '12px'
                         }}
                     />
                     <Bar
-                        dataKey="income"
+                        dataKey={dataKeys.primary}
                         radius={[6, 6, 0, 0]}
-                        fill="var(--color-grafico-naranja)"
-
+                        fill={colors.primary}
                     />
-                    <Bar
-                        dataKey="expenses"
-                        radius={[6, 6, 0, 0]}
-                        fill="var(--color-grafico-naranja-claro)"
-
-                    />
+                    {showSecondaryBar && (
+                        <Bar
+                            dataKey={dataKeys.secondary}
+                            radius={[6, 6, 0, 0]}
+                            fill={colors.secondary}
+                        />
+                    )}
                 </BarChart>
             </ResponsiveContainer>
-
         </div>
     );
 };
