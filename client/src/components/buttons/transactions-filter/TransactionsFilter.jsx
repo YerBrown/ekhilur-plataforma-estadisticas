@@ -8,8 +8,22 @@ const TransactionsFilter = ({ onFilterChange }) => {
     const [sliderStyles, setSliderStyles] = useState({ width: 0, left: 0 });
     const containerRef = useRef(null);
 
-    const handleButtonClick = (label, index) => {
-        setActiveButton(label);
+    const handleButtonClick = (key, index) => {
+        let label;
+        switch (key) {
+            case "all":
+                label = t.all;
+                break;
+            case "incomes":
+                label = t.incomes;
+                break;
+            case "expenses":
+                label = t.expenses;
+                break;
+            default:
+                label = t.all;
+        }
+        setActiveButton(key);
         onFilterChange(label);
         updateSliderPosition(index);
     };

@@ -8,8 +8,22 @@ const BonificationsFilter = ({ onFilterChange }) => {
     const [sliderStyles, setSliderStyles] = useState({ width: 0, left: 0 });
     const containerRef = useRef(null);
 
-    const handleButtonClick = (label, index) => {
-        setActiveButton(label);
+    const handleButtonClick = (key, index) => {
+        let label;
+        switch (key) {
+            case "all":
+                label = t.all;
+                break;
+            case "received":
+                label = t.received;
+                break;
+            case "emmited":
+                label = t.emmited;
+                break;
+            default:
+                label = t.all;
+        }
+        setActiveButton(key);
         onFilterChange(label);
         updateSliderPosition(index);
     };
