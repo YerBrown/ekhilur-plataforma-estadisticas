@@ -29,6 +29,7 @@ const translations = {
     category8: "Deporte y Ocio",
     category9: "Asociaciones y Cooperativas",
     months: {},
+    monthsAbbreviations: {},
     dateTranslations: {},
   },
   eus: {
@@ -71,6 +72,20 @@ const translations = {
       octubre: "Urria",
       noviembre: "Azaroa",
       diciembre: "Abendua",
+    },
+    monthsAbbreviations: {
+      ene: 'urt', 
+      feb: 'ots', 
+      mar: 'mar', 
+      abr: 'api', 
+      may: 'mai', 
+      jun: 'eka', 
+      jul: 'uzt', 
+      ago: 'abu', 
+      sep: 'ira', 
+      oct: 'urr', 
+      nov: 'aza', 
+      dic: 'abe',
     },
     dateTranslations: {
       Monday: "astelehena", Tuesday: "asteartea", Wednesday: "asteazkena", Thursday: "osteguna", Friday: "ostirala", Saturday: "larunbata", Sunday: "igandea",
