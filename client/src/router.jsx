@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import ErrorBoundary from "./pages/errorBoundary/ErrorBoundary";
 import Sales from "./pages/sales/Sales";
 import Bonifications from "./pages/bonifications/Bonifications";
+import BonificationsShop from "./pages/bonifications-shop/BonificationsShop";
 import Estadisticas from "./pages/estadisticas/Estadisticas";
 
 const router = createBrowserRouter([
@@ -39,12 +40,14 @@ const router = createBrowserRouter([
                 path: "/sales",
                 element: <Sales />,
             },
-
             {
                 path: "/bonifications",
                 element: <Bonifications />,
             },
-
+            {
+                path: "/bonifications-shop",
+                element: <BonificationsShop />,
+            },
             {
                 path: "/estadistics",
                 element: <Estadisticas />,
