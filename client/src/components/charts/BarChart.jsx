@@ -14,7 +14,7 @@ const calculateMaxValue = (data, primaryKey, secondaryKey, showSecondary) => {
     const maxPrimary = Math.max(...data.map((item) => Number(item[primaryKey]) || 0));
     const maxSecondary = showSecondary ? Math.max(...data.map((item) => Number(item[secondaryKey]) || 0)) : 0;
     const maxValue = Math.max(maxPrimary, maxSecondary);
-    return maxValue === 0 ? 1000 : Math.ceil(maxValue / 1000) * 1000;
+    return maxValue === 0 ? 1000 : maxValue;
 };
 
 const BarChartComponent = ({
@@ -116,7 +116,7 @@ const BarChartComponent = ({
                         domain={[0, maxValue]}
                         axisLine={true}
                         tickLine={false}
-                        ticks={[0, maxValue]}
+                        ticks={[maxValue]}
                         interval="preserveEnd"
                         tickFormatter={(value) => value}
                         minTickGap={0}
