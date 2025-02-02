@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
+import MonthYearFilter from '../month-year-filter/MonthYearFilter';
 import "./BarChart.css";
 
 const getAbbreviatedMonth = (month) => {
@@ -30,10 +31,12 @@ const BarChartComponent = ({
         year: 'año',
         month: 'mes'
     },
-    showSecondaryBar = true
+    showSecondaryBar = true,
+    onViewChange
 }) => {
     const [chartData, setChartData] = useState([]);
     const [maxValue, setMaxValue] = useState(1000);
+    const [isMonthly, setIsMonthly] = useState(true);
 
     useEffect(() => {
         if (!selectedPeriod || !dataBars || !Array.isArray(dataBars)) {
@@ -49,7 +52,6 @@ const BarChartComponent = ({
             selectedMonth < 11 ? selectedMonth + 1 : 0
         ];
 
-        // Crear datos base para los meses a mostrar
         const processedData = monthsToShow.map(monthNum => {
             const baseMonth = {
                 period: getAbbreviatedMonth(monthNum),
@@ -85,59 +87,65 @@ const BarChartComponent = ({
         setMaxValue(calculateMaxValue(processedData, dataKeys.primary, dataKeys.secondary, showSecondaryBar));
     }, [selectedPeriod, dataBars, dataKeys.primary, dataKeys.secondary, mappingKeys.year, mappingKeys.month, showSecondaryBar]);
 
+    // Manejador para el cambio de vista
+    const handleViewChange = (monthly) => {
+        setIsMonthly(monthly);
+        if (onViewChange) {
+            onViewChange(monthly ? 'month' : 'year');
+        }
+    };
+
     return (
-        <div className="chart-container">
-            <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                    width={500}
-                    height={300}
-                    data={chartData}
-                    margin={{
-                        top: 20,
-                        right: 20,
-                        left: -25,
-                        bottom: 0
-                    }}
-                >
-                    <XAxis
-                        dataKey="period"
-                        angle={0}
-                        textAnchor="middle"
-                        height={60}
-                        label={{
-                            position: "bottom",
-                            offset: 0,
-                        }}
-                    />
-                    <YAxis
-                        domain={[0, maxValue]}
-                        axisLine={true}
-                        tickLine={false}
-                        ticks={[maxValue]}
-                        interval="preserveEnd"
-                        tickFormatter={(value) => value}
-                        minTickGap={0}
-                        allowDecimals={false}
-                        hide={false}
-                        style={{
-                            fontSize: '12px'
-                        }}
-                    />
-                    <Bar
-                        dataKey={dataKeys.primary}
-                        radius={[6, 6, 0, 0]}
-                        fill={colors.primary}
-                    />
-                    {showSecondaryBar && (
-                        <Bar
-                            dataKey={dataKeys.secondary}
-                            radius={[6, 6, 0, 0]}
-                            fill={colors.secondary}
-                        />
-                    )}
-                </BarChart>
-            </ResponsiveContainer>
-        </div>
+            <div className="chart-container">
+                <div className="chart-wrapper">
+                    <ResponsiveContainer width="100%" height={300}>
+                        <BarChart
+                            data={chartData}
+                            margin={{
+                                top: 20,
+                                right: 20,
+                                left: -25,
+                                bottom: 0
+                            }}
+                        >
+                            <XAxis
+                                dataKey="period"
+                                angle={0}
+                                textAnchor="middle"
+                                height={60}
+                            />
+                            <YAxis
+                                domain={[0, maxValue]}
+                                axisLine={true}
+                                tickLine={false}
+                                ticks={[maxValue]}
+                                interval="preserveEnd"
+                                tickFormatter={(value) => value}
+                                minTickGap={0}
+                                allowDecimals={false}
+                                hide={false}
+                            />
+                            <Bar
+                                dataKey={dataKeys.primary}
+                                radius={[6, 6, 0, 0]}
+                                fill={colors.primary}
+                            />
+                            {showSecondaryBar && (
+                                <Bar
+                                    dataKey={dataKeys.secondary}
+                                    radius={[6, 6, 0, 0]}
+                                    fill={colors.secondary}
+                                />
+                            )}
+                        </BarChart>
+                    </ResponsiveContainer>
+                </div>
+                
+                <MonthYearFilter
+                    isMonthly={isMonthly}
+                    onChange={handleViewChange}
+                />
+            </div>
     );
 };
 
