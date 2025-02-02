@@ -4,6 +4,7 @@ const translations = {
   es: {
     transactionTitle: "Transacciones",
     bonificationTitle: "Bonificaciones",
+    statisticsTitle: "Estadísticas",
     all: "Todas",
     incomes: "Ingresos",
     expenses: "Gastos",
@@ -35,6 +36,7 @@ const translations = {
   eus: {
     transactionTitle: "Transakzioak",
     bonificationTitle: "???",
+    statisticsTitle: "Estatistikak",
     all: "Guztiak",
     incomes: "Sarrerak",
     expenses: "Gastuak",
