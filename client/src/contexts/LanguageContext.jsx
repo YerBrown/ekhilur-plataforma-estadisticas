@@ -3,9 +3,12 @@ import { createContext, useState, useContext } from "react";
 const translations = {
   es: {
     transactionTitle: "Transacciones",
+    bonificationTitle: "Bonificaciones",
     all: "Todas",
     incomes: "Ingresos",
     expenses: "Gastos",
+    emmited: "Emitidas",
+    received: "Recibidas",
     searchBarInput: "Buscar transacciones",
     filterDate: "Periodo",
     filterImport: "Importe",
@@ -17,9 +20,12 @@ const translations = {
   },
   eus: {
     transactionTitle: "Transakzioak",
+    bonificationTitle: "???",
     all: "Guztiak",
     incomes: "Sarrerak",
     expenses: "Gastuak",
+    emmited: "???",
+    received: "???",
     searchBarInput: "Bilatu transakzioak",
     filterDate: "Denbora-tartea",
     filterImport: "Zenbatekoa",

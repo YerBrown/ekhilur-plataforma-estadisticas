@@ -141,6 +141,10 @@ const Home = () => {
                     <h3>Bonificaciones</h3>
                     {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                 </button>
+                <button onClick={() => handleNavigate("/bonifications-shop")}>
+                    <h3>Bonificaciones Comercio</h3>
+                    {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                </button>
                 <button onClick={() => handleNavigate("/statistics")}>
                     <h3>Estadisticas</h3>
                     {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
