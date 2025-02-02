@@ -73,11 +73,11 @@ const Transactions = () => {
 
 
     const handleFilterChange = (filter) => {
-        if (filter === "Todas") {
+        if (filter === t.all) {
             setFilteredTransactions(mockData);
-        } else if (filter === "Ingresos") {
+        } else if (filter === t.incomes) {
             setFilteredTransactions(mockData.filter(transaction => !transaction.cantidad.toString().includes('-')));
-        } else if (filter === "Gastos") {
+        } else if (filter === t.expenses) {
             setFilteredTransactions(mockData.filter(transaction => transaction.cantidad.toString().includes('-')));
         }
     };

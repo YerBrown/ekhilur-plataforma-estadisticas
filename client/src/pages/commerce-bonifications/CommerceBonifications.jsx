@@ -5,9 +5,9 @@ import BarChartComponent from "../../components/charts/BarChart.jsx";
 import DateFilter from "../../components/DateFilter/DateFilter.jsx";
 import { getCashbackIssuedByMonthAndYear } from "../../api/realData.js";
 import { useLanguage } from "../../contexts/LanguageContext.jsx";
+import BonificationsFilter from "../../components/buttons/bonifications-filter/BonificationsFilter.jsx";
 import TransactionList from "../../components/transactions-list/TransactionsList";
 import mockData  from "../../components/transactions-list/mockData.js";
-
 
 const CommerceBonifications = () => {
     const { t } = useLanguage();
@@ -20,7 +20,7 @@ const CommerceBonifications = () => {
     const [error, setError] = useState(null);
     const [apiData, setApiData] = useState(null);
     const [transactions, setTransactions] = useState(null);
-    
+    const [filteredTransactions, setFilteredTransactions] = useState(mockData);
 
     // Función para cargar los datos de la API
     const loadApiData = async () => {
@@ -102,6 +102,16 @@ const CommerceBonifications = () => {
         }
     };
 
+    const handleFilterChange = (filter) => {
+        if (filter === t.all) {
+            setFilteredTransactions(mockData);
+        } else if (filter === t.received) {
+            setFilteredTransactions(mockData.filter(transaction => !transaction.cantidad.toString().includes('-')));
+        } else if (filter === t.emmited) {
+            setFilteredTransactions(mockData.filter(transaction => transaction.cantidad.toString().includes('-')));
+        }
+    };
+
     return (
         <Layout title={t.bonificationTitle}>
             <div className="container-date-filter">
@@ -140,7 +150,8 @@ const CommerceBonifications = () => {
                             dataBars={apiData || []}
                         />
                     </div>
-                    <TransactionList transactions={mockData} />
+                    <BonificationsFilter onFilterChange={handleFilterChange} />
+                    <TransactionList transactions={filteredTransactions} />
                 </>
             )}
         </Layout>
