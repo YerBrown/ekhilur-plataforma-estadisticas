@@ -4,6 +4,8 @@ import "./Estadisticas.css";
 import BarChartComponent from "../../components/charts/BarChart";
 import DateFilter from "../../components/DateFilter/DateFilter";
 import {getIncomesAndExpensesByMonth } from "../../api/realData";
+import mockData  from "../../components/transactions-list/mockData.js";
+import TransactionList from "../../components/transactions-list/TransactionsList";
 import {
     FaAppleAlt,
     FaCoffee,
@@ -240,6 +242,7 @@ const Estadisticas = () => {
                             />
                         </div>
                         <CategoryChart categoryDataJson={categoryOptions} />
+                        <TransactionList transactions={mockData} />
                     </>
                 )}
             </Layout>
