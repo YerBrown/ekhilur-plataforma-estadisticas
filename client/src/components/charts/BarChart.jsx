@@ -113,12 +113,12 @@ const BarChartComponent = ({
                         domain={[0, maxValue]}
                         axisLine={true}
                         tickLine={false}
-                        ticks={[0, maxValue]}
+                        ticks={[maxValue]}
                         interval="preserveEnd"
                         tickFormatter={(value) => value}
                         minTickGap={0}
                         allowDecimals={false}
-                        hide={true}
+                        hide={false}
                         style={{
                             fontSize: '12px'
                         }}
