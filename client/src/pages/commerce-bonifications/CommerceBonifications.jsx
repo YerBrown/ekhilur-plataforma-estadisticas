@@ -34,7 +34,7 @@ const CommerceBonifications = () => {
             const transformedData = data.map(item => ({
                 año: item.anio,                         // Mantener año
                 mes: item.mes,                          // Mantener mes
-                incomes: Number(item.total_cashback_recibido),    // Poner total_cantidad como income
+                income: Number(item.total_cashback_recibido),    // Poner total_cantidad como income
                 expenses: Number(item.total_cashback_emitido),                          // Poner expenses a 0 (no lo usamos)
             }));
 
