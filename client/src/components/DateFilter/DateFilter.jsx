@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { SlArrowDown } from "react-icons/sl";
+import { SlArrowUp } from "react-icons/sl";
 import "./DateFilter.css";
 
 const DateFilter = ({ onDateFilter }) => {
@@ -61,6 +63,7 @@ const DateFilter = ({ onDateFilter }) => {
             className="date-filter-button"
           >
             {months[selectedMonth] || "MES"}
+            {isMonthOpen ? <SlArrowUp className="icon-small" /> : <SlArrowDown className="icon-small" />}
           </button>
 
           {isMonthOpen && (
@@ -88,6 +91,7 @@ const DateFilter = ({ onDateFilter }) => {
             className="date-filter-button"
           >
             {selectedYear || "AÑO"}
+            {isYearOpen ? <SlArrowUp className="icon-small" /> : <SlArrowDown className="icon-small" />}
           </button>
 
           {isYearOpen && (

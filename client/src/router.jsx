@@ -6,9 +6,10 @@ import Home from "./pages/home/Home";
 import Transactions from "./pages/transactions/Transactions";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ErrorBoundary from "./pages/errorBoundary/ErrorBoundary";
-import Sales from "./pages/sales/Sales";
 import Bonifications from "./pages/bonifications/Bonifications";
-import BonificationsShop from "./pages/bonifications-shop/BonificationsShop";
+import SalesCommerce from "./pages/sales/SalesCommerce";
+import UserBonifications from "./pages/bonifications/UserBonifications";
+import CommerceBonifications from "./pages/commerce-bonifications/CommerceBonifications";
 import Estadisticas from "./pages/estadisticas/Estadisticas";
 
 const router = createBrowserRouter([
@@ -38,18 +39,18 @@ const router = createBrowserRouter([
             },
             {
                 path: "/sales",
-                element: <Sales />,
+                element: <SalesCommerce />,
             },
             {
                 path: "/bonifications",
-                element: <Bonifications />,
+                element: <UserBonifications />,
             },
             {
                 path: "/bonifications-shop",
-                element: <BonificationsShop />,
+                element: <CommerceBonifications />,
             },
             {
-                path: "/estadistics",
+                path: "/statistics",
                 element: <Estadisticas />,
             },
         ],

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Layout from "../layout/Layout";
-import "./BonificationsShop.css";
-import BarChartComponent from "../../components/charts/BarChart";
-import DateFilter from "../../components/DateFilter/DateFilter";
-import { getCashbackIssuedByMonthAndYear } from "../../api/realData";
+import Layout from "../layout/Layout.jsx";
+import "./CommerceBonifications.css";
+import BarChartComponent from "../../components/charts/BarChart.jsx";
+import DateFilter from "../../components/DateFilter/DateFilter.jsx";
+import { getCashbackIssuedByMonthAndYear } from "../../api/realData.js";
 import { useLanguage } from "../../contexts/LanguageContext.jsx";
 
 
