@@ -153,6 +153,50 @@ async function getSalesByTypeMonthAndYear(req, res) {
     }
 }
 
+async function getHomeData(req, res) {
+    try {
+        const [
+            walletData,
+            bonificationsData,
+            statisticsData,
+            salesData,
+            transactionsData,
+        ] = await Promise.all([
+            apiRequest("/wallet", "GET").catch((error) => ({
+                error: "Error en walletData",
+            })),
+            apiRequest(
+                "/cashback_generado_total_mes_año/ilandatxe",
+                "GET"
+            ).catch((error) => ({ error: "Error en bonificationsData" })),
+            apiRequest("/resumen/ilandatxe", "GET").catch((error) => ({
+                error: "Error en statisticsData",
+            })),
+            apiRequest("/ventas_tipo_movimiento_mes/ilandatxe", "GET").catch(
+                (error) => ({ error: "Error en salesData" })
+            ),
+            apiRequest("/total_transacciones/ilandatxe", "GET").catch(
+                (error) => ({ error: "Error en transactionsData" })
+            ),
+        ]);
+
+        res.status(200).json({
+            walletData,
+            bonificationsData,
+            statisticsData,
+            salesData,
+            transactionsData,
+        });
+    } catch (error) {
+        console.error(
+            "Error al obtener los datos de la pagina principal:",
+            error
+        );
+        res.status(500).json({
+            error: "Error al obtener los datos de la pagina principa",
+        });
+    }
+}
 export default {
     getTotalTransactions,
     getCashbackIssuedByMonthAndYear,
@@ -163,4 +207,5 @@ export default {
     getSalesByMonthAndYear,
     getSalesByTypeAndYear,
     getSalesByTypeMonthAndYear,
+    getHomeData,
 };
