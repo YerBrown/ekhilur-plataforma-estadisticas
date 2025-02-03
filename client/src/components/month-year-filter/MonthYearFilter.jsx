@@ -11,7 +11,7 @@ const MonthYearFilter = ({
         {/* Opción de Años */}
         <div 
           className={`filter-option ${!isMonthly ? 'active' : 'inactive'}`}
-          onClick={() => onChange(false)}
+          onClick={() => onChange(true)}
         >
           <span className="filter-label-meses">Meses</span>
         </div>
@@ -19,7 +19,7 @@ const MonthYearFilter = ({
         {/* Opción de Meses */}
         <div 
           className={`filter-option ${isMonthly ? 'active' : 'inactive'}`}
-          onClick={() => onChange(true)}
+          onClick={() => onChange(false)}
         >
           <span className="filter-label-years">Años</span>
         </div>

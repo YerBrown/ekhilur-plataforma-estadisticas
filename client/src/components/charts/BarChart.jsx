@@ -3,6 +3,14 @@ import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import MonthYearFilter from '../month-year-filter/MonthYearFilter';
 import "./BarChart.css";
 
+/*const gastosAños = [
+
+    ]
+
+
+}*/
+
+
 const getAbbreviatedMonth = (month) => {
     const abbreviations = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
     return abbreviations[month] || month;

@@ -6,7 +6,6 @@
 .filter-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
- 
 }
 
 .filter-option {
@@ -18,17 +17,17 @@
   transition: all 0.2s ease-in-out;
 }
 
-.filter-option.active {
-  background-color: var(--color-grafico-naranja, #f97316);
-  color: white;
-}
-
 .filter-option.inactive {
+  box-shadow: 1px 0 4px rgba(0, 0, 0, 0.2),  /* derecha */
+  -1px 0 4px rgba(0, 0, 0, 0.2),  /* izquierda */
+   0 2px 4px rgba(0, 0, 0, 0.2);   /* abajo */
   background-color: transparent;
+  color: rgb(0, 0, 0);
 }
 
-.filter-option:hover.inactive {
-  background-color: #e5e7eb;
+.filter-option.active {
+  background-color: transparent;
+  color: var(--color-naranja-principal);
 }
 
 .filter-label {
@@ -37,9 +36,10 @@
 }
 
 .filter-option:first-child {
-  border-radius: 0 0 0 8px;
+  border-radius: 0px 8px 8px 8px;
 }
 
 .filter-option:last-child {
-  border-radius: 0 0 8px 0;
+  border-radius: 8px 0px 8px 8px;
 }
+
