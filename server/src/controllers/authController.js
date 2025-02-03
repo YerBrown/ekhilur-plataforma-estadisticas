@@ -62,7 +62,8 @@ async function verifyToken(token) {
             throw ERRORS.UNAUTHENTICATED;
         }
         const user = jwt.verify(token, process.env.JWT_SECRET);
-        return user;
+        const userData = await User.findById(user.userId);
+        return { role: userData.role, username: userData.username };
     } catch (error) {
         // Manejar errores específicos de JWT
         if (error.name === "TokenExpiredError") {
