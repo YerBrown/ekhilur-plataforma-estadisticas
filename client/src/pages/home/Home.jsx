@@ -31,6 +31,10 @@ const Home = () => {
         }
     }, [user, navigate]);
 
+    const handleNavigate = (path) => {
+        navigate(path);
+    };
+
     const walletLabels = walletDataJson.map((item) => item.label);
     const walletValues = walletDataJson.map((item) => item.value);
     const walletColors = walletDataJson.map((item) => item.color);
