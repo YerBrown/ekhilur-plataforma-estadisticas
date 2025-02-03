@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import TaskAltRoundedIcon from "@mui/icons-material/TaskAltRounded";
 import PanoramaFishEyeRoundedIcon from "@mui/icons-material/PanoramaFishEyeRounded";
 import { register, login } from "../../api/auth";
 import PasswordInput from "../../components/inputs/PasswordInput";
 import CryptoJS from "crypto-js";
+import { AuthContext } from "../../contexts/AuthContext";
 import "./Authentication.css";
 const Authentication = () => {
     const [isLogin, setIsLogin] = useState(true);
@@ -46,6 +47,8 @@ const Authentication = () => {
 const LoginForm = () => {
     const [responseMessage, setResponseMessage] = useState(null);
     const navigate = useNavigate();
+    const { loginUser } = useContext(AuthContext);
+
     const handleLogin = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
@@ -56,13 +59,19 @@ const LoginForm = () => {
                 usernameOrEmail: formValues.usernameOrEmail,
                 password: hashedPassword,
             });
-            console.log("Login exitoso:", response);
+            console.log("Respuesta del backend:", response);
+            
+            loginUser({
+                username: response.username,
+                role: response.role,
+            });
+
             setResponseMessage({
                 message: response.message,
                 status: "success",
             });
             setTimeout(() => {
-                navigate("/");
+                navigate("/home");
             }, 500);
         } catch (error) {
             console.error("Error al iniciar sesión:", error.message);
@@ -73,7 +82,7 @@ const LoginForm = () => {
         <form className="login-form" onSubmit={handleLogin}>
             <input
                 type="text"
-                placeholder="Nombre de usuario / Correo electrónico "
+                placeholder="Nombre de usuario"
                 name="usernameOrEmail"
             />
             <PasswordInput name="password" placeholder="Contraseña" />
