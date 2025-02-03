@@ -45,7 +45,8 @@ const ProfileAvatar = () => {
             </button>
             <div ref={modalRef} className={`logout-modal ${isModalOpen ? "active" : ""}`}>
                 <button onClick={handleLogout}>{t.logout}</button>
-                <button>{t.viewProfile}</button>
+                
+                <button onClick={() => navigate("/user-page")}>{t.viewProfile}</button>
             </div>
         </>
     );
