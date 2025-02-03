@@ -1,84 +1,10 @@
 import React, { useState } from "react";
 import DonutChart from "./DonutChart";
 import "./CategoryCharts.css";
-import {
-    FaAppleAlt,
-    FaCoffee,
-    FaTshirt,
-    FaHeart,
-    FaStore,
-    FaIndustry,
-    FaPaintBrush,
-    FaFutbol,
-    FaHandsHelping,
-} from "react-icons/fa";
 
-const CategoryChart = () => {
-    const [categories, setCategories] = useState([
-        {
-            label: "Alimentación",
-            value: 24,
-            color: "#0047ba",
-            "color-dark": "#001d4d",
-            icon: FaAppleAlt,
-        },
-        {
-            label: "Hostelería",
-            value: 32,
-            color: "#26C485",
-            "color-dark": "#0c402b",
-            icon: FaCoffee,
-        },
-        {
-            label: "Moda y Complementos",
-            value: 14,
-            color: "#54a9cd",
-            "color-dark": "#112f3b",
-            icon: FaTshirt,
-        },
-        {
-            label: "Salud y Estética",
-            value: 67,
-            color: "#ffc412",
-            "color-dark": "#4d3900",
-            icon: FaHeart,
-        },
-        {
-            label: "Servicios y Comercio General",
-            value: 32,
-            color: "#6f9ef0",
-            "color-dark": "#071e45",
-            icon: FaStore,
-        },
-        {
-            label: "Industria y Construcción",
-            value: 15,
-            color: "#ffef21",
-            "color-dark": "#4d4700",
-            icon: FaIndustry,
-        },
-        {
-            label: "Arte y Cultura",
-            value: 13,
-            color: "#ff9d6d",
-            "color-dark": "#4d1a00",
-            icon: FaPaintBrush,
-        },
-        {
-            label: "Deporte y Ocio",
-            value: 6,
-            color: "#382ef2",
-            "color-dark": "#080548",
-            icon: FaFutbol,
-        },
-        {
-            label: "Asociaciones y Cooperativas",
-            value: 120,
-            color: "#ff9012",
-            "color-dark": "#4d2900",
-            icon: FaHandsHelping,
-        },
-    ]);
+
+const CategoryChart = ({categoryDataJson}) => {
+    const [categories, setCategories] = useState(categoryDataJson);
 
     const getDataOptions = () => {
         const ategoryData = categories.map((category) => ({

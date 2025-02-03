@@ -3,26 +3,31 @@
     opacity: 0;
     transition: opacity .2s ease-in-out;
     background-color: transparent;
-    top: 40px;
-    right: 100px;
+    top: 90px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 button.user-avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
     border: none;
-    height: 100%;
-    aspect-ratio: 1/1;
-    background-color: var(--color-naranja-principal);
-    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
-    color:
-        var(--color-blanco);
+    background: none;
+    color: var(--color-naranja-principal);
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+button.user-avatar:hover {
+    color: var(--color-naranja-principal-background);
+    transform: scale(1.1);
 }
 
 .logout-modal.active {
     opacity: 1;
+}
+
+.logout-modal.active button {
+    pointer-events: all;
 }
 
 .logout-modal button {
@@ -31,8 +36,10 @@ button.user-avatar {
     padding: .5rem;
     border: none;
     box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
 }
 
 .logout-modal button:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    background-color: var(--color-naranja-principal-background);
 }
