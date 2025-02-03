@@ -181,7 +181,7 @@ const Estadisticas = () => {
                                 showSecondaryBar={true}
                             />
                         </div>
-                        <CategoryChart categoryDataJson={categoryOptions} />
+                        <CategoryChart categoryDataJson={fakeApiData} />
                         <TransactionList transactions={mockData} />
                     </>
                 )}

@@ -156,15 +156,15 @@ async function getSalesByTypeMonthAndYear(req, res) {
 async function getHomeData(req, res) {
     try {
         const [
-            walletData,
+            // walletData,
             bonificationsData,
             statisticsData,
             salesData,
             transactionsData,
         ] = await Promise.all([
-            apiRequest("/wallet", "GET").catch((error) => ({
-                error: "Error en walletData",
-            })),
+            // apiRequest("/wallet", "GET").catch((error) => ({
+            //     error: "Error en walletData",
+            // })),
             apiRequest(
                 "/cashback_generado_total_mes_año/ilandatxe",
                 "GET"
