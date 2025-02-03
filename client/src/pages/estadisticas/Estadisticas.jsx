@@ -4,6 +4,9 @@ import "./Estadisticas.css";
 import BarChartComponent from "../../components/charts/BarChart";
 import DateFilter from "../../components/DateFilter/DateFilter";
 import {getIncomesAndExpensesByMonth } from "../../api/realData";
+import mockData  from "../../components/transactions-list/mockData.js";
+import TransactionList from "../../components/transactions-list/TransactionsList";
+import MonthYearFilter from "../../components/month-year-filter/MonthYearFilter.jsx";
 import {
     FaAppleAlt,
     FaCoffee,
@@ -124,6 +127,8 @@ const Estadisticas = () => {
     const [error, setError] = useState(null);
     const [apiData, setApiData] = useState(null);
 
+
+
     const loadApiData = async () => {
         setIsLoading(true);
         setError(null);
@@ -237,9 +242,11 @@ const Estadisticas = () => {
                                     month: 'mes'
                                 }}
                                 showSecondaryBar={true}
+            
                             />
                         </div>
                         <CategoryChart categoryDataJson={categoryOptions} />
+                        <TransactionList transactions={mockData} />
                     </>
                 )}
             </Layout>
