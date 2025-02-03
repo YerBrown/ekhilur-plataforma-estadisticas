@@ -6,8 +6,7 @@ import { apiRequest } from "./apiRequest.js";
 // - Incluye montos totales y balance
 async function getTotalTransactions(req, res) {
     try {
-        const response = await apiRequest("/total_transacciones/ilandatxe", "GET");
-        console.log("Respuesta obtenida de la API externa:", response);
+        const response = await apiRequest(`/total_transacciones/${req.user.username}`, "GET");
         res.status(200).json(response);
     } catch (error) {
         console.error("Error al obtener las transacciones:", error);
@@ -21,8 +20,7 @@ async function getTotalTransactions(req, res) {
 // - Permite analizar el flujo de cashback a lo largo del tiempo
 async function getCashbackIssuedByMonthAndYear(req, res) {
     try {
-        const response = await apiRequest("/cashback_emitido_mes_año/ilandatxe", "GET");
-        console.log("Respuesta obtenida de la API externa:", response);
+        const response = await apiRequest(`/cashback_emitido_mes_año/${req.user.username}`, "GET");
         res.status(200).json(response);
     } catch (error) {
         console.error("Error al obtener el cashback:", error);
@@ -36,8 +34,7 @@ async function getCashbackIssuedByMonthAndYear(req, res) {
 // - Permite ver la distribución del cashback según su origen
 async function getCashbackGeneratedByTypeMonthAndYear(req, res) {
     try {
-        const response = await apiRequest("/cashback_generado_tipo_mes_año/ilandatxe", "GET");
-        console.log("Respuesta obtenida de la API externa:", response);
+        const response = await apiRequest(`/cashback_generado_tipo_mes_año/${req.user.username}`, "GET");
         res.status(200).json(response);
     } catch (error) {
         console.error("Error al obtener el cashback:", error);
@@ -51,8 +48,7 @@ async function getCashbackGeneratedByTypeMonthAndYear(req, res) {
 //- Proporciona una vista consolidada del cashback total
 async function getTotalCashbackByMonthAndYear(req, res) {
     try {
-        const response = await apiRequest("/cashback_generado_total_mes_año/ilandatxe", "GET");
-        console.log("Respuesta obtenida de la API externa:", response);
+        const response = await apiRequest(`/cashback_generado_total_mes_año/${req.user.username}`, "GET");
         res.status(200).json(response);
     } catch (error) {
         console.error("Error al obtener el cashback:", error);
@@ -66,8 +62,7 @@ async function getTotalCashbackByMonthAndYear(req, res) {
 // - Agrupa los datos por mes y año
 async function getIncomesAndExpensesByMonth(req, res) {
     try {
-        const response = await apiRequest("/ingresos_gastos/ilandatxe", "GET");
-        console.log("Respuesta obtenida de la API externa:", response);
+        const response = await apiRequest(`/ingresos_gastos/${req.user.username}`, "GET");
         res.status(200).json(response);
     } catch (error) {
         console.error("Error al obtener el cashback:", error);
@@ -81,8 +76,7 @@ async function getIncomesAndExpensesByMonth(req, res) {
 // - Ordenado por año y mes descendente
 async function getIncomesAndExpensesSummary(req, res) {
     try {
-        const response = await apiRequest("/resumen/ilandatxe", "GET");
-        console.log("Respuesta obtenida de la API externa:", response);
+        const response = await apiRequest(`/resumen/${req.user.username}`, "GET");
         res.status(200).json(response);
     } catch (error) {
         console.error("Error al obtener el resumen:", error);
@@ -96,8 +90,7 @@ async function getIncomesAndExpensesSummary(req, res) {
 // - Calcula ticket promedio
 async function getSalesByMonthAndYear(req, res) {
     try {
-        const response = await apiRequest("/ventas/ilandatxe", "GET");
-        console.log("Respuesta obtenida de la API externa:", response);
+        const response = await apiRequest(`/ventas/${req.user.username}`, "GET");
         res.status(200).json(response);
     } catch (error) {
         console.error("Error al obtener las ventas:", error);
@@ -111,8 +104,7 @@ async function getSalesByMonthAndYear(req, res) {
 // - Diferencia entre pagos de usuario y cobros QR
 async function getSalesByTypeAndYear(req, res) {
     try {
-        const response = await apiRequest("/ventas_tipo_movimiento/ilandatxe", "GET");
-        console.log("Respuesta obtenida de la API externa:", response);
+        const response = await apiRequest(`/ventas_tipo_movimiento/${req.user.username}`, "GET");
         res.status(200).json(response);
     } catch (error) {
         console.error("Error al obtener las ventas:", error);
@@ -126,8 +118,7 @@ async function getSalesByTypeAndYear(req, res) {
 // - Incluye promedios y tickets promedio
 async function getSalesByTypeMonthAndYear(req, res) {
     try {
-        const response = await apiRequest("/ventas_tipo_movimiento_mes/ilandatxe", "GET");
-        console.log("Respuesta obtenida de la API externa:", response);
+        const response = await apiRequest(`/ventas_tipo_movimiento_mes/${req.user.username}`, "GET");
         res.status(200).json(response);
     } catch (error) {
         console.error("Error al obtener las ventas:", error);
