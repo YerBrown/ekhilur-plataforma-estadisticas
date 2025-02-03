@@ -5,6 +5,8 @@ import { verify } from "../../api/auth";
 import DonutChart from "../../components/charts/DonutChart";
 import ProfileAvatar from "../../components/ProfileAvatar";
 import BarChartComponent from "../../components/charts/BarChart";
+import TransactionList from "../../components/transactions-list/TransactionsList";
+import mockData from "../../components/transactions-list/mockData.js";
 import { useTheme } from "../../contexts/ThemeContext";
 import "./Home.css";
 
@@ -24,6 +26,9 @@ const Home = () => {
         month: new Date().getMonth + 1,
         year: new Date().getFullYear,
     });
+    const [filteredTransactions, setFilteredTransactions] = useState(
+        mockData.splice(3)
+    );
     const navigate = useNavigate();
 
     const handleNavigate = (path) => {
@@ -124,9 +129,16 @@ const Home = () => {
                 <img src="logo_dos.png" alt="Logo Ekhidata" />
                 <div className="header-content">
                     <div className="language-button-container">
-                        <button className="language-button" onClick={setSpanish}>ES</button>
+                        <button
+                            className="language-button"
+                            onClick={setSpanish}
+                        >
+                            ES
+                        </button>
                         <p>|</p>
-                        <button className="language-button" onClick={setBasque}>EU</button>
+                        <button className="language-button" onClick={setBasque}>
+                            EU
+                        </button>
                     </div>
                     <ProfileAvatar />
                 </div>
@@ -139,7 +151,7 @@ const Home = () => {
                 </div>
                 <button onClick={() => handleNavigate("/bonifications")}>
                     <h3>Bonificaciones</h3>
-                    {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                    <BarChartComponent selectedPeriod={selectedPeriod} />
                 </button>
                 <button onClick={() => handleNavigate("/bonifications-shop")}>
                     <h3>Bonificaciones Comercio</h3>
@@ -147,11 +159,11 @@ const Home = () => {
                 </button>
                 <button onClick={() => handleNavigate("/statistics")}>
                     <h3>Estadisticas</h3>
-                    {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                    <BarChartComponent selectedPeriod={selectedPeriod} />
                 </button>
                 <button onClick={() => handleNavigate("/transactions")}>
                     <h3>Transacciones</h3>
-                    {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                    <TransactionList transactions={filteredTransactions} />
                 </button>
                 <button onClick={() => handleNavigate("/sales")}>
                     <h3>Ventas</h3>

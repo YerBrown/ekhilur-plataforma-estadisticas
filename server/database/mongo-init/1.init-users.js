@@ -25,5 +25,5 @@ db.users.insertMany([
         password:
             "$2a$10$80u1oHEBZ46kE3WVAObuH.udCnl6BsR1iM2RpLee56tFDq/fO.E5S",
         role: "commerce",
-    }
+    },
 ]);

@@ -129,4 +129,22 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-__pycache__
+__pycache__/
+*.py[cod]
+*$py.class
+# Archivos de caché de Python específicos
+.pytest_cache/
+.coverage
+htmlcov/
+# Entornos virtuales
+venv/
+env/
+ENV/
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+# IDEs y editores
+.idea/
+.vscode/
+*.swp
+*.swo
