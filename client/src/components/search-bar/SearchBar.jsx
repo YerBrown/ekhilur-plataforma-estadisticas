@@ -1,9 +1,11 @@
 import { useRef, useState, useEffect } from "react";
+import { useLanguage } from "../../contexts/LanguageContext.jsx";
 import { GoSearch } from "react-icons/go";
 import { IoCloseOutline } from "react-icons/io5";
 import "./SearchBar.css";
 
 const SearchBar = ({ onSearch }) => {
+    const { t } = useLanguage();
     const [isOpen, setIsOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const [startDate, setStartDate] = useState(null);
@@ -135,7 +137,7 @@ const SearchBar = ({ onSearch }) => {
                         <div className="search-bar-name-input-container">
                             <input
                                 type="text"
-                                placeholder="Buscar transacciones"
+                                placeholder={t.searchBarInput}
                                 value={searchTerm}
                                 onChange={handleNameChange}
                                 className="search-bar-name-input"
@@ -149,7 +151,7 @@ const SearchBar = ({ onSearch }) => {
 
                     <div className="search-bar-filters">
                         <div className="filter-group">
-                            <label className="filter-label">Periodo</label>
+                            <label className="filter-label">{t.filterDate}</label>
                             <div className="filter-dates">
                                 <input
                                     type="text"
@@ -171,18 +173,18 @@ const SearchBar = ({ onSearch }) => {
                         </div>
 
                         <div className="filter-group">
-                            <label className="filter-label">Importe</label>
+                            <label className="filter-label">{t.filterImport}</label>
                             <div className="filter-amounts">
                                 <input
                                     type="text"
-                                    placeholder="Mín."
+                                    placeholder={t.inputImportMin}
                                     value={minAmount}
                                     onChange={(e) => handleAmountChange(e.target.value, "min")}
                                     className="filter-input"
                                 />
                                 <input
                                     type="text"
-                                    placeholder="Máx."
+                                    placeholder={t.inputImportMax}
                                     value={maxAmount}
                                     onChange={(e) => handleAmountChange(e.target.value, "max")}
                                     className="filter-input"

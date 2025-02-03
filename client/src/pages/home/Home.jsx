@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate, Navigate } from "react-router-dom";
+import { useLanguage } from "../../contexts/LanguageContext.jsx";
 import { verify } from "../../api/auth";
 import DonutChart from "../../components/charts/DonutChart";
 import ProfileAvatar from "../../components/ProfileAvatar";
@@ -14,6 +15,7 @@ const walletDataJson = [
 ];
 
 const Home = () => {
+    const { t, setSpanish, setBasque } = useLanguage();
     const { theme } = useTheme();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -120,7 +122,14 @@ const Home = () => {
         <div className="home-page">
             <header>
                 <img src="logo_dos.png" alt="Logo Ekhidata" />
-                <ProfileAvatar />
+                <div className="header-content">
+                    <div className="language-button-container">
+                        <button className="language-button" onClick={setSpanish}>ES</button>
+                        <p>|</p>
+                        <button className="language-button" onClick={setBasque}>EU</button>
+                    </div>
+                    <ProfileAvatar />
+                </div>
             </header>
             <main>
                 <h1>Bienvenido, {user?.username}!</h1>
@@ -132,12 +141,20 @@ const Home = () => {
                     <h3>Bonificaciones</h3>
                     {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                 </button>
-                <button onClick={() => handleNavigate("/estadistics")}>
+                <button onClick={() => handleNavigate("/bonifications-shop")}>
+                    <h3>Bonificaciones Comercio</h3>
+                    {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                </button>
+                <button onClick={() => handleNavigate("/statistics")}>
                     <h3>Estadisticas</h3>
                     {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                 </button>
                 <button onClick={() => handleNavigate("/transactions")}>
                     <h3>Transacciones</h3>
+                    {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                </button>
+                <button onClick={() => handleNavigate("/sales")}>
+                    <h3>Ventas</h3>
                     {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                 </button>
             </main>

@@ -3,7 +3,10 @@ import Layout from "../layout/Layout";
 import "./Estadisticas.css";
 import BarChartComponent from "../../components/charts/BarChart";
 import DateFilter from "../../components/DateFilter/DateFilter";
-import { dataMonths } from "../../api/dataPruebas";
+import {getIncomesAndExpensesByMonth } from "../../api/realData";
+import mockData  from "../../components/transactions-list/mockData.js";
+import TransactionList from "../../components/transactions-list/TransactionsList";
+import MonthYearFilter from "../../components/month-year-filter/MonthYearFilter.jsx";
 import {
     FaAppleAlt,
     FaCoffee,
@@ -120,86 +123,132 @@ const Estadisticas = () => {
         totalIngresos: 0,
         totalGastos: 0,
     });
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [apiData, setApiData] = useState(null);
 
-    // Función de utilidad para formatear números
+
+
+    const loadApiData = async () => {
+        setIsLoading(true);
+        setError(null);
+        try {
+            const data = await getIncomesAndExpensesByMonth();
+            setApiData(data);
+            
+            if (selectedPeriod) {
+                updateStatisticsFromApiData(data, selectedPeriod);
+            }
+        } catch (error) {
+            console.error("Error al cargar datos:", error);
+            setError("No se pudieron cargar los datos. Por favor, intente más tarde.");
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        loadApiData();
+    }, []);
+
+    const updateStatisticsFromApiData = (data, period) => {
+        if (!data) return;
+
+        const { year, month } = period;
+        const monthData = data.find(item => 
+            item.año === year.toString() && 
+            parseInt(item.mes, 10) === month + 1
+        );
+
+        if (monthData) {
+            setStatistics({
+                totalIngresos: Number(monthData.ingresos),
+                totalGastos: Number(monthData.gastos)
+            });
+        } else {
+            setStatistics({
+                totalIngresos: 0,
+                totalGastos: 0
+            });
+        }
+    };
+
     const formatCurrency = (value) => {
         const num = Number(value);
         return Number.isInteger(num) ? `${num}€` : `${num.toFixed(1)}€`;
     };
 
-    // Función para determinar el estilo de la cantidad (positivo/negativo)
     const getAmountStyle = (value, isGasto = false) => {
-        return isGasto ? `-${formatCurrency(value)}` : formatCurrency(value);
+        if (isGasto && value > 0) {
+            return `-${formatCurrency(value)}`;
+        }
+        return formatCurrency(value);
     };
+
     const handleDateFilter = ({ year, month }) => {
-        // Actualizar el período seleccionado
         setSelectedPeriod({ year, month });
-
-        // Buscar los datos correspondientes al período seleccionado
-        const yearData = dataMonths.find((y) => y.año === year);
-        if (yearData) {
-            const monthData = yearData.datos.find((m) => m.mes === month);
-            if (monthData) {
-                setStatistics({
-                    totalIngresos: Number(
-                        monthData.total_ingresos.replace(",", ".")
-                    ),
-                    totalGastos: Number(
-                        monthData.total_gastos.replace(",", ".")
-                    ),
-                });
-            }
+        if (apiData) {
+            updateStatisticsFromApiData(apiData, { year, month });
         }
     };
 
-    // Inicializar con el último mes disponible
-    useEffect(() => {
-        if (dataMonths.length > 0) {
-            const years = [...dataMonths].sort((a, b) => b.año - a.año);
-            const lastYear = years[0];
-            const monthOrder = [
-                "enero", "febrero", "marzo", "abril", "mayo", "junio",
-                "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
-            ];
-            // Obtener el último mes ordenado correctamente
-            const lastMonthData = [...lastYear.datos]
-                .sort((a, b) => monthOrder.indexOf(b.mes) - monthOrder.indexOf(a.mes))[0];
-
-            handleDateFilter({
-                year: lastYear.año,
-                month: lastMonthData.mes
-            });
-        }
-    }, []);
     return (
         <div className="estadisticas-page">
             <Layout title="Estadísticas">
                 <div className="container-date-filter">
                     <DateFilter onDateFilter={handleDateFilter} />
                 </div>
-                <div className="container-ingresos-gastos">
-                    <div className="item-ingresos-gastos">
-                        <p className="label-ingresos">INGRESOS</p>
-                        <span className="amount-ingresos">
-                            {getAmountStyle(statistics.totalIngresos)}
-                        </span>
+                
+                {error && (
+                    <div className="error-message">
+                        {error}
                     </div>
-                    <div className="item-ingresos-gastos">
-                        <p className="label-gastos">GASTOS</p>
-                        <span className="amount-gastos">
-                            {getAmountStyle(statistics.totalGastos, true)}
-                        </span>
-                    </div>
-                </div>
-                <div className="chart-section">
-                    <BarChartComponent selectedPeriod={selectedPeriod} dataBars={dataMonths} />
-                </div>
-                <div>
-                    <CategoryChart categoryDataJson={categoryOptions} />
-                </div>
-                <div>
+                )}
 
-                </div>
+                {isLoading ? (
+                    <div className="loading-message">
+                        Cargando datos...
+                    </div>
+                ) : (
+                    <>
+                        <div className="container-ingresos-gastos">
+                            <div className="item-ingresos-gastos">
+                                <p className="label-ingresos">INGRESOS</p>
+                                <span className="amount-ingresos">
+                                    {getAmountStyle(statistics.totalIngresos)}
+                                </span>
+                            </div>
+                            <div className="item-ingresos-gastos">
+                                <p className="label-gastos">GASTOS</p>
+                                <span className="amount-gastos">
+                                    {getAmountStyle(statistics.totalGastos, true)}
+                                </span>
+                            </div>
+                        </div>
+                        <div className="chart-section">
+                            <BarChartComponent 
+                                selectedPeriod={selectedPeriod} 
+                                dataBars={apiData || []}
+                                dataKeys={{
+                                    primary: 'ingresos',
+                                    secondary: 'gastos'
+                                }}
+                                colors={{
+                                    primary: "var(--color-grafico-naranja)",
+                                    secondary: "var(--color-grafico-naranja-claro)"
+                                }}
+                                mappingKeys={{
+                                    year: 'año',
+                                    month: 'mes'
+                                }}
+                                showSecondaryBar={true}
+            
+                            />
+                        </div>
+                        <CategoryChart categoryDataJson={categoryOptions} />
+                        <TransactionList transactions={mockData} />
+                    </>
+                )}
             </Layout>
         </div>
     );

@@ -1,6 +1,9 @@
+import { useLanguage } from "../../contexts/LanguageContext";
 import "./TransactionsList.css";
 
 const TransactionList = ({ transactions }) => {
+    const { t, language } = useLanguage();
+
     // AGRUPAR TRANSACCIONES POR FECHA
     const groupedTransactions = transactions.reduce((groups, transaction) => {
         const fecha = transaction.fecha;
@@ -13,13 +16,49 @@ const TransactionList = ({ transactions }) => {
 
     // FORMATEAR FECHAS PARA EL TITULO
     const formatDate = (dateString) => {
-        const date = new Date(dateString);
-        const formattedDate = date.toLocaleDateString("es-ES", {
-            weekday: "long",
-            day: "numeric",
-            month: "long"
-        });
-        return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+        let date;
+
+        // Detectar formato y parsearlo correctamente
+        if (dateString.includes("/")) {
+            // Formato DD/MM/YYYY
+            const [day, month, year] = dateString.split("/").map(Number);
+            date = new Date(year, month - 1, day);
+        } else if (dateString.includes("-")) {
+            // Formato YYYY-MM-DD
+            date = new Date(dateString);
+        } else {
+            return dateString; // En caso de formato inesperado, devolver sin cambios
+        }
+
+        // Si el idioma es euskera, usamos inglés y luego reemplazamos los valores
+        if (language === "eus") {
+            const locale = "en-GB";
+            const weekday = new Intl.DateTimeFormat(locale, { weekday: "long" }).format(date);
+            const month = new Intl.DateTimeFormat(locale, { month: "long" }).format(date);
+            const day = new Intl.DateTimeFormat(locale, { day: "numeric" }).format(date);
+
+            let formattedDate = `${weekday}, ${month} ${day}`; // `Friday, May 27`
+
+            // Reemplazar los nombres de días y meses por sus equivalentes en euskera
+            Object.keys(t.dateTranslations).forEach(engWord => {
+                const eusWord = t.dateTranslations[engWord];
+                formattedDate = formattedDate.replace(engWord, eusWord);
+            });
+
+            return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+        }
+
+        // Si el idioma es español, aseguramos el formato correcto: `Viernes, 27 de mayo`
+        if (language === "es") {
+            const locale = "es-ES";
+            const weekday = new Intl.DateTimeFormat(locale, { weekday: "long" }).format(date);
+            const month = new Intl.DateTimeFormat(locale, { month: "long" }).format(date);
+            const day = new Intl.DateTimeFormat(locale, { day: "numeric" }).format(date);
+
+            return `${weekday.charAt(0).toUpperCase() + weekday.slice(1)}, ${day} de ${month}`;
+        }
+
+        return dateString;
     };
 
     return (
