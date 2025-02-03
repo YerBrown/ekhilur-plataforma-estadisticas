@@ -12,8 +12,6 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
         }
     }, [user]);
 
-    console.log("verificando acceso en ProtectedRoute:", user);
-
     if (loading) {
         return <p>Loading...</p>;
     }

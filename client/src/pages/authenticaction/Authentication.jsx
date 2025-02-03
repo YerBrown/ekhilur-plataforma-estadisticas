@@ -59,13 +59,10 @@ const LoginForm = () => {
                 usernameOrEmail: formValues.usernameOrEmail,
                 password: hashedPassword,
             });
-            console.log("Respuesta del backend:", response);
-            
             loginUser({
                 username: response.username,
                 role: response.role,
             });
-
             setResponseMessage({
                 message: response.message,
                 status: "success",

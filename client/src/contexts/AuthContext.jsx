@@ -9,7 +9,6 @@ export const AuthProvider = ({ children }) => {
     // Cargar usuario desde localStorage (opcional, para persistencia)
     useEffect(() => {
         const storedUser = localStorage.getItem("user");
-        console.log("Cargando usuario desde localStorage en AuthContext:", storedUser);
         if (storedUser) {
             setUser(JSON.parse(storedUser));
         }
@@ -17,8 +16,6 @@ export const AuthProvider = ({ children }) => {
 
     // Función para guardar el usuario en el contexto
     const loginUser = (userData) => {
-        console.log("Guardando usuario en contexto:", userData); // <-- Verifica si se guarda bien
-
         if (!userData) {
             console.error("Error: userData es undefined");
             return;

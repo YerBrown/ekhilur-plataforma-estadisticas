@@ -26,7 +26,6 @@ const Home = () => {
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        console.log("Usuario en AuthContext:", user);
         if (!user) {
             navigate("/authentication");
         }
