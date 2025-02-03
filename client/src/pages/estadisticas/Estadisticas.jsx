@@ -6,7 +6,6 @@ import DateFilter from "../../components/DateFilter/DateFilter";
 import {getIncomesAndExpensesByMonth } from "../../api/realData";
 import mockData  from "../../components/transactions-list/mockData.js";
 import TransactionList from "../../components/transactions-list/TransactionsList";
-import MonthYearFilter from "../../components/month-year-filter/MonthYearFilter.jsx";
 import {
     FaAppleAlt,
     FaCoffee,
