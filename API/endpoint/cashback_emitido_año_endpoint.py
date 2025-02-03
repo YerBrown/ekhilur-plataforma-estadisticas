@@ -1,24 +1,10 @@
-from flask import Flask, jsonify
+from flask import Blueprint, jsonify
 import sqlite3
 import pandas as pd
 import os
 
-app = Flask(__name__)
-
-# Añadir ruta raíz
-@app.route('/', methods=['GET'])
-def home():
-    """
-    Página de inicio que muestra información sobre cómo usar la API
-    """
-    return jsonify({
-        "mensaje": "Bienvenido a la API de Cashback",
-        "endpoints_disponibles": {
-            "cashback_emitido_anio": "/cashback_emitido_anio/<tabla_usuario>",
-            "tablas_permitidas": list({"fotostorres"})
-        },
-        "ejemplo_uso": "/cashback_emitido_anio/fotostorres"
-    })
+# Crear el blueprint con un nombre diferente
+cashback_emitido_bp = Blueprint('cashback_emitido_año', __name__)
 
 # Ruta relativa de la base de datos SQLite
 DATABASE_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'db')
@@ -28,15 +14,13 @@ print(f"Ruta de la base de datos: {DATABASE_PATH}")
 # Asegurarnos de que el directorio existe
 os.makedirs(DATABASE_DIR, exist_ok=True)
 
-# Función para calcular cashback emitido agrupado por año
-def cashback_emitido_anio(tabla_usuario):
+def cashback_emitido_año(tabla_usuario):
     # Validamos que la tabla esté permitida
-    tablas_permitidas = {"fotostorres"}
+    tablas_permitidas = {"fotostorres"}  # Solo permitimos fotostorres para este endpoint
     if tabla_usuario not in tablas_permitidas:
-        return {"error": "Nombre de tabla no permitido."}, 400
+        return {"error": "Este endpoint solo está disponible para la tabla fotostorres."}, 400
     
     try:
-        # Conectar a la base de datos
         conexion = sqlite3.connect(DATABASE_PATH)
     except sqlite3.OperationalError as e:
         return {
@@ -46,45 +30,47 @@ def cashback_emitido_anio(tabla_usuario):
         }, 500
     
     try:
-        # Construcción de la consulta SQL
         query = f"""
-        SELECT
-            strftime('%Y', Fecha) AS anio,
-            SUM(Cantidad) AS total_cashback_emitido
+        SELECT 
+            strftime('%Y', Fecha) AS año,
+            SUM(CASE 
+                WHEN Movimiento = 'Bonificación por compra' THEN ABS(Cantidad) 
+                ELSE 0 
+            END) AS bonificaciones_recibidas,
+            SUM(CASE 
+                WHEN Movimiento = 'Descuento automático' THEN -ABS(Cantidad) 
+                ELSE 0 
+            END) AS bonificaciones_emitidas
         FROM {tabla_usuario}
         WHERE Movimiento IN ('Descuento automático', 'Bonificación por compra')
-        AND Cantidad < 0
-        GROUP BY anio
-        ORDER BY anio;
+        GROUP BY año
+        ORDER BY año;
         """
-
-
         
-        # Ejecutar la consulta
         df = pd.read_sql_query(query, conexion)
         
-        # Cerrar la conexión
-        conexion.close()
+        resultado = []
+        for _, row in df.iterrows():
+            resultado.append({
+                "año": str(row['año']),
+                "bonificaciones_recibidas": int(row['bonificaciones_recibidas']),  # Valores positivos
+                "bonificaciones_emitidas": int(row['bonificaciones_emitidas'])     # Valores negativos
+            })
         
-        return df.to_dict(orient='records')
+        conexion.close()
+        return resultado
     except Exception as e:
         return {
             "error": "Error al ejecutar la consulta",
             "detalles": str(e)
         }, 500
 
-# Definir el endpoint para obtener cashback emitido por año
-@app.route('/cashback_emitido_anio/<string:tabla_usuario>', methods=['GET'])
-def get_cashback_emitido(tabla_usuario):
+@cashback_emitido_bp.route('/cashback_emitido_año/<string:tabla_usuario>', methods=['GET'])
+def get_cashback_emitido_año(tabla_usuario):
     """
     Endpoint para obtener cashback emitido agrupado por año según la tabla de usuario.
     """
-    resultado = cashback_emitido_anio(tabla_usuario)
-    # Si la función devuelve un error, lo retornamos como JSON
+    resultado = cashback_emitido_año(tabla_usuario)
     if isinstance(resultado, tuple):
         return jsonify({"error": resultado[0]}), resultado[1]
     return jsonify(resultado)
-
-# Iniciar el servidor Flask
-if __name__ == '__main__':
-    app.run(debug=True)
