@@ -3,8 +3,21 @@ import Layout from "../layout/Layout";
 import "./Estadisticas.css";
 import BarChartComponent from "../../components/charts/BarChart";
 import DateFilter from "../../components/DateFilter/DateFilter";
-import { dataMonths } from "../../api/dataPruebas";
 import { getIncomesAndExpensesByMonth } from "../../api/realData";
+import mockData from "../../components/transactions-list/mockData.js";
+import TransactionList from "../../components/transactions-list/TransactionsList";
+import MonthYearFilter from "../../components/month-year-filter/MonthYearFilter.jsx";
+import {
+    FaAppleAlt,
+    FaCoffee,
+    FaTshirt,
+    FaHeart,
+    FaStore,
+    FaIndustry,
+    FaPaintBrush,
+    FaFutbol,
+    FaHandsHelping,
+} from "react-icons/fa";
 import CategoryChart from "../../components/charts/CategoryCharts";
 
 const fakeApiData = [
@@ -52,7 +65,6 @@ const Estadisticas = () => {
     const [error, setError] = useState(null);
     const [apiData, setApiData] = useState(null);
 
-    // Función para cargar los datos de la API
     const loadApiData = async () => {
         setIsLoading(true);
         setError(null);
@@ -60,7 +72,6 @@ const Estadisticas = () => {
             const data = await getIncomesAndExpensesByMonth();
             setApiData(data);
 
-            // Si hay un período seleccionado, actualizar las estadísticas
             if (selectedPeriod) {
                 updateStatisticsFromApiData(data, selectedPeriod);
             }
@@ -74,17 +85,14 @@ const Estadisticas = () => {
         }
     };
 
-    // Cargar datos cuando el componente se monta
     useEffect(() => {
         loadApiData();
     }, []);
 
-    // Función para actualizar estadísticas basadas en los datos de la API
     const updateStatisticsFromApiData = (data, period) => {
         if (!data) return;
 
         const { year, month } = period;
-        // Buscar el dato correspondiente al mes y año seleccionados
         const monthData = data.find(
             (item) =>
                 item.año === year.toString() &&
@@ -104,13 +112,11 @@ const Estadisticas = () => {
         }
     };
 
-    // Función para formatear números
     const formatCurrency = (value) => {
         const num = Number(value);
         return Number.isInteger(num) ? `${num}€` : `${num.toFixed(1)}€`;
     };
 
-    // Función para determinar el estilo de la cantidad
     const getAmountStyle = (value, isGasto = false) => {
         if (isGasto && value > 0) {
             return `-${formatCurrency(value)}`;
@@ -159,9 +165,24 @@ const Estadisticas = () => {
                             <BarChartComponent
                                 selectedPeriod={selectedPeriod}
                                 dataBars={apiData || []}
+                                dataKeys={{
+                                    primary: "ingresos",
+                                    secondary: "gastos",
+                                }}
+                                colors={{
+                                    primary: "var(--color-grafico-naranja)",
+                                    secondary:
+                                        "var(--color-grafico-naranja-claro)",
+                                }}
+                                mappingKeys={{
+                                    year: "año",
+                                    month: "mes",
+                                }}
+                                showSecondaryBar={true}
                             />
                         </div>
-                        <CategoryChart categoryDataJson={fakeApiData} />
+                        <CategoryChart categoryDataJson={categoryOptions} />
+                        <TransactionList transactions={mockData} />
                     </>
                 )}
             </Layout>
