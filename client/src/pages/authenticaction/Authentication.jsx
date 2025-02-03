@@ -71,7 +71,7 @@ const LoginForm = () => {
                 status: "success",
             });
             setTimeout(() => {
-                navigate("/home");
+                navigate("/");
             }, 500);
         } catch (error) {
             console.error("Error al iniciar sesión:", error.message);

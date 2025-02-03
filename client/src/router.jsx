@@ -21,7 +21,7 @@ const router = createBrowserRouter([
                 element: <Authentication />,
             },
             {
-                path: "/home",
+                path: "",
                 element: (
                     <ProtectedRoute allowedRoles={["user", "commerce"]}>
                         <Home />
