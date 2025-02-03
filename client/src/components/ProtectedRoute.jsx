@@ -1,31 +1,24 @@
-import React, { useState, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import Cookies from "js-cookie";
-import { verify } from "../api/auth";
+import { AuthContext } from "../contexts/AuthContext";
 
-const ProtectedRoute = ({ children }) => {
-    const [isLoading, setIsLoading] = useState(true);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+const ProtectedRoute = ({ children, allowedRoles }) => {
+    const { user } = useContext(AuthContext);
+    const [ loading, setLoading ] = useState(true);
+
     useEffect(() => {
-        const checkAuth = async () => {
-            try {
-                await verify();
-                setIsAuthenticated(true);
-            } catch (error) {
-                setIsAuthenticated(false);
-            } finally {
-                setIsLoading(false);
-            }
-        };
+        if (user !== null) {
+            setLoading(false);
+        }
+    }, [user]);
 
-        checkAuth();
-    }, []);
+    console.log("verificando acceso en ProtectedRoute:", user);
 
-    if (isLoading) {
-        return <></>;
+    if (loading) {
+        return <p>Loading...</p>;
     }
 
-    if (!isAuthenticated) {
+    if (!user || (allowedRoles && !allowedRoles.includes(user.role))) {
         return <Navigate to="/authentication" />;
     }
 
