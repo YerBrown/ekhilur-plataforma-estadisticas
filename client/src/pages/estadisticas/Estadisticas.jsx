@@ -3,8 +3,8 @@ import Layout from "../layout/Layout";
 import "./Estadisticas.css";
 import BarChartComponent from "../../components/charts/BarChart";
 import DateFilter from "../../components/DateFilter/DateFilter";
-import {getIncomesAndExpensesByMonth } from "../../api/realData";
-import mockData  from "../../components/transactions-list/mockData.js";
+import { getIncomesAndExpensesByMonth } from "../../api/realData";
+import mockData from "../../components/transactions-list/mockData.js";
 import TransactionList from "../../components/transactions-list/TransactionsList";
 import {
     FaAppleAlt,
@@ -18,73 +18,11 @@ import {
     FaHandsHelping,
 } from "react-icons/fa";
 import CategoryChart from "../../components/charts/CategoryCharts";
-const categoryOptions = [
-    {
-        label: "Alimentación",
-        color: "#0047ba",
-        "color-dark": "#001d4d",
-        icon: FaAppleAlt,
-    },
-    {
-        label: "Hostelería",
-        color: "#26C485",
-        "color-dark": "#0c402b",
-        icon: FaCoffee,
-    },
-    {
-        label: "Moda y Complementos",
-        color: "#54a9cd",
-        "color-dark": "#112f3b",
-        icon: FaTshirt,
-    },
-    {
-        label: "Salud y Estética",
-        color: "#ffc412",
-        "color-dark": "#4d3900",
-        icon: FaHeart,
-    },
-    {
-        label: "Servicios y Comercio General",
-        color: "#6f9ef0",
-        "color-dark": "#071e45",
-        icon: FaStore,
-    },
-    {
-        label: "Industria y Construcción",
-        color: "#ffef21",
-        "color-dark": "#4d4700",
-        icon: FaIndustry,
-    },
-    {
-        label: "Arte y Cultura",
-        value: 13,
-        color: "#ff9d6d",
-        "color-dark": "#4d1a00",
-        icon: FaPaintBrush,
-    },
-    {
-        label: "Deporte y Ocio",
-        value: 6,
-        color: "#382ef2",
-        "color-dark": "#080548",
-        icon: FaFutbol,
-    },
-    {
-        label: "Asociaciones y Cooperativas",
-        value: 120,
-        color: "#ff9012",
-        "color-dark": "#4d2900",
-        icon: FaHandsHelping,
-    },
-];
+
 const fakeApiData = [
     {
         label: "Alimentación",
         value: 50,
-    },
-    {
-        label: "Hostelería",
-        value: 32,
     },
     {
         label: "Moda y Complementos",
@@ -126,21 +64,21 @@ const Estadisticas = () => {
     const [error, setError] = useState(null);
     const [apiData, setApiData] = useState(null);
 
-
-
     const loadApiData = async () => {
         setIsLoading(true);
         setError(null);
         try {
             const data = await getIncomesAndExpensesByMonth();
             setApiData(data);
-            
+
             if (selectedPeriod) {
                 updateStatisticsFromApiData(data, selectedPeriod);
             }
         } catch (error) {
             console.error("Error al cargar datos:", error);
-            setError("No se pudieron cargar los datos. Por favor, intente más tarde.");
+            setError(
+                "No se pudieron cargar los datos. Por favor, intente más tarde."
+            );
         } finally {
             setIsLoading(false);
         }
@@ -154,20 +92,21 @@ const Estadisticas = () => {
         if (!data) return;
 
         const { year, month } = period;
-        const monthData = data.find(item => 
-            item.año === year.toString() && 
-            parseInt(item.mes, 10) === month + 1
+        const monthData = data.find(
+            (item) =>
+                item.año === year.toString() &&
+                parseInt(item.mes, 10) === month + 1
         );
 
         if (monthData) {
             setStatistics({
                 totalIngresos: Number(monthData.ingresos),
-                totalGastos: Number(monthData.gastos)
+                totalGastos: Number(monthData.gastos),
             });
         } else {
             setStatistics({
                 totalIngresos: 0,
-                totalGastos: 0
+                totalGastos: 0,
             });
         }
     };
@@ -197,17 +136,11 @@ const Estadisticas = () => {
                 <div className="container-date-filter">
                     <DateFilter onDateFilter={handleDateFilter} />
                 </div>
-                
-                {error && (
-                    <div className="error-message">
-                        {error}
-                    </div>
-                )}
+
+                {error && <div className="error-message">{error}</div>}
 
                 {isLoading ? (
-                    <div className="loading-message">
-                        Cargando datos...
-                    </div>
+                    <div className="loading-message">Cargando datos...</div>
                 ) : (
                     <>
                         <div className="container-ingresos-gastos">
@@ -220,31 +153,34 @@ const Estadisticas = () => {
                             <div className="item-ingresos-gastos">
                                 <p className="label-gastos">GASTOS</p>
                                 <span className="amount-gastos">
-                                    {getAmountStyle(statistics.totalGastos, true)}
+                                    {getAmountStyle(
+                                        statistics.totalGastos,
+                                        true
+                                    )}
                                 </span>
                             </div>
                         </div>
                         <div className="chart-section">
-                            <BarChartComponent 
-                                selectedPeriod={selectedPeriod} 
+                            <BarChartComponent
+                                selectedPeriod={selectedPeriod}
                                 dataBars={apiData || []}
                                 dataKeys={{
-                                    primary: 'ingresos',
-                                    secondary: 'gastos'
+                                    primary: "ingresos",
+                                    secondary: "gastos",
                                 }}
                                 colors={{
                                     primary: "var(--color-grafico-naranja)",
-                                    secondary: "var(--color-grafico-naranja-claro)"
+                                    secondary:
+                                        "var(--color-grafico-naranja-claro)",
                                 }}
                                 mappingKeys={{
-                                    year: 'año',
-                                    month: 'mes'
+                                    year: "año",
+                                    month: "mes",
                                 }}
                                 showSecondaryBar={true}
-            
                             />
                         </div>
-                        <CategoryChart categoryDataJson={categoryOptions} />
+                        <CategoryChart categoryDataJson={fakeApiData} />
                         <TransactionList transactions={mockData} />
                     </>
                 )}
