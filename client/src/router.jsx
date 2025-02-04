@@ -1,4 +1,3 @@
-import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Root from "./pages/root/Root";
 import Authentication from "./pages/authenticaction/Authentication";
@@ -6,11 +5,11 @@ import Home from "./pages/home/Home";
 import Transactions from "./pages/transactions/Transactions";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ErrorBoundary from "./pages/errorBoundary/ErrorBoundary";
-import Bonifications from "./pages/bonifications/Bonifications";
 import SalesCommerce from "./pages/sales/SalesCommerce";
 import UserBonifications from "./pages/bonifications/UserBonifications";
 import CommerceBonifications from "./pages/commerce-bonifications/CommerceBonifications";
 import Estadisticas from "./pages/estadisticas/Estadisticas";
+import UserPage from "./pages/userpage/UserPage";
 
 const router = createBrowserRouter([
     {
@@ -18,40 +17,68 @@ const router = createBrowserRouter([
         element: <Root />,
         children: [
             {
+                path: "/authentication",
+                element: <Authentication />,
+            },
+            {
                 path: "",
                 element: (
-                    <ProtectedRoute>
+                    <ProtectedRoute allowedRoles={["user", "commerce"]}>
                         <Home />
                     </ProtectedRoute>
                 ),
             },
             {
-                path: "/authentication",
-                element: <Authentication />,
+                path: "/transactions",
+                element: (
+                    <ProtectedRoute allowedRoles={["user", "commerce"]}>
+                        <Transactions />
+                    </ProtectedRoute>
+                ),
             },
             {
-                path: "/transactions",
-                element: <Transactions />,
+                path: "/sales",
+                element: (
+                    <ProtectedRoute allowedRoles={["commerce"]}>
+                        <SalesCommerce />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: "/bonifications",
+                element: (
+                    <ProtectedRoute allowedRoles={["user"]}>
+                        <UserBonifications />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: "/bonifications-shop",
+                element: (
+                    <ProtectedRoute allowedRoles={["commerce"]}>
+                        <CommerceBonifications />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: "/statistics",
+                element: (
+                    <ProtectedRoute allowedRoles={["user", "commerce"]}>
+                        <Estadisticas />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: "/user-page",
+                element: (
+                    <ProtectedRoute allowedRoles={["user", "commerce"]}>
+                        <UserPage />
+                    </ProtectedRoute>
+                ),
             },
             {
                 path: "*",
                 element: <ErrorBoundary />,
-            },
-            {
-                path: "/sales",
-                element: <SalesCommerce />,
-            },
-            {
-                path: "/bonifications",
-                element: <UserBonifications />,
-            },
-            {
-                path: "/bonifications-shop",
-                element: <CommerceBonifications />,
-            },
-            {
-                path: "/statistics",
-                element: <Estadisticas />,
             },
         ],
     },

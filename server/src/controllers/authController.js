@@ -48,12 +48,17 @@ async function login(usernameOrEmail, password) {
     }
 
     const token = jwt.sign(
-        { userId: user._id, username: user.username, email: user.email },
+        { userId: user._id, username: user.username, role: user.role },
         process.env.JWT_SECRET,
         { expiresIn: "1d" }
     );
 
-    return token;
+    return {
+        message: "Sesión iniciada correctamente",
+        username: user.username,
+        role: user.role,
+        token: token,
+    };
 }
 
 async function verifyToken(token) {
@@ -62,7 +67,8 @@ async function verifyToken(token) {
             throw ERRORS.UNAUTHENTICATED;
         }
         const user = jwt.verify(token, process.env.JWT_SECRET);
-        return user;
+        const userData = await User.findById(user.userId);
+        return { role: userData.role, username: userData.username };
     } catch (error) {
         // Manejar errores específicos de JWT
         if (error.name === "TokenExpiredError") {
