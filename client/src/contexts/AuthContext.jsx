@@ -5,24 +5,20 @@ import { verify } from "../api/auth";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(undefined);
 
     // Verificar el token en la cookie al cargar la aplicación
-    useEffect(() => {
-        const checkUser = async () => {
-            try {
+    const checkUser = async () => {
+        try {
+            if (user === undefined) {
                 const verifiedUser = await verify();
-                if (verifiedUser) {
-                    setUser(verifiedUser);
-                }
-            } catch (error) {
-                console.error("Error al verificar el usuario", error);
-                setUser(null);
+                setUser(verifiedUser);
             }
-        };
-
-        checkUser();
-    }, []);
+        } catch (error) {
+            // console.error("Error al verificar el usuario", error);
+            setUser(null);
+        }
+    };
 
     // Función para guardar el usuario en el contexto
     const loginUser = (userData) => {
@@ -39,7 +35,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, loginUser, logoutUser }}>
+        <AuthContext.Provider value={{ user, loginUser, logoutUser,checkUser }}>
             {children}
         </AuthContext.Provider>
     );
