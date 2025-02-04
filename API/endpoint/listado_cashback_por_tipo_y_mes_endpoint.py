@@ -1,29 +1,28 @@
 from flask import Blueprint, jsonify
-import sqlite3
-import pandas as pd
-import os
+from sqlite3 import connect, OperationalError
+from os.path import join, dirname, exists
+from os import makedirs
+from pandas import read_sql_query, DataFrame
 
 # Crear el blueprint
-cashback_listado_bp = Blueprint('cashback_listado', __name__)
+cashback_listado_bp = Blueprint('listado_cashback_por_tipo_y_mes', __name__)
 
 # Ruta relativa de la base de datos SQLite
-DATABASE_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'db')
-DATABASE_PATH = os.path.join(DATABASE_DIR, 'datos_sqlite.db')
-print(f"Ruta de la base de datos: {DATABASE_PATH}")
+DATABASE_DIR = join(dirname(dirname(__file__)), 'db')
+DATABASE_PATH = join(DATABASE_DIR, 'datos_sqlite.db')
 
 # Asegurarnos de que el directorio existe
-os.makedirs(DATABASE_DIR, exist_ok=True)
+makedirs(DATABASE_DIR, exist_ok=True)
 
-# Función para obtener el cashback por mes
-def get_cashback_por_mes(tabla_usuario):
+def listado_cashback_por_tipo_y_mes(tabla_usuario):
     # Validamos que la tabla esté permitida
-    tablas_permitidas = {"ilandatxe", "fotostorres", "alomorga", "categorias"}
+    tablas_permitidas = {"fotostorres"}
     if tabla_usuario not in tablas_permitidas:
-        return {"error": "Nombre de tabla no permitido."}, 400
+        return {"error": "Este endpoint solo está disponible para la tabla fotostorres."}, 400
     
     try:
-        conexion = sqlite3.connect(DATABASE_PATH)
-    except sqlite3.OperationalError as e:
+        conexion = connect(DATABASE_PATH)
+    except OperationalError as e:
         return {
             "error": "No se pudo conectar a la base de datos",
             "detalles": str(e),
@@ -31,30 +30,30 @@ def get_cashback_por_mes(tabla_usuario):
         }, 500
     
     try:
-        # Query mejorada para obtener cashback por mes
         query = f"""
         SELECT 
             strftime('%Y', Fecha) AS año,
             strftime('%m', Fecha) AS mes,
             Movimiento as tipo_movimiento,
-            COUNT(*) as total_operaciones,
-            SUM(ABS(Cantidad)) as importe_total
+            "Usuario Asociado" as comercio,
+            ABS(Cantidad) as cantidad,
+            date(Fecha) as fecha_exacta
         FROM {tabla_usuario}
-        WHERE Movimiento IN ('Descuento automático', 'Bonificación por compra')
-        GROUP BY año, mes, tipo_movimiento
-        ORDER BY año DESC, mes DESC, tipo_movimiento;
+        WHERE Movimiento IN ('Bonificación por compra', 'Descuento automático')
+        ORDER BY fecha_exacta DESC;
         """
         
-        df = pd.read_sql_query(query, conexion)
+        df = read_sql_query(query, conexion)
         
         resultado = []
         for _, row in df.iterrows():
             resultado.append({
                 "año": str(row['año']),
-                "mes": str(row['mes']).zfill(2),  # Asegura que el mes tenga 2 dígitos
+                "mes": str(row['mes']).zfill(2),
                 "tipo_movimiento": str(row['tipo_movimiento']),
-                "total_operaciones": int(row['total_operaciones']),
-                "importe_total": float(row['importe_total'])
+                "comercio": str(row['comercio']),
+                "cantidad": float(row['cantidad']),
+                "fecha": str(row['fecha_exacta'])
             })
         
         conexion.close()
@@ -65,13 +64,12 @@ def get_cashback_por_mes(tabla_usuario):
             "detalles": str(e)
         }, 500
 
-# Definir el endpoint para obtener cashback por mes
 @cashback_listado_bp.route('/listado_cashback_por_tipo_y_mes/<string:tabla_usuario>', methods=['GET'])
-def cashback_mes(tabla_usuario):
+def get_listado_cashback_por_tipo_y_mes(tabla_usuario):
     """
-    Endpoint para obtener listado de cashback por tipo y mes.
+    Endpoint para obtener el listado detallado de cashback por tipo y mes.
     """
-    resultado = get_cashback_por_mes(tabla_usuario)
+    resultado = listado_cashback_por_tipo_y_mes(tabla_usuario)
     if isinstance(resultado, tuple):
         return jsonify({"error": resultado[0]}), resultado[1]
     return jsonify(resultado)

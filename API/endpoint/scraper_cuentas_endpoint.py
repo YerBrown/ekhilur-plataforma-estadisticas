@@ -1,16 +1,27 @@
 from flask import Blueprint, jsonify
-import os
-import json
+from sqlite3 import connect
+from os.path import join, dirname, exists
+from datetime import datetime
 from scraper.scraper_cuentas import EkhilurCuentasScraper
+from utils.crypto_utils import cipher, data_cipher
 
 # Crear el blueprint
 scraper_cuentas_bp = Blueprint('scraper_cuentas', __name__)
 
-# Credenciales de usuarios
+# Credenciales cifradas
 CREDENTIALS = {
-    "alomorga": {"username": "alomorga", "password": "111111"},
-    "ilandatxe": {"username": "ilandatxe", "password": "111111"},
-    "fotostorres": {"username": "FotosTorres", "password": "123456"}
+    "alomorga": {
+        "username": cipher.encrypt("alomorga"),
+        "password": cipher.encrypt("111111")
+    },
+    "ilandatxe": {
+        "username": cipher.encrypt("ilandatxe"),
+        "password": cipher.encrypt("111111")
+    },
+    "fotostorres": {
+        "username": cipher.encrypt("FotosTorres"),
+        "password": cipher.encrypt("123456")
+    }
 }
 
 @scraper_cuentas_bp.route('/cuentas/<string:username>', methods=['GET'])
@@ -27,22 +38,25 @@ def get_cuentas(username):
 
     try:
         # Primero intentar leer del archivo JSON
-        data_dir = os.path.join('scraper', 'data', 'scraper')
-        json_path = os.path.join(data_dir, f'cuentas_{username}.json')
+        data_dir = join('scraper', 'data', 'scraper')
+        json_path = join(data_dir, f'cuentas_{username}.json')
 
-        # Si el archivo existe, devolver los datos guardados
-        if os.path.exists(json_path):
-            with open(json_path, 'r', encoding='utf-8') as f:
-                cuentas_data = json.load(f)
+        # Si el archivo existe, devolver los datos guardados descifrados
+        if exists(json_path):
+            decrypted_data = data_cipher.load_encrypted_json(json_path)
+            if decrypted_data:
                 return jsonify({
                     "status": "success",
                     "source": "cache",
-                    "data": cuentas_data
+                    "data": decrypted_data
                 })
 
         # Si no existe, hacer scraping
         scraper = EkhilurCuentasScraper()
-        creds = CREDENTIALS[username.lower()]
+        creds = {
+            "username": cipher.decrypt(CREDENTIALS[username.lower()]["username"]),
+            "password": cipher.decrypt(CREDENTIALS[username.lower()]["password"])
+        }
         
         if scraper.login(creds["username"], creds["password"]):
             cuentas_data = scraper.get_cuentas_data()
@@ -85,7 +99,10 @@ def refresh_cuentas(username):
 
     try:
         scraper = EkhilurCuentasScraper()
-        creds = CREDENTIALS[username.lower()]
+        creds = {
+            "username": cipher.decrypt(CREDENTIALS[username.lower()]["username"]),
+            "password": cipher.decrypt(CREDENTIALS[username.lower()]["password"])
+        }
         
         if scraper.login(creds["username"], creds["password"]):
             cuentas_data = scraper.get_cuentas_data()

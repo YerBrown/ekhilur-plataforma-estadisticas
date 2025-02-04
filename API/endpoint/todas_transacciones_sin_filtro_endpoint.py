@@ -1,29 +1,28 @@
 from flask import Blueprint, jsonify
-import sqlite3
-import pandas as pd
-import os
+from sqlite3 import connect, OperationalError
+from os.path import join, dirname, exists
+from os import makedirs
+from pandas import read_sql_query, DataFrame
 
 # Crear el blueprint
-transacciones_bp = Blueprint('transacciones', __name__)
+transacciones_bp = Blueprint('todas_transacciones_sin_filtro', __name__)
 
 # Ruta relativa de la base de datos SQLite
-DATABASE_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'db')
-DATABASE_PATH = os.path.join(DATABASE_DIR, 'datos_sqlite.db')
-print(f"Ruta de la base de datos: {DATABASE_PATH}")
+DATABASE_DIR = join(dirname(dirname(__file__)), 'db')
+DATABASE_PATH = join(DATABASE_DIR, 'datos_sqlite.db')
 
 # Asegurarnos de que el directorio existe
-os.makedirs(DATABASE_DIR, exist_ok=True)
+makedirs(DATABASE_DIR, exist_ok=True)
 
-# Función para obtener listado de todas las transacciones
 def get_listado_todas_sin(tabla_usuario):
     # Validamos que la tabla esté permitida
-    tablas_permitidas = {"ilandatxe", "fotostorres", "alomorga", "categorias"}
+    tablas_permitidas = {"fotostorres"}
     if tabla_usuario not in tablas_permitidas:
-        return {"error": "Nombre de tabla no permitido."}, 400
+        return {"error": "Este endpoint solo está disponible para la tabla fotostorres."}, 400
     
     try:
-        conexion = sqlite3.connect(DATABASE_PATH)
-    except sqlite3.OperationalError as e:
+        conexion = connect(DATABASE_PATH)
+    except OperationalError as e:
         return {
             "error": "No se pudo conectar a la base de datos",
             "detalles": str(e),
@@ -31,7 +30,6 @@ def get_listado_todas_sin(tabla_usuario):
         }, 500
     
     try:
-        # Query mejorada para obtener todas las transacciones
         query = f"""
         SELECT 
             strftime('%Y', Fecha) AS año,
@@ -46,13 +44,13 @@ def get_listado_todas_sin(tabla_usuario):
         ORDER BY fecha DESC;
         """
         
-        df = pd.read_sql_query(query, conexion)
+        df = read_sql_query(query, conexion)
         
         resultado = []
         for _, row in df.iterrows():
             resultado.append({
                 "año": str(row['año']),
-                "mes": str(row['mes']).zfill(2),  # Asegura que el mes tenga 2 dígitos
+                "mes": str(row['mes']).zfill(2),
                 "fecha": str(row['fecha']),
                 "tipo_movimiento": str(row['tipo_movimiento']),
                 "importe": float(row['importe']),
@@ -69,11 +67,10 @@ def get_listado_todas_sin(tabla_usuario):
             "detalles": str(e)
         }, 500
 
-# Definir el endpoint para obtener listado de todas las transacciones
 @transacciones_bp.route('/todas_transacciones_sin_filtro/<string:tabla_usuario>', methods=['GET'])
-def listado_todas_sin_endpoint(tabla_usuario):
+def get_todas_transacciones(tabla_usuario):
     """
-    Endpoint para obtener listado de todas las transacciones.
+    Endpoint para obtener el listado completo de transacciones.
     """
     resultado = get_listado_todas_sin(tabla_usuario)
     if isinstance(resultado, tuple):

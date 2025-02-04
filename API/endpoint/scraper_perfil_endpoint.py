@@ -1,16 +1,27 @@
 from flask import Blueprint, jsonify
-import os
-import json
-from scraper.scraper_test import EkhilurScraper
+from os.path import join, dirname, exists
+from os import makedirs
+from datetime import datetime
+from scraper.scraper_test import EkhilurScraper as EkhilurPerfilScraper
+from utils.crypto_utils import cipher, data_cipher
 
 # Crear el blueprint
 scraper_perfil_bp = Blueprint('scraper_perfil', __name__)
 
-# Credenciales de usuarios
+# Credenciales cifradas
 CREDENTIALS = {
-    "alomorga": {"username": "alomorga", "password": "111111"},
-    "ilandatxe": {"username": "ilandatxe", "password": "111111"},
-    "fotostorres": {"username": "FotosTorres", "password": "123456"}
+    "alomorga": {
+        "username": cipher.encrypt("alomorga"),
+        "password": cipher.encrypt("111111")
+    },
+    "ilandatxe": {
+        "username": cipher.encrypt("ilandatxe"),
+        "password": cipher.encrypt("111111")
+    },
+    "fotostorres": {
+        "username": cipher.encrypt("FotosTorres"),
+        "password": cipher.encrypt("123456")
+    }
 }
 
 @scraper_perfil_bp.route('/profile/<string:username>', methods=['GET'])
@@ -27,32 +38,35 @@ def get_profile(username):
 
     try:
         # Primero intentar leer del archivo JSON
-        data_dir = os.path.join('scraper', 'data', 'scraper')
-        json_path = os.path.join(data_dir, f'profile_{username}.json')
+        data_dir = join('scraper', 'data', 'scraper')
+        json_path = join(data_dir, f'perfil_{username}.json')
 
-        # Si el archivo existe, devolver los datos guardados
-        if os.path.exists(json_path):
-            with open(json_path, 'r', encoding='utf-8') as f:
-                profile_data = json.load(f)
+        # Si el archivo existe, devolver los datos guardados descifrados
+        if exists(json_path):
+            decrypted_data = data_cipher.load_encrypted_json(json_path)
+            if decrypted_data:
                 return jsonify({
                     "status": "success",
                     "source": "cache",
-                    "data": profile_data
+                    "data": decrypted_data
                 })
 
         # Si no existe, hacer scraping
-        scraper = EkhilurScraper()
-        creds = CREDENTIALS[username.lower()]
+        scraper = EkhilurPerfilScraper()
+        creds = {
+            "username": cipher.decrypt(CREDENTIALS[username.lower()]["username"]),
+            "password": cipher.decrypt(CREDENTIALS[username.lower()]["password"])
+        }
         
         if scraper.login(creds["username"], creds["password"]):
-            profile_data = scraper.get_profile_data()
-            if profile_data:
+            perfil_data = scraper.get_perfil_data()
+            if perfil_data:
                 # Guardar los datos
-                scraper.save_results(profile_data, username)
+                scraper.save_results(perfil_data, username)
                 return jsonify({
                     "status": "success",
                     "source": "scraping",
-                    "data": profile_data
+                    "data": perfil_data
                 })
             else:
                 return jsonify({
@@ -84,18 +98,21 @@ def refresh_profile(username):
         }), 400
 
     try:
-        scraper = EkhilurScraper()
-        creds = CREDENTIALS[username.lower()]
+        scraper = EkhilurPerfilScraper()
+        creds = {
+            "username": cipher.decrypt(CREDENTIALS[username.lower()]["username"]),
+            "password": cipher.decrypt(CREDENTIALS[username.lower()]["password"])
+        }
         
         if scraper.login(creds["username"], creds["password"]):
-            profile_data = scraper.get_profile_data()
-            if profile_data:
+            perfil_data = scraper.get_perfil_data()
+            if perfil_data:
                 # Guardar los datos
-                scraper.save_results(profile_data, username)
+                scraper.save_results(perfil_data, username)
                 return jsonify({
                     "status": "success",
                     "message": "Datos actualizados correctamente",
-                    "data": profile_data
+                    "data": perfil_data
                 })
             else:
                 return jsonify({

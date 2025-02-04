@@ -1,28 +1,28 @@
 from flask import Blueprint, jsonify
-import sqlite3
-import pandas as pd
-import os
+from sqlite3 import connect, OperationalError
+from os.path import join, dirname, exists
+from os import makedirs
+from pandas import read_sql_query, DataFrame
 
-# Crear el blueprint con un nombre diferente
-cashback_emitido_bp = Blueprint('cashback_emitido_mes', __name__)  # Cambiamos el nombre aquí
+# Crear el blueprint
+cashback_emitido_bp = Blueprint('cashback_emitido_mes_año', __name__)
 
 # Ruta relativa de la base de datos SQLite
-DATABASE_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'db')
-DATABASE_PATH = os.path.join(DATABASE_DIR, 'datos_sqlite.db')
-print(f"Ruta de la base de datos: {DATABASE_PATH}")
+DATABASE_DIR = join(dirname(dirname(__file__)), 'db')
+DATABASE_PATH = join(DATABASE_DIR, 'datos_sqlite.db')
 
 # Asegurarnos de que el directorio existe
-os.makedirs(DATABASE_DIR, exist_ok=True)
+makedirs(DATABASE_DIR, exist_ok=True)
 
 def cashback_emitido_mes_año(tabla_usuario):
     # Validamos que la tabla esté permitida
-    tablas_permitidas = {"fotostorres"}  # Solo permitimos fotostorres para este endpoint
+    tablas_permitidas = {"fotostorres"}
     if tabla_usuario not in tablas_permitidas:
         return {"error": "Este endpoint solo está disponible para la tabla fotostorres."}, 400
     
     try:
-        conexion = sqlite3.connect(DATABASE_PATH)
-    except sqlite3.OperationalError as e:
+        conexion = connect(DATABASE_PATH)
+    except OperationalError as e:
         return {
             "error": "No se pudo conectar a la base de datos",
             "detalles": str(e),
@@ -48,15 +48,15 @@ def cashback_emitido_mes_año(tabla_usuario):
         ORDER BY año, mes;
         """
         
-        df = pd.read_sql_query(query, conexion)
+        df = read_sql_query(query, conexion)
         
         resultado = []
         for _, row in df.iterrows():
             resultado.append({
                 "año": str(row['año']),
-                "mes": str(row['mes']).zfill(2),  # Asegura que el mes tenga 2 dígitos
-                "bonificaciones_recibidas": int(row['bonificaciones_recibidas']),  # Valores positivos
-                "bonificaciones_emitidas": int(row['bonificaciones_emitidas'])     # Valores negativos
+                "mes": str(row['mes']).zfill(2),
+                "bonificaciones_recibidas": int(row['bonificaciones_recibidas']),
+                "bonificaciones_emitidas": int(row['bonificaciones_emitidas'])
             })
         
         conexion.close()
@@ -68,7 +68,7 @@ def cashback_emitido_mes_año(tabla_usuario):
         }, 500
 
 @cashback_emitido_bp.route('/cashback_emitido_mes_año/<string:tabla_usuario>', methods=['GET'])
-def get_cashback_emitido_mes(tabla_usuario):
+def get_cashback_emitido_mes_año(tabla_usuario):
     """
     Endpoint para obtener cashback emitido agrupado por mes y año según la tabla de usuario.
     """
