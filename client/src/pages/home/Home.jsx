@@ -177,6 +177,9 @@ const Home = () => {
                         {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                     </button>
                 )}
+                <button onClick={() => handleNavigate("/map")}>
+                    <h3>Mapa</h3>
+                </button>
             </main>
         </div>
     );
