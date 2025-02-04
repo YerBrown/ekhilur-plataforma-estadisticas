@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
 import DonutChart from "./DonutChart";
 import { useTheme } from "../../contexts/ThemeContext";
 import "./CategoryCharts.css";
@@ -81,6 +82,7 @@ const matchValues = (categoryValues) => {
     return matchedCategories;
 };
 const CategoryChart = ({ categoryDataJson }) => {
+    const { t } = useLanguage();
     const [categories, setCategories] = useState(matchValues(categoryDataJson));
     const { theme } = useTheme();
     const getDataOptions = () => {
@@ -141,7 +143,7 @@ const CategoryChart = ({ categoryDataJson }) => {
     );
     return (
         <div className="category-charts">
-            <h2>Categorias</h2>
+            <h2>{t.categoriesTitle}</h2>
             <div className="category-extra">
                 <div className="category-container">
                     {getDataOptions().map((category) => (
