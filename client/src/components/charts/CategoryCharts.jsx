@@ -1,15 +1,92 @@
 import { useState } from "react";
 import { useLanguage } from "../../contexts/LanguageContext";
 import DonutChart from "./DonutChart";
+import { useTheme } from "../../contexts/ThemeContext";
 import "./CategoryCharts.css";
-
-
-const CategoryChart = ({categoryDataJson}) => {
+import {
+    FaAppleAlt,
+    FaCoffee,
+    FaTshirt,
+    FaHeart,
+    FaStore,
+    FaIndustry,
+    FaPaintBrush,
+    FaFutbol,
+    FaHandsHelping,
+} from "react-icons/fa";
+const categoryTemplate = [
+    {
+        label: "Alimentación",
+        color: "#0047ba",
+        "color-dark": "#001d4d",
+        icon: FaAppleAlt,
+    },
+    {
+        label: "Hostelería",
+        color: "#26C485",
+        "color-dark": "#0c402b",
+        icon: FaCoffee,
+    },
+    {
+        label: "Moda y Complementos",
+        color: "#54a9cd",
+        "color-dark": "#112f3b",
+        icon: FaTshirt,
+    },
+    {
+        label: "Salud y Estética",
+        color: "#ffc412",
+        "color-dark": "#4d3900",
+        icon: FaHeart,
+    },
+    {
+        label: "Servicios y Comercio General",
+        color: "#6f9ef0",
+        "color-dark": "#071e45",
+        icon: FaStore,
+    },
+    {
+        label: "Industria y Construcción",
+        color: "#ffef21",
+        "color-dark": "#4d4700",
+        icon: FaIndustry,
+    },
+    {
+        label: "Arte y Cultura",
+        color: "#ff9d6d",
+        "color-dark": "#4d1a00",
+        icon: FaPaintBrush,
+    },
+    {
+        label: "Deporte y Ocio",
+        color: "#382ef2",
+        "color-dark": "#080548",
+        icon: FaFutbol,
+    },
+    {
+        label: "Asociaciones y Cooperativas",
+        color: "#ff9012",
+        "color-dark": "#4d2900",
+        icon: FaHandsHelping,
+    },
+];
+const matchValues = (categoryValues) => {
+    const matchedCategories = categoryValues
+        .map((categoryValue) => {
+            const match = categoryTemplate.find(
+                (category) => category.label === categoryValue.label
+            );
+            return match ? { ...match, ...categoryValue } : null;
+        })
+        .filter((category) => category !== null);
+    return matchedCategories;
+};
+const CategoryChart = ({ categoryDataJson }) => {
     const { t } = useLanguage();
-    const [categories, setCategories] = useState(categoryDataJson);
-
+    const [categories, setCategories] = useState(matchValues(categoryDataJson));
+    const { theme } = useTheme();
     const getDataOptions = () => {
-        const ategoryData = categories.map((category) => ({
+        const categoryData = categories.map((category) => ({
             datasets: [
                 {
                     label: "Single Category",
@@ -22,7 +99,7 @@ const CategoryChart = ({categoryDataJson}) => {
                 },
             ],
         }));
-        const ategoryOption = categories.map((category) => ({
+        const categoryOption = categories.map((category) => ({
             responsive: true,
             maintainAspectRatio: false, // Permitir personalizar ancho y alto
             plugins: {
@@ -33,6 +110,7 @@ const CategoryChart = ({categoryDataJson}) => {
                     enabled: false, // Deshabilitar tooltips
                 },
                 centerText: {
+                    color: theme === "light" ? "#000000" : "#ffffff",
                     total: `${category.value} €`, // Pasar el total calculado
                 },
                 datalabels: {
@@ -52,54 +130,17 @@ const CategoryChart = ({categoryDataJson}) => {
         for (let i = 0; i < categories.length; i++) {
             dataAndOptions.push({
                 categoryJson: categories[i],
-                data: ategoryData[i],
-                options: ategoryOption[i],
+                data: categoryData[i],
+                options: categoryOption[i],
             });
         }
         return dataAndOptions;
     };
 
-    const categoryLabels = categories.map((item) => item.label);
     const categoryValues = categories.map((item) => item.value);
-    const categoryColors = categories.map((item) => item.color);
     const totalCategoryValue = categoryValues.reduce(
         (acc, currentValue) => (acc += currentValue)
     );
-    const categoryData = {
-        labels: categoryLabels,
-        datasets: [
-            {
-                label: "Wallet",
-                data: categoryValues,
-                backgroundColor: categoryColors,
-                hoverBackgroundColor: categoryColors,
-            },
-        ],
-    };
-
-    const categoryOptions = {
-        responsive: true,
-        maintainAspectRatio: false, // Permitir personalizar ancho y alto
-        plugins: {
-            legend: {
-                display: false, // Ocultar leyenda
-            },
-            tooltip: {
-                enabled: false, // Deshabilitar tooltips
-            },
-            drawIcons: {}, // Plugin para dibujar iconos
-            datalabels: {
-                display: false,
-            },
-        },
-        elements: {
-            arc: {
-                borderWidth: 0,
-            },
-        },
-        cutout: "70%", // Ajustar el tamaño del agujero central
-        radius: "90%",
-    };
     return (
         <div className="category-charts">
             <h2>{t.categoriesTitle}</h2>

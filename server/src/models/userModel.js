@@ -19,7 +19,7 @@ const UserSchema = new mongoose.Schema(
         },
         role: {
             type: String,
-            enum: ["user", "merchant"],
+            enum: ["user", "commerce"],
             default: "user",
             required: true,
         },

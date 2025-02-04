@@ -11,6 +11,7 @@ import SalesCommerce from "./pages/sales/SalesCommerce";
 import UserBonifications from "./pages/bonifications/UserBonifications";
 import CommerceBonifications from "./pages/commerce-bonifications/CommerceBonifications";
 import Estadisticas from "./pages/estadisticas/Estadisticas";
+import UserPage from "./pages/userpage/UserPage";
 
 const router = createBrowserRouter([
     {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
             {
                 path: "/statistics",
                 element: <Estadisticas />,
+            },
+            {
+                path: "/user-page",
+                element: <UserPage />,
             },
         ],
     },
