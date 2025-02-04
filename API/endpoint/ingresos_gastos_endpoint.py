@@ -18,8 +18,7 @@ def obtener_ingresos_gastos(tabla_usuario):
     Endpoint para obtener ingresos y gastos mensuales
     """
     # Validamos que la tabla esté permitida
-    tablas_permitidas = {"ilandatxe", "fotostorres", "alex", "categorias"}  
-
+    tablas_permitidas = {"ilandatxe", "fotostorres", "alomorga", "categorias"}
     if tabla_usuario not in tablas_permitidas:
         return jsonify({"error": "Nombre de tabla no permitido."}), 400
 
@@ -34,7 +33,6 @@ def obtener_ingresos_gastos(tabla_usuario):
         }), 500
 
     try:
-        # Consulta mejorada para obtener los ingresos y gastos mes a mes
         query = f"""
             SELECT 
                 strftime('%Y', Fecha) AS año,
@@ -44,7 +42,7 @@ def obtener_ingresos_gastos(tabla_usuario):
                 SUM(Cantidad) as balance_neto
             FROM {tabla_usuario}
             GROUP BY año, mes
-            ORDER BY año, mes;
+            ORDER BY año DESC, mes DESC;
         """
         
         cursor.execute(query)
@@ -55,10 +53,10 @@ def obtener_ingresos_gastos(tabla_usuario):
 
         # Procesar los resultados
         ingresos_gastos = [{
-            "año": fila[0],
-            "mes": fila[1],
+            "año": str(fila[0]),
+            "mes": str(fila[1]).zfill(2),  # Asegura que el mes tenga 2 dígitos
             "ingresos": float(fila[2]),  # Convertir a float para precisión
-            "gastos": float(fila[3]),
+            "gastos": -float(fila[3]),    # Gastos en negativo
             "balance_neto": float(fila[4])
         } for fila in resultados]
 

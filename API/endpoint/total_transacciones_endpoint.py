@@ -18,13 +18,11 @@ def obtener_total_transacciones(tabla_usuario):
     Endpoint para obtener el total de transacciones por mes
     """
     # Validamos que la tabla esté permitida
-    tablas_permitidas = {"ilandatxe", "fotostorres", "alex", "categorias"}  
-
+    tablas_permitidas = {"ilandatxe", "fotostorres", "alomorga", "categorias"}
     if tabla_usuario not in tablas_permitidas:
         return jsonify({"error": "Nombre de tabla no permitido."}), 400
 
     try:
-        # Conectar a la base de datos
         conexion = sqlite3.connect(DATABASE_PATH)
         cursor = conexion.cursor()
     except sqlite3.Error as e:
@@ -34,7 +32,6 @@ def obtener_total_transacciones(tabla_usuario):
         }), 500
 
     try:
-        # Consulta SQL mejorada
         query = f"""
             SELECT 
                 strftime('%Y', Fecha) AS año,
@@ -58,8 +55,8 @@ def obtener_total_transacciones(tabla_usuario):
 
         # Estructurar los datos en formato JSON
         data = [{
-            "año": fila[0],
-            "mes": fila[1],
+            "año": str(fila[0]),
+            "mes": str(fila[1]).zfill(2),  # Asegura que el mes tenga 2 dígitos
             "total_transacciones": int(fila[2]),
             "num_gastos": int(fila[3]),
             "num_ingresos": int(fila[4]),

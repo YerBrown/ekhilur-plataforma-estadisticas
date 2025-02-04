@@ -128,5 +128,31 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-
-__pycache__
+API/endpoint/__pycache__/data_converter_endpoint.cpython-39.pyc
+API/endpoint/__pycache__/ingresos_gastos_endpoint.cpython-39.pyc
+API/endpoint/__pycache__/ingresos_gastos_mes_endpoint.cpython-39.pyc
+API/endpoint/__pycache__/total_transacciones_endpoint.cpython-39.pyc
+API/endpoint/__pycache__/totalventas_añoactual_totalventas3años_endpoint.cpython-39.pyc
+API/endpoint/__pycache__/ventas_mes_año_endpoint.cpython-39.pyc
+API/endpoint/__pycache__/ventas_tipomovimiento_año_endpoint.cpython-39.pyc
+API/endpoint/__pycache__/ventas_tipomovimiento_mes_año_endpoint.cpython-39.pyc
+API/endpoint/__pycache__/ventas_tipomovimiento_piechart_endpoint.cpython-39.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+# Archivos de caché de Python específicos
+.pytest_cache/
+.coverage
+htmlcov/
+# Entornos virtuales
+venv/
+env/
+ENV/
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+# IDEs y editores
+.idea/
+.vscode/
+*.swp
+*.swo

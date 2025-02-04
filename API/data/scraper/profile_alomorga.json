@@ -1,0 +1,14 @@
+{
+    "nombre_usuario": "Alejandro Lopez Morgado",
+    "telefono": "626123812",
+    "email": "alomorga@gmail.com",
+    "direccion": {
+        "calle": "C/Mitxelena, 3 - 4A",
+        "municipio": "Zarautz",
+        "cp": "20800"
+    },
+    "fecha_nacimiento": "05/10/1973",
+    "ocupacion": "Diseñadores gráficos y multimedia",
+    "iban": "ES4930350029610290704680",
+    "capital_social_abonado": "Sí"
+}

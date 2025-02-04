@@ -1,0 +1,17 @@
+{
+    "cuentas": [
+        {
+            "tipo": "Ekhi",
+            "saldo": 0.0
+        },
+        {
+            "tipo": "Euro",
+            "saldo": 12.87
+        },
+        {
+            "tipo": "Ekhi Hernani",
+            "saldo": 0.72
+        }
+    ],
+    "saldo_total": 13.59
+}
