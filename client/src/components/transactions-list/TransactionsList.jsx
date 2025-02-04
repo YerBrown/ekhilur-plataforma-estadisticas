@@ -37,7 +37,7 @@ const TransactionList = ({ transactions }) => {
             const month = new Intl.DateTimeFormat(locale, { month: "long" }).format(date);
             const day = new Intl.DateTimeFormat(locale, { day: "numeric" }).format(date);
 
-            let formattedDate = `${weekday}, ${month} ${day}`; // `Friday, May 27`
+            let formattedDate = `${month} ${day}, ${weekday}`; // `Friday, May 27`
 
             // Reemplazar los nombres de días y meses por sus equivalentes en euskera
             Object.keys(t.dateTranslations).forEach(engWord => {

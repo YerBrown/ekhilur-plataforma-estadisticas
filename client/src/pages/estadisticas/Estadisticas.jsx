@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
 import Layout from "../layout/Layout";
 import "./Estadisticas.css";
 import BarChartComponent from "../../components/charts/BarChart";
@@ -55,6 +56,7 @@ const fakeApiData = [
 ];
 
 const Estadisticas = () => {
+    const { t } = useLanguage();
     const [selectedPeriod, setSelectedPeriod] = useState(null);
     const [statistics, setStatistics] = useState({
         totalIngresos: 0,
@@ -132,7 +134,7 @@ const Estadisticas = () => {
 
     return (
         <div className="estadisticas-page">
-            <Layout title="Estadísticas">
+            <Layout title={t.statisticsTitle}>
                 <div className="container-date-filter">
                     <DateFilter onDateFilter={handleDateFilter} />
                 </div>
@@ -145,13 +147,13 @@ const Estadisticas = () => {
                     <>
                         <div className="container-ingresos-gastos">
                             <div className="item-ingresos-gastos">
-                                <p className="label-ingresos">INGRESOS</p>
+                                <p className="label-ingresos">{t.incomes}</p>
                                 <span className="amount-ingresos">
                                     {getAmountStyle(statistics.totalIngresos)}
                                 </span>
                             </div>
                             <div className="item-ingresos-gastos">
-                                <p className="label-gastos">GASTOS</p>
+                                <p className="label-gastos">{t.expenses}</p>
                                 <span className="amount-gastos">
                                     {getAmountStyle(
                                         statistics.totalGastos,
