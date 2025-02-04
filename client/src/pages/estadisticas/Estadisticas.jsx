@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import Layout from "../layout/Layout";
 import "./Estadisticas.css";
 import BarChartComponent from "../../components/charts/BarChart";
+import GraficoLibrerias from "../../components/charts/BarChartNew";
 import DateFilter from "../../components/DateFilter/DateFilter";
-import {getIncomesAndExpensesByMonth } from "../../api/realData";
-import mockData  from "../../components/transactions-list/mockData.js";
+import { getIncomesAndExpensesByMonth } from "../../api/realData";
+import mockData from "../../components/transactions-list/mockData.js";
 import TransactionList from "../../components/transactions-list/TransactionsList";
 import {
     FaAppleAlt,
@@ -117,30 +118,44 @@ const fakeApiData = [
 ];
 
 const Estadisticas = () => {
-    const [selectedPeriod, setSelectedPeriod] = useState(null);
+    const [selectedPeriod, setSelectedPeriod] = useState({
+        year: new Date().getFullYear(),
+        month: new Date().getMonth() + 1,
+    });
     const [statistics, setStatistics] = useState({
         totalIngresos: 0,
         totalGastos: 0,
     });
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [apiData, setApiData] = useState(null);
-
-
+    const [apiData, setApiData] = useState([
+        { año: "2022", mes: "11", valor: 100, otroValor: 80 },
+        { año: "2022", mes: "12", valor: 150, otroValor: 120 },
+        { año: "2023", mes: "01", valor: 200, otroValor: 180 },
+        { año: "2023", mes: "02", valor: 250, otroValor: 220 },
+        { año: "2023", mes: "03", valor: 300, otroValor: 270 },
+        { año: "2024", mes: "12", valor: 150, otroValor: 120 },
+        { año: "2024", mes: "01", valor: 200, otroValor: 180 },
+        { año: "2024", mes: "02", valor: 250, otroValor: 220 },
+        { año: "2024", mes: "03", valor: 300, otroValor: 270 },
+    ]);
 
     const loadApiData = async () => {
         setIsLoading(true);
         setError(null);
         try {
             const data = await getIncomesAndExpensesByMonth();
+            console.log("Hola", data);
             setApiData(data);
-            
+
             if (selectedPeriod) {
                 updateStatisticsFromApiData(data, selectedPeriod);
             }
         } catch (error) {
             console.error("Error al cargar datos:", error);
-            setError("No se pudieron cargar los datos. Por favor, intente más tarde.");
+            setError(
+                "No se pudieron cargar los datos. Por favor, intente más tarde."
+            );
         } finally {
             setIsLoading(false);
         }
@@ -154,20 +169,21 @@ const Estadisticas = () => {
         if (!data) return;
 
         const { year, month } = period;
-        const monthData = data.find(item => 
-            item.año === year.toString() && 
-            parseInt(item.mes, 10) === month + 1
+        const monthData = data.find(
+            (item) =>
+                item.año === year.toString() &&
+                parseInt(item.mes, 10) === month + 1
         );
 
         if (monthData) {
             setStatistics({
                 totalIngresos: Number(monthData.ingresos),
-                totalGastos: Number(monthData.gastos)
+                totalGastos: Number(monthData.gastos),
             });
         } else {
             setStatistics({
                 totalIngresos: 0,
-                totalGastos: 0
+                totalGastos: 0,
             });
         }
     };
@@ -197,17 +213,11 @@ const Estadisticas = () => {
                 <div className="container-date-filter">
                     <DateFilter onDateFilter={handleDateFilter} />
                 </div>
-                
-                {error && (
-                    <div className="error-message">
-                        {error}
-                    </div>
-                )}
+
+                {error && <div className="error-message">{error}</div>}
 
                 {isLoading ? (
-                    <div className="loading-message">
-                        Cargando datos...
-                    </div>
+                    <div className="loading-message">Cargando datos...</div>
                 ) : (
                     <>
                         <div className="container-ingresos-gastos">
@@ -220,28 +230,21 @@ const Estadisticas = () => {
                             <div className="item-ingresos-gastos">
                                 <p className="label-gastos">GASTOS</p>
                                 <span className="amount-gastos">
-                                    {getAmountStyle(statistics.totalGastos, true)}
+                                    {getAmountStyle(
+                                        statistics.totalGastos,
+                                        true
+                                    )}
                                 </span>
                             </div>
                         </div>
                         <div className="chart-section">
-                            <BarChartComponent 
-                                selectedPeriod={selectedPeriod} 
-                                dataBars={apiData || []}
-                                dataKeys={{
-                                    primary: 'ingresos',
-                                    secondary: 'gastos'
-                                }}
-                                colors={{
-                                    primary: "var(--color-grafico-naranja)",
-                                    secondary: "var(--color-grafico-naranja-claro)"
-                                }}
-                                mappingKeys={{
-                                    year: 'año',
-                                    month: 'mes'
-                                }}
-                                showSecondaryBar={true}
-            
+                            <GraficoLibrerias
+                                data={apiData}
+                                targetYear={selectedPeriod.year}
+                                targetMonth={selectedPeriod.month}
+                                primaryKey={"gastos"}
+                                secondaryKey={"ingresos"}
+                                showFilters={false}
                             />
                         </div>
                         <CategoryChart categoryDataJson={categoryOptions} />
