@@ -1,72 +1,178 @@
 .map-page {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding: 20px;
+    gap: 20px; /* Espacio más generoso entre los elementos principales */
+    padding: 0;
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Tipografía moderna */
+    background-color: #f9f9f9; /* Fondo claro para toda la página */
 }
 
-/* Mapa ocupa todo el ancho */
+/* Contenedor del mapa */
 .map-container {
     width: 100%;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    height: 300px;
+    height: 550px; /* Altura para pantallas grandes */
+    margin: 0;
+    padding: 0;
+    border-radius: 10px; /* Bordes redondeados para el mapa */
+    overflow: hidden; /* Oculta desbordamientos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sutil sombra */
+    background-color: #fff; /* Fondo blanco detrás del mapa */
 }
 
-/* Galería */
+/* Galería de comercios */
 .gallery {
+    margin-top: 20px;
     text-align: center;
 }
 
 .gallery h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
+    margin-bottom: 15px;
+    font-size: 28px; /* Tamaño del título mayor */
     font-weight: bold;
+    color: #333; /* Color más oscuro para mejor contraste */
 }
 
+/* Galería responsiva */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Cuatro columnas */
-    gap: 20px; /* Espacio entre elementos */
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-content: center;
+    padding: 10px; /* Espaciado interno */
 }
 
+/* Estilo de los elementos de la galería */
 .gallery-item {
     background: #fff;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
+    border-radius: 12px; /* Bordes más redondeados */
+    padding: 20px; /* Espaciado más generoso */
     text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sutil sombra */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación más suave */
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Más sombra al pasar el ratón */
 }
 
 .gallery-item img {
     width: 100%;
     height: 150px;
     object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    border-radius: 12px; /* Bordes redondeados de las imágenes */
+    margin-bottom: 15px;
 }
 
 .gallery-item h3 {
     margin: 10px 0 5px;
-    font-size: 18px;
+    font-size: 20px; /* Tamaño del texto mayor */
+    color: #222; /* Texto más oscuro */
 }
 
 .gallery-item p {
     color: #555;
     font-size: 14px;
+    line-height: 1.5; /* Espaciado entre líneas para legibilidad */
 }
 
+/* Filtro (Selector de tipo de comercio) */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px auto;
+    padding: 10px 20px;
+    max-width: 400px; /* Limitar el ancho */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sutil sombra */
+}
+
+.filter-container select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f4f4f4;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+.filter-container select:focus {
+    border-color: #007bff; /* Azul al enfocar */
+    outline: none;
+}
+
+/* Botón de navegación */
 .navigate-button {
-    padding: 8px 12px;
+    padding: 10px 15px;
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .navigate-button:hover {
     background-color: #0056b3;
+    transform: translateY(-2px); /* Efecto de elevación */
+}
+
+/* Responsividad */
+
+/* Pantallas grandes (PC) */
+@media screen and (min-width: 1200px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .map-container {
+        height: 500px;
+    }
+}
+
+/* Tablets grandes */
+@media screen and (max-width: 1199px) and (min-width: 900px) {
+    .map-container {
+        height: 400px;
+    }
+    .filter-container {
+        max-width: 350px;
+    }
+}
+
+/* Tablets pequeñas */
+@media screen and (max-width: 899px) and (min-width: 600px) {
+    .map-container {
+        height: 300px;
+    }
+    .filter-container {
+        max-width: 300px;
+    }
+}
+
+/* Móviles grandes */
+@media screen and (max-width: 599px) and (min-width: 400px) {
+    .map-container {
+        height: 250px;
+    }
+    .filter-container {
+        max-width: 280px;
+    }
+}
+
+/* Móviles pequeños */
+@media screen and (max-width: 399px) {
+    .map-container {
+        height: 200px;
+    }
+    .filter-container {
+        max-width: 260px;
+    }
 }

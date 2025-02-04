@@ -5,9 +5,8 @@ import "leaflet-routing-machine";
 import "leaflet-control-geocoder";
 import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import L from "leaflet";
-import "./MapPage.css"; // Archivo CSS para diseño y estilos
+import "./MapPage.css";
 
-// Iconos personalizados
 const userLocationIcon = new L.Icon({
     iconUrl: "https://cdn-icons-png.flaticon.com/512/447/447031.png",
     iconSize: [32, 32],
@@ -23,22 +22,32 @@ const businessIcon = new L.Icon({
 });
 
 const MapPage = () => {
-    const [userLocation, setUserLocation] = useState(null); // Coordenadas del usuario
-    const [selectedLocation, setSelectedLocation] = useState(null); // Coordenadas del destino seleccionado
-    const [mapInstance, setMapInstance] = useState(null); // Instancia del mapa para centrarlo
+    const [userLocation, setUserLocation] = useState(null);
+    const [selectedLocation, setSelectedLocation] = useState(null);
+    const [mapInstance, setMapInstance] = useState(null);
+    const [businesses, setBusinesses] = useState([]);
+    const [filteredBusinesses, setFilteredBusinesses] = useState([]);
+    const [businessType, setBusinessType] = useState("Todos");
 
-    const businesses = [
-        { id: 1, name: "Cafetería Aroma", address: "Calle Mayor 12, Basauri", image: "https://via.placeholder.com/150", location: [43.237, -2.889] },
-        { id: 2, name: "Tienda Verde", address: "Av. Libertad 34, Basauri", image: "https://via.placeholder.com/150", location: [43.24, -2.885] },
-        { id: 3, name: "Librería Central", address: "Plaza Ariz 8, Basauri", image: "https://via.placeholder.com/150", location: [43.234, -2.892] },
-        { id: 4, name: "Restaurante Delicias", address: "Calle San Pedro 56, Basauri", image: "https://via.placeholder.com/150", location: [43.238, -2.895] },
-        { id: 5, name: "Panadería Dulce Hogar", address: "Calle Florida 22, Basauri", image: "https://via.placeholder.com/150", location: [43.235, -2.891] },
-        { id: 6, name: "Boutique Elegance", address: "Calle Estación 10, Basauri", image: "https://via.placeholder.com/150", location: [43.236, -2.888] },
-        { id: 7, name: "Peluquería Glamour", address: "Calle Ariz 3, Basauri", image: "https://via.placeholder.com/150", location: [43.237, -2.887] },
-        { id: 8, name: "Bar La Esquina", address: "Calle Principal 45, Basauri", image: "https://via.placeholder.com/150", location: [43.238, -2.884] },
-        { id: 9, name: "Zapatería Paso Fino", address: "Calle Nueva 4, Basauri", image: "https://via.placeholder.com/150", location: [43.239, -2.889] },
-        { id: 10, name: "Floristería Rosas", address: "Calle Flor 20, Basauri", image: "https://via.placeholder.com/150", location: [43.235, -2.893] },
-    ];
+    useEffect(() => {
+        fetch("/json/Comercios.json")
+            .then((response) => response.json())
+            .then((data) => {
+                const formattedData = data
+                    .filter((item) => item.Coordenadas && item.Coordenadas.length === 2)
+                    .map((item, index) => ({
+                        id: index + 1,
+                        name: item["Nombre Comercio"] || "Comercio sin nombre",
+                        address: item.Direccion || "Dirección desconocida",
+                        type: item.Tipo || "Otros",
+                        location: item.Coordenadas,
+                        image: "https://via.placeholder.com/150",
+                    }));
+                setBusinesses(formattedData);
+                setFilteredBusinesses(formattedData);
+            })
+            .catch((error) => console.error("Error cargando los comercios:", error));
+    }, []);
 
     useEffect(() => {
         if (navigator.geolocation) {
@@ -52,6 +61,58 @@ const MapPage = () => {
         }
     }, []);
 
+    // 🔹 Filtrar comercios por "Tipo"
+    useEffect(() => {
+        if (businessType === "Todos") {
+            setFilteredBusinesses(businesses);
+        } else {
+            const filtered = businesses.filter((business) => business.type === businessType);
+            setFilteredBusinesses(filtered);
+        }
+    }, [businessType, businesses]);
+
+    const handleBusinessClick = (location) => {
+        setSelectedLocation(location);
+        if (mapInstance) {
+            mapInstance.setView(location, 16);
+        }
+    };
+
+    // 🔹 Obtener la lista de tipos de comercio únicos
+    const businessTypes = ["Todos", ...new Set(businesses.map((b) => b.type))];
+
+    const RoutingMachine = () => {
+        const map = useMap();
+
+        useEffect(() => {
+            if (!userLocation || !selectedLocation) return;
+
+            const routingControl = L.Routing.control({
+                waypoints: [
+                    L.latLng(userLocation),
+                    L.latLng(selectedLocation),
+                ],
+                routeWhileDragging: false,
+                showAlternatives: false,
+                language: "es",
+                lineOptions: {
+                    styles: [{ color: "#007bff", weight: 4 }],
+                },
+                createMarker: () => null,
+            }).addTo(map);
+
+            const routingContainer = document.querySelector(".leaflet-routing-container");
+            if (routingContainer) {
+                routingContainer.style.display = "none";
+            }
+
+            return () => map.removeControl(routingControl);
+        }, [map, userLocation, selectedLocation]);
+
+        return null;
+    };
+
+    // 🔹 Agregar control de búsqueda con lupa y texto negro
     const GeocoderControl = () => {
         const map = useMap();
 
@@ -62,12 +123,14 @@ const MapPage = () => {
                 .on("markgeocode", (e) => {
                     const latlng = e.geocode.center;
                     setSelectedLocation([latlng.lat, latlng.lng]);
-                    map.setView(latlng, 15); // Centrar el mapa en la ubicación buscada
+                    map.setView(latlng, 15);
                 })
                 .addTo(map);
 
-            const input = document.querySelector(".leaflet-control-geocoder input");
-            if (input) input.style.color = "black"; // Asegurar texto negro en el cuadro de búsqueda
+            setTimeout(() => {
+                const input = document.querySelector(".leaflet-control-geocoder input");
+                if (input) input.style.color = "black";
+            }, 500);
 
             return () => map.removeControl(geocoder);
         }, [map]);
@@ -75,72 +138,35 @@ const MapPage = () => {
         return null;
     };
 
-    const RoutingMachine = () => {
-        const map = useMap();
-
-        useEffect(() => {
-            if (!userLocation || !selectedLocation) return;
-
-            const routingControl = L.Routing.control({
-                waypoints: [
-                    L.latLng(userLocation), // Inicio (ubicación del usuario)
-                    L.latLng(selectedLocation), // Destino (ubicación seleccionada)
-                ],
-                routeWhileDragging: false, // No permitir arrastrar la línea
-                showAlternatives: false, // No mostrar rutas alternativas
-                language: "es",
-                lineOptions: {
-                    styles: [{ color: "#007bff", weight: 4 }],
-                },
-                createMarker: () => null, // Evitar marcadores automáticos
-            }).addTo(map);
-
-            // Oculta las instrucciones del cuadro
-            const instructions = document.querySelector(".leaflet-routing-container");
-            if (instructions) {
-                instructions.style.display = "none";
-            }
-
-            return () => map.removeControl(routingControl);
-        }, [map, userLocation, selectedLocation]);
-
-        return null;
-    };
-
-    const handleBusinessClick = (location) => {
-        setSelectedLocation(location); // Establece la ubicación seleccionada
-        if (mapInstance) {
-            mapInstance.setView(location, 16); // Centra el mapa en el comercio seleccionado
-        }
-    };
-
     return (
         <div className="map-page">
             {/* Mapa */}
             <div className="map-container">
                 <MapContainer
-                    center={[43.237, -2.889]}
+                    center={[43.26755, -1.97581]}
                     zoom={15}
-                    style={{ height: "300px", width: "100%" }}
-                    whenCreated={(map) => setMapInstance(map)} // Guarda la instancia del mapa
+                    style={{ height: "500px", width: "100%" }}
+                    whenCreated={(map) => setMapInstance(map)}
                 >
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         attribution='&copy; OpenStreetMap contributors'
                     />
                     <GeocoderControl />
+
                     {userLocation && (
                         <Marker position={userLocation} icon={userLocationIcon}>
                             <Popup>¡Aquí estás!</Popup>
                         </Marker>
                     )}
-                    {businesses.map((business) => (
+
+                    {filteredBusinesses.map((business) => (
                         <Marker
                             key={business.id}
                             position={business.location}
                             icon={businessIcon}
                             eventHandlers={{
-                                click: () => setSelectedLocation(business.location), // Muestra la ruta al hacer clic
+                                click: () => setSelectedLocation(business.location),
                             }}
                         >
                             <Popup>
@@ -150,25 +176,39 @@ const MapPage = () => {
                             </Popup>
                         </Marker>
                     ))}
+
                     <RoutingMachine />
                 </MapContainer>
             </div>
 
+            {/* 🔹 Selector de Tipo de Comercio - Visible en pantallas pequeñas también */}
+            <div className="filter-container">
+                <select
+                    id="business-type"
+                    value={businessType}
+                    onChange={(e) => setBusinessType(e.target.value)}
+                >
+                    {businessTypes.map((type, index) => (
+                        <option key={index} value={type}>
+                            {type}
+                        </option>
+                    ))}
+                </select>
+            </div>
+
             {/* Galería de comercios */}
             <div className="gallery">
-                <h2>Comercios en Basauri</h2>
+                <h2>Comercios</h2>
                 <div className="gallery-grid">
-                    {businesses.map((business) => (
-                        <div className="gallery-item" key={business.id}>
-                            <img src={business.image} alt={business.name} />
+                    {filteredBusinesses.map((business) => (
+                        <div
+                            className="gallery-item"
+                            key={business.id}
+                            onClick={() => handleBusinessClick(business.location)}
+                        >
                             <h3>{business.name}</h3>
-                            <p>{business.address}</p>
-                            <button
-                                onClick={() => handleBusinessClick(business.location)}
-                                className="navigate-button"
-                            >
-                                Ver en el mapa
-                            </button>
+                            <p><strong>Tipo:</strong> {business.type}</p>
+                            <p><strong>Dirección:</strong> {business.address}</p>
                         </div>
                     ))}
                 </div>
