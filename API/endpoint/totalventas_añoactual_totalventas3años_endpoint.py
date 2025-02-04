@@ -18,14 +18,11 @@ def get_ventas_3años(tabla_usuario):
     """
     Endpoint para obtener ventas anuales y el total de los últimos 3 años
     """
-    # Validamos que la tabla esté permitida
-    tablas_permitidas = {"ilandatxe", "fotostorres", "alex", "categorias"}  
-
-    if tabla_usuario not in tablas_permitidas:
-        return jsonify({"error": "Nombre de tabla no permitido."}), 400
+    # Validamos que la tabla sea fotostorres
+    if tabla_usuario != "fotostorres":
+        return jsonify({"error": "Este endpoint solo está disponible para fotostorres."}), 400
 
     try:
-        # Conectar a la base de datos
         conexion = sqlite3.connect(DATABASE_PATH)
     except sqlite3.Error as e:
         return jsonify({
@@ -34,7 +31,6 @@ def get_ventas_3años(tabla_usuario):
         }), 500
 
     try:
-        # Query mejorada para obtener ventas por año
         query = f"""
         WITH ventas_anuales AS (
             SELECT 
@@ -88,14 +84,24 @@ def get_ventas_3años(tabla_usuario):
         ORDER BY año DESC;
         """
 
-        # Ejecutar la consulta
         df = pd.read_sql_query(query, conexion)
 
         if df.empty:
             return jsonify({"message": "No hay datos de ventas disponibles."}), 404
 
-        # Convertir a diccionario y devolver respuesta
-        return jsonify(df.to_dict(orient='records'))
+        # Formatear los datos según apiJsons.txt
+        resultado = []
+        for _, row in df.iterrows():
+            resultado.append({
+                "año": str(row['año']),
+                "ventas_año_actual": float(row['ventas_año_actual']),
+                "num_ventas_año": int(row['num_ventas_año']),
+                "total_ultimos_3_años": float(row['total_ultimos_3_años']),
+                "total_ventas_3_años": int(row['total_ventas_3_años']),
+                "años_disponibles": int(row['años_disponibles'])
+            })
+
+        return jsonify(resultado)
 
     except Exception as e:
         return jsonify({

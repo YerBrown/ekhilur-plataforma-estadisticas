@@ -18,14 +18,11 @@ def get_ventas_tipo_movimiento_anio(tabla_usuario):
     """
     Endpoint para obtener ventas por tipo de movimiento y año
     """
-    # Validamos que la tabla esté permitida
-    tablas_permitidas = {"ilandatxe", "fotostorres", "alex", "categorias"}  
-
-    if tabla_usuario not in tablas_permitidas:
-        return jsonify({"error": "Nombre de tabla no permitido."}), 400
+    # Validamos que la tabla sea fotostorres
+    if tabla_usuario != "fotostorres":
+        return jsonify({"error": "Este endpoint solo está disponible para fotostorres."}), 400
 
     try:
-        # Conectar a la base de datos
         conexion = sqlite3.connect(DATABASE_PATH)
     except sqlite3.Error as e:
         return jsonify({
@@ -34,11 +31,10 @@ def get_ventas_tipo_movimiento_anio(tabla_usuario):
         }), 500
 
     try:
-        # Query mejorada para obtener ventas por tipo de movimiento
         query = f"""
         WITH ventas_tipo AS (
             SELECT 
-                strftime('%Y', Fecha) as anio,
+                strftime('%Y', Fecha) as año,
                 Movimiento,
                 SUM(CASE 
                     WHEN Cantidad > 0 THEN Cantidad 
@@ -52,10 +48,10 @@ def get_ventas_tipo_movimiento_anio(tabla_usuario):
                 END) as venta_promedio
             FROM {tabla_usuario}
             WHERE Movimiento IN ('Pago a usuario', 'Cobro desde QR')
-            GROUP BY anio, Movimiento
+            GROUP BY año, Movimiento
         )
         SELECT 
-            anio,
+            año,
             Movimiento as tipo_movimiento,
             ROUND(total_ventas, 2) as total_ventas,
             num_transacciones,
@@ -65,16 +61,15 @@ def get_ventas_tipo_movimiento_anio(tabla_usuario):
                 ELSE num_transacciones 
             END, 2) as ticket_promedio
         FROM ventas_tipo
-        ORDER BY anio DESC, tipo_movimiento;
+        ORDER BY año DESC, tipo_movimiento;
         """
 
-        # Ejecutar la consulta
         df = pd.read_sql_query(query, conexion)
 
         if df.empty:
             return jsonify({"message": "No hay datos de ventas disponibles."}), 404
 
-        # Convertir todos los datos a tipos simples
+        # Formatear los datos según apiJsons.txt
         resultado = []
         for _, row in df.iterrows():
             # Manejar valores NaN
@@ -82,7 +77,7 @@ def get_ventas_tipo_movimiento_anio(tabla_usuario):
             ticket_promedio = 0.0 if pd.isna(row['ticket_promedio']) else float(row['ticket_promedio'])
             
             resultado.append({
-                "anio": str(row['anio']),
+                "año": str(row['año']),
                 "tipo_movimiento": str(row['tipo_movimiento']),
                 "total_ventas": float(row['total_ventas']),
                 "num_transacciones": int(row['num_transacciones']),
@@ -90,11 +85,7 @@ def get_ventas_tipo_movimiento_anio(tabla_usuario):
                 "ticket_promedio": ticket_promedio
             })
 
-        # Devolver respuesta
-        return jsonify({
-            "status": "success",
-            "data": resultado
-        })
+        return jsonify(resultado)
 
     except Exception as e:
         return jsonify({
