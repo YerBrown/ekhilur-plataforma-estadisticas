@@ -9,15 +9,15 @@ El objetivo es fomentar una mayor participación y compromiso con el sistema Ekh
 
 ## **Principales Funciones**
 ### 1. **Acceso Personalizado**:
-   - Los usuarios inician sesión con un nombre de usuario y contraseña.
-   - Tras autenticarse, acceden a estadísticas personalizadas de su cuenta Ekhilur.
+- Los usuarios inician sesión con un nombre de usuario y contraseña.
+- Tras autenticarse, acceden a estadísticas personalizadas de su cuenta Ekhilur.
 
 ### 2. **Indicadores e Informes Personalizados**:
-   - **Gastos por Categoría**: Muestra una división de los gastos en categorías para facilitar el análisis de consumo.
-   - **Cantidad de Bonificaciones Recibidas**: Visualiza las bonificaciones acumuladas y utilizadas.
-   - **Número de Compras Realizadas**: Detalla la frecuencia y cantidad de compras.
-   - **Número de Ventas Realizadas** (Cuentas Profesionales): Información específica para cuentas profesionales sobre la frecuencia y cantidad de ventas.
-   - **Otros Indicadores Relevantes**: Información adicional útil para los usuarios, según sus hábitos de transacción.
+- **Gastos por Categoría**: Muestra una división de los gastos en categorías para facilitar el análisis de consumo.
+- **Cantidad de Bonificaciones Recibidas**: Visualiza las bonificaciones acumuladas y utilizadas.
+- **Número de Compras Realizadas**: Detalla la frecuencia y cantidad de compras.
+- **Número de Ventas Realizadas** (Cuentas Profesionales): Información específica para cuentas profesionales sobre la frecuencia y cantidad de ventas.
+- **Otros Indicadores Relevantes**: Información adicional útil para los usuarios, según sus hábitos de transacción.
 
 ---
 
