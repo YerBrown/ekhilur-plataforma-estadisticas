@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 import sqlite3
 import pandas as pd
-import os
+import os #! Importar solo los paquetes necesarios
 
 # Crear el blueprint
 cashback_listado_bp = Blueprint('cashback_listado', __name__)

@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 import sqlite3
 import pandas as pd
-import os
+import os #! Importar solo los paquetes necesarios
 
 # Crear el blueprint
 ventas_tipo_bp = Blueprint('ventas_tipo', __name__)
@@ -103,7 +103,4 @@ def get_ventas_tipo_movimiento_anio(tabla_usuario):
         }), 500
 
     finally:
->>>>>>> ba553d3cfd7891a4d8f67f85d5eb8e3b363df839
-=======
->>>>>>> 2c3f8f61c63e90af431f85a3071c8a8f5848f528
         conexion.close()

@@ -1,7 +1,7 @@
 
 from flask import Blueprint, jsonify
 import sqlite3
-import os
+import os #! Importar solo los paquetes necesarios
 
 # Crear el blueprint
 total_transacciones_bp = Blueprint('total_transacciones', __name__)

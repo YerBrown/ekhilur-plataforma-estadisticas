@@ -19,8 +19,8 @@ from endpoint.todas_transacciones_sin_filtro_endpoint import transacciones_bp
 from endpoint.total_movimientos_categorias_endpoint import movimientos_categorias_bp
 from endpoint.totalventas_mesactual_totalventas3meses_endpoint import ventas_bp
 from endpoint.ventas_año_endpoint import ventas_año_bp
-import requests
-import os
+import requests #! NO esta en uso, convendría quitar
+import os #! NO esta en uso, convendría quitar
 
 app = Flask(__name__)
 CORS(app)
@@ -77,7 +77,7 @@ def home():
             "ventas_año": "/ventas/<tabla_usuario>",
             "tablas_permitidas": list({"ilandatxe", "fotostorres", "alomorga", "categorias"})
         },
-        "ejemplos_uso": {
+        "ejemplos_uso": { #! Lleva nombres de usuarios hardcodeados, no puede estar aquí
             "cashback_emitido_año": "/cashback_emitido_año/fotostorres",
             "cashback_emitido_mes_año": "/cashback_emitido_mes_año/fotostorres",
             "cashback_generado": "/cashback_generado_tipo_mes_año/ilandatxe",

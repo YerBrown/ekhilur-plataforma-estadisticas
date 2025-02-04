@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 import sqlite3
-import os
+import os #! Importar solo los paquetes necesarios
 
 # Crear el blueprint
 ingresos_gastos_mes_bp = Blueprint('ingresos_gastos_mes', __name__)

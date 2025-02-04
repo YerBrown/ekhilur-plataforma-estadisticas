@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 import sqlite3
 import pandas as pd
-import os
+import os #! Importar solo los paquetes necesarios
 
 # Crear el blueprint
 ventas_tipo_mes_bp = Blueprint('ventas_tipo_mes', __name__)

@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 import sqlite3
 import pandas as pd
-import os
+import os #! Importar solo los paquetes necesarios
 
 # Crear el blueprint
 cashback_generado_bp = Blueprint('cashback_generado', __name__)
@@ -74,4 +74,3 @@ def get_cashback(tabla_usuario):
         return jsonify({"error": resultado[0]}), resultado[1]
 
     return jsonify(resultado)
->>>>>>> ba553d3cfd7891a4d8f67f85d5eb8e3b363df839

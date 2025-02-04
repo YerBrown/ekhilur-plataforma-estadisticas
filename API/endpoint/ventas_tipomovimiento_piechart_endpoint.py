@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, send_file, request
 import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
-import os
+import os #! Importar solo los paquetes necesarios
 from datetime import datetime
 
 # Crear el blueprint
