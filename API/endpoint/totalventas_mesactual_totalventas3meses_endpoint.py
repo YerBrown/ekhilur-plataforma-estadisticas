@@ -18,14 +18,11 @@ def get_ventas_3meses(tabla_usuario):
     """
     Endpoint para obtener ventas mensuales y el total de los últimos 3 meses
     """
-    # Validamos que la tabla esté permitida
-    tablas_permitidas = {"ilandatxe", "fotostorres", "alex", "categorias"}  
-
-    if tabla_usuario not in tablas_permitidas:
-        return jsonify({"error": "Nombre de tabla no permitido."}), 400
+    # Validamos que la tabla sea fotostorres
+    if tabla_usuario != "fotostorres":
+        return jsonify({"error": "Este endpoint solo está disponible para fotostorres."}), 400
 
     try:
-        # Conectar a la base de datos
         conexion = sqlite3.connect(DATABASE_PATH)
     except sqlite3.Error as e:
         return jsonify({
@@ -34,7 +31,6 @@ def get_ventas_3meses(tabla_usuario):
         }), 500
 
     try:
-        # Query mejorada para obtener ventas
         query = f"""
         WITH ventas_mensuales AS (
             SELECT 
@@ -83,14 +79,23 @@ def get_ventas_3meses(tabla_usuario):
         ORDER BY año DESC, mes DESC;
         """
 
-        # Ejecutar la consulta
         df = pd.read_sql_query(query, conexion)
 
         if df.empty:
             return jsonify({"message": "No hay datos de ventas disponibles."}), 404
 
-        # Convertir a diccionario y devolver respuesta
-        return jsonify(df.to_dict(orient='records'))
+        # Formatear los datos según apiJsons.txt
+        resultado = []
+        for _, row in df.iterrows():
+            resultado.append({
+                "año": str(row['año']),
+                "mes": str(row['mes']).zfill(2),  # Asegura que el mes tenga 2 dígitos
+                "ventas_mes_actual": float(row['ventas_mes_actual']),
+                "total_ultimos_3_meses": float(row['total_ultimos_3_meses']),
+                "meses_disponibles": int(row['meses_disponibles'])
+            })
+
+        return jsonify(resultado)
 
     except Exception as e:
         return jsonify({
@@ -99,4 +104,4 @@ def get_ventas_3meses(tabla_usuario):
         }), 500
 
     finally:
-        conexion.close()
+        conexion.close() 
