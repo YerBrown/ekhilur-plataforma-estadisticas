@@ -1,16 +1,4 @@
 import { apiRequest } from "./apiRequest.js";
-import {
-    movimientos,
-    bonificacionesPorAño,
-    bonificacionesPorMes,
-    bonificacionesPorAñoVendedor,
-    bonificacionesPorMesVendedor,
-    gastosIngresosAño,
-    gastosIngresosMes,
-    gastosCategoryFalsos,
-    ventasAño,
-    ventasMes,
-} from "../helpers/mockup.js";
 import { response } from "express";
 
 const completarMesesFaltantesBonificacionesEmitidas = (
@@ -37,8 +25,8 @@ const completarMesesFaltantesBonificacionesEmitidas = (
                 añosCompletos.push({
                     año: año.toString(),
                     mes: mesStr,
-                    total_cashback_emitido: 0,
-                    total_cashback_recibido: 0,
+                    bonificaciones_emitidas: 0,
+                    bonificaciones_recibidas: 0,
                 });
             }
         }
@@ -48,6 +36,27 @@ const completarMesesFaltantesBonificacionesEmitidas = (
     return [...dataFiltrada, ...añosCompletos].sort(
         (a, b) => a.año - b.año || a.mes - b.mes
     );
+};
+const completarAñosFaltantesBonificacionesEmitidas = (data, anioInicio, anioFin) => {
+    // Filtrar objetos con año null y convertir a conjunto para verificar años existentes
+    const dataFiltrada = data.filter(item => item.año !== null);
+    const añosExistentes = new Set(dataFiltrada.map(item => item.año));
+
+    const añosCompletos = [];
+
+    for (let año = anioInicio; año <= anioFin; año++) {
+        if (!añosExistentes.has(año.toString())) {
+            // Agregar año faltante con valores en 0
+            añosCompletos.push({
+                año: año.toString(),
+                bonificaciones_emitidas: 0,
+                bonificaciones_recibidas: 0,
+            });
+        }
+    }
+
+    // Unir los datos filtrados con los años faltantes
+    return [...dataFiltrada, ...añosCompletos].sort((a, b) => a.año - b.año);
 };
 const agruparPorAñoBonificacionesEmitidas = (data) => {
     const dataFiltrada = data.filter((item) => item.año !== null);
@@ -75,6 +84,7 @@ const agruparPorAñoBonificacionesEmitidas = (data) => {
         []
     );
 };
+
 const completarMesesBonificaciones = (data, anioInicio, anioFin) => {
     const dataFiltrada = data.filter((item) => item.año !== null);
 
@@ -90,7 +100,7 @@ const completarMesesBonificaciones = (data, anioInicio, anioFin) => {
             );
 
             // Sumar total_cantidad de los movimientos existentes
-            const total_cantidad = existentes.reduce(
+            const bonificaciones = existentes.reduce(
                 (sum, item) => sum + item.total_cantidad,
                 0
             );
@@ -99,14 +109,13 @@ const completarMesesBonificaciones = (data, anioInicio, anioFin) => {
             añosCompletos.push({
                 año: año.toString(),
                 mes: mesStr,
-                total_cantidad: total_cantidad, // Si no hay datos, será 0
+                bonificaciones: bonificaciones, // Si no hay datos, será 0
             });
         }
     }
 
     return añosCompletos;
 };
-
 const sumarBonificacionesPorAño = (data, anioInicio, anioFin) => {
     const dataFiltrada = data.filter((item) => item.año !== null);
     const resumenAños = [];
@@ -118,7 +127,7 @@ const sumarBonificacionesPorAño = (data, anioInicio, anioFin) => {
         );
 
         // Sumar total_cantidad de todos los meses del año
-        const total_cantidad = datosAño.reduce(
+        const bonificaciones = datosAño.reduce(
             (sum, item) => sum + item.total_cantidad,
             0
         );
@@ -126,7 +135,7 @@ const sumarBonificacionesPorAño = (data, anioInicio, anioFin) => {
         // Agregar al resultado
         resumenAños.push({
             año: año.toString(),
-            total_cantidad: total_cantidad,
+            bonificaciones: bonificaciones,
         });
     }
 
@@ -197,49 +206,144 @@ const completarAñosGastosIngresos = (data, anioInicio, anioFin) => {
 
     return resumenAños;
 };
-// TOTAL DE TRANSACCIONES
-// - Cuenta el número total de transacciones por mes
-// - Separa entre transacciones de ingreso y gasto
-// - Incluye montos totales y balance
-async function getTotalTransactions(req, res) {
+
+const completarMesesVentas = (data, anioInicio, anioFin) => {
+    // Filtrar datos y eliminar claves innecesarias
+    const datosFiltrados = data.map(({ total_ventas, año, mes }) => ({
+        año,
+        mes,
+        ventas: total_ventas,
+    }));
+
+    const ventasCompletas = [];
+
+    for (let año = anioInicio; año <= anioFin; año++) {
+        for (let mes = 1; mes <= 12; mes++) {
+            const mesStr = mes.toString().padStart(2, "0"); // Asegura formato "01", "02", etc.
+
+            // Buscar si el mes ya existe en los datos
+            const existe = datosFiltrados.find(
+                (item) => item.año === año.toString() && item.mes === mesStr
+            );
+
+            if (existe) {
+                ventasCompletas.push(existe); // Mantener el objeto original si existe
+            } else {
+                // Agregar objeto con valores en 0 si el mes falta
+                ventasCompletas.push({
+                    año: año.toString(),
+                    mes: mesStr,
+                    ventas: 0,
+                });
+            }
+        }
+    }
+
+    return ventasCompletas.sort((a, b) => a.año - b.año || a.mes - b.mes);
+};
+const completarVentasPorAño = (data, anioInicio, anioFin) => {
+    // Reducir datos para agrupar por año y sumar total_ventas
+    const ventasAgrupadas = data.reduce((acumulado, { año, total_ventas }) => {
+        if (!acumulado[año]) {
+            acumulado[año] = { año, ventas: 0 };
+        }
+        acumulado[año].ventas += total_ventas;
+        return acumulado;
+    }, {});
+
+    // Convertir el objeto en un array y completar los años faltantes
+    const ventasCompletas = [];
+
+    for (let año = anioInicio; año <= anioFin; año++) {
+        const añoStr = año.toString();
+        if (ventasAgrupadas[añoStr]) {
+            ventasCompletas.push(ventasAgrupadas[añoStr]);
+        } else {
+            ventasCompletas.push({ año: añoStr, total_ventas: 0 });
+        }
+    }
+
+    return ventasCompletas;
+};
+
+const completarMesesGastosCategoria = (data, anioInicio, anioFin) => {
+    // Filtrar datos y eliminar claves innecesarias
+    const datosFiltrados = data.map(({ total_compras, ...item }) => ({
+        ...item,
+        gasto: parseFloat(total_compras.toFixed(2)), // Renombramos total_compras a gasto
+    }));
+
+    const gastosCompletos = [];
+
+    const categoriasUnicas = [...new Set(datosFiltrados.map(item => item.categoria))];
+
+    for (let año = anioInicio; año <= anioFin; año++) {
+        for (let mes = 1; mes <= 12; mes++) {
+            const mesStr = mes.toString().padStart(2, "0"); // Formato "01", "02", etc.
+
+            categoriasUnicas.forEach(categoria => {
+                // Buscar si el mes y la categoría ya existen en los datos
+                const existe = datosFiltrados.find(
+                    item => item.año === año.toString() && item.mes === mesStr && item.categoria === categoria
+                );
+
+                if (existe) {
+                    gastosCompletos.push(existe); // Mantener el objeto original si existe
+                } else {
+                    // Agregar objeto con valores en 0 si la categoría no tiene datos en ese mes
+                    gastosCompletos.push({
+                        año: año.toString(),
+                        mes: mesStr,
+                        categoria: categoria, // Mantener la categoría
+                        gasto: 0, // Se mantiene en 0 si no hay datos
+                    });
+            }
+        });
+        }
+    }
+
+    return gastosCompletos.sort((a, b) => a.año - b.año || a.mes - b.mes);
+};
+
+
+
+
+// USER
+async function getUserInfo(req, res) {
     try {
-        // const response = await apiRequest(`/total_transacciones/${req.user.username}`, "GET");
-        const response = movimientos;
-        res.status(200).json(response);
+        const response = await apiRequest(
+            `/profile/refresh/${req.user.username}`,
+            "GET"
+        );
+        res.status(200).json(response.data);
     } catch (error) {
-        console.error("Error al obtener las transacciones:", error);
-        res.status(500).json({ error: "Error al obtener las transacciones" });
+        console.error("Error al obtener el usuario:", error);
+        res.status(500).json({ error: "Error al obtener el usuario" });
+    }
+}
+async function getUserAccounts(req, res) {
+    try {
+        const response = await apiRequest(
+            `/cuentas/refresh/${req.user.username}`,
+            "GET"
+        );
+        res.status(200).json(response.data);
+    } catch (error) {
+        console.error("Error al obtener las cuentas:", error);
+        res.status(500).json({ error: "Error al obtener las cuentas" });
     }
 }
 
-async function getBonificationTransactions(req, res) {
-    try {
-        const response = movimientos;
-        const bonificaciones = response.filter((item) => item.cantidad > 0);
-        res.status(200).json(bonificaciones);
-    } catch (error) {
-        console.error("Error al obtener las transacciones:", error);
-        res.status(500).json({ error: "Error al obtener las transacciones" });
-    }
-}
 
-// CASHBACK EMITIDO POR MES Y AÑO
-// - Calcula el cashback emitido y recibido agrupado por mes y año
-// - Muestra totales de cashback recibido por bonificaciones y emitido por descuentos
-// - Permite analizar el flujo de cashback a lo largo del tiempo
-async function getCashbackIssuedByMonth(req, res) {
+// CASHBACK
+async function getCashbacksIssuedByMonth(req, res) {
     try {
-        // const response = await apiRequest(`/cashback_emitido_mes_año/${req.user.username}`, "GET");
         const response = await apiRequest(
             `/cashback_emitido_mes_año/${req.user.username}`,
             "GET"
         );
-        const nuevoArray = response.map(({ anio, ...rest }) => ({
-            año: anio, // Cambiar "anio" por "año"
-            ...rest,
-        }));
         const arrayCompleto = completarMesesFaltantesBonificacionesEmitidas(
-            nuevoArray,
+            response,
             2022,
             2025
         );
@@ -249,21 +353,61 @@ async function getCashbackIssuedByMonth(req, res) {
         res.status(500).json({ error: "Error al obtener el cashback" });
     }
 }
-
-async function getCashbackIssuedByYear(req, res) {
+async function getCashbacksIssuedByYear(req, res) {
     try {
-        // const response = await apiRequest(`/cashback_emitido_mes_año/${req.user.username}`, "GET");
         const response = await apiRequest(
-            `/cashback_emitido_mes_año/${req.user.username}`,
+            `/cashback_emitido_año/${req.user.username}`,
             "GET"
         );
-        const nuevoArray = response.map(({ anio, ...rest }) => ({
-            año: anio, // Cambiar "anio" por "año"
-            ...rest,
-        }));
-        const bonificacionesAnuales =
-            agruparPorAñoBonificacionesEmitidas(nuevoArray);
+        const arrayCompleto = completarAñosFaltantesBonificacionesEmitidas(
+            response,
+            2022,
+            2025
+        );
 
+        res.status(200).json(arrayCompleto);
+    } catch (error) {
+        console.error("Error al obtener el cashback:", error);
+        res.status(500).json({ error: "Error al obtener el cashback" });
+    }
+}
+async function getCashbackGeneratedByMonth(req, res) {
+    try {
+        const response = await apiRequest(
+            `/cashback_generado_total_mes_año/${req.user.username}`,
+            "GET"
+        );
+
+        const mesesCompletos = completarMesesBonificaciones(
+            response,
+            2022,
+            2025
+        )
+            .map(item => ({
+                ...item,
+                bonificaciones: parseFloat(item.bonificaciones.toFixed(2)),
+            }));
+        res.status(200).json(mesesCompletos);
+    } catch (error) {
+        console.error("Error al obtener el cashback:", error);
+        res.status(500).json({ error: "Error al obtener el cashback" });
+    }
+}
+async function getCashbackGeneratedByYear(req, res) {
+    try {
+        const response = await apiRequest(
+            `/cashback_generado_total_mes_año/${req.user.username}`,
+            "GET"
+        );
+        const bonificacionesAnuales = sumarBonificacionesPorAño(
+            response,
+            2022,
+            2025
+        )
+            .map(item => ({
+                ...item,
+                bonificaciones: parseFloat(item.bonificaciones.toFixed(2)),
+            }));
         res.status(200).json(bonificacionesAnuales);
     } catch (error) {
         console.error("Error al obtener el cashback:", error);
@@ -271,89 +415,47 @@ async function getCashbackIssuedByYear(req, res) {
     }
 }
 
-// CASHBACK GENERADO POR TIPO, MES Y AÑO
-// - Calcula el cashback generado por cada tipo de movimiento (descuentos, bonificaciones, campañas)
-// - Agrupa los datos por mes y año
-// - Permite ver la distribución del cashback según su origen
-async function getCashbackGeneratedByMonth(req, res) {
+// CATEGORIAS
+async function getCategoryExpensesByMonth(req, res) {
     try {
+        const { mes, año } = req.query;
         const response = await apiRequest(
-            `/cashback_generado_total_mes_año/${req.user.username}`,
+            `/compras_categoria_mes_año/${req.user.username}`,
             "GET"
         );
-        const nuevoArray = response.map(({ anio, ...rest }) => ({
-            año: anio, // Cambiar "anio" por "año"
-            ...rest,
-        }));
-
-        const mesesCompletos = completarMesesBonificaciones(
-            nuevoArray,
+        const goodResponse = completarMesesGastosCategoria(
+            response,
             2022,
             2025
-        );
-        res.status(200).json(mesesCompletos);
+        )
+        const filteredResponse = goodResponse.filter(
+            item => (!mes ||item.mes === mes) && (!año || item.año === año)
+        )
+        res.status(200).json(filteredResponse);
     } catch (error) {
-        console.error("Error al obtener el cashback:", error);
-        res.status(500).json({ error: "Error al obtener el cashback" });
-    }
-}
-
-async function getCashbackGeneratedByYear(req, res) {
-    try {
-        const response = await apiRequest(
-            `/cashback_generado_total_mes_año/${req.user.username}`,
-            "GET"
-        );
-        const nuevoArray = response.map(({ anio, ...rest }) => ({
-            año: anio, // Cambiar "anio" por "año"
-            ...rest,
-        }));
-        const binificacionesAnuales = sumarBonificacionesPorAño(
-            nuevoArray,
-            2022,
-            2025
-        );
-        res.status(200).json(binificacionesAnuales);
-    } catch (error) {
-        console.error("Error al obtener el cashback:", error);
-        res.status(500).json({ error: "Error al obtener el cashback" });
-    }
-}
-
-// CASHBACK TOTAL POR MES Y AÑO
-//- Calcula el total de cashback generado agrupado por mes y año
-//- Suma todos los tipos de cashback (descuentos, bonificaciones, campañas)
-//- Proporciona una vista consolidada del cashback total
-async function getTotalCashbackByMonthAndYear(req, res) {
-    try {
-        // const response = await apiRequest(`/cashback_generado_total_mes_año/${req.user.username}`, "GET");
-        res.status(200).json(response);
-    } catch (error) {
-        console.error("Error al obtener el cashback:", error);
-        res.status(500).json({ error: "Error al obtener el cashback" });
+        console.error("Error al obtener los gastos por categoria:", error);
+        res.status(500).json({ error: "Error al obtener los gastos por categoria" });
     }
 }
 
 // INGRESOS Y GASTOS
-// - Calcula ingresos y gastos mensuales
-// - Incluye balance neto mensual
-// - Agrupa los datos por mes y año
 async function getIncomesAndExpensesByMonth(req, res) {
     try {
         const response = await apiRequest(
             `/ingresos_gastos/${req.user.username}`,
             "GET"
         );
-        const nuevoArray = response.map(({ anio, ...rest }) => ({
-            año: anio, // Cambiar "anio" por "año"
-            ...rest,
-        }));
-        const datosMenusales = completarMesesGastosIngresos(
-            nuevoArray,
+        const datosMensuales = completarMesesGastosIngresos(
+            response,
             2022,
             2025
-        );
-        res.status(200).json(datosMenusales);
+        )
+            .map(item => ({
+                ...item,
+                ingresos: parseFloat(item.ingresos.toFixed(2)),
+                gastos: parseFloat(item.gastos.toFixed(2)),
+            }));
+        res.status(200).json(datosMensuales);
     } catch (error) {
         console.error("Error al obtener el gasto e ingreso:", error);
         res.status(500).json({ error: "Error al obtener el gasto e ingreso" });
@@ -365,16 +467,16 @@ async function getIncomesAndExpensesByYear(req, res) {
             `/ingresos_gastos/${req.user.username}`,
             "GET"
         );
-        const nuevoArray = response.map(({ anio, ...rest }) => ({
-            año: anio, // Cambiar "anio" por "año"
-            ...rest,
-        }));
         const datosAnuales = completarAñosGastosIngresos(
-            nuevoArray,
+            response,
             2022,
             2025
-        );
-        // const response = gastosIngresosAño;
+        )
+            .map(item => ({
+                ...item,
+                ingresos: parseFloat(item.ingresos.toFixed(2)),
+                gastos: parseFloat(item.gastos.toFixed(2)),
+            }));
         res.status(200).json(datosAnuales);
     } catch (error) {
         console.error("Error al obtener el cashback:", error);
@@ -382,115 +484,54 @@ async function getIncomesAndExpensesByYear(req, res) {
     }
 }
 
-// RESUMEN DE INGRESOS Y GASTOS
-// - Proporciona un resumen mensual de ingresos y gastos
-// - Incluye totales y balance neto
-// - Ordenado por año y mes descendente
-async function getExpensesSummary(req, res) {
-    try {
-        const { month, year } = req.params;
-        const response = await apiRequest(
-            `/total_transacciones//${req.user.username}`,
-            "GET"
-        );
-        console.log(month, year);
-        const movimientosFiltrados = movimientos.filter((mov) =>
-            mov.fecha.startsWith(`${year}-${month.toString().padStart(2, "0")}`)
-        );
 
-        // Reducir para agrupar por categoría y sumar los gastos
-        const resumen = movimientosFiltrados.reduce((acc, mov) => {
-            if (mov.cantidad < 0) {
-                // Solo contar gastos (negativos)
-                const categoriaExistente = acc.find(
-                    (c) => c.categoria === mov.categoria
-                );
-                if (categoriaExistente) {
-                    categoriaExistente.gastos += Math.abs(mov.cantidad);
-                } else {
-                    acc.push({
-                        categoria: mov.categoria,
-                        gastos: Math.abs(mov.cantidad),
-                    });
-                }
-            }
-            return acc;
-        }, []);
-
-        // const response = resumen;
-        res.status(200).json(response);
-    } catch (error) {
-        console.error("Error al obtener el resumen:", error);
-        res.status(500).json({ error: "Error al obtener el resumen" });
-    }
-}
-
-// VENTAS POR MES Y AÑO
-// - Calcula ventas totales por mes y año
-// - Incluye número de ventas y promedios
-// - Calcula ticket promedio
-async function getSalesByYear(req, res) {
-    try {
-        // const response = await apiRequest(`/ventas/${req.user.username}`, "GET");
-        const response = ventasAño;
-        res.status(200).json(response);
-    } catch (error) {
-        console.error("Error al obtener las ventas:", error);
-        res.status(500).json({ error: "Error al obtener las ventas" });
-    }
-}
-
+// VENTAS
 async function getSalesByMonth(req, res) {
     try {
-        // const response = await apiRequest(`/ventas/${req.user.username}`, "GET");
-        const response = ventasMes;
-        res.status(200).json(response);
+        const response = await apiRequest(
+            `/ventas/${req.user.username}`,
+            "GET"
+        );
+        const goodResponse = completarMesesVentas(
+            response,
+            2022,
+            2025
+        )
+        res.status(200).json(goodResponse);
+    } catch (error) {
+        console.error("Error al obtener las ventas:", error);
+        res.status(500).json({ error: "Error al obtener las ventas" });
+    }
+}
+async function getSalesByYear(req, res) {
+    try {
+        const response = await apiRequest(
+            `/ventas/${req.user.username}`,
+            "GET"
+        );
+        const goodResponse = completarVentasPorAño(
+            response,
+            2022,
+            2025
+        )
+        res.status(200).json(goodResponse);
     } catch (error) {
         console.error("Error al obtener las ventas:", error);
         res.status(500).json({ error: "Error al obtener las ventas" });
     }
 }
 
-// VENTAS POR TIPO DE MOVIMIENTO Y AÑO
-// - Analiza ventas según tipo de movimiento por año
-// - Incluye estadísticas como total, número de transacciones y promedios
-// - Diferencia entre pagos de usuario y cobros QR
-async function getSalesByTypeAndYear(req, res) {
-    try {
-        // const response = await apiRequest(`/ventas_tipo_movimiento/${req.user.username}`, "GET");
-        res.status(200).json(response);
-    } catch (error) {
-        console.error("Error al obtener las ventas:", error);
-        res.status(500).json({ error: "Error al obtener las ventas" });
-    }
-}
-
-// VENTAS POR TIPO DE MOVIMIENTO, MES Y AÑO
-// - Similar al anterior pero con detalle mensual
-// - Proporciona estadísticas detalladas por tipo de movimiento
-// - Incluye promedios y tickets promedio
-async function getSalesByTypeMonthAndYear(req, res) {
-    try {
-        // const response = await apiRequest(`/ventas_tipo_movimiento_mes/${req.user.username}`, "GET");
-        res.status(200).json(response);
-    } catch (error) {
-        console.error("Error al obtener las ventas:", error);
-        res.status(500).json({ error: "Error al obtener las ventas" });
-    }
-}
 
 export default {
-    getTotalTransactions,
-    getBonificationTransactions,
-    getCashbackIssuedByMonth,
-    getCashbackIssuedByYear,
+    getUserInfo,
+    getUserAccounts,
+    getCashbacksIssuedByMonth,
+    getCashbacksIssuedByYear,
     getCashbackGeneratedByMonth,
     getCashbackGeneratedByYear,
-    getTotalCashbackByMonthAndYear,
+    getCategoryExpensesByMonth,
     getIncomesAndExpensesByMonth,
     getIncomesAndExpensesByYear,
-    getExpensesSummary,
     getSalesByYear,
     getSalesByMonth,
-    getSalesByTypeMonthAndYear,
 };
