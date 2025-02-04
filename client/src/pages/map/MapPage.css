@@ -1,23 +1,23 @@
 .map-page {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Espacio más generoso entre los elementos principales */
+    gap: 20px;
     padding: 0;
     margin: 0;
-    font-family: 'Arial', sans-serif; /* Tipografía moderna */
-    background-color: #f9f9f9; /* Fondo claro para toda la página */
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
 }
 
 /* Contenedor del mapa */
 .map-container {
     width: 100%;
-    height: 550px; /* Altura para pantallas grandes */
+    height: 550px;
     margin: 0;
     padding: 0;
-    border-radius: 10px; /* Bordes redondeados para el mapa */
-    overflow: hidden; /* Oculta desbordamientos */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sutil sombra */
-    background-color: #fff; /* Fondo blanco detrás del mapa */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
 }
 
 /* Galería de comercios */
@@ -28,68 +28,65 @@
 
 .gallery h2 {
     margin-bottom: 15px;
-    font-size: 28px; /* Tamaño del título mayor */
+    font-size: 28px;
     font-weight: bold;
-    color: #333; /* Color más oscuro para mejor contraste */
+    color: #333;
 }
 
-/* Galería responsiva */
 .gallery-grid {
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     justify-content: center;
-    padding: 10px; /* Espaciado interno */
+    padding: 10px;
 }
 
-/* Estilo de los elementos de la galería */
 .gallery-item {
     background: #fff;
     border: 1px solid #ddd;
-    border-radius: 12px; /* Bordes más redondeados */
-    padding: 20px; /* Espaciado más generoso */
+    border-radius: 12px;
+    padding: 20px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sutil sombra */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación más suave */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .gallery-item:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Más sombra al pasar el ratón */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .gallery-item img {
     width: 100%;
     height: 150px;
     object-fit: cover;
-    border-radius: 12px; /* Bordes redondeados de las imágenes */
+    border-radius: 12px;
     margin-bottom: 15px;
 }
 
 .gallery-item h3 {
     margin: 10px 0 5px;
-    font-size: 20px; /* Tamaño del texto mayor */
-    color: #222; /* Texto más oscuro */
+    font-size: 20px;
+    color: #222;
 }
 
 .gallery-item p {
     color: #555;
     font-size: 14px;
-    line-height: 1.5; /* Espaciado entre líneas para legibilidad */
+    line-height: 1.5;
 }
 
-/* Filtro (Selector de tipo de comercio) */
 .filter-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 15px auto;
     padding: 10px 20px;
-    max-width: 400px; /* Limitar el ancho */
+    max-width: 400px;
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 12px; /* Bordes redondeados */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sutil sombra */
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .filter-container select {
@@ -104,11 +101,10 @@
 }
 
 .filter-container select:focus {
-    border-color: #007bff; /* Azul al enfocar */
+    border-color: #007bff;
     outline: none;
 }
 
-/* Botón de navegación */
 .navigate-button {
     padding: 10px 15px;
     background-color: #007bff;
@@ -122,10 +118,8 @@
 
 .navigate-button:hover {
     background-color: #0056b3;
-    transform: translateY(-2px); /* Efecto de elevación */
+    transform: translateY(-2px);
 }
-
-/* Responsividad */
 
 /* Pantallas grandes (PC) */
 @media screen and (min-width: 1200px) {

@@ -78,7 +78,6 @@ const MapPage = () => {
         }
     };
 
-    // 🔹 Obtener la lista de tipos de comercio únicos
     const businessTypes = ["Todos", ...new Set(businesses.map((b) => b.type))];
 
     const RoutingMachine = () => {
@@ -112,7 +111,6 @@ const MapPage = () => {
         return null;
     };
 
-    // 🔹 Agregar control de búsqueda con lupa y texto negro
     const GeocoderControl = () => {
         const map = useMap();
 
