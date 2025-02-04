@@ -1,5 +1,4 @@
 from flask import Flask, jsonify
-from flask_cors import CORS
 from endpoint.cashback_emitido_año_endpoint import cashback_emitido_bp as cashback_emitido_año_bp
 from endpoint.cashback_emitido_mes_año_endpoint import cashback_emitido_bp as cashback_emitido_mes_bp
 from endpoint.cashback_generado_tipo_mes_año_endpoint import cashback_generado_bp
@@ -19,11 +18,11 @@ from endpoint.todas_transacciones_sin_filtro_endpoint import transacciones_bp
 from endpoint.total_movimientos_categorias_endpoint import movimientos_categorias_bp
 from endpoint.totalventas_mesactual_totalventas3meses_endpoint import ventas_bp
 from endpoint.ventas_año_endpoint import ventas_año_bp
-import requests
-import os
+from endpoint.scraper_perfil_endpoint import scraper_perfil_bp
+from endpoint.scraper_cuentas_endpoint import scraper_cuentas_bp
 
 app = Flask(__name__)
-CORS(app)
+
 
 # Registrar los blueprints
 app.register_blueprint(cashback_emitido_año_bp)
@@ -45,6 +44,8 @@ app.register_blueprint(transacciones_bp)
 app.register_blueprint(movimientos_categorias_bp)
 app.register_blueprint(ventas_bp)
 app.register_blueprint(ventas_año_bp)
+app.register_blueprint(scraper_perfil_bp)
+app.register_blueprint(scraper_cuentas_bp)
 
 # Ruta raíz que muestra todos los endpoints disponibles
 @app.route('/', methods=['GET'])
@@ -75,6 +76,10 @@ def home():
             "movimientos_categorias": "/total_movimientos_categorias/<tabla_usuario>",
             "ventas_3meses": "/ventas_3meses/<tabla_usuario>",
             "ventas_año": "/ventas/<tabla_usuario>",
+            "perfil": "/profile/<username>",
+            "actualizar_perfil": "/profile/refresh/<username>",
+            "cuentas": "/cuentas/<username>",
+            "actualizar_cuentas": "/cuentas/refresh/<username>",
             "tablas_permitidas": list({"ilandatxe", "fotostorres", "alomorga", "categorias"})
         },
         "ejemplos_uso": {
@@ -98,6 +103,10 @@ def home():
             "movimientos_categorias": "/total_movimientos_categorias/fotostorres",
             "ventas_3meses": "/ventas_3meses/fotostorres",
             "ventas_año": "/ventas/fotostorres",
+            "perfil": "/profile/alomorga",
+            "actualizar_perfil": "/profile/refresh/alomorga",
+            "cuentas": "/cuentas/alomorga",
+            "actualizar_cuentas": "/cuentas/refresh/alomorga"
         }
     })
 
