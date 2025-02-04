@@ -4,8 +4,7 @@
     gap: 20px;
     padding: 0;
     margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9;
+    background-color: var(--background-color-principal);
 }
 
 /* Contenedor del mapa */
@@ -14,10 +13,10 @@
     height: 550px;
     margin: 0;
     padding: 0;
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    background-color: var(--background-color-principal-05);
 }
 
 /* Galería de comercios */
@@ -30,7 +29,7 @@
     margin-bottom: 15px;
     font-size: 28px;
     font-weight: bold;
-    color: #333;
+    color: var(--color-letra);
 }
 
 .gallery-grid {
@@ -42,36 +41,35 @@
 }
 
 .gallery-item {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 12px;
+    background: var(--background-color-principal-05);
+    border-radius: 8px;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .gallery-item:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
 }
 
 .gallery-item img {
     width: 100%;
     height: 150px;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 8px;
     margin-bottom: 15px;
 }
 
 .gallery-item h3 {
     margin: 10px 0 5px;
     font-size: 20px;
-    color: #222;
+    color: var(--color-letra);
 }
 
 .gallery-item p {
-    color: #555;
+    color: var(--color-letra);
     font-size: 14px;
     line-height: 1.5;
 }
@@ -81,22 +79,21 @@
     justify-content: center;
     align-items: center;
     margin: 15px auto;
-    padding: 10px 20px;
     max-width: 400px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    background-color: var(--background-color-principal-05);
+    border: 1px solid var(--background-color-principal-05);
+    border-radius: 8px;
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
 }
 
 .filter-container select {
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--background-color-principal-05);
     border-radius: 8px;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--background-color-principal-05);
+    color: var(--color-letra);
     transition: border-color 0.3s ease;
 }
 
@@ -126,6 +123,7 @@
     .gallery-grid {
         grid-template-columns: repeat(4, 1fr);
     }
+
     .map-container {
         height: 500px;
     }
@@ -136,6 +134,7 @@
     .map-container {
         height: 400px;
     }
+
     .filter-container {
         max-width: 350px;
     }
@@ -146,6 +145,7 @@
     .map-container {
         height: 300px;
     }
+
     .filter-container {
         max-width: 300px;
     }
@@ -156,6 +156,7 @@
     .map-container {
         height: 250px;
     }
+
     .filter-container {
         max-width: 280px;
     }
@@ -166,6 +167,7 @@
     .map-container {
         height: 200px;
     }
+
     .filter-container {
         max-width: 260px;
     }

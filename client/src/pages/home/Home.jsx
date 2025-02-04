@@ -127,19 +127,27 @@ const Home = () => {
                 </div>
             </header>
             <main>
-                <h1>{t.welcome}, {user?.username}!</h1>
+                <h1>
+                    {t.welcome}, {user?.username}!
+                </h1>
                 <div className="wallet-chart">
                     <h3>{t.wallet}</h3>
                     <DonutChart data={walletData} options={walletOptions} />
                 </div>
-                {user?.role === "user" && <button onClick={() => handleNavigate("/bonifications")}>
-                    <h3>{t.bonificationTitle}</h3>
-                    {/* {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
-                </button>}
-                {user?.role === "commerce" && <button onClick={() => handleNavigate("/bonifications-shop")}>
-                    <h3>Denda {t.bonificationTitle}</h3>
-                    {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
-                </button>}
+                {user?.role === "user" && (
+                    <button onClick={() => handleNavigate("/bonifications")}>
+                        <h3>{t.bonificationTitle}</h3>
+                        {/* {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                    </button>
+                )}
+                {user?.role === "commerce" && (
+                    <button
+                        onClick={() => handleNavigate("/bonifications-shop")}
+                    >
+                        <h3>Denda {t.bonificationTitle}</h3>
+                        {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                    </button>
+                )}
                 <button onClick={() => handleNavigate("/statistics")}>
                     <h3>{t.statisticsTitle}</h3>
                     {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
@@ -148,10 +156,15 @@ const Home = () => {
                     <h3>{t.transactionTitle}</h3>
                     {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                 </button>
-                {user?.role === "commerce" && <button onClick={() => handleNavigate("/sales")}>
-                    <h3>{t.salesTitle}</h3>
-                    {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
-                </button>}
+                {user?.role === "commerce" && (
+                    <button onClick={() => handleNavigate("/sales")}>
+                        <h3>{t.salesTitle}</h3>
+                        {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                    </button>
+                )}
+                <button onClick={() => handleNavigate("/map")}>
+                    <h3>Mapa</h3>
+                </button>
             </main>
         </div>
     );

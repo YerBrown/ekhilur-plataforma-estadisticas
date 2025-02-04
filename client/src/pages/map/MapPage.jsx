@@ -6,6 +6,7 @@ import "leaflet-control-geocoder";
 import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import L from "leaflet";
 import "./MapPage.css";
+import Layout from "../layout/Layout";
 
 const userLocationIcon = new L.Icon({
     iconUrl: "https://cdn-icons-png.flaticon.com/512/447/447031.png",
@@ -34,7 +35,10 @@ const MapPage = () => {
             .then((response) => response.json())
             .then((data) => {
                 const formattedData = data
-                    .filter((item) => item.Coordenadas && item.Coordenadas.length === 2)
+                    .filter(
+                        (item) =>
+                            item.Coordenadas && item.Coordenadas.length === 2
+                    )
                     .map((item, index) => ({
                         id: index + 1,
                         name: item["Nombre Comercio"] || "Comercio sin nombre",
@@ -46,7 +50,9 @@ const MapPage = () => {
                 setBusinesses(formattedData);
                 setFilteredBusinesses(formattedData);
             })
-            .catch((error) => console.error("Error cargando los comercios:", error));
+            .catch((error) =>
+                console.error("Error cargando los comercios:", error)
+            );
     }, []);
 
     useEffect(() => {
@@ -56,7 +62,8 @@ const MapPage = () => {
                     const { latitude, longitude } = position.coords;
                     setUserLocation([latitude, longitude]);
                 },
-                (error) => console.error("Error al obtener la ubicación:", error)
+                (error) =>
+                    console.error("Error al obtener la ubicación:", error)
             );
         }
     }, []);
@@ -66,7 +73,9 @@ const MapPage = () => {
         if (businessType === "Todos") {
             setFilteredBusinesses(businesses);
         } else {
-            const filtered = businesses.filter((business) => business.type === businessType);
+            const filtered = businesses.filter(
+                (business) => business.type === businessType
+            );
             setFilteredBusinesses(filtered);
         }
     }, [businessType, businesses]);
@@ -87,10 +96,7 @@ const MapPage = () => {
             if (!userLocation || !selectedLocation) return;
 
             const routingControl = L.Routing.control({
-                waypoints: [
-                    L.latLng(userLocation),
-                    L.latLng(selectedLocation),
-                ],
+                waypoints: [L.latLng(userLocation), L.latLng(selectedLocation)],
                 routeWhileDragging: false,
                 showAlternatives: false,
                 language: "es",
@@ -100,7 +106,9 @@ const MapPage = () => {
                 createMarker: () => null,
             }).addTo(map);
 
-            const routingContainer = document.querySelector(".leaflet-routing-container");
+            const routingContainer = document.querySelector(
+                ".leaflet-routing-container"
+            );
             if (routingContainer) {
                 routingContainer.style.display = "none";
             }
@@ -126,7 +134,9 @@ const MapPage = () => {
                 .addTo(map);
 
             setTimeout(() => {
-                const input = document.querySelector(".leaflet-control-geocoder input");
+                const input = document.querySelector(
+                    ".leaflet-control-geocoder input"
+                );
                 if (input) input.style.color = "black";
             }, 500);
 
@@ -137,81 +147,94 @@ const MapPage = () => {
     };
 
     return (
-        <div className="map-page">
-            {/* Mapa */}
-            <div className="map-container">
-                <MapContainer
-                    center={[43.26755, -1.97581]}
-                    zoom={15}
-                    style={{ height: "500px", width: "100%" }}
-                    whenCreated={(map) => setMapInstance(map)}
-                >
-                    <TileLayer
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        attribution='&copy; OpenStreetMap contributors'
-                    />
-                    <GeocoderControl />
+        <Layout title={"Mapa"}>
+            <div className="map-page">
+                {/* Mapa */}
+                <div className="map-container">
+                    <MapContainer
+                        center={[43.26755, -1.97581]}
+                        zoom={15}
+                        style={{ height: "500px", width: "100%" }}
+                        whenCreated={(map) => setMapInstance(map)}
+                    >
+                        <TileLayer
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            attribution="&copy; OpenStreetMap contributors"
+                        />
+                        <GeocoderControl />
 
-                    {userLocation && (
-                        <Marker position={userLocation} icon={userLocationIcon}>
-                            <Popup>¡Aquí estás!</Popup>
-                        </Marker>
-                    )}
+                        {userLocation && (
+                            <Marker
+                                position={userLocation}
+                                icon={userLocationIcon}
+                            >
+                                <Popup>¡Aquí estás!</Popup>
+                            </Marker>
+                        )}
 
-                    {filteredBusinesses.map((business) => (
-                        <Marker
-                            key={business.id}
-                            position={business.location}
-                            icon={businessIcon}
-                            eventHandlers={{
-                                click: () => setSelectedLocation(business.location),
-                            }}
-                        >
-                            <Popup>
-                                <strong>{business.name}</strong>
-                                <br />
-                                {business.address}
-                            </Popup>
-                        </Marker>
-                    ))}
+                        {filteredBusinesses.map((business) => (
+                            <Marker
+                                key={business.id}
+                                position={business.location}
+                                icon={businessIcon}
+                                eventHandlers={{
+                                    click: () =>
+                                        setSelectedLocation(business.location),
+                                }}
+                            >
+                                <Popup>
+                                    <strong>{business.name}</strong>
+                                    <br />
+                                    {business.address}
+                                </Popup>
+                            </Marker>
+                        ))}
 
-                    <RoutingMachine />
-                </MapContainer>
-            </div>
+                        <RoutingMachine />
+                    </MapContainer>
+                </div>
 
-            {/* 🔹 Selector de Tipo de Comercio - Visible en pantallas pequeñas también */}
-            <div className="filter-container">
-                <select
-                    id="business-type"
-                    value={businessType}
-                    onChange={(e) => setBusinessType(e.target.value)}
-                >
-                    {businessTypes.map((type, index) => (
-                        <option key={index} value={type}>
-                            {type}
-                        </option>
-                    ))}
-                </select>
-            </div>
+                {/* 🔹 Selector de Tipo de Comercio - Visible en pantallas pequeñas también */}
+                <div className="filter-container">
+                    <select
+                        id="business-type"
+                        value={businessType}
+                        onChange={(e) => setBusinessType(e.target.value)}
+                    >
+                        {businessTypes.map((type, index) => (
+                            <option key={index} value={type}>
+                                {type}
+                            </option>
+                        ))}
+                    </select>
+                </div>
 
-            {/* Galería de comercios */}
-            <div className="gallery">
-                <h2>Comercios</h2>
-                <div className="gallery-grid">
-                    {filteredBusinesses.map((business) => (
-                        <div
-                            className="gallery-item"
-                            key={business.id}
-                            onClick={() => handleBusinessClick(business.location)}
-                        >
-                            <h3>{business.name}</h3>
-                            <p><strong>Tipo:</strong> {business.type}</p>
-                            <p><strong>Dirección:</strong> {business.address}</p>
-                        </div>
-                    ))}
+                {/* Galería de comercios */}
+                <div className="gallery">
+                    <h2>Comercios</h2>
+                    <div className="gallery-grid">
+                        {filteredBusinesses.map((business) => (
+                            <div
+                                className="gallery-item"
+                                key={business.id}
+                                onClick={() =>
+                                    handleBusinessClick(business.location)
+                                }
+                            >
+                                <h3>{business.name}</h3>
+                                <p>
+                                    <strong>Tipo:</strong> {business.type}
+                                </p>
+                                <p>
+                                    <strong>Dirección:</strong>{" "}
+                                    {business.address}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
-        </div>
+        </Layout>
     );
 };
 
