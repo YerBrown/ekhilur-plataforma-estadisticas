@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 
 const translations = {
   es: {
@@ -22,15 +22,15 @@ const translations = {
     salesTitle: "Ventas",
     statisticsTitle: "Estadísticas",
     categoriesTitle: "Categorias",
-    category1: "Alimentación",
-    category2: "Hostelería",
-    category3: "Moda y Complementos",
-    category4: "Salud y Estética",
-    category5: "Servicios y Comercio General",
-    category6: "Industria y Construcción",
-    category7: "Arte y Cultura",
-    category8: "Deporte y Ocio",
-    category9: "Asociaciones y Cooperativas",
+    "Alimentación": "Alimentación",
+    "Hostelería": "Hostelería",
+    "Moda y Complementos": "Moda y Complementos",
+    "Salud y Estética": "Salud y Estética",
+    "Servicios y Comercio General": "Servicios y Comercio General",
+    "Industria y Construcción": "Industria y Construcción",
+    "Arte y Cultura": "Arte y Cultura",
+    "Deporte y Ocio": "Deporte y Ocio",
+    "Asociaciones y Cooperativas": "Asociaciones y Cooperativas",
     months: {},
     monthsAbbreviations: {},
     dateTranslations: {},
@@ -55,15 +55,15 @@ const translations = {
     wallet: "Diru-zorroa",
     salesTitle: "Salmentak",
     categoriesTitle: "Kategoriak",
-    category1: "Elikadura",
-    category2: "Ostalaritza",
-    category3: "Moda eta Osagarriak",
-    category4: "Osasun eta Estetika",
-    category5: "Zerbitzuak eta Merkataritza Orokorra",
-    category6: "Industria eta Eraikuntza",
-    category7: "Artea eta Kultura",
-    category8: "Kirola eta Aisialdia",
-    category9: "Elkarteak eta kooperatibak",
+    "Alimentación": "Elikadura",
+    "Hostelería": "Ostalaritza",
+    "Moda y Complementos": "Moda eta Osagarriak",
+    "Salud y Estética": "Osasun eta Estetika",
+    "Servicios y Comercio General": "Zerbitzuak eta Merkataritza Orokorra",
+    "Industria y Construcción": "Industria eta Eraikuntza",
+    "Arte y Cultura": "Artea eta Kultura",
+    "Deporte y Ocio": "Kirola eta Aisialdia",
+    "Asociaciones y Cooperativas": "Elkarteak eta kooperatibak",
     months: {
       enero: "Urtarrila",
       febrero: "Otsaila",
@@ -106,8 +106,20 @@ export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState("es");
 
   // Cambiar idioma
-  const setSpanish = () => setLanguage("es");
-  const setBasque = () => setLanguage("eus");
+  const setSpanish = () => saveLanguage("es");
+  const setBasque = () => saveLanguage("eus");
+
+  function saveLanguage(language) {
+    localStorage.setItem("language", language);
+    setLanguage(language);
+  }
+
+  useEffect(() => {
+    const storedLanguage = localStorage.getItem("language");
+    if (storedLanguage) {
+      setLanguage(storedLanguage);
+    }
+  }, []);
 
   return (
     <LanguageContext.Provider value={{ language, setSpanish, setBasque, t: translations[language] }}>
