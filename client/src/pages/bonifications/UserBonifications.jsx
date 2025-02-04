@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useLanguage } from "../../contexts/LanguageContext.jsx";
 import Layout from "../layout/Layout";
 import "./UserBonifications.css";
 import BarChartComponent from "../../components/charts/BarChart";
@@ -9,6 +10,7 @@ import TransactionList from "../../components/transactions-list/TransactionsList
 
 
 const UserBonifications = () => {
+    const { t } = useLanguage();
     const [selectedPeriod, setSelectedPeriod] = useState(null);
     const [bonifications, setBonifications] = useState({
         totalBonifications: 0,
@@ -95,7 +97,7 @@ const UserBonifications = () => {
 
     return (
         <div className="bonifications-page">
-            <Layout title="Bonificaciones">
+            <Layout title={t.bonificationTitle}>
                 <div className="container-date-filter">
                     <DateFilter onDateFilter={handleDateFilter} />
                 </div>
@@ -114,7 +116,7 @@ const UserBonifications = () => {
                     <>
                         <div className="container-ingresos-gastos">
                             <div className="item-ingresos-gastos">
-                                <p className="label-ingresos">BONIFICACIONES</p>
+                                <p className="label-ingresos">{t.received}</p>
                                 <span className="amount-ingresos">
                                     {formatCurrency(bonifications.totalBonifications)}
                                 </span>
