@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { verify } from "../api/auth";
 
 // Crear el contexto
 export const AuthContext = createContext();
@@ -6,12 +7,21 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
-    // Cargar usuario desde localStorage (opcional, para persistencia)
+    // Verificar el token en la cookie al cargar la aplicación
     useEffect(() => {
-        const storedUser = localStorage.getItem("user");
-        if (storedUser) {
-            setUser(JSON.parse(storedUser));
-        }
+        const checkUser = async () => {
+            try {
+                const verifiedUser = await verify();
+                if (verifiedUser) {
+                    setUser(verifiedUser);
+                }
+            } catch (error) {
+                console.error("Error al verificar el usuario", error);
+                setUser(null);
+            }
+        };
+
+        checkUser();
     }, []);
 
     // Función para guardar el usuario en el contexto
@@ -21,13 +31,11 @@ export const AuthProvider = ({ children }) => {
             return;
         }
         setUser(userData);
-        localStorage.setItem("user", JSON.stringify(userData)); // Guardar en localStorage
     };
 
     // Función para cerrar sesión
     const logoutUser = () => {
         setUser(null);
-        localStorage.removeItem("user");
     };
 
     return (
