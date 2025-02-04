@@ -39,7 +39,22 @@ const Home = () => {
     const handleNavigate = (path) => {
         navigate(path);
     };
+    useEffect(() => {
+        const fetchUserdata = async () => {
+            setLoading(true); // Detén el loader
+            try {
+                const userData = await verify(); // Llama a la API para obtener los datos
+                setUser(userData);
+            } catch (error) {
+                console.error("Error al obtener los datos del usuario:", error);
+                setError(true); // Marca un error si no está autenticado
+            } finally {
+                setLoading(false); // Detén el loader
+            }
+        };
 
+        fetchUserdata();
+    }, []);
     const walletLabels = walletDataJson.map((item) => item.label);
     const walletValues = walletDataJson.map((item) => item.value);
     const walletColors = walletDataJson.map((item) => item.color);
