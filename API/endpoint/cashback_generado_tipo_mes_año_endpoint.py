@@ -16,6 +16,7 @@ os.makedirs(DATABASE_DIR, exist_ok=True)
 # Función para calcular cashback generado
 def cashback_generado_tipo_mes_año(tabla_usuario):
     # Validamos que la tabla esté permitida
+    #! Los nombres de las tablas no pueden coincidir con los de usuarios
     tablas_permitidas = {"ilandatxe", "fotostorres", "alex", "categorias"}  
 
     if tabla_usuario not in tablas_permitidas:

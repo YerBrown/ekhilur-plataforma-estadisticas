@@ -20,6 +20,7 @@ def ventas_año_endpoint(tabla_usuario):
     Endpoint para obtener ventas agrupadas por año.
     """
     # Validamos que la tabla sea fotostorres
+    #! Los nombres de las tablas no pueden coincidir con los de usuarios
     if tabla_usuario != "fotostorres":
         return jsonify({"error": "Este endpoint solo está disponible para fotostorres."}), 400
 

@@ -19,6 +19,7 @@ def get_ventas_tipo_movimiento_anio(tabla_usuario):
     Endpoint para obtener ventas por tipo de movimiento y año
     """
     # Validamos que la tabla esté permitida
+    #! Los nombres de las tablas no pueden coincidir con los de usuarios
     tablas_permitidas = {"ilandatxe", "fotostorres", "alex", "categorias"}  
 
     if tabla_usuario not in tablas_permitidas:

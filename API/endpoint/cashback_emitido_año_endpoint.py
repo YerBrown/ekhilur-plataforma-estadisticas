@@ -17,6 +17,7 @@ os.makedirs(DATABASE_DIR, exist_ok=True)
 def cashback_emitido_año(tabla_usuario):
     # Validamos que la tabla esté permitida
     tablas_permitidas = {"fotostorres"}  # Solo permitimos fotostorres para este endpoint
+    #! Los nombres de las tablas no pueden coincidir con los de usuarios
     if tabla_usuario not in tablas_permitidas:
         return {"error": "Este endpoint solo está disponible para la tabla fotostorres."}, 400
     

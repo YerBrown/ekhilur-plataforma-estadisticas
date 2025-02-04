@@ -17,6 +17,7 @@ def obtener_resumen(tabla_usuario):
     Función para obtener el resumen de ingresos y gastos mes a mes
     """
     # Validamos que la tabla esté permitida
+    #! Los nombres de las tablas no pueden coincidir con los de usuarios
     tablas_permitidas = {"ilandatxe", "fotostorres", "alex", "categorias"}  
 
     if tabla_usuario not in tablas_permitidas:

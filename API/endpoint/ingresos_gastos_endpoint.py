@@ -18,6 +18,7 @@ def obtener_ingresos_gastos(tabla_usuario):
     Endpoint para obtener ingresos y gastos mensuales
     """
     # Validamos que la tabla esté permitida
+    #! Los nombres de las tablas no pueden coincidir con los de usuarios
     tablas_permitidas = {"ilandatxe", "fotostorres", "alex", "categorias"}  
 
     if tabla_usuario not in tablas_permitidas:

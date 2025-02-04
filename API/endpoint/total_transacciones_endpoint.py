@@ -19,6 +19,7 @@ def obtener_total_transacciones(tabla_usuario):
     Endpoint para obtener el total de transacciones por mes
     """
     # Validamos que la tabla esté permitida
+    #! Los nombres de las tablas no pueden coincidir con los de usuarios
     tablas_permitidas = {"ilandatxe", "fotostorres", "alex", "categorias"}  
 
     if tabla_usuario not in tablas_permitidas:

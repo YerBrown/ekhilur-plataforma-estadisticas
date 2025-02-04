@@ -17,6 +17,7 @@ os.makedirs(DATABASE_DIR, exist_ok=True)
 # Función para obtener listado de todas las transacciones
 def get_listado_todas_sin(tabla_usuario):
     # Validamos que la tabla esté permitida
+    #! Los nombres de las tablas no pueden coincidir con los de usuarios
     tablas_permitidas = {"ilandatxe", "fotostorres", "alomorga", "categorias"}
     if tabla_usuario not in tablas_permitidas:
         return {"error": "Nombre de tabla no permitido."}, 400

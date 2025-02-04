@@ -19,6 +19,7 @@ def get_total_movimientos_categorias(tabla_usuario):
     Endpoint para obtener el total de movimientos por categoría
     """
     # Validamos que la tabla esté permitida
+    #! Los nombres de las tablas no pueden coincidir con los de usuarios
     tablas_permitidas = {"ilandatxe", "fotostorres", "alomorga", "categorias"}
     if tabla_usuario not in tablas_permitidas:
         return jsonify({"error": "Nombre de tabla no permitido."}), 400

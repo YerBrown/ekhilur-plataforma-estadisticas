@@ -19,6 +19,7 @@ def get_ventas_3años(tabla_usuario):
     Endpoint para obtener ventas anuales y el total de los últimos 3 años
     """
     # Validamos que la tabla esté permitida
+    #! Los nombres de las tablas no pueden coincidir con los de usuarios
     tablas_permitidas = {"ilandatxe", "fotostorres", "alex", "categorias"}  
 
     if tabla_usuario not in tablas_permitidas:
