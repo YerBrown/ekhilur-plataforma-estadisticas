@@ -33,15 +33,20 @@ async function register(req, res) {
 async function login(req, res) {
     try {
         const { usernameOrEmail, password } = req.body;
-        const token = await authController.login(usernameOrEmail, password);
-        res.cookie("authToken", token, {
+        const loginResponse = await authController.login(usernameOrEmail, password);
+        res.cookie("authToken", loginResponse.token, {
             httpOnly: true,
             maxAge: 1000 * 60 * 60 * 24,
         });
 
         return res
             .status(200)
-            .json({ message: "Sesión iniciada correctamente" });
+            .json({
+                message: loginResponse.message,
+                username: loginResponse.username,
+                role: loginResponse.role,
+                token: loginResponse.token,
+            });
     } catch (error) {
         if (error instanceof Error) {
             return res

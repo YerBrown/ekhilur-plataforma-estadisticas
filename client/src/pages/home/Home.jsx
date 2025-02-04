@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate, Navigate } from "react-router-dom";
 import { useLanguage } from "../../contexts/LanguageContext.jsx";
 import { verify } from "../../api/auth";
@@ -8,6 +8,7 @@ import BarChartComponent from "../../components/charts/BarChart";
 import TransactionList from "../../components/transactions-list/TransactionsList";
 import mockData from "../../components/transactions-list/mockData.js";
 import { useTheme } from "../../contexts/ThemeContext";
+import { AuthContext } from "../../contexts/AuthContext";
 import "./Home.css";
 
 const walletDataJson = [
@@ -19,9 +20,6 @@ const walletDataJson = [
 const Home = () => {
     const { t, setSpanish, setBasque } = useLanguage();
     const { theme } = useTheme();
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
     const [selectedPeriod, setSelectedPeriod] = useState({
         month: new Date().getMonth + 1,
         year: new Date().getFullYear,
@@ -30,25 +28,18 @@ const Home = () => {
         mockData.splice(3)
     );
     const navigate = useNavigate();
+    const { user } = useContext(AuthContext);
+
+    useEffect(() => {
+        if (!user) {
+            navigate("/authentication");
+        }
+    }, [user, navigate]);
 
     const handleNavigate = (path) => {
         navigate(path);
     };
-    useEffect(() => {
-        const fetchUserdata = async () => {
-            try {
-                const userData = await verify(); // Llama a la API para obtener los datos
-                setUser(userData);
-            } catch (error) {
-                console.error("Error al obtener los datos del usuario:", error);
-                setError(true); // Marca un error si no está autenticado
-            } finally {
-                setLoading(false); // Detén el loader
-            }
-        };
 
-        fetchUserdata();
-    }, []);
     const walletLabels = walletDataJson.map((item) => item.label);
     const walletValues = walletDataJson.map((item) => item.value);
     const walletColors = walletDataJson.map((item) => item.color);
@@ -115,14 +106,6 @@ const Home = () => {
         radius: "60%",
     };
 
-    if (loading) {
-        return <></>; // Loader mientras se obtienen los datos
-    }
-
-    if (error) {
-        return <Navigate to="/authentication" />; // Redirige al login si hay un error
-    }
-
     return (
         <div className="home-page">
             <header>
@@ -144,19 +127,19 @@ const Home = () => {
                 </div>
             </header>
             <main>
-                <h1>Bienvenido, {user?.username}!</h1>
+                <h1>Bienvenido, {user?.username}</h1>
                 <div className="wallet-chart">
                     <h3>Monedero</h3>
                     <DonutChart data={walletData} options={walletOptions} />
                 </div>
-                <button onClick={() => handleNavigate("/bonifications")}>
+                {user?.role === "user" && <button onClick={() => handleNavigate("/bonifications")}>
                     <h3>Bonificaciones</h3>
-                    <BarChartComponent selectedPeriod={selectedPeriod} />
-                </button>
-                <button onClick={() => handleNavigate("/bonifications-shop")}>
+                    {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                </button>}
+                {user?.role === "commerce" && <button onClick={() => handleNavigate("/bonifications-shop")}>
                     <h3>Bonificaciones Comercio</h3>
                     {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
-                </button>
+                </button>}
                 <button onClick={() => handleNavigate("/statistics")}>
                     <h3>Estadisticas</h3>
                     <BarChartComponent selectedPeriod={selectedPeriod} />
@@ -165,10 +148,10 @@ const Home = () => {
                     <h3>Transacciones</h3>
                     <TransactionList transactions={filteredTransactions} />
                 </button>
-                <button onClick={() => handleNavigate("/sales")}>
+                {user?.role === "commerce" && <button onClick={() => handleNavigate("/sales")}>
                     <h3>Ventas</h3>
                     {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
-                </button>
+                </button>}
             </main>
         </div>
     );
