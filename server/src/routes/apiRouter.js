@@ -1,16 +1,53 @@
 import { Router } from "express";
 import apiCalls from "../controllers/apiCalls.js";
+import { checkAuthorization } from "../helpers/middleware.js";
 
 const router = Router();
 
-router.get("/total-transactions", apiCalls.getTotalTransactions);
-router.get("/cashback-issued-by-month-and-year", apiCalls.getCashbackIssuedByMonthAndYear);
-router.get("/cashback-generated-by-type-month-and-year", apiCalls.getCashbackGeneratedByTypeMonthAndYear);
-router.get("/total-cashback-by-month-and-year", apiCalls.getTotalCashbackByMonthAndYear);
-router.get("/incomes-and-expenses-by-month", apiCalls.getIncomesAndExpensesByMonth);
-router.get("/incomes-and-expenses-summary", apiCalls.getIncomesAndExpensesSummary);
-router.get("/sales-by-month-and-year", apiCalls.getSalesByMonthAndYear);
-router.get("/sales-by-type-and-year", apiCalls.getSalesByTypeAndYear);
-router.get("/sales-by-type-month-and-year", apiCalls.getSalesByTypeMonthAndYear);
+router.get(
+    "/total-transactions",
+    checkAuthorization,
+    apiCalls.getTotalTransactions
+);
+router.get(
+    "/total-cashback-by-month",
+    checkAuthorization,
+    apiCalls.getCashbackIssuedByMonth
+);
+router.get(
+    "/total-cashback-by-year",
+    checkAuthorization,
+    apiCalls.getCashbackIssuedByYear
+);
+router.get(
+    "/cashback-generated-by-month",
+    checkAuthorization,
+    apiCalls.getCashbackGeneratedByMonth
+);
+router.get(
+    "/cashback-generated-by-year",
+    checkAuthorization,
+    apiCalls.getCashbackGeneratedByYear
+);
+
+//////////////
+router.get(
+    "/incomes-and-expenses-by-month",
+    checkAuthorization,
+    apiCalls.getIncomesAndExpensesByMonth
+);
+router.get(
+    "/incomes-and-expenses-by-year",
+    checkAuthorization,
+    apiCalls.getIncomesAndExpensesByYear
+);
+router.get(
+    "/expenses-category-summary",
+    checkAuthorization,
+    apiCalls.getExpensesSummary
+);
+////////////
+router.get("/sales-by-month", checkAuthorization, apiCalls.getSalesByMonth);
+router.get("/sales-by-year", checkAuthorization, apiCalls.getSalesByYear);
 
 export default router;

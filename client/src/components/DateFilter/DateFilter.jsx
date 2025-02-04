@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { SlArrowDown } from "react-icons/sl";
 import { SlArrowUp } from "react-icons/sl";
+import { useLanguage } from "../../contexts/LanguageContext.jsx";
 import "./DateFilter.css";
 
 const DateFilter = ({ onDateFilter }) => {
+  const { t } = useLanguage();
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
   const [isMonthOpen, setIsMonthOpen] = useState(false);
@@ -24,14 +26,17 @@ const DateFilter = ({ onDateFilter }) => {
     "noviembre",
     "diciembre"
   ];
+
+  const translatedMonths = months.map((month) => t.months[month] || month);
+
   useEffect(() => {
     const currentYear = new Date().getFullYear();
     const years = Array.from({ length: currentYear - 2020 + 1 }, (_, index) => 2020 + index);
     setAvailableYears(years);
-    setAvailableMonths(months);
+    setAvailableMonths(translatedMonths);
     handleYearSelect(selectedYear);
     handleMonthSelect(selectedMonth)
-  }, []);
+  }, [t]);
 
   const handleMonthSelect = (month) => {
     setSelectedMonth(month);
@@ -62,7 +67,7 @@ const DateFilter = ({ onDateFilter }) => {
             }}
             className="date-filter-button"
           >
-            {months[selectedMonth] || "MES"}
+            {t.months[months[selectedMonth]] || months[selectedMonth] || "MES"}
             {isMonthOpen ? <SlArrowUp className="icon-small" /> : <SlArrowDown className="icon-small" />}
           </button>
 

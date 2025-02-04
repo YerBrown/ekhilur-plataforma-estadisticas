@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useLanguage } from '../../contexts/LanguageContext';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import MonthYearFilter from "../month-year-filter/MonthYearFilter";
 import "./BarChart.css";
@@ -10,7 +11,7 @@ import "./BarChart.css";
 
 }*/
 
-const getAbbreviatedMonth = (month) => {
+const getAbbreviatedMonth = (month, t) => {
     const abbreviations = [
         "ene",
         "feb",
@@ -25,7 +26,8 @@ const getAbbreviatedMonth = (month) => {
         "nov",
         "dic",
     ];
-    return abbreviations[month] || month;
+    const monthKey = abbreviations[month] || month;
+    return t.monthsAbbreviations[monthKey] || monthKey;
 };
 
 const calculateMaxValue = (data, primaryKey, secondaryKey, showSecondary) => {
@@ -60,6 +62,7 @@ const BarChartComponent = ({
 }) => {
     const [chartData, setChartData] = useState([]);
     const [maxValue, setMaxValue] = useState(1000);
+    const { t } = useLanguage();    
     const [isMonthly, setIsMonthly] = useState(true);
 
     useEffect(() => {
@@ -76,9 +79,13 @@ const BarChartComponent = ({
             selectedMonth < 11 ? selectedMonth + 1 : 0,
         ];
 
+        // Crear datos base para los meses a mostrar
+
+        // Crear datos base para los meses a mostra
+
         const processedData = monthsToShow.map((monthNum) => {
             const baseMonth = {
-                period: getAbbreviatedMonth(monthNum),
+                period: getAbbreviatedMonth(monthNum, t),
                 month: String(monthNum + 1).padStart(2, "0"),
                 year: selectedPeriod.year.toString(),
                 hasData: false,

@@ -17,15 +17,19 @@
   transition: all 0.2s ease-in-out;
 }
 
-.filter-option.inactive {
-  box-shadow: 1px 0 4px rgba(0, 0, 0, 0.2),  /* derecha */
-  -1px 0 4px rgba(0, 0, 0, 0.2),  /* izquierda */
-   0 2px 4px rgba(0, 0, 0, 0.2);   /* abajo */
+.filter-option.active {
+  box-shadow: 
+  1px 0 4px rgba(0, 0, 0, 0.2), /* derecha */
+  -1px 0 4px rgba(0, 0, 0, 0.2), /* izquierda */
+  0 2px 4px rgba(0, 0, 0, 0.2); /* abajo */
   background-color: transparent;
   color: rgb(0, 0, 0);
 }
 
-.filter-option.active {
+.filter-option.inactive {
+  box-shadow: 1px 0 4px rgba(0, 0, 0, 0.2),  /* derecha */
+  -1px 0 4px rgba(0, 0, 0, 0.2),  /* izquierda */
+   0 2px 4px rgba(0, 0, 0, 0.2);   /* abajo */
   background-color: transparent;
   color: var(--color-naranja-principal);
 }
@@ -36,8 +40,7 @@
 }
 
 .filter-option:first-child {
-  border-radius: 0px 8px 8px 8px;
-}
+  border-radius: 0px 8px 8px 8px;}
 
 .filter-option:last-child {
   border-radius: 8px 0px 8px 8px;
