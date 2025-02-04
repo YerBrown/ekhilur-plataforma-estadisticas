@@ -31,6 +31,7 @@ const Home = () => {
     };
     useEffect(() => {
         const fetchUserdata = async () => {
+            setLoading(true); // Detén el loader
             try {
                 const userData = await verify(); // Llama a la API para obtener los datos
                 setUser(userData);
@@ -124,9 +125,16 @@ const Home = () => {
                 <img src="logo_dos.png" alt="Logo Ekhidata" />
                 <div className="header-content">
                     <div className="language-button-container">
-                        <button className="language-button" onClick={setSpanish}>ES</button>
+                        <button
+                            className="language-button"
+                            onClick={setSpanish}
+                        >
+                            ES
+                        </button>
                         <p>|</p>
-                        <button className="language-button" onClick={setBasque}>EU</button>
+                        <button className="language-button" onClick={setBasque}>
+                            EU
+                        </button>
                     </div>
                     <ProfileAvatar />
                 </div>

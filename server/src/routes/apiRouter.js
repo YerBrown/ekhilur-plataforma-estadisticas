@@ -42,7 +42,7 @@ router.get(
     apiCalls.getIncomesAndExpensesByYear
 );
 router.get(
-    "/expenses-category-summary",
+    "/expenses-category-summary/:year/:month",
     checkAuthorization,
     apiCalls.getExpensesSummary
 );

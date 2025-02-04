@@ -123,8 +123,33 @@ async function getIncomesAndExpensesByYear(req, res) {
 // - Ordenado por año y mes descendente
 async function getExpensesSummary(req, res) {
     try {
+        const { month, year } = req.params;
         // const response = await apiRequest(`/resumen/${req.user.username}`, "GET");
-        const response = gastosCategoryFalsos;
+        console.log(month, year);
+        const movimientosFiltrados = movimientos.filter((mov) =>
+            mov.fecha.startsWith(`${year}-${month.toString().padStart(2, "0")}`)
+        );
+
+        // Reducir para agrupar por categoría y sumar los gastos
+        const resumen = movimientosFiltrados.reduce((acc, mov) => {
+            if (mov.cantidad < 0) {
+                // Solo contar gastos (negativos)
+                const categoriaExistente = acc.find(
+                    (c) => c.categoria === mov.categoria
+                );
+                if (categoriaExistente) {
+                    categoriaExistente.gastos += Math.abs(mov.cantidad);
+                } else {
+                    acc.push({
+                        categoria: mov.categoria,
+                        gastos: Math.abs(mov.cantidad),
+                    });
+                }
+            }
+            return acc;
+        }, []);
+
+        const response = resumen;
         res.status(200).json(response);
     } catch (error) {
         console.error("Error al obtener el resumen:", error);
