@@ -30,6 +30,12 @@ router.get(
     apiCalls.getCashbackGeneratedByYear
 );
 
+router.get(
+    "/cashback-transactions-by-month",
+    checkAuthorization,
+    apiCalls.getBonificationTransactions
+);
+
 //////////////
 router.get(
     "/incomes-and-expenses-by-month",
