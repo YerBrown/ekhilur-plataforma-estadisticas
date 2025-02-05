@@ -1,0 +1,14 @@
+{
+    "nombre_usuario": "Fotos Torres",
+    "telefono": "688624463",
+    "email": "fotostorreshernani@gmail.com",
+    "direccion": {
+        "calle": "Atzieta Kalea, 2Hernani20120 - SS",
+        "municipio": "Zarautz",
+        "cp": "20800"
+    },
+    "fecha_nacimiento": "25/11/1961",
+    "ocupacion": "Fotógrafos",
+    "iban": "ES4830080170181026443422",
+    "capital_social_abonado": "No"
+}
