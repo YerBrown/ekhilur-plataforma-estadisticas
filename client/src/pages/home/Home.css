@@ -107,3 +107,60 @@
 .home-page main>button h3 {
     text-align: center;
 }
+
+/* Home.css */
+.profile-aside {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: calc(100vw / 3); /* Ocupa un tercio del ancho de la pantalla */
+    max-width: 400px; /* Máximo ancho para pantallas muy grandes */
+    background: var(--background-color);
+    box-shadow: -2px 0 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 2rem;
+    transition: transform 0.3s ease-in-out;
+}
+.close-aside {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 0.3rem 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.close-aside:hover {
+    transform: scale(1.2);
+    color: #ff4444;
+}
+
+/* Temas */
+.profile-aside.light {
+    --background-color: #ffffff;
+    --text-color: #333333;
+    border-left: 1px solid #eeeeee;
+}
+
+.profile-aside.dark {
+    --background-color: #1a1a1a;
+    --text-color: #ffffff;
+    border-left: 1px solid #333333;
+}
+
+/* Opcional: Efecto de overlay cuando el aside está abierto */
+.aside-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    backdrop-filter: blur(3px);   
+}

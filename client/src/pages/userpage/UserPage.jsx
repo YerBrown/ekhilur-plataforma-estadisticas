@@ -33,7 +33,7 @@ const UserPage = () => {
     }, []);
 
     return (
-        <Layout title={t.profileTitle}>
+        <>
             {error && <div className="error-message">{error}</div>}
 
             {isLoading ? (
@@ -101,7 +101,7 @@ const UserPage = () => {
                     </div>
                 </div>
             )}
-        </Layout>
+        </>
     );
 };
 

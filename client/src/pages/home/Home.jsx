@@ -10,19 +10,22 @@ import { getUserHomeData, getCommerceHomeData } from "../../api/realData.js";
 import { useTheme } from "../../contexts/ThemeContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import "./Home.css";
+import UserPage from "../userpage/UserPage.jsx";
 
 const Home = () => {
     const { t, setSpanish, setBasque } = useLanguage();
     const { theme } = useTheme();
     const [selectedPeriod, setSelectedPeriod] = useState({
-        month: new Date().getMonth + 1,
-        year: new Date().getFullYear,
+        month: new Date().getMonth() + 1,
+        year: new Date().getFullYear(),
     });
     const [filteredTransactions, setFilteredTransactions] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const [userData, setUserData] = useState(null);
+    const [showAside, setShowAside] = useState(false);
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
+
     useEffect(() => {
         if (!user) {
             navigate("/authentication");
@@ -32,33 +35,35 @@ const Home = () => {
     const handleNavigate = (path) => {
         navigate(path);
     };
+
     useEffect(() => {
         const fetchUserdata = async () => {
-            setIsLoading(true); // Detén el loader
+            setIsLoading(true);
             try {
                 if (user?.role === "commerce") {
-                    const userData = await getCommerceHomeData(); // Llama a la API para obtener los datos
-                    console.log(userData.bonificaciones);
+                    const userData = await getCommerceHomeData();
                     setUserData(userData);
                 } else {
-                    const userData = await getUserHomeData(); // Llama a la API para obtener los datos
+                    const userData = await getUserHomeData();
                     setUserData(userData);
                 }
             } catch (error) {
                 console.error("Error al obtener los datos del usuario:", error);
             } finally {
-                setIsLoading(false); // Detén el loader
+                setIsLoading(false);
             }
         };
 
         fetchUserdata();
-    }, []);
+    }, [user?.role]);
+
     if (isLoading) {
         return <>Loading...</>;
     }
     if (userData == null) {
         return <>Failed...</>;
     }
+
     const filteredData = userData.wallet.data.cuentas.filter(
         (item) => item.saldo > 0
     );
@@ -94,14 +99,14 @@ const Home = () => {
                 display: false,
             },
             tooltip: {
-                enabled: false, // Desactiva tooltip si solo quieres mostrar valores en la leyenda
+                enabled: false,
             },
             centerText: {
                 color: theme === "light" ? "#000000" : "#ffffff",
-                total: `${walletTotalValue}€`, // Pasar el total calculado
+                total: `${walletTotalValue}€`,
             },
         },
-        cutout: "85%", // Ajusta el tamaño del agujero central del donut
+        cutout: "85%",
         radius: "70%",
         elements: {
             arc: {
@@ -109,6 +114,7 @@ const Home = () => {
             },
         },
     };
+
     return (
         <div className="home-page">
             <header>
@@ -126,13 +132,28 @@ const Home = () => {
                             EU
                         </button>
                     </div>
-                    <ProfileAvatar />
-                    <div className="user-panel">
-                        <UserPage />
+                    <div onClick={() => setShowAside(!showAside)}>
+                        <ProfileAvatar />
                     </div>
-
                 </div>
             </header>
+
+            {showAside && (
+                <>
+                    <div
+                        className="aside-overlay"
+                        onClick={() => setShowAside(false)}
+                    />
+                    <aside className={`profile-aside ${theme}`}>
+                        <button className="close-aside" onClick={() => setShowAside(false)}>
+                            ×
+                        </button>
+                        <UserPage />
+                    </aside>
+                </>
+            )}
+
+
             <main>
                 <h1>
                     {t.welcome}, {user?.username}!
@@ -162,7 +183,6 @@ const Home = () => {
                         onClick={() => handleNavigate("/bonifications-shop")}
                     >
                         <h3>{t.bonificationTitle}</h3>
-
                         <GraficoLibrerias
                             data={userData.gastosIngresos}
                             targetYear={new Date().getFullYear()}
@@ -203,9 +223,6 @@ const Home = () => {
                         />
                     </button>
                 )}
-                {/* <button onClick={() => handleNavigate("/map")}>
-                    <h3>Mapa</h3>
-                </button> */}
             </main>
         </div>
     );

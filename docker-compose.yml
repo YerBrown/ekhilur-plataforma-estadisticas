@@ -25,7 +25,7 @@ services:
         volumes:
             - ./server:/app
             - /app/node_modules
-            - .env:/app/.env
+            
         networks:
             - fullstack_network
             - full_api_network
