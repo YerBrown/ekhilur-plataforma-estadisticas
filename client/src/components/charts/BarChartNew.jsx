@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLanguage } from '../../contexts/LanguageContext';
+import { useLanguage } from "../../contexts/LanguageContext";
 import {
     BarChart,
     Bar,
@@ -62,14 +62,18 @@ const calculateRelativeYears = (year) => {
 
 const transformDataForDisplay = (data, primaryKey, secondaryKey = null) => {
     console.log("antes de transformar", data);
-    const tarnsformedData = data.map(item => ({
+    const tarnsformedData = data.map((item) => ({
         ...item,
-        [primaryKey]: Number(Math.abs(item[primaryKey].toFixed(2)) || 0),
-        ...(secondaryKey && { [secondaryKey]: Number(Math.abs(item[secondaryKey].toFixed(2)) || 0) }),
+        [primaryKey]: Number(Math.abs(item[primaryKey]).toFixed(2) || 0),
+        ...(secondaryKey && {
+            [secondaryKey]: Number(
+                Math.abs(item[secondaryKey]).toFixed(2) || 0
+            ),
+        }),
         originalValues: {
             [primaryKey]: item[primaryKey],
-            ...(secondaryKey && { [secondaryKey]: item[secondaryKey] })
-        }
+            ...(secondaryKey && { [secondaryKey]: item[secondaryKey] }),
+        },
     }));
     console.log("despues de transformar", tarnsformedData);
     return tarnsformedData;
@@ -81,7 +85,7 @@ const getFilteredData = (
     targetMonth,
     filterType,
     primaryKey,
-    secondaryKey = null,
+    secondaryKey = null
 ) => {
     const { previous, current, next } = calculateRelativeYears(targetYear);
     let filteredData = [];
@@ -118,12 +122,18 @@ const getFilteredData = (
                 const year = item.año;
                 const existing = acc.find((el) => el.año === year);
                 if (existing) {
-                    existing[primaryKey] = Number((existing[primaryKey] + (item[primaryKey] || 0)).toFixed(2));
+                    existing[primaryKey] = Number(
+                        (
+                            existing[primaryKey] + (item[primaryKey] || 0)
+                        ).toFixed(2)
+                    );
                     if (secondaryKey) {
-                        existing[secondaryKey] = Number((
-                            (existing[secondaryKey] || 0) +
-                            (item[secondaryKey] || 0)
-                        ).toFixed(2));
+                        existing[secondaryKey] = Number(
+                            (
+                                (existing[secondaryKey] || 0) +
+                                (item[secondaryKey] || 0)
+                            ).toFixed(2)
+                        );
                     }
                 } else {
                     acc.push({
@@ -138,7 +148,6 @@ const getFilteredData = (
                 }
                 return acc;
             }, []);
-
     }
 
     return transformDataForDisplay(filteredData, primaryKey, secondaryKey);
@@ -154,6 +163,7 @@ const GraficoLibrerias = ({
     primaryKey,
     secondaryKey = null,
     showFilters = true,
+    height = 400,
 }) => {
     const [filterType, setFilterType] = useState("mes"); // Estado para el filtro (mes o año)
     const { t } = useLanguage();
@@ -166,7 +176,7 @@ const GraficoLibrerias = ({
     };
     return (
         <>
-            <ResponsiveContainer width="100%" height={400}>
+            <ResponsiveContainer width="100%" height={height}>
                 <BarChart
                     data={getFilteredData(
                         data,
@@ -184,8 +194,7 @@ const GraficoLibrerias = ({
                     }}
                 >
                     <XAxis dataKey={formatXAxis} />
-                    <YAxis 
-                      tickCount={3}/>
+                    <YAxis tickCount={3} />
                     {/*<Tooltip />*/}
                     <Bar
                         dataKey={primaryKey}
@@ -196,7 +205,8 @@ const GraficoLibrerias = ({
                         <LabelList
                             dataKey={primaryKey}
                             position="top"
-                            formatter={(value) => (value === 0 ? '' : value)} />
+                            formatter={(value) => (value === 0 ? "" : value)}
+                        />
                     </Bar>
                     {secondaryKey && (
                         <Bar
@@ -209,7 +219,9 @@ const GraficoLibrerias = ({
                             <LabelList
                                 dataKey={secondaryKey}
                                 position="top"
-                                formatter={(value) => (value === 0 ? '' : value)}
+                                formatter={(value) =>
+                                    value === 0 ? "" : value
+                                }
                             />
                         </Bar>
                     )}
@@ -217,12 +229,8 @@ const GraficoLibrerias = ({
             </ResponsiveContainer>
             {showFilters && (
                 <div className="chart-controls">
-                    <button onClick={() => setFilterType("mes")}>
-                        Meses
-                    </button>
-                    <button onClick={() => setFilterType("año")}>
-                        Años
-                    </button>
+                    <button onClick={() => setFilterType("mes")}>Meses</button>
+                    <button onClick={() => setFilterType("año")}>Años</button>
                 </div>
             )}
         </>
