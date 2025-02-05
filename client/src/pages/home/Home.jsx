@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../../contexts/LanguageContext.jsx";
+import { GoPlusCircle } from "react-icons/go";
 import DonutChart from "../../components/charts/DonutChart";
 import ProfileAvatar from "../../components/ProfileAvatar";
 import GraficoLibrerias from "../../components/charts/BarChartNew.jsx";
@@ -35,7 +36,7 @@ const Home = () => {
             try {
                 if (user?.role === "commerce") {
                     const userData = await getCommerceHomeData(); // Llama a la API para obtener los datos
-                    console.log(userData.bonificaciones);
+                    console.log(userData);
                     setUserData(userData);
                 } else {
                     const userData = await getUserHomeData(); // Llama a la API para obtener los datos
@@ -179,57 +180,98 @@ const Home = () => {
                     />
                 </div>
                 {user?.role === "user" && (
-                    <div className="user-bonifications-section">
-                        <button onClick={() => handleNavigate("/bonifications")}>
-                            <h3>{t.bonificationTitle}</h3>
-                            <h4>{currentBonus.toFixed(2)} €</h4>
+                    <div className="bonifications-section">
+                        <button className="square-button" onClick={() => handleNavigate("/bonifications")}>
+                            <div className="info">
+                                <h3>{t.bonificationTitle}</h3>
+                                <p>{previousMonth}-{previousYear}</p>
+                            </div>
+                            <div className="value">
+                                <GoPlusCircle />
+                                <h4>{previousBonus.toFixed(2).replace(".", ",")}</h4>
+                            </div>
                         </button>
-                        <button onClick={() => handleNavigate("/bonifications")}>
-                            <h3>{t.bonificationTitle}</h3>
-                            <h4>{previousBonus.toFixed(2)} €</h4>
+                        <button className="square-button" onClick={() => handleNavigate("/bonifications")}>
+                            <div className="info">
+                                <h3>{t.bonificationTitle}</h3>
+                                <p>{currentMonth}-{currentYear}</p>
+                            </div>
+                            <div className="value">
+                                <GoPlusCircle />
+                                <h4>{currentBonus.toFixed(2).replace(".", ",")}</h4>
+                            </div>
                         </button>
                     </div>
                 )}
                 {user?.role === "commerce" && (
-                    <div className="commerce-bonifications-section">
-                        <button
-                            onClick={() => handleNavigate("/bonifications-shop")}>
-                            <h3>{t.bonificationTitle}</h3>
-                            <h4>{emmitedShopBonus.toFixed(2)} €</h4>
+                    <div className="sales-section">
+                        <button className="square-button" onClick={() => handleNavigate("/sales")}>
+                            <div className="info">
+                                <h3>{t.salesTitle}</h3>
+                                <p>{previousMonth}-{previousYear}</p>
+                            </div>
+                            <div className="value">
+                                <GoPlusCircle />
+                                <h4>{previousSales.toFixed(2).replace(".", ",")}</h4>
+                            </div>
                         </button>
-                        <button
-                            onClick={() => handleNavigate("/bonifications-shop")}>
-                            <h3>{t.bonificationTitle}</h3>
-                            <h4>{receivedShopBonus.toFixed(2)} €</h4>
+                        <button className="square-button" onClick={() => handleNavigate("/sales")}>
+                            <div className="info">
+                                <h3>{t.salesTitle}</h3>
+                                <p>{currentMonth}-{currentYear}</p>
+                            </div>
+                            <div className="value">
+                                <GoPlusCircle />
+                                <h4>{currentSales.toFixed(2).replace(".", ",")}</h4>
+                            </div>
+                        </button>
+                    </div>
+                )}
+                {user?.role === "commerce" && (
+                    <div className="bonifications-section">
+                        <button className="square-button" onClick={() => handleNavigate("/bonifications-shop")}>
+                            <div className="info">
+                                <h3>{t.bonificationTitle} {t.emmited}</h3>
+                            </div>
+                            <div className="value">
+                                <GoPlusCircle />
+                                <h4>{emmitedShopBonus.toFixed(2).replace(".", ",")}</h4>
+                            </div>
+                        </button>
+                        <button className="square-button" onClick={() => handleNavigate("/bonifications-shop")}>
+                            <div className="info">
+                                <h3>{t.bonificationTitle} {t.received}</h3>
+                            </div>
+                            <div className="value">
+                                <GoPlusCircle />
+                                <h4>{receivedShopBonus.toFixed(2).replace(".", ",")}</h4>
+                            </div>
                         </button>
                     </div>
                 )}
                 <div className="statistics-section">
-                    <button onClick={() => handleNavigate("/statistics")}>
-                        <h3>{t.statisticsTitle}</h3>
-                        <h4>{income.toFixed(2)} €</h4>
+                    <button className="square-button" onClick={() => handleNavigate("/statistics")}>
+                        <div className="info">
+                            <h3>{t.incomes}</h3>
+                        </div>
+                        <div className="value">
+                            <GoPlusCircle />
+                            <h4>{income.toFixed(2).replace(".", ",").replace(".", ",")}</h4>
+                        </div>
                     </button>
-                    <button onClick={() => handleNavigate("/statistics")}>
-                        <h3>{t.statisticsTitle}</h3>
-                        <h4>{expenses.toFixed(2)} €</h4>
+                    <button className="square-button" onClick={() => handleNavigate("/statistics")}>
+                        <div className="info">
+                            <h3>{t.expenses}</h3>
+                        </div>
+                        <div className="value">
+                            <GoPlusCircle />
+                            <h4>{expenses.toFixed(2).replace(".", ",")}</h4>
+                        </div>
                     </button>
                 </div>
                 <button onClick={() => handleNavigate("/transactions")}>
-                    <h3>{t.transactionTitle}</h3>
                     <TransactionList transactions={mockData.slice(0, 3)} />
                 </button>
-                {user?.role === "commerce" && (
-                    <div className="sales-section">
-                        <button onClick={() => handleNavigate("/sales")}>
-                            <h3>{t.salesTitle}</h3>
-                            <h4>{currentSales.toFixed(2)} €</h4>
-                        </button>
-                        <button onClick={() => handleNavigate("/sales")}>
-                            <h3>{t.salesTitle}</h3>
-                            <h4>{previousSales.toFixed(2)} €</h4>
-                        </button>
-                    </div>
-                )}
                 {/* <button onClick={() => handleNavigate("/map")}>
                     <h3>Mapa</h3>
                 </button> */}
