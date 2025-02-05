@@ -7,6 +7,7 @@ from scraper.scraper_cuentas import EkhilurCuentasScraper
 scraper_cuentas_bp = Blueprint('scraper_cuentas', __name__)
 
 # Credenciales de usuarios
+#! CREDENCIALES HARDCODEADAS
 CREDENTIALS = {
     "alomorga": {"username": "alomorga", "password": "111111"},
     "ilandatxe": {"username": "ilandatxe", "password": "111111"},
