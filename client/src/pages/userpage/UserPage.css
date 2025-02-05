@@ -7,11 +7,15 @@
     background-color: var(--background-color-principal-05);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+
 }
 
 .user-profile-header {
     text-align: center;
     margin-bottom: 20px;
+    grid-column: 1 / -1;
+
 }
 
 .user-profile-container img {
@@ -53,6 +57,6 @@
 /* Media query para pantallas pequeñas (una columna) */
 @media (max-width: 650px) {
     .user-profile-info {
-        grid-template-columns: 1fr; /* Una columna */
+        grid-template-columns: 1fr;
     }
 }

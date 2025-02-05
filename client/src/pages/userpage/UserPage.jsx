@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLanguage } from "../../contexts/LanguageContext.jsx";
 import { getUserInfo } from "../../api/realData";
 import Layout from "../layout/Layout";
+import { Eye, EyeOff } from "lucide-react";
 import "./UserPage.css";
 
 const UserPage = () => {
@@ -9,6 +10,9 @@ const UserPage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const [apiData, setApiData] = useState([]);
+    const [showIban, setShowIban] = useState(false);
+    const [showPhone, setShowPhone] = useState(false);
+    const [showAddress, setShowAddress] = useState(false);
 
     const loadApiData = async () => {
         setIsLoading(true);
@@ -18,9 +22,7 @@ const UserPage = () => {
             setApiData(data);
         } catch (error) {
             console.error("Error al cargar datos:", error);
-            setError(
-                "No se pudieron cargar los datos. Por favor, intente más tarde."
-            );
+            setError("No se pudieron cargar los datos. Por favor, intente más tarde.");
         } finally {
             setIsLoading(false);
         }
@@ -32,16 +34,10 @@ const UserPage = () => {
 
     return (
         <Layout title={t.profileTitle}>
-            {error && (
-                <div className="error-message">
-                    {error}
-                </div>
-            )}
+            {error && <div className="error-message">{error}</div>}
 
             {isLoading ? (
-                <div className="loading-message">
-                    Cargando datos...
-                </div>
+                <div className="loading-message">Cargando datos...</div>
             ) : (
                 <div className="user-profile-container">
                     <div className="user-profile-header">
@@ -55,7 +51,12 @@ const UserPage = () => {
 
                         <div className="info-group">
                             <span className="info-label">{t.phone}:</span>
-                            <span className="info-value">{apiData.telefono}</span>
+                            <span className="info-value">
+                                {showPhone ? apiData.telefono : `${apiData.telefono?.slice(0, 3)}*** *** ***`}
+                            </span>
+                            <button onClick={() => setShowPhone(!showPhone)} className="toggle-button">
+                                {showPhone ? <EyeOff size={16} /> : <Eye size={16} />}
+                            </button>
                         </div>
 
                         <div className="info-group">
@@ -66,8 +67,11 @@ const UserPage = () => {
                         <div className="info-group">
                             <span className="info-label">{t.address}:</span>
                             <span className="info-value">
-                            {apiData?.direccion && `${apiData.direccion}`}
+                                {showAddress ? apiData.direccion : `***************${apiData.direccion?.slice(15)}`}
                             </span>
+                            <button onClick={() => setShowAddress(!showAddress)} className="toggle-button">
+                                {showAddress ? <EyeOff size={16} /> : <Eye size={16} />}
+                            </button>
                         </div>
 
                         <div className="info-group">
@@ -82,12 +86,17 @@ const UserPage = () => {
 
                         <div className="info-group">
                             <span className="info-label">{t.iban}:</span>
-                            <span className="info-value">{apiData.iban}</span>
+                            <span className="info-value">
+                                {showIban ? apiData.iban : `${apiData.iban?.slice(0, 3)}****************`}
+                            </span>
+                            <button onClick={() => setShowIban(!showIban)} className="toggle-button">
+                                {showIban ? <EyeOff size={16} /> : <Eye size={16} />}
+                            </button>
                         </div>
 
                         <div className="info-group">
                             <span className="info-label">{t.capital}:</span>
-                            <span className="info-value">{(apiData.capital_social_abonado === "Sí" ? `${t.yes}` : `${t.no}`)}</span>
+                            <span className="info-value">{apiData.capital_social_abonado === "Sí" ? t.yes : t.no}</span>
                         </div>
                     </div>
                 </div>
