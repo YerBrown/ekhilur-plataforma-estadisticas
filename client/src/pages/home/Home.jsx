@@ -1,21 +1,15 @@
 import { useState, useEffect, useContext } from "react";
-import { Link, useNavigate, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../../contexts/LanguageContext.jsx";
-import { verify } from "../../api/auth";
 import DonutChart from "../../components/charts/DonutChart";
 import ProfileAvatar from "../../components/ProfileAvatar";
-import BarChartComponent from "../../components/charts/BarChart";
+import GraficoLibrerias from "../../components/charts/BarChartNew.jsx";
 import TransactionList from "../../components/transactions-list/TransactionsList";
 import mockData from "../../components/transactions-list/mockData.js";
+import { getUserHomeData, getCommerceHomeData } from "../../api/realData.js";
 import { useTheme } from "../../contexts/ThemeContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import "./Home.css";
-
-const walletDataJson = [
-    { label: "Euro", value: 400, color: "#FF6384" },
-    { label: "Ekhi", value: 300, color: "#36A2EB" },
-    { label: "Ekhi Hernani", value: 300, color: "#FFCE56" },
-];
 
 const Home = () => {
     const { t, setSpanish, setBasque } = useLanguage();
@@ -24,12 +18,11 @@ const Home = () => {
         month: new Date().getMonth + 1,
         year: new Date().getFullYear,
     });
-    const [filteredTransactions, setFilteredTransactions] = useState(
-        mockData.splice(3)
-    );
+    const [filteredTransactions, setFilteredTransactions] = useState();
+    const [isLoading, setIsLoading] = useState(false);
+    const [userData, setUserData] = useState(null);
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
-
     useEffect(() => {
         if (!user) {
             navigate("/authentication");
@@ -41,23 +34,37 @@ const Home = () => {
     };
     useEffect(() => {
         const fetchUserdata = async () => {
-            setLoading(true); // Detén el loader
+            setIsLoading(true); // Detén el loader
             try {
-                const userData = await verify(); // Llama a la API para obtener los datos
-                setUser(userData);
+                if (user?.role === "commerce") {
+                    const userData = await getCommerceHomeData(); // Llama a la API para obtener los datos
+                    console.log(userData.bonificaciones);
+                    setUserData(userData);
+                } else {
+                    const userData = await getUserHomeData(); // Llama a la API para obtener los datos
+                    setUserData(userData);
+                }
             } catch (error) {
                 console.error("Error al obtener los datos del usuario:", error);
-                setError(true); // Marca un error si no está autenticado
             } finally {
-                setLoading(false); // Detén el loader
+                setIsLoading(false); // Detén el loader
             }
         };
 
         fetchUserdata();
     }, []);
-    const walletLabels = walletDataJson.map((item) => item.label);
-    const walletValues = walletDataJson.map((item) => item.value);
-    const walletColors = walletDataJson.map((item) => item.color);
+    if (isLoading) {
+        return <>Loading...</>;
+    }
+    if (userData == null) {
+        return <>Failed...</>;
+    }
+    const filteredData = userData.wallet.data.cuentas.filter(
+        (item) => item.saldo > 0
+    );
+    const walletLabels = filteredData.map((item) => item.tipo);
+    const walletValues = filteredData.map((item) => item.saldo);
+    const walletColors = ["#FF6384", "#36A2EB", "#FFCE56", "#36A2EB"];
     const walletData = {
         labels: walletLabels,
         datasets: [
@@ -70,10 +77,7 @@ const Home = () => {
         ],
     };
 
-    const walletTotalValue = walletDataJson.reduce(
-        (acc, item) => acc + item.value,
-        0
-    );
+    const walletTotalValue = userData.wallet.data.saldo_total;
     const walletOptions = {
         responsive: true,
         maintainAspectRatio: false, // Permitir personalizar ancho y alto
@@ -152,34 +156,64 @@ const Home = () => {
                 {user?.role === "user" && (
                     <button onClick={() => handleNavigate("/bonifications")}>
                         <h3>{t.bonificationTitle}</h3>
-                        {/* {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                        <GraficoLibrerias
+                            data={userData.bonificaciones}
+                            targetYear={new Date().getFullYear()}
+                            targetMonth={new Date().getMonth()}
+                            primaryKey={"bonificaciones"}
+                            showFilters={false}
+                            height={200}
+                        />
                     </button>
                 )}
                 {user?.role === "commerce" && (
                     <button
                         onClick={() => handleNavigate("/bonifications-shop")}
                     >
-                        <h3> {t.bonificationTitle}</h3>
-                        {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                        <h3>Denda {t.bonificationTitle}</h3>
+                        <GraficoLibrerias
+                            data={userData.gastosIngresos}
+                            targetYear={new Date().getFullYear()}
+                            targetMonth={new Date().getMonth()}
+                            primaryKey={"bonificaciones_emitidas"}
+                            secondaryKey={"bonificaciones_recibidas"}
+                            showFilters={false}
+                            height={200}
+                        />
                     </button>
                 )}
                 <button onClick={() => handleNavigate("/statistics")}>
                     <h3>{t.statisticsTitle}</h3>
-                    {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                    <GraficoLibrerias
+                        data={userData.gastosIngresos}
+                        targetYear={new Date().getFullYear()}
+                        targetMonth={new Date().getMonth()}
+                        primaryKey={"gastos"}
+                        secondaryKey={"ingresos"}
+                        showFilters={false}
+                        height={200}
+                    />
                 </button>
                 <button onClick={() => handleNavigate("/transactions")}>
                     <h3>{t.transactionTitle}</h3>
-                    {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                    <TransactionList transactions={mockData.slice(0, 3)} />
                 </button>
                 {user?.role === "commerce" && (
                     <button onClick={() => handleNavigate("/sales")}>
                         <h3>{t.salesTitle}</h3>
-                        {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                        <GraficoLibrerias
+                            data={userData.ventas}
+                            targetYear={new Date().getFullYear()}
+                            targetMonth={new Date().getMonth()}
+                            primaryKey={"ventas"}
+                            showFilters={false}
+                            height={200}
+                        />
                     </button>
                 )}
-                <button onClick={() => handleNavigate("/map")}>
+                {/* <button onClick={() => handleNavigate("/map")}>
                     <h3>Mapa</h3>
-                </button>
+                </button> */}
             </main>
         </div>
     );

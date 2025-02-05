@@ -65,9 +65,10 @@ const CommerceBonifications = () => {
         if (!data) return;
 
         const { year, month } = period;
-        const monthData = data.find(item =>
-            item.año === year.toString() &&
-            parseInt(item.mes, 10) === month + 1
+        const monthData = data.find(
+            (item) =>
+                item.año === year.toString() &&
+                parseInt(item.mes, 10) === month + 1
         );
 
         // Actualizar el total de bonificaciones
@@ -85,10 +86,9 @@ const CommerceBonifications = () => {
     };
     const formatCurrency = (value) => {
         const num = Number(value);
-        if (isNaN(num)) return '0€';
+        if (isNaN(num)) return "0€";
         return Number.isInteger(num) ? `${num}€` : `${num.toFixed(1)}€`;
     };
-
 
     const handleDateFilter = ({ year, month }) => {
         setSelectedPeriod({ year, month });
@@ -101,30 +101,31 @@ const CommerceBonifications = () => {
         if (filter === t.all) {
             setFilteredTransactions(mockData);
         } else if (filter === t.received) {
-            setFilteredTransactions(mockData.filter(transaction => !transaction.cantidad.toString().includes('-')));
+            setFilteredTransactions(
+                mockData.filter(
+                    (transaction) =>
+                        !transaction.cantidad.toString().includes("-")
+                )
+            );
         } else if (filter === t.emmited) {
-            setFilteredTransactions(mockData.filter(transaction => transaction.cantidad.toString().includes('-')));
+            setFilteredTransactions(
+                mockData.filter((transaction) =>
+                    transaction.cantidad.toString().includes("-")
+                )
+            );
         }
     };
 
     return (
         <Layout title={t.bonificationTitle}>
-            <div className="container-date-filter">
-                <DateFilter onDateFilter={handleDateFilter} />
-            </div>
+            <DateFilter onDateFilter={handleDateFilter} />
 
-            {error && (
-                <div className="error-message">
-                    {error}
-                </div>
-            )}
+            {error && <div className="error-message">{error}</div>}
 
             {isLoading ? (
-                <div className="loading-message">
-                    Cargando datos...
-                </div>
+                <div className="loading-message">Cargando datos...</div>
             ) : (
-                <>
+                <div className="bonifications-content-container">
                     <div className="container-recibidos-emitidos">
                         <div className="item-recibidos-emitidos">
                             <p className="label-recibidos">{t.received}</p>
@@ -139,19 +140,17 @@ const CommerceBonifications = () => {
                             </span>
                         </div>
                     </div>
-                    <div className="chart-section">
-                        <GraficoLibrerias
-                            data={apiData}
-                            targetYear={selectedPeriod.year}
-                            targetMonth={selectedPeriod.month}
-                            primaryKey={"bonificaciones_recibidas"}
-                            secondaryKey={"bonificaciones_emitidas"}
-                            showFilters={true}
-                        />
-                    </div>
+                    <GraficoLibrerias
+                        data={apiData}
+                        targetYear={selectedPeriod.year}
+                        targetMonth={selectedPeriod.month}
+                        primaryKey={"bonificaciones_recibidas"}
+                        secondaryKey={"bonificaciones_emitidas"}
+                        showFilters={true}
+                    />
                     <BonificationsFilter onFilterChange={handleFilterChange} />
                     <TransactionList transactions={filteredTransactions} />
-                </>
+                </div>
             )}
         </Layout>
     );

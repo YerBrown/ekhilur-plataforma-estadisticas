@@ -62,9 +62,10 @@ const SalesCommerce = () => {
 
         const { year, month } = period;
         // Buscar los datos para el mes seleccionado
-        const monthData = data.find(item =>
-            item.año === year.toString() &&
-            parseInt(item.mes, 10) === month + 1
+        const monthData = data.find(
+            (item) =>
+                item.año === year.toString() &&
+                parseInt(item.mes, 10) === month + 1
         );
 
         // Actualizar el total de bonificaciones
@@ -74,14 +75,14 @@ const SalesCommerce = () => {
             });
         } else {
             setSalesCommerce({
-                totalSales: 0
+                totalSales: 0,
             });
         }
     };
 
     const formatCurrency = (value) => {
         const num = Number(value);
-        if (isNaN(num)) return '0€';
+        if (isNaN(num)) return "0€";
         return Number.isInteger(num) ? `${num}€` : `${num.toFixed(1)}€`;
     };
 
@@ -93,47 +94,35 @@ const SalesCommerce = () => {
     };
 
     return (
-        <div className="bonifications-page">
-            <Layout title={t.salesTitle}>
-                <div className="container-date-filter">
-                    <DateFilter onDateFilter={handleDateFilter} />
+        <Layout title={t.salesTitle}>
+            <DateFilter onDateFilter={handleDateFilter} />
+
+            {error && <div className="error-message">{error}</div>}
+
+            {isLoading ? (
+                <div className="loading-message">Cargando datos...</div>
+            ) : (
+                <div className="sales-content-container">
+                    <div className="container-ingresos-gastos">
+                        <div className="item-ingresos-gastos">
+                            <p className="label-ingresos">{t.salesTitle}</p>
+                            <span className="amount-ingresos">
+                                {formatCurrency(SalesCommerce.totalSales)}
+                            </span>
+                        </div>
+                    </div>
+                    <GraficoLibrerias
+                        data={apiData}
+                        targetYear={selectedPeriod.year}
+                        targetMonth={selectedPeriod.month}
+                        primaryKey={"ventas"}
+                        secondaryKey={null}
+                        showFilters={true}
+                    />
+                    <TransactionList transactions={mockData} />
                 </div>
-
-                {error && (
-                    <div className="error-message">
-                        {error}
-                    </div>
-                )}
-
-                {isLoading ? (
-                    <div className="loading-message">
-                        Cargando datos...
-                    </div>
-                ) : (
-                    <>
-                        <div className="container-ingresos-gastos">
-                            <div className="item-ingresos-gastos">
-                                <p className="label-ingresos">{t.salesTitle}</p>
-                                <span className="amount-ingresos">
-                                    {formatCurrency(SalesCommerce.totalSales)}
-                                </span>
-                            </div>
-                        </div>
-                        <div className="chart-section">
-                            <GraficoLibrerias
-                                data={apiData}
-                                targetYear={selectedPeriod.year}
-                                targetMonth={selectedPeriod.month}
-                                primaryKey={"ventas"}
-                                secondaryKey={null}
-                                showFilters={true}
-                            />
-                        </div>
-                        <TransactionList transactions={mockData} />
-                    </>
-                )}
-            </Layout>
-        </div>
+            )}
+        </Layout>
     );
 };
 

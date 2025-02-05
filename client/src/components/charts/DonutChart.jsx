@@ -9,7 +9,10 @@ ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels, {
         const { width } = chart;
         const { height } = chart;
         const ctx = chart.ctx;
-        const total = chart.config.options.plugins.centerText?.total || ""; // Obtener el total desde las opciones del gráfico
+        const total =
+            `${parseFloat(
+                chart.config.options.plugins.centerText?.total
+            ).toFixed(2)} €` || ""; // Obtener el total desde las opciones del gráfico
         const color = chart.config.options.plugins.centerText?.color || "#fff"; // Obtener el color desde las opciones del gráfico
         ctx.save();
         ctx.font = "bold 16px Noway"; // Estilo del texto

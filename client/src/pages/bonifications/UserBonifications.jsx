@@ -4,9 +4,9 @@ import Layout from "../layout/Layout";
 import "./UserBonifications.css";
 import GraficoLibrerias from "../../components/charts/BarChartNew";
 import DateFilter from "../../components/DateFilter/DateFilter";
-import { getCashbackGeneratedByMonth} from "../../api/realData";
+import { getCashbackGeneratedByMonth } from "../../api/realData";
 import TransactionList from "../../components/transactions-list/TransactionsList";
-import mockData  from "../../components/transactions-list/mockData.js";
+import mockData from "../../components/transactions-list/mockData.js";
 
 const UserBonifications = () => {
     const { t } = useLanguage();
@@ -63,9 +63,10 @@ const UserBonifications = () => {
 
         const { year, month } = period;
         // Buscar los datos para el mes seleccionado
-        const monthData = data.find(item =>
-            item.año === year.toString() &&
-            parseInt(item.mes, 10) === month + 1
+        const monthData = data.find(
+            (item) =>
+                item.año === year.toString() &&
+                parseInt(item.mes, 10) === month + 1
         );
 
         // Actualizar el total de bonificaciones
@@ -75,14 +76,14 @@ const UserBonifications = () => {
             });
         } else {
             setBonifications({
-                totalBonifications: 0
+                totalBonifications: 0,
             });
         }
     };
 
     const formatCurrency = (value) => {
         const num = Number(value);
-        if (isNaN(num)) return '0€';
+        if (isNaN(num)) return "0€";
         return Number.isInteger(num) ? `${num}€` : `${num.toFixed(1)}€`;
     };
 
@@ -94,47 +95,39 @@ const UserBonifications = () => {
     };
 
     return (
-        <div className="bonifications-page">
-            <Layout title={t.bonificationTitle}>
-                <div className="container-date-filter">
-                    <DateFilter onDateFilter={handleDateFilter} />
-                </div>
+        <Layout title={t.bonificationTitle}>
+            <div className="bonifications-content-container">
+                <DateFilter onDateFilter={handleDateFilter} />
 
-                {error && (
-                    <div className="error-message">
-                        {error}
-                    </div>
-                )}
+                {error && <div className="error-message">{error}</div>}
 
                 {isLoading ? (
-                    <div className="loading-message">
-                        Cargando datos...
-                    </div>
+                    <div className="loading-message">Cargando datos...</div>
                 ) : (
                     <>
                         <div className="container-ingresos-gastos">
                             <div className="item-ingresos-gastos">
                                 <p className="label-ingresos">{t.received}</p>
                                 <span className="amount-ingresos">
-                                    {formatCurrency(bonifications.totalBonifications)}
+                                    {formatCurrency(
+                                        bonifications.totalBonifications
+                                    )}
                                 </span>
                             </div>
                         </div>
-                        <div className="chart-section">
-                            <GraficoLibrerias
-                               data={apiData}
-                               targetYear={selectedPeriod.year}
-                               targetMonth={selectedPeriod.month}
-                               primaryKey={"bonificaciones"}
-                               secondaryKey={null}
-                               showFilters={true}
-                            />
-                        </div>
+                        <GraficoLibrerias
+                            data={apiData}
+                            targetYear={selectedPeriod.year}
+                            targetMonth={selectedPeriod.month}
+                            primaryKey={"bonificaciones"}
+                            secondaryKey={null}
+                            showFilters={true}
+                        />
                         <TransactionList transactions={mockData} />
                     </>
                 )}
-            </Layout>
-        </div>
+            </div>
+        </Layout>
     );
 };
 

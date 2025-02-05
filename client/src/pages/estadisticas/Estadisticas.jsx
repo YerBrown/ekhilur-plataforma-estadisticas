@@ -4,7 +4,10 @@ import Layout from "../layout/Layout";
 import "./Estadisticas.css";
 import GraficoLibrerias from "../../components/charts/BarChartNew";
 import DateFilter from "../../components/DateFilter/DateFilter";
-import { getIncomesAndExpensesByMonth, getIncomesAndExpensesByYear} from "../../api/realData";
+import {
+    getIncomesAndExpensesByMonth,
+    getCategoryExpensesByMonth,
+} from "../../api/realData";
 import mockData from "../../components/transactions-list/mockData.js";
 import TransactionList from "../../components/transactions-list/TransactionsList";
 import CategoryChart from "../../components/charts/CategoryCharts";
@@ -54,7 +57,7 @@ const Estadisticas = () => {
         totalIngresos: 0,
         totalGastos: 0,
     });
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const [apiData, setApiData] = useState([
         { año: "2022", mes: "11", valor: 100, otroValor: 80 },
@@ -67,16 +70,20 @@ const Estadisticas = () => {
         { año: "2024", mes: "02", valor: 250, otroValor: 220 },
         { año: "2024", mes: "03", valor: 300, otroValor: 270 },
     ]);
+    const [categorydata, setCategoryData] = useState([]);
 
     const loadApiData = async () => {
         setIsLoading(true);
         setError(null);
         try {
             const data = await getIncomesAndExpensesByMonth();
-            console.log("Hola", data);
+            const categorydata = await getCategoryExpensesByMonth(
+                new Date().getMonth() + 1,
+                new Date().getFullYear()
+            );
+
             setApiData(data);
-
-
+            setCategoryData(categorydata);
             if (selectedPeriod) {
                 updateStatisticsFromApiData(data, selectedPeriod);
             }
@@ -97,10 +104,14 @@ const Estadisticas = () => {
         loadApiData();
     }, []);
 
-    const updateStatisticsFromApiData = (data, period) => {
+    const updateStatisticsFromApiData = async (data, period) => {
         if (!data) return;
 
         const { year, month } = period;
+        setIsLoading(true);
+        const categoryData = await getCategoryExpensesByMonth(month + 1, year);
+        setCategoryData(categoryData);
+        setIsLoading(false);
         const monthData = data.find(
             (item) =>
                 item.año === year.toString() &&
@@ -140,11 +151,9 @@ const Estadisticas = () => {
     };
 
     return (
-        <div className="estadisticas-page">
-            <Layout title={t.statisticsTitle}>
-                <div className="container-date-filter">
-                    <DateFilter onDateFilter={handleDateFilter} />
-                </div>
+        <Layout title={t.statisticsTitle}>
+            <div className="statistics-content-container">
+                <DateFilter onDateFilter={handleDateFilter} />
 
                 {error && <div className="error-message">{error}</div>}
 
@@ -169,22 +178,20 @@ const Estadisticas = () => {
                                 </span>
                             </div>
                         </div>
-                        <div className="chart-section">
-                            <GraficoLibrerias
-                                data={apiData}
-                                targetYear={selectedPeriod.year}
-                                targetMonth={selectedPeriod.month}
-                                primaryKey={"gastos"}
-                                secondaryKey={"ingresos"}
-                                showFilters={true}
-                            />
-                        </div>
-                        <CategoryChart categoryDataJson={fakeApiData} />
+                        <GraficoLibrerias
+                            data={apiData}
+                            targetYear={selectedPeriod.year}
+                            targetMonth={selectedPeriod.month}
+                            primaryKey={"gastos"}
+                            secondaryKey={"ingresos"}
+                            showFilters={true}
+                        />
+                        <CategoryChart categoryDataJson={categorydata} />
                         <TransactionList transactions={mockData} />
                     </>
                 )}
-            </Layout>
-        </div>
+            </div>
+        </Layout>
     );
 };
 
