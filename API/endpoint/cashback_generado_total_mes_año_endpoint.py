@@ -1,37 +1,35 @@
 from flask import Blueprint, jsonify
-import sqlite3
-import pandas as pd
-import os #! Importar solo los paquetes necesarios
+from sqlite3 import connect, OperationalError
+from os.path import join, dirname, exists
+from os import makedirs
+from pandas import read_sql_query, DataFrame
 
 # Crear el blueprint
-cashback_total_bp = Blueprint('cashback_total', __name__)
+cashback_total_bp = Blueprint('cashback_generado_total_mes_año', __name__)
 
 # Ruta relativa de la base de datos SQLite
-DATABASE_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'db')
-DATABASE_PATH = os.path.join(DATABASE_DIR, 'datos_sqlite.db')
+DATABASE_DIR = join(dirname(dirname(__file__)), 'db')
+DATABASE_PATH = join(DATABASE_DIR, 'datos_sqlite.db')
 
 # Asegurarnos de que el directorio existe
-os.makedirs(DATABASE_DIR, exist_ok=True)
+makedirs(DATABASE_DIR, exist_ok=True)
 
 # Función para calcular cashback total agrupado por mes y año
 def cashback_generado_total_mes_año(tabla_usuario):
     # Validamos que la tabla esté permitida
-    #! Los nombres de las tablas no pueden coincidir con los de usuarios
-    tablas_permitidas = {"ilandatxe", "fotostorres", "alex", "categorias"}  
-
+    tablas_permitidas = {"fotostorres"}
     if tabla_usuario not in tablas_permitidas:
-        return {"error": "Nombre de tabla no permitido."}, 400
-
+        return {"error": "Este endpoint solo está disponible para la tabla fotostorres."}, 400
+    
     try:
-        # Conectar a la base de datos
-        conexion = sqlite3.connect(DATABASE_PATH)
-    except sqlite3.OperationalError as e:
+        conexion = connect(DATABASE_PATH)
+    except OperationalError as e:
         return {
             "error": "No se pudo conectar a la base de datos",
             "detalles": str(e),
             "ruta_bd": DATABASE_PATH
         }, 500
-
+    
     try:
         # Construcción de la consulta SQL
         query = f"""
@@ -39,19 +37,29 @@ def cashback_generado_total_mes_año(tabla_usuario):
             strftime('%Y', Fecha) AS anio,
             strftime('%m', Fecha) AS mes,
             SUM(CASE 
-                WHEN Movimiento = 'Descuento automático' THEN ABS(Cantidad)
-                ELSE Cantidad 
-            END) AS total_cantidad
+                WHEN Movimiento = 'Bonificación por compra' THEN ABS(Cantidad) 
+                ELSE 0 
+            END) AS bonificaciones_recibidas,
+            COUNT(CASE 
+                WHEN Movimiento = 'Bonificación por compra' THEN 1 
+            END) AS numero_transacciones
         FROM {tabla_usuario}
-        WHERE Movimiento IN ('Descuento automático', 'Bonificación por compra', 'Campaña')
-        GROUP BY anio, mes
-        ORDER BY anio, mes;
+        WHERE Movimiento = 'Bonificación por compra'
+        GROUP BY año, mes
+        ORDER BY año, mes;
         """
-
-        # Ejecutar la consulta
-        df = pd.read_sql_query(query, conexion)
-
-        # Cerrar la conexión
+        
+        df = read_sql_query(query, conexion)
+        
+        resultado = []
+        for _, row in df.iterrows():
+            resultado.append({
+                "año": str(row['año']),
+                "mes": str(row['mes']).zfill(2),
+                "bonificaciones_recibidas": float(row['bonificaciones_recibidas']),
+                "numero_transacciones": int(row['numero_transacciones'])
+            })
+        
         conexion.close()
 
         return df.to_dict(orient='records')
@@ -63,9 +71,9 @@ def cashback_generado_total_mes_año(tabla_usuario):
 
 # Definir el endpoint para obtener cashback total
 @cashback_total_bp.route('/cashback_generado_total_mes_año/<string:tabla_usuario>', methods=['GET'])
-def get_cashback_total(tabla_usuario):
+def get_cashback_generado_total_mes_año(tabla_usuario):
     """
-    Endpoint para obtener cashback total agrupado por mes y año según la tabla de usuario.
+    Endpoint para obtener el total de cashback generado por mes y año.
     """
     resultado = cashback_generado_total_mes_año(tabla_usuario)
 

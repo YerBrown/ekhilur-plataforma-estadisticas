@@ -1,60 +1,59 @@
 from flask import Blueprint, jsonify
-import sqlite3
-import pandas as pd
-import os #! Importar solo los paquetes necesarios
+from sqlite3 import connect, OperationalError
+from os.path import join, dirname, exists
+from os import makedirs
+from pandas import read_sql_query, DataFrame
 
 # Crear el blueprint
-compras_categoria_bp = Blueprint('compras_categoria', __name__)
+compras_categoria_bp = Blueprint('compras_categoria_mes_año', __name__)
 
 # Ruta relativa de la base de datos SQLite
-DATABASE_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'db')
-DATABASE_PATH = os.path.join(DATABASE_DIR, 'datos_sqlite.db')
+DATABASE_DIR = join(dirname(dirname(__file__)), 'db')
+DATABASE_PATH = join(DATABASE_DIR, 'datos_sqlite.db')
 
 # Asegurarnos de que el directorio existe
-os.makedirs(DATABASE_DIR, exist_ok=True)
+makedirs(DATABASE_DIR, exist_ok=True)
 
-def compras_por_categoria(tabla_usuario):
+def compras_categoria_mes_año(tabla_usuario):
     # Validamos que la tabla esté permitida
-    #! Los nombres de las tablas no pueden coincidir con los de usuarios
-    tablas_permitidas = {"ilandatxe", "fotostorres", "alomorga", "categorias"}
+    tablas_permitidas = {"fotostorres"}
     if tabla_usuario not in tablas_permitidas:
-        return {"error": "Nombre de tabla no permitido."}, 400
-
+        return {"error": "Este endpoint solo está disponible para la tabla fotostorres."}, 400
+    
     try:
-        conexion = sqlite3.connect(DATABASE_PATH)
-    except sqlite3.OperationalError as e:
+        conexion = connect(DATABASE_PATH)
+    except OperationalError as e:
         return {
             "error": "No se pudo conectar a la base de datos",
             "detalles": str(e),
             "ruta_bd": DATABASE_PATH
         }, 500
-
+    
     try:
         query = f"""
         SELECT 
-            strftime('%Y', i.Fecha) AS año,
-            strftime('%m', i.Fecha) AS mes,
-            c."Categoria compra" AS categoria,
-            ABS(SUM(CASE 
-                WHEN i.Cantidad < 0 THEN i.Cantidad 
-                ELSE 0 
-            END)) AS total_compras
-        FROM {tabla_usuario} i
-        JOIN categorias c ON i."Usuario Asociado" = c."Comercio"
-        WHERE i.Movimiento = 'Pago a usuario'
+            strftime('%Y', t.Fecha) AS año,
+            strftime('%m', t.Fecha) AS mes,
+            c.Categoria as categoria,
+            COUNT(*) as numero_compras,
+            SUM(ABS(t.Cantidad)) as total_gastado
+        FROM {tabla_usuario} t
+        JOIN categorias c ON t."Usuario Asociado" = c."Usuario Asociado"
+        WHERE t.Movimiento = 'Compra'
         GROUP BY año, mes, categoria
-        ORDER BY año DESC, mes DESC, categoria;
+        ORDER BY año, mes, categoria;
         """
-
-        df = pd.read_sql_query(query, conexion)
+        
+        df = read_sql_query(query, conexion)
         
         resultado = []
         for _, row in df.iterrows():
             resultado.append({
                 "año": str(row['año']),
-                "mes": str(row['mes']).zfill(2),  # Asegura que el mes tenga 2 dígitos
+                "mes": str(row['mes']).zfill(2),
                 "categoria": str(row['categoria']),
-                "total_compras": float(row['total_compras'])  # Convertimos a float para mantener decimales
+                "numero_compras": int(row['numero_compras']),
+                "total_gastado": float(row['total_gastado'])
             })
         
         conexion.close()
@@ -66,11 +65,11 @@ def compras_por_categoria(tabla_usuario):
         }, 500
 
 @compras_categoria_bp.route('/compras_categoria_mes_año/<string:tabla_usuario>', methods=['GET'])
-def get_compras_por_categoria(tabla_usuario):
+def get_compras_categoria_mes_año(tabla_usuario):
     """
-    Endpoint para obtener las compras agrupadas por categoría, mes y año.
+    Endpoint para obtener las compras por categoría, mes y año.
     """
-    resultado = compras_por_categoria(tabla_usuario)
+    resultado = compras_categoria_mes_año(tabla_usuario)
     if isinstance(resultado, tuple):
         return jsonify({"error": resultado[0]}), resultado[1]
     return jsonify(resultado)

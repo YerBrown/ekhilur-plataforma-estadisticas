@@ -1,18 +1,19 @@
 from flask import Blueprint, jsonify
-import sqlite3
+from sqlite3 import connect, OperationalError
+from os.path import join, dirname, exists
+from os import makedirs
 import pandas as pd
-import os #! Importar solo los paquetes necesarios
 
 # Crear el blueprint con un nombre diferente
 cashback_emitido_bp = Blueprint('cashback_emitido_año', __name__)
 
 # Ruta relativa de la base de datos SQLite
-DATABASE_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'db')
-DATABASE_PATH = os.path.join(DATABASE_DIR, 'datos_sqlite.db')
+DATABASE_DIR = join(dirname(dirname(__file__)), 'db')
+DATABASE_PATH = join(DATABASE_DIR, 'datos_sqlite.db')
 print(f"Ruta de la base de datos: {DATABASE_PATH}")
 
 # Asegurarnos de que el directorio existe
-os.makedirs(DATABASE_DIR, exist_ok=True)
+makedirs(DATABASE_DIR, exist_ok=True)
 
 def cashback_emitido_año(tabla_usuario):
     # Validamos que la tabla esté permitida
@@ -22,8 +23,8 @@ def cashback_emitido_año(tabla_usuario):
         return {"error": "Este endpoint solo está disponible para la tabla fotostorres."}, 400
     
     try:
-        conexion = sqlite3.connect(DATABASE_PATH)
-    except sqlite3.OperationalError as e:
+        conexion = connect(DATABASE_PATH)
+    except OperationalError as e:
         return {
             "error": "No se pudo conectar a la base de datos",
             "detalles": str(e),

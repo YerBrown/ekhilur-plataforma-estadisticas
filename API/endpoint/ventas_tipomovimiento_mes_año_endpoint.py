@@ -1,110 +1,82 @@
 from flask import Blueprint, jsonify
-import sqlite3
-import pandas as pd
-import os #! Importar solo los paquetes necesarios
+from sqlite3 import connect, OperationalError
+from os.path import join, dirname, exists
+from os import makedirs
+from pandas import read_sql_query, DataFrame
 
 # Crear el blueprint
-ventas_tipo_mes_bp = Blueprint('ventas_tipo_mes', __name__)
+ventas_tipo_mes_bp = Blueprint('ventas_tipomovimiento_mes_año', __name__)
 
 # Ruta relativa de la base de datos SQLite
-DATABASE_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'db')
-DATABASE_PATH = os.path.join(DATABASE_DIR, 'datos_sqlite.db')
+DATABASE_DIR = join(dirname(dirname(__file__)), 'db')
+DATABASE_PATH = join(DATABASE_DIR, 'datos_sqlite.db')
 
 # Asegurarnos de que el directorio existe
-os.makedirs(DATABASE_DIR, exist_ok=True)
+makedirs(DATABASE_DIR, exist_ok=True)
 
-@ventas_tipo_mes_bp.route('/ventas_tipo_movimiento_mes/<string:tabla_usuario>', methods=['GET'])
-def get_ventas_tipo_movimiento(tabla_usuario):
-    """
-    Endpoint para obtener ventas por tipo de movimiento, mes y año
-    """
+def get_ventas_tipo_mes_año(tabla_usuario):
     # Validamos que la tabla esté permitida
-    #! Los nombres de las tablas no pueden coincidir con los de usuarios
-    tablas_permitidas = {"ilandatxe", "fotostorres", "alex", "categorias"}  
-
+    tablas_permitidas = {"fotostorres"}
     if tabla_usuario not in tablas_permitidas:
-        return jsonify({"error": "Nombre de tabla no permitido."}), 400
-
+        return {"error": "Este endpoint solo está disponible para la tabla fotostorres."}, 400
+    
     try:
-        # Conectar a la base de datos
-        conexion = sqlite3.connect(DATABASE_PATH)
-    except sqlite3.Error as e:
-        return jsonify({
-            "error": "Error de conexión a la base de datos",
-            "detalles": str(e)
-        }), 500
-
+        conexion = connect(DATABASE_PATH)
+    except OperationalError as e:
+        return {
+            "error": "No se pudo conectar a la base de datos",
+            "detalles": str(e),
+            "ruta_bd": DATABASE_PATH
+        }, 500
+    
     try:
         # Query mejorada para obtener ventas por tipo de movimiento y mes
         query = f"""
-        WITH ventas_tipo_mes AS (
-            SELECT 
-                strftime('%Y', Fecha) as anio,
-                strftime('%m', Fecha) as mes,
-                Movimiento,
-                SUM(CASE 
-                    WHEN Cantidad > 0 THEN Cantidad 
-                    ELSE 0 
-                END) as total_ventas,
-                COUNT(CASE 
-                    WHEN Cantidad > 0 THEN 1 
-                END) as num_transacciones,
-                AVG(CASE 
-                    WHEN Cantidad > 0 THEN Cantidad 
-                END) as venta_promedio
-            FROM {tabla_usuario}
-            WHERE Movimiento IN ('Pago a usuario', 'Cobro desde QR')
-            GROUP BY anio, mes, Movimiento
-        )
         SELECT 
-            anio,
-            mes,
+            strftime('%Y', Fecha) AS año,
+            strftime('%m', Fecha) AS mes,
             Movimiento as tipo_movimiento,
-            ROUND(total_ventas, 2) as total_ventas,
-            num_transacciones,
-            ROUND(venta_promedio, 2) as venta_promedio,
-            ROUND(total_ventas / CASE 
-                WHEN num_transacciones = 0 THEN 1 
-                ELSE num_transacciones 
-            END, 2) as ticket_promedio
-        FROM ventas_tipo_mes
-        ORDER BY anio DESC, mes DESC, tipo_movimiento;
+            COUNT(*) as num_operaciones,
+            SUM(ABS(Cantidad)) as importe_total,
+            COUNT(CASE WHEN Cantidad > 0 THEN 1 END) as num_ingresos,
+            COUNT(CASE WHEN Cantidad < 0 THEN 1 END) as num_gastos,
+            SUM(CASE WHEN Cantidad > 0 THEN Cantidad ELSE 0 END) as total_ingresos,
+            SUM(CASE WHEN Cantidad < 0 THEN ABS(Cantidad) ELSE 0 END) as total_gastos
+        FROM {tabla_usuario}
+        GROUP BY año, mes, tipo_movimiento
+        ORDER BY año DESC, mes DESC, tipo_movimiento;
         """
-
-        # Ejecutar la consulta
-        df = pd.read_sql_query(query, conexion)
-
-        if df.empty:
-            return jsonify({"message": "No hay datos de ventas disponibles."}), 404
-
-        # Convertir todos los datos a tipos simples
+        
+        df = read_sql_query(query, conexion)
+        
         resultado = []
         for _, row in df.iterrows():
-            # Manejar valores NaN
-            venta_promedio = 0.0 if pd.isna(row['venta_promedio']) else float(row['venta_promedio'])
-            ticket_promedio = 0.0 if pd.isna(row['ticket_promedio']) else float(row['ticket_promedio'])
-            
             resultado.append({
-                "anio": str(row['anio']),
-                "mes": str(row['mes']),
+                "año": str(row['año']),
+                "mes": str(row['mes']).zfill(2),
                 "tipo_movimiento": str(row['tipo_movimiento']),
-                "total_ventas": float(row['total_ventas']),
-                "num_transacciones": int(row['num_transacciones']),
-                "venta_promedio": venta_promedio,
-                "ticket_promedio": ticket_promedio
+                "num_operaciones": int(row['num_operaciones']),
+                "importe_total": float(row['importe_total']),
+                "num_ingresos": int(row['num_ingresos']),
+                "num_gastos": int(row['num_gastos']),
+                "total_ingresos": float(row['total_ingresos']),
+                "total_gastos": float(row['total_gastos'])
             })
-
-        # Devolver respuesta
-        return jsonify({
-            "status": "success",
-            "data": resultado
-        })
-
+        
+        conexion.close()
+        return resultado
     except Exception as e:
-        return jsonify({
+        return {
             "error": "Error al ejecutar la consulta",
             "detalles": str(e)
-        }), 500
+        }, 500
 
-    finally:
-        conexion.close()
+@ventas_tipo_mes_bp.route('/ventas_tipo_movimiento_mes/<string:tabla_usuario>', methods=['GET'])
+def get_ventas_por_tipo_mes(tabla_usuario):
+    """
+    Endpoint para obtener el resumen de ventas por tipo de movimiento, mes y año.
+    """
+    resultado = get_ventas_tipo_mes_año(tabla_usuario)
+    if isinstance(resultado, tuple):
+        return jsonify({"error": resultado[0]}), resultado[1]
+    return jsonify(resultado)

@@ -3,6 +3,8 @@ import requests
 import os
 import json
 from datetime import datetime
+import sqlite3
+from utils.crypto_utils import data_cipher
 
 class EkhilurCuentasScraper:
     def __init__(self):
@@ -93,15 +95,50 @@ class EkhilurCuentasScraper:
 
     def save_results(self, data, username):
         """
-        Guarda los resultados en un archivo JSON
+        Guarda los resultados en JSON y en la base de datos
         """
-        filename = f"cuentas_{username}.json"
-        filepath = os.path.join(self.data_dir, filename)
-        
-        with open(filepath, 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=4)
-        
-        return filepath
+        try:
+            # Guardar en JSON cifrado
+            filename = f"cuentas_{username}.json"
+            filepath = os.path.join(self.data_dir, filename)
+            data_cipher.save_encrypted_json(data, filepath)
+
+            # Guardar en la base de datos (ya cifrado por el módulo)
+            DATABASE_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'db')
+            DATABASE_PATH = os.path.join(DATABASE_DIR, 'datos_sqlite.db')
+            
+            conn = sqlite3.connect(DATABASE_PATH)
+            cursor = conn.cursor()
+
+            # Cifrar los datos antes de guardar
+            cuentas = {cuenta["tipo"]: cuenta["saldo"] for cuenta in data["cuentas"]}
+            encrypted_data = {
+                "ekhi": data_cipher.encrypt_data(cuentas.get("Ekhi", 0.0)),
+                "euro": data_cipher.encrypt_data(cuentas.get("Euro", 0.0)),
+                "ekhi_hernani": data_cipher.encrypt_data(cuentas.get("Ekhi Hernani", 0.0)),
+                "saldo_total": data_cipher.encrypt_data(data["saldo_total"])
+            }
+            
+            cursor.execute('''
+            INSERT OR REPLACE INTO usuarios_cuentas 
+            (usuario, fecha_actualizacion, ekhi, euro, ekhi_hernani, saldo_total)
+            VALUES (?, datetime('now'), ?, ?, ?, ?)
+            ''', (
+                username,
+                encrypted_data["ekhi"],
+                encrypted_data["euro"],
+                encrypted_data["ekhi_hernani"],
+                encrypted_data["saldo_total"]
+            ))
+
+            conn.commit()
+            conn.close()
+            
+            return filepath
+
+        except Exception as e:
+            print(f"Error guardando resultados: {str(e)}")
+            return None
 
 def print_menu():
     """
