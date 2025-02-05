@@ -31,9 +31,9 @@ const getAbbreviatedMonth = (month, t) => {
 };
 // Helper para calcular fechas relativas (meses en formato string)
 const calculateRelativeDates = (year, month) => {
-    const currentDate = new Date(year, parseInt(month, 10) - 1); // Convertir mes a base 0
-    const previousDate = new Date(year, parseInt(month, 10));
-    const nextDate = new Date(year, parseInt(month, 10) + 1);
+    const currentDate = new Date(year, parseInt(month, 10) - 2); // Convertir mes a base 0
+    const previousDate = new Date(year, parseInt(month, 10) - 1);
+    const nextDate = new Date(year, parseInt(month, 10));
 
     return {
         current: {
@@ -54,9 +54,9 @@ const calculateRelativeDates = (year, month) => {
 // Helper para calcular años relativos
 const calculateRelativeYears = (year) => {
     return {
-        previous: year - 1,
-        current: year,
-        next: year + 1,
+        previous: year - 2,
+        current: year - 1,
+        next: year,
     };
 };
 
