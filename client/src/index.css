@@ -5,6 +5,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "montserrat-extralight";
   src: url("./assets/fonts/Montserrat-ExtraLight.woff") format("woff");
@@ -12,6 +13,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "montserrat-light";
   src: url("./assets/fonts/Montserrat-Light.woff") format("woff");
@@ -19,6 +21,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "montserrat-regular";
   src: url("./assets/fonts/Montserrat-Regular.woff") format("woff");
@@ -26,6 +29,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "montserrat-medium";
   src: url("./assets/fonts/Montserrat-Medium.woff") format("woff");
@@ -33,6 +37,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "montserrat-semibold";
   src: url("./assets/fonts/Montserrat-SemiBold.woff") format("woff");
@@ -40,6 +45,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "montserrat-bold";
   src: url("./assets/fonts/Montserrat-Bold.woff") format("woff");
@@ -47,6 +53,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "montserrat-extrabold";
   src: url("./assets/fonts/Montserrat-ExtraBold.woff") format("woff");
@@ -54,6 +61,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "montserrat-black";
   src: url("./assets/fonts/Montserrat-Black.woff") format("woff");
@@ -66,7 +74,6 @@
 :root {
   font-family: "montserrat-regular", Arial, sans-serif;
   line-height: 1.5;
-
   color-scheme: light dark;
   color: var(--color-letra);
   background-color: var(--background-color-principal);
@@ -84,12 +91,13 @@
   --background-color-dark-05: rgba(94, 94, 94, 0.2);
   --color-light: rgba(30, 30, 30);
   --color-dark: rgba(255, 255, 255);
-  --color-naranja: rgba(255, 144, 18, 1); 
+  --color-barras: rgb(66, 28, 4);
+  --color-naranja: rgb(255, 102, 0, 1);
   --color-naranja-background: rgba(255, 144, 18, 0.8);
-  --color-naranja-background-2:rgb(252, 197, 138);
+  --color-naranja-background-2: rgb(252, 197, 138);
   --color-azul: rgba(0, 71, 184, 1);
   --color-azul-background: rgba(0, 71, 184, 0.8);
-  --color-azul-background-2:  rgba(152, 178, 226);
+  --color-azul-background-2: rgba(152, 178, 226);
   --color-blanco: rgba(255, 255, 255, 1);
   --color-negro: rgba(0, 0, 0, 1);
   --color-placeholder-light: rgba(0, 0, 0, 0.6);
@@ -98,6 +106,13 @@
   --color-letra-2-dark: rgba(255, 255, 255, 0.6);
   --color-gasto: rgba(255, 0, 0, 0.4);
   --color-ingreso: rgba(0, 128, 0, 0.4);
+  --naranja-light: rgba(255, 102, 0, 0.7);
+  --naranja-degradado: rgba(255, 30, 0, 0.966);
+ 
+
+  /*NEW COLORS*/
+
+
 
   /*THEME COLORS (LOS QUE HAY USAR)*/
   --background-color-principal: var(--background-color-light);
@@ -111,6 +126,7 @@
   --color-grafico-naranja: var(--color-naranja-background);
   --color-grafico-naranja-claro: var(--color-naranja-background-2);
   --color-grafico-azul: var(--color-azul-background);
+  --apartado-dinero:var(--naranja-light);
   /*Ekhilur colors - No cambiar*/
 
 
@@ -184,6 +200,6 @@ button {
     --color-naranja-principal-background: var(--color-azul-background);
     --color-grafico-naranja: var(--color-azul-background);
     --color-grafico-naranja-claro: var(--color-azul-background-2);
-  
+    --apartado-dinero: var(--color-negro);
   }
 }

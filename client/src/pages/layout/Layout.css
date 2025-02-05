@@ -45,6 +45,5 @@
 .page-content {
   justify-content: flex-start;
   margin-top: 4rem;
-  background-color: var(--background-color-principal);
   gap: 1rem;
 }

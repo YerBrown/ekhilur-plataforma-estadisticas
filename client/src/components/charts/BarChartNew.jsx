@@ -155,7 +155,7 @@ const getFilteredData = (
 const GraficoLibrerias = ({
     data,
     colors = {
-        primary: "var(--color-grafico-naranja)",
+        primary: "var(--color-barras)",
         secondary: "var(--color-grafico-naranja-claro)",
     },
     targetYear,
@@ -193,18 +193,22 @@ const GraficoLibrerias = ({
                         bottom: 0,
                     }}
                 >
-                    <XAxis dataKey={formatXAxis} />
-                    <YAxis tickCount={3} />
+                    <XAxis dataKey={formatXAxis}
+                        stroke="#000000" />
+                    <YAxis tickCount={3}
+                        stroke="#000000" />
                     {/*<Tooltip />*/}
                     <Bar
                         dataKey={primaryKey}
                         fill={colors.primary}
                         radius={[6, 6, 0, 0]}
+                        ba
                         maxBarSize={150}
                     >
                         <LabelList
                             dataKey={primaryKey}
                             position="top"
+                            fill="#000000"
                             formatter={(value) => (value === 0 ? "" : value)}
                         />
                     </Bar>
@@ -219,6 +223,7 @@ const GraficoLibrerias = ({
                             <LabelList
                                 dataKey={secondaryKey}
                                 position="top"
+                                fill="#000000"
                                 formatter={(value) =>
                                     value === 0 ? "" : value
                                 }
