@@ -127,6 +127,10 @@ const Home = () => {
                         </button>
                     </div>
                     <ProfileAvatar />
+                    <div className="user-panel">
+                        <UserPage />
+                    </div>
+
                 </div>
             </header>
             <main>
