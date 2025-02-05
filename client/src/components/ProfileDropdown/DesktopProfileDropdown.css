@@ -1,0 +1,64 @@
+.desktop-profile-dropdown {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px; /* Ancho del desplegable */
+    height: 100vh;
+    background-color: var(--background-color-principal);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.desktop-profile-dropdown.active {
+    transform: translateX(0);
+}
+
+.user-profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.info-label {
+    font-size: 1rem;
+    color: var(--color-naranja-principal);
+}
+
+.info-value {
+    font-size: 1rem;
+    color: var(--color-letra);
+}
+
+.toggle-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-naranja-principal);
+}
+
+.logout-button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--color-naranja-principal);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .desktop-profile-dropdown {
+        display: none; /* Oculta el desplegable en móviles */
+    }
+}
