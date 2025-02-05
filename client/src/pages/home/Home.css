@@ -108,59 +108,84 @@
     text-align: center;
 }
 
-/* Home.css */
+/* Aside.css */
 .profile-aside {
     position: fixed;
     right: 0;
     top: 0;
     height: 100vh;
-    width: calc(100vw / 3); /* Ocupa un tercio del ancho de la pantalla */
-    max-width: 400px; /* Máximo ancho para pantallas muy grandes */
+    width: 50vw; /* Mitad del ancho de la pantalla */
+    min-width: 300px; /* Ancho mínimo para mantener legibilidad */
+    max-width: 600px; /* Ancho máximo para pantallas muy anchas */
     background: var(--background-color);
     box-shadow: -2px 0 15px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     padding: 2rem;
-    transition: transform 0.3s ease-in-out;
-}
-.close-aside {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: var(--text-color);
-    padding: 0.3rem 0.5rem;
-    transition: all 0.2s ease;
+    overflow-y: auto;
+    transform: translateX(0); /* Asegura posición inicial correcta */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.close-aside {
+    position: sticky;
+    float: right;
+    right: 1.5rem;
+    top: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 0.5rem;
+    z-index: 1001;
+    line-height: 1;
+}
+
+/* Efectos de hover y transiciones */
 .close-aside:hover {
-    transform: scale(1.2);
+    transform: rotate(90deg);
     color: #ff4444;
+    transition: all 0.3s ease;
 }
 
 /* Temas */
 .profile-aside.light {
-    --background-color: #ffffff;
-    --text-color: #333333;
-    border-left: 1px solid #eeeeee;
+    --background-color: #f8f9fa;
+    --text-color: #212529;
+    border-left: 1px solid #dee2e6;
 }
 
 .profile-aside.dark {
     --background-color: #1a1a1a;
-    --text-color: #ffffff;
-    border-left: 1px solid #333333;
+    --text-color: #e9ecef;
+    border-left: 1px solid #343a40;
 }
 
-/* Opcional: Efecto de overlay cuando el aside está abierto */
+/* Overlay mejorado */
 .aside-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     z-index: 999;
-    backdrop-filter: blur(3px);   
+    backdrop-filter: blur(5px);
+    animation: overlay-fade-in 0.3s ease;
 }
+
+@keyframes overlay-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Animación de entrada del aside */
+@keyframes slide-in {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+.profile-aside {
+    animation: slide-in 0.3s ease-out;
+}
+
