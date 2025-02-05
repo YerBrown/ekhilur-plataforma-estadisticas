@@ -156,6 +156,16 @@ async function getUserHomeData() {
         throw new Error("Error al obtener los datos");
     }
 }
+async function getCommerceHomeData() {
+    try {
+        const response = await apiRequest("api/home-data-commerce", "GET");
+        console.log("Respuesta obtenida de la API externa:", response);
+        return response;
+    } catch (error) {
+        console.error("Error al obtener los datos:", error);
+        throw new Error("Error al obtener los datos");
+    }
+}
 export {
     getUserInfo,
     getUserAccounts,
@@ -169,4 +179,5 @@ export {
     getSalesByMonth,
     getSalesByYear,
     getUserHomeData,
+    getCommerceHomeData,
 };

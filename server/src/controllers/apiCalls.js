@@ -518,7 +518,7 @@ async function getSalesByYear(req, res) {
 async function getHomeDataForUser(req, res) {
     try {
         const [wallet, bonificaciones, gastosIngresos] = await Promise.all([
-            apiRequest(`/cuentas/refresh/${req.user.username}`, "GET"),
+            apiRequest(`/cuentas/${req.user.username}`, "GET"),
             apiRequest(
                 `/cashback_generado_total_mes_año/${req.user.username}`,
                 "GET"
@@ -526,6 +526,42 @@ async function getHomeDataForUser(req, res) {
             apiRequest(`/ingresos_gastos/${req.user.username}`, "GET"),
         ]);
         const fullDataObject = { wallet, bonificaciones, gastosIngresos };
+        fullDataObject.bonificaciones = completarMesesBonificaciones(
+            fullDataObject.bonificaciones,
+            2022,
+            2025
+        );
+        fullDataObject.gastosIngresos = completarMesesGastosIngresos(
+            fullDataObject.gastosIngresos,
+            2022,
+            2025
+        );
+        res.status(200).json(fullDataObject);
+    } catch (error) {
+        console.error("Error al obtener los datos de home:", error);
+        res.status(500).json({ error: "Error al obtener los datos de home" });
+    }
+}
+
+async function getHomeDataForCommerce(req, res) {
+    try {
+        const [wallet, bonificaciones, gastosIngresos] = await Promise.all([
+            apiRequest(`/cuentas/${req.user.username}`, "GET"),
+            apiRequest(`/cashback_emitido_mes_año/${req.user.username}`, "GET"),
+            apiRequest(`/ingresos_gastos/${req.user.username}`, "GET"),
+        ]);
+        const fullDataObject = { wallet, bonificaciones, gastosIngresos };
+        fullDataObject.bonificaciones =
+            completarMesesFaltantesBonificacionesEmitidas(
+                fullDataObject.bonificaciones,
+                2022,
+                2025
+            );
+        fullDataObject.gastosIngresos = completarMesesGastosIngresos(
+            fullDataObject.gastosIngresos,
+            2022,
+            2025
+        );
         res.status(200).json(fullDataObject);
     } catch (error) {
         console.error("Error al obtener los datos de home:", error);
@@ -546,4 +582,5 @@ export default {
     getSalesByYear,
     getSalesByMonth,
     getHomeDataForUser,
+    getHomeDataForCommerce,
 };

@@ -1,13 +1,12 @@
 import { useState, useEffect, useContext } from "react";
-import { Link, useNavigate, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../../contexts/LanguageContext.jsx";
-import { verify } from "../../api/auth";
 import DonutChart from "../../components/charts/DonutChart";
 import ProfileAvatar from "../../components/ProfileAvatar";
-import BarChartComponent from "../../components/charts/BarChart";
+import GraficoLibrerias from "../../components/charts/BarChartNew.jsx";
 import TransactionList from "../../components/transactions-list/TransactionsList";
 import mockData from "../../components/transactions-list/mockData.js";
-import { getUserHomeData } from "../../api/realData.js";
+import { getUserHomeData, getCommerceHomeData } from "../../api/realData.js";
 import { useTheme } from "../../contexts/ThemeContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import "./Home.css";
@@ -37,8 +36,14 @@ const Home = () => {
         const fetchUserdata = async () => {
             setIsLoading(true); // Detén el loader
             try {
-                const userData = await getUserHomeData(); // Llama a la API para obtener los datos
-                setUserData(userData);
+                if (user?.role === "commerce") {
+                    const userData = await getCommerceHomeData(); // Llama a la API para obtener los datos
+                    console.log(userData.bonificaciones);
+                    setUserData(userData);
+                } else {
+                    const userData = await getUserHomeData(); // Llama a la API para obtener los datos
+                    setUserData(userData);
+                }
             } catch (error) {
                 console.error("Error al obtener los datos del usuario:", error);
             } finally {
@@ -151,7 +156,14 @@ const Home = () => {
                 {user?.role === "user" && (
                     <button onClick={() => handleNavigate("/bonifications")}>
                         <h3>{t.bonificationTitle}</h3>
-                        {/* {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                        <GraficoLibrerias
+                            data={userData.bonificaciones}
+                            targetYear={new Date().getFullYear()}
+                            targetMonth={new Date().getMonth()}
+                            primaryKey={"bonificaciones"}
+                            showFilters={false}
+                            height={200}
+                        />
                     </button>
                 )}
                 {user?.role === "commerce" && (
@@ -159,26 +171,41 @@ const Home = () => {
                         onClick={() => handleNavigate("/bonifications-shop")}
                     >
                         <h3>Denda {t.bonificationTitle}</h3>
-                        {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                        <GraficoLibrerias
+                            data={userData.gastosIngresos}
+                            targetYear={new Date().getFullYear()}
+                            targetMonth={new Date().getMonth()}
+                            primaryKey={"bonificaciones_emitidas"}
+                            secondaryKey={"bonificaciones_recibidas"}
+                            showFilters={false}
+                            height={200}
+                        />
                     </button>
                 )}
                 <button onClick={() => handleNavigate("/statistics")}>
                     <h3>{t.statisticsTitle}</h3>
-                    {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                    <GraficoLibrerias
+                        data={userData.gastosIngresos}
+                        targetYear={new Date().getFullYear()}
+                        targetMonth={new Date().getMonth()}
+                        primaryKey={"gastos"}
+                        secondaryKey={"ingresos"}
+                        showFilters={false}
+                        height={200}
+                    />
                 </button>
                 <button onClick={() => handleNavigate("/transactions")}>
                     <h3>{t.transactionTitle}</h3>
-                    {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                    <TransactionList transactions={mockData.slice(0, 3)} />
                 </button>
                 {user?.role === "commerce" && (
                     <button onClick={() => handleNavigate("/sales")}>
                         <h3>{t.salesTitle}</h3>
-                        {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                     </button>
                 )}
-                <button onClick={() => handleNavigate("/map")}>
+                {/* <button onClick={() => handleNavigate("/map")}>
                     <h3>Mapa</h3>
-                </button>
+                </button> */}
             </main>
         </div>
     );

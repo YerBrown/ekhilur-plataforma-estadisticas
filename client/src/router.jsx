@@ -55,6 +55,22 @@ const router = createBrowserRouter([
                 ),
             },
             {
+                path: "/bonifications-shop",
+                element: (
+                    <ProtectedRoute allowedRoles={["commerce"]}>
+                        <CommerceBonifications />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: "/statistics",
+                element: (
+                    <ProtectedRoute allowedRoles={["user", "commerce"]}>
+                        <Estadisticas />
+                    </ProtectedRoute>
+                ),
+            },
+            {
                 path: "/map",
                 element: (
                     <ProtectedRoute allowedRoles={["user", "commerce"]}>

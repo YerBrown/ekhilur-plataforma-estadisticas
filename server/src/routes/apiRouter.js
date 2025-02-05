@@ -44,5 +44,10 @@ router.get(
 router.get("/sales-by-month", checkAuthorization, apiCalls.getSalesByMonth);
 router.get("/sales-by-year", checkAuthorization, apiCalls.getSalesByYear);
 router.get("/home-data-user", checkAuthorization, apiCalls.getHomeDataForUser);
+router.get(
+    "/home-data-commerce",
+    checkAuthorization,
+    apiCalls.getHomeDataForCommerce
+);
 
 export default router;
