@@ -11,6 +11,8 @@ import CommerceBonifications from "./pages/commerce-bonifications/CommerceBonifi
 import Estadisticas from "./pages/estadisticas/Estadisticas";
 import UserPage from "./pages/userpage/UserPage";
 
+import MapPage from "./pages/map/MapPage";
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -69,16 +71,12 @@ const router = createBrowserRouter([
                 ),
             },
             {
-                path: "/user-page",
+                path: "/map",
                 element: (
                     <ProtectedRoute allowedRoles={["user", "commerce"]}>
-                        <UserPage />
+                        <MapPage />
                     </ProtectedRoute>
                 ),
-            },
-            {
-                path: "*",
-                element: <ErrorBoundary />,
             },
         ],
     },

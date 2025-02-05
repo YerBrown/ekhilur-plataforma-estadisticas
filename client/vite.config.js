@@ -5,6 +5,11 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
     plugins: [react()],
+    resolve: {
+        alias: {
+          '@react-google-maps/api': '@react-google-maps/api/dist/index.js',
+        },
+      },
     server: {
         watch: {
             usePolling: true,

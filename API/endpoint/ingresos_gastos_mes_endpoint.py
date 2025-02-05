@@ -17,8 +17,7 @@ def obtener_resumen(tabla_usuario):
     Función para obtener el resumen de ingresos y gastos mes a mes
     """
     # Validamos que la tabla esté permitida
-    tablas_permitidas = {"ilandatxe", "fotostorres", "alex", "categorias"}  
-
+    tablas_permitidas = {"ilandatxe", "fotostorres", "alomorga", "categorias"}
     if tabla_usuario not in tablas_permitidas:
         return {"error": "Nombre de tabla no permitido."}, 400
 
@@ -52,10 +51,10 @@ def obtener_resumen(tabla_usuario):
 
         # Procesar los resultados
         resumen = [{
-            "año": fila[0],
-            "mes": fila[1],
-            "ingresos": float(fila[2]),
-            "gastos": float(fila[3]),
+            "año": str(fila[0]),
+            "mes": str(fila[1]).zfill(2),  # Asegura que el mes tenga 2 dígitos
+            "ingresos": float(fila[2]),  # Convertir a float para precisión
+            "gastos": -float(fila[3]),    # Gastos en negativo
             "balance_neto": float(fila[4])
         } for fila in resultados]
 
