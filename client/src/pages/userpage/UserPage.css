@@ -1,22 +1,27 @@
 .user-profile-container {
-    max-width: 800px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: 30px;
     padding: 20px;
     background-color: var(--background-color-principal);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+
 }
 
 .user-profile-container h1 {
     text-align: center;
     color: var(--color-naranja-principal);
     margin-bottom: 20px;
+    grid-column: 1 / -1;
+
 }
 
 .user-profile-info {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Dos columnas por defecto */
-    gap: 20px; /* Espacio entre los grupos de información */
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
 .info-group {
@@ -32,15 +37,14 @@
 
 .info-value {
     padding: 10px;
-    background-color: var(--color-grafico-azul);
+    padding-left: 0;
     border-radius: 4px;
     font-size: 16px;
-    color: white;
+    color: var(--color-letra);
 }
 
-/* Media query para pantallas pequeñas (una columna) */
 @media (max-width: 768px) {
     .user-profile-info {
-        grid-template-columns: 1fr; /* Una columna */
+        grid-template-columns: 1fr;
     }
 }

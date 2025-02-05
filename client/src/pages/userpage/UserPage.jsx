@@ -12,14 +12,14 @@ const UserPage = () => {
         birthdate: "1990-01-01",
         ocupacion: "Desarrollador Web",
         iban: "ES9121000418450200051332",
-        socialCapital: "5000 €",
+        socialCapital: "Si",
     };
 
     return (
         <>
             <Layout title="Perfil de usuario">
                 <div className="user-profile-container">
-                    <h1>Perfil de Usuario</h1>
+                    <h1>{userData.username}</h1>
                     <div className="user-profile-info">
                         <div className="info-group">
                             <span className="info-label">Nombre de usuario:</span>
