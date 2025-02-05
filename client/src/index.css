@@ -114,6 +114,7 @@ footer {
 button {
   cursor: pointer;
   font-family: "Noway", Arial, sans-serif;
+  outline: none;
 }
 
 @media (prefers-color-scheme: dark) {

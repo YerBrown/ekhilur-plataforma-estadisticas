@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useLanguage } from '../../contexts/LanguageContext';
 import {
     BarChart,
     Bar,
@@ -8,9 +9,9 @@ import {
     ResponsiveContainer,
     LabelList,
 } from "recharts";
-import "./BarChart.css";
+import "./BarChartNew.css";
 
-const getAbbreviatedMonth = (month) => {
+const getAbbreviatedMonth = (month, t) => {
     const abbreviations = [
         "ene",
         "feb",
@@ -25,7 +26,8 @@ const getAbbreviatedMonth = (month) => {
         "nov",
         "dic",
     ];
-    return abbreviations[month - 1] || month;
+    const monthKey = abbreviations[month - 1] || month;
+    return t.monthsAbbreviations[monthKey] || monthKey;
 };
 // Helper para calcular fechas relativas (meses en formato string)
 const calculateRelativeDates = (year, month) => {
@@ -56,6 +58,21 @@ const calculateRelativeYears = (year) => {
         current: year,
         next: year + 1,
     };
+};
+
+const transformDataForDisplay = (data, primaryKey, secondaryKey = null) => {
+    console.log("antes de transformar", data);
+    const tarnsformedData = data.map(item => ({
+        ...item,
+        [primaryKey]: Number(Math.abs(item[primaryKey].toFixed(2)) || 0),
+        ...(secondaryKey && { [secondaryKey]: Number(Math.abs(item[secondaryKey].toFixed(2)) || 0) }),
+        originalValues: {
+            [primaryKey]: item[primaryKey],
+            ...(secondaryKey && { [secondaryKey]: item[secondaryKey] })
+        }
+    }));
+    console.log("despues de transformar", tarnsformedData);
+    return tarnsformedData;
 };
 
 const getFilteredData = (
@@ -101,11 +118,12 @@ const getFilteredData = (
                 const year = item.año;
                 const existing = acc.find((el) => el.año === year);
                 if (existing) {
-                    existing[primaryKey] += item[primaryKey] || 0;
+                    existing[primaryKey] = Number((existing[primaryKey] + (item[primaryKey] || 0)).toFixed(2));
                     if (secondaryKey) {
-                        existing[secondaryKey] =
+                        existing[secondaryKey] = Number((
                             (existing[secondaryKey] || 0) +
-                            (item[secondaryKey] || 0);
+                            (item[secondaryKey] || 0)
+                        ).toFixed(2));
                     }
                 } else {
                     acc.push({
@@ -120,9 +138,10 @@ const getFilteredData = (
                 }
                 return acc;
             }, []);
+
     }
 
-    return filteredData;
+    return transformDataForDisplay(filteredData, primaryKey, secondaryKey);
 };
 const GraficoLibrerias = ({
     data,
@@ -137,27 +156,16 @@ const GraficoLibrerias = ({
     showFilters = true,
 }) => {
     const [filterType, setFilterType] = useState("mes"); // Estado para el filtro (mes o año)
-
+    const { t } = useLanguage();
     // Formatear el eje X
     const formatXAxis = (entry) => {
         if (filterType === "mes") {
-            return `${getAbbreviatedMonth(Number(entry.mes))}`;
+            return `${getAbbreviatedMonth(Number(entry.mes), t)}`;
         }
         return entry.año;
     };
     return (
-        <div className="chart-container">
-            {showFilters && (
-                <div className="chart-controls">
-                    <button onClick={() => setFilterType("mes")}>
-                        Filtrar por Mes
-                    </button>
-                    <button onClick={() => setFilterType("año")}>
-                        Filtrar por Año
-                    </button>
-                </div>
-            )}
-
+        <>
             <ResponsiveContainer width="100%" height={400}>
                 <BarChart
                     data={getFilteredData(
@@ -170,34 +178,54 @@ const GraficoLibrerias = ({
                     )}
                     margin={{
                         top: 20,
-                        right: 20,
-                        left: -25,
+                        right: 25,
+                        left: 5,
                         bottom: 0,
                     }}
                 >
                     <XAxis dataKey={formatXAxis} />
-                    <YAxis />
-                    <Tooltip />
+                    <YAxis 
+                      tickCount={3}/>
+                    {/*<Tooltip />*/}
                     <Bar
                         dataKey={primaryKey}
                         fill={colors.primary}
                         radius={[6, 6, 0, 0]}
+                        maxBarSize={150}
                     >
-                        <LabelList dataKey={primaryKey} position="top" />
+                        <LabelList
+                            dataKey={primaryKey}
+                            position="top"
+                            formatter={(value) => (value === 0 ? '' : value)} />
                     </Bar>
                     {secondaryKey && (
                         <Bar
                             dataKey={secondaryKey}
                             fill={colors.secondary}
                             radius={[6, 6, 0, 0]}
-                            name="Segundo Valor"
+                            name={secondaryKey}
+                            maxBarSize={150}
                         >
-                            <LabelList dataKey={secondaryKey} position="top" />
+                            <LabelList
+                                dataKey={secondaryKey}
+                                position="top"
+                                formatter={(value) => (value === 0 ? '' : value)}
+                            />
                         </Bar>
                     )}
                 </BarChart>
             </ResponsiveContainer>
-        </div>
+            {showFilters && (
+                <div className="chart-controls">
+                    <button onClick={() => setFilterType("mes")}>
+                        Meses
+                    </button>
+                    <button onClick={() => setFilterType("año")}>
+                        Años
+                    </button>
+                </div>
+            )}
+        </>
     );
 };
 
