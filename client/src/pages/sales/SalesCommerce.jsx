@@ -93,11 +93,8 @@ const SalesCommerce = () => {
     };
 
     return (
-        <div className="bonifications-page">
             <Layout title={t.salesTitle}>
-                <div className="container-date-filter">
                     <DateFilter onDateFilter={handleDateFilter} />
-                </div>
 
                 {error && (
                     <div className="error-message">
@@ -110,7 +107,7 @@ const SalesCommerce = () => {
                         Cargando datos...
                     </div>
                 ) : (
-                    <>
+                    <div className="sales-content-container">
                         <div className="container-ingresos-gastos">
                             <div className="item-ingresos-gastos">
                                 <p className="label-ingresos">{t.salesTitle}</p>
@@ -119,7 +116,6 @@ const SalesCommerce = () => {
                                 </span>
                             </div>
                         </div>
-                        <div className="chart-section">
                             <GraficoLibrerias
                                 data={apiData}
                                 targetYear={selectedPeriod.year}
@@ -128,12 +124,10 @@ const SalesCommerce = () => {
                                 secondaryKey={null}
                                 showFilters={true}
                             />
-                        </div>
                         <TransactionList transactions={mockData} />
-                    </>
+                    </div>
                 )}
             </Layout>
-        </div>
     );
 };
 
