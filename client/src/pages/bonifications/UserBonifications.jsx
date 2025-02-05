@@ -4,9 +4,9 @@ import Layout from "../layout/Layout";
 import "./UserBonifications.css";
 import GraficoLibrerias from "../../components/charts/BarChartNew";
 import DateFilter from "../../components/DateFilter/DateFilter";
-import { getCashbackGeneratedByMonth} from "../../api/realData";
+import { getCashbackGeneratedByMonth } from "../../api/realData";
 import TransactionList from "../../components/transactions-list/TransactionsList";
-import mockData  from "../../components/transactions-list/mockData.js";
+import mockData from "../../components/transactions-list/mockData.js";
 
 const UserBonifications = () => {
     const { t } = useLanguage();
@@ -94,11 +94,9 @@ const UserBonifications = () => {
     };
 
     return (
-        <div className="bonifications-page">
-            <Layout title={t.bonificationTitle}>
-                <div className="container-date-filter">
-                    <DateFilter onDateFilter={handleDateFilter} />
-                </div>
+        <Layout title={t.bonificationTitle}>
+            <div className="bonifications-content-container">
+                <DateFilter onDateFilter={handleDateFilter} />
 
                 {error && (
                     <div className="error-message">
@@ -120,21 +118,19 @@ const UserBonifications = () => {
                                 </span>
                             </div>
                         </div>
-                        <div className="chart-section">
                             <GraficoLibrerias
-                               data={apiData}
-                               targetYear={selectedPeriod.year}
-                               targetMonth={selectedPeriod.month}
-                               primaryKey={"bonificaciones"}
-                               secondaryKey={null}
-                               showFilters={true}
+                                data={apiData}
+                                targetYear={selectedPeriod.year}
+                                targetMonth={selectedPeriod.month}
+                                primaryKey={"bonificaciones"}
+                                secondaryKey={null}
+                                showFilters={true}
                             />
-                        </div>
                         <TransactionList transactions={mockData} />
                     </>
                 )}
-            </Layout>
-        </div>
+            </div>
+        </Layout>
     );
 };
 

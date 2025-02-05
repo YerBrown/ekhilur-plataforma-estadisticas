@@ -109,9 +109,7 @@ const CommerceBonifications = () => {
 
     return (
         <Layout title={t.bonificationTitle}>
-            <div className="container-date-filter">
                 <DateFilter onDateFilter={handleDateFilter} />
-            </div>
 
             {error && (
                 <div className="error-message">
@@ -124,7 +122,7 @@ const CommerceBonifications = () => {
                     Cargando datos...
                 </div>
             ) : (
-                <>
+                <div className="bonifications-content-container">
                     <div className="container-recibidos-emitidos">
                         <div className="item-recibidos-emitidos">
                             <p className="label-recibidos">{t.received}</p>
@@ -139,7 +137,6 @@ const CommerceBonifications = () => {
                             </span>
                         </div>
                     </div>
-                    <div className="chart-section">
                         <GraficoLibrerias
                             data={apiData}
                             targetYear={selectedPeriod.year}
@@ -148,10 +145,9 @@ const CommerceBonifications = () => {
                             secondaryKey={"bonificaciones_emitidas"}
                             showFilters={true}
                         />
-                    </div>
                     <BonificationsFilter onFilterChange={handleFilterChange} />
                     <TransactionList transactions={filteredTransactions} />
-                </>
+                </div>
             )}
         </Layout>
     );

@@ -58,6 +58,10 @@
     flex: 1;
     padding: 1rem;
     gap: 1rem;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 650px;
+    margin: auto;
 }
 
 .home-page h3 {

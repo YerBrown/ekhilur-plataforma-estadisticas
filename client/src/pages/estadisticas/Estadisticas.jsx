@@ -4,7 +4,7 @@ import Layout from "../layout/Layout";
 import "./Estadisticas.css";
 import GraficoLibrerias from "../../components/charts/BarChartNew";
 import DateFilter from "../../components/DateFilter/DateFilter";
-import { getIncomesAndExpensesByMonth} from "../../api/realData";
+import { getIncomesAndExpensesByMonth } from "../../api/realData";
 import mockData from "../../components/transactions-list/mockData.js";
 import TransactionList from "../../components/transactions-list/TransactionsList";
 import CategoryChart from "../../components/charts/CategoryCharts";
@@ -140,11 +140,9 @@ const Estadisticas = () => {
     };
 
     return (
-        <div className="estadisticas-page">
-            <Layout title={t.statisticsTitle}>
-                <div className="container-date-filter">
-                    <DateFilter onDateFilter={handleDateFilter} />
-                </div>
+        <Layout title={t.statisticsTitle}>
+            <div className="statistics-content-container">
+                <DateFilter onDateFilter={handleDateFilter} />
 
                 {error && <div className="error-message">{error}</div>}
 
@@ -169,22 +167,20 @@ const Estadisticas = () => {
                                 </span>
                             </div>
                         </div>
-                        <div className="chart-section">
-                            <GraficoLibrerias
-                                data={apiData}
-                                targetYear={selectedPeriod.year}
-                                targetMonth={selectedPeriod.month}
-                                primaryKey={"gastos"}
-                                secondaryKey={"ingresos"}
-                                showFilters={true}
-                            />
-                        </div>
+                        <GraficoLibrerias
+                            data={apiData}
+                            targetYear={selectedPeriod.year}
+                            targetMonth={selectedPeriod.month}
+                            primaryKey={"gastos"}
+                            secondaryKey={"ingresos"}
+                            showFilters={true}
+                        />
                         <CategoryChart categoryDataJson={fakeApiData} />
                         <TransactionList transactions={mockData} />
                     </>
                 )}
-            </Layout>
-        </div>
+            </div>
+        </Layout>
     );
 };
 

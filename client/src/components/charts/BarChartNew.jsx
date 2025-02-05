@@ -146,7 +146,7 @@ const GraficoLibrerias = ({
         return entry.año;
     };
     return (
-        <div>
+        <div className="chart-container">
             {showFilters && (
                 <div className="chart-controls">
                     <button onClick={() => setFilterType("mes")}>
