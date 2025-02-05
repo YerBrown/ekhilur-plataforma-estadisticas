@@ -2,55 +2,52 @@ import { useState, useEffect } from "react";
 import { useLanguage } from "../../contexts/LanguageContext.jsx";
 import Layout from "../layout/Layout.jsx";
 import "./SalesCommerce.css";
-import BarChartComponent from "../../components/charts/BarChart.jsx";
+import GraficoLibrerias from "../../components/charts/BarChartNew";
 import DateFilter from "../../components/DateFilter/DateFilter.jsx";
-import mockData from "../../components/transactions-list/mockData.js";
-import { getSalesByTypeMonthAndYear } from "../../api/realData.js";
+import { getSalesByMonth } from "../../api/realData.js";
 import TransactionList from "../../components/transactions-list/TransactionsList.jsx";
-
+import mockData from "../../components/transactions-list/mockData.js";
 const SalesCommerce = () => {
     const { t } = useLanguage();
-    const [selectedPeriod, setSelectedPeriod] = useState(null);
+    const [selectedPeriod, setSelectedPeriod] = useState({
+        year: new Date().getFullYear(),
+        month: new Date().getMonth() + 1,
+    });
     const [SalesCommerce, setSalesCommerce] = useState({
         totalSales: 0,
     });
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [apiData, setApiData] = useState(null);
-    const [transactions, setTransactions] = useState(null);
-
+    const [apiData, setApiData] = useState([
+        { año: "2022", mes: "11", valor: 100, otroValor: 80 },
+        { año: "2022", mes: "12", valor: 150, otroValor: 120 },
+        { año: "2023", mes: "01", valor: 200, otroValor: 180 },
+        { año: "2023", mes: "02", valor: 250, otroValor: 220 },
+        { año: "2023", mes: "03", valor: 300, otroValor: 270 },
+        { año: "2024", mes: "12", valor: 150, otroValor: 120 },
+        { año: "2024", mes: "01", valor: 200, otroValor: 180 },
+        { año: "2024", mes: "02", valor: 250, otroValor: 220 },
+        { año: "2024", mes: "03", valor: 300, otroValor: 270 },
+    ]);
+    const [filteredTransactions, setFilteredTransactions] = useState(mockData);
     const loadApiData = async () => {
         setIsLoading(true);
         setError(null);
         try {
-            // 1. Obtener datos de la API
-            const response = await getSalesByTypeMonthAndYear();
-            const data = response.data;
+            const data = await getSalesByMonth();
+            setApiData(data);
 
-            // 2. Transformar los datos al formato que espera el BarChart
-            const transformedData = data.map(item => ({
-                año: item.anio,                         // Mantener año
-                mes: item.mes,                          // Mantener mes
-                income: Number(item.total_ventas),      // Poner total_cantidad como income
-                expenses: 0                             // Poner expenses a 0 (no lo usamos)
-            }));
-
-            // 3. Guardar los datos transformados
-            setApiData(transformedData);
-            const transactionsData = data.map(item => ({
-                fecha: `${item.anio}-${item.mes}-01`,
-                movimiento: item.tipo_movimiento,
-                cantidad: item.total_ventas,
-            }));
-            setTransactions(transactionsData);
-
-            // 4. Si hay un período seleccionado, actualizar las bonificaciones
             if (selectedPeriod) {
-                updateSales(transformedData, selectedPeriod);
+                updateSales(data, selectedPeriod);
             }
         } catch (error) {
             console.error("Error al cargar datos:", error);
-            setError("No se pudieron cargar los datos. Por favor, intente más tarde.");
+            setError(
+                "No se pudieron cargar los datos. Por favor, intente más tarde."
+            );
+            setError(
+                "No se pudieron cargar los datos. Por favor, intente más tarde."
+            );
         } finally {
             setIsLoading(false);
         }
@@ -73,7 +70,7 @@ const SalesCommerce = () => {
         // Actualizar el total de bonificaciones
         if (monthData) {
             setSalesCommerce({
-                totalSales: monthData.income
+                totalSales: Number(monthData.ventas),
             });
         } else {
             setSalesCommerce({
@@ -96,11 +93,8 @@ const SalesCommerce = () => {
     };
 
     return (
-        <div className="bonifications-page">
             <Layout title={t.salesTitle}>
-                <div className="container-date-filter">
                     <DateFilter onDateFilter={handleDateFilter} />
-                </div>
 
                 {error && (
                     <div className="error-message">
@@ -113,7 +107,7 @@ const SalesCommerce = () => {
                         Cargando datos...
                     </div>
                 ) : (
-                    <>
+                    <div className="sales-content-container">
                         <div className="container-ingresos-gastos">
                             <div className="item-ingresos-gastos">
                                 <p className="label-ingresos">{t.salesTitle}</p>
@@ -122,17 +116,18 @@ const SalesCommerce = () => {
                                 </span>
                             </div>
                         </div>
-                        <div className="chart-section">
-                            <BarChartComponent
-                                selectedPeriod={selectedPeriod}
-                                dataBars={apiData || []}
+                            <GraficoLibrerias
+                                data={apiData}
+                                targetYear={selectedPeriod.year}
+                                targetMonth={selectedPeriod.month}
+                                primaryKey={"ventas"}
+                                secondaryKey={null}
+                                showFilters={true}
                             />
-                        </div>
                         <TransactionList transactions={mockData} />
-                    </>
+                    </div>
                 )}
             </Layout>
-        </div>
     );
 };
 

@@ -21,7 +21,7 @@ const Sales = () => {
           <BarChartComponent />
         </div>
       </div>
-      <TransactionList transactions={salesTransactions} />
+      <TransactionList transactions={salesTrannsactions} />
 
     </Layout>
   );

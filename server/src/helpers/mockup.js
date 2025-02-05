@@ -352,7 +352,7 @@ export const movimientos = [
     },
 ];
 
-export const bonificacionesPorMes = [
+/* export const bonificacionesPorMes = [
     { año: "2024", mes: "01", bonificaciones: 400 },
     { año: "2024", mes: "02", bonificaciones: 450 },
     { año: "2024", mes: "03", bonificaciones: 350 },
@@ -391,15 +391,15 @@ export const bonificacionesPorMes = [
     { año: "2022", mes: "10", bonificaciones: 115 },
     { año: "2022", mes: "11", bonificaciones: 130 },
     { año: "2022", mes: "12", bonificaciones: 140 },
-];
+]; */
 
-export const bonificacionesPorAño = [
+/* export const bonificacionesPorAño = [
     { año: "2024", bonificaciones: 5000 },
     { año: "2023", bonificaciones: 4000 },
     { año: "2022", bonificaciones: 1000 },
-];
+]; */
 
-export const bonificacionesPorAñoVendedor = [
+/* export const bonificacionesPorAñoVendedor = [
     {
         año: "2024",
         bonificaciones_emitidas: -5000,
@@ -415,9 +415,9 @@ export const bonificacionesPorAñoVendedor = [
         bonificaciones_emitidas: -2300,
         bonificaciones_recibidas: 2100,
     },
-];
+]; */
 
-export const bonificacionesPorMesVendedor = [
+/* export const bonificacionesPorMesVendedor = [
     // Año 2024
     {
         año: "2024",
@@ -639,9 +639,9 @@ export const bonificacionesPorMesVendedor = [
         bonificaciones_emitidas: -210,
         bonificaciones_recibidas: 200,
     },
-];
+]; */
 
-export const gastosIngresosAño = [
+/* export const gastosIngresosAño = [
     {
         año: "2024",
         gastos: -50000,
@@ -657,9 +657,9 @@ export const gastosIngresosAño = [
         gastos: -30000,
         ingresos: 35000,
     },
-];
+]; */
 
-export const gastosIngresosMes = [
+/* export const gastosIngresosMes = [
     // Año 2024
     { año: "2024", mes: "01", gastos: -4000, ingresos: 4500 },
     { año: "2024", mes: "02", gastos: -4200, ingresos: 4600 },
@@ -701,9 +701,9 @@ export const gastosIngresosMes = [
     { año: "2022", mes: "10", gastos: -3400, ingresos: 3700 },
     { año: "2022", mes: "11", gastos: -3500, ingresos: 3800 },
     { año: "2022", mes: "12", gastos: -3600, ingresos: 3900 },
-];
+]; */
 
-export const gastosCategoryFalsos = [
+/* export const gastosCategoryFalsos = [
     {
         categoria: "Alimentación",
         gasto: 30,
@@ -740,9 +740,9 @@ export const gastosCategoryFalsos = [
         categoria: "Asociaciones y Cooperativas",
         gasto: 10,
     },
-];
+]; */
 
-export const ventasAño = [
+/* export const ventasAño = [
     {
         año: "2024",
         ventas: 55000,
@@ -755,9 +755,9 @@ export const ventasAño = [
         año: "2022",
         ventas: 35000,
     },
-];
+]; */
 
-export const ventasMes = [
+/* export const ventasMes = [
     // Año 2024
     { año: "2024", mes: "01", ventas: 4500 },
     { año: "2024", mes: "02", ventas: 4600 },
@@ -799,4 +799,4 @@ export const ventasMes = [
     { año: "2022", mes: "10", ventas: 3700 },
     { año: "2022", mes: "11", ventas: 3800 },
     { año: "2022", mes: "12", ventas: 3900 },
-];
+]; */

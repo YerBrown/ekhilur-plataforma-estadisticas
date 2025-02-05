@@ -39,7 +39,22 @@ const Home = () => {
     const handleNavigate = (path) => {
         navigate(path);
     };
+    useEffect(() => {
+        const fetchUserdata = async () => {
+            setLoading(true); // Detén el loader
+            try {
+                const userData = await verify(); // Llama a la API para obtener los datos
+                setUser(userData);
+            } catch (error) {
+                console.error("Error al obtener los datos del usuario:", error);
+                setError(true); // Marca un error si no está autenticado
+            } finally {
+                setLoading(false); // Detén el loader
+            }
+        };
 
+        fetchUserdata();
+    }, []);
     const walletLabels = walletDataJson.map((item) => item.label);
     const walletValues = walletDataJson.map((item) => item.value);
     const walletColors = walletDataJson.map((item) => item.color);
@@ -127,19 +142,27 @@ const Home = () => {
                 </div>
             </header>
             <main>
-                <h1>{t.welcome}, {user?.username}!</h1>
+                <h1>
+                    {t.welcome}, {user?.username}!
+                </h1>
                 <div className="wallet-chart">
                     <h3>{t.wallet}</h3>
                     <DonutChart data={walletData} options={walletOptions} />
                 </div>
-                {user?.role === "user" && <button onClick={() => handleNavigate("/bonifications")}>
-                    <h3>{t.bonificationTitle}</h3>
-                    {/* {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
-                </button>}
-                {user?.role === "commerce" && <button onClick={() => handleNavigate("/bonifications-shop")}>
-                    <h3>Denda {t.bonificationTitle}</h3>
-                    {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
-                </button>}
+                {user?.role === "user" && (
+                    <button onClick={() => handleNavigate("/bonifications")}>
+                        <h3>{t.bonificationTitle}</h3>
+                        {/* {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                    </button>
+                )}
+                {user?.role === "commerce" && (
+                    <button
+                        onClick={() => handleNavigate("/bonifications-shop")}
+                    >
+                        <h3> {t.bonificationTitle}</h3>
+                        {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                    </button>
+                )}
                 <button onClick={() => handleNavigate("/statistics")}>
                     <h3>{t.statisticsTitle}</h3>
                     {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
@@ -148,10 +171,15 @@ const Home = () => {
                     <h3>{t.transactionTitle}</h3>
                     {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                 </button>
-                {user?.role === "commerce" && <button onClick={() => handleNavigate("/sales")}>
-                    <h3>{t.salesTitle}</h3>
-                    {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
-                </button>}
+                {user?.role === "commerce" && (
+                    <button onClick={() => handleNavigate("/sales")}>
+                        <h3>{t.salesTitle}</h3>
+                        {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
+                    </button>
+                )}
+                <button onClick={() => handleNavigate("/map")}>
+                    <h3>Mapa</h3>
+                </button>
             </main>
         </div>
     );
