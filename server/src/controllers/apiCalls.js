@@ -318,7 +318,7 @@ const completarMesesGastosCategoria = (data, anioInicio, anioFin) => {
 async function getUserInfo(req, res) {
     try {
         const response = await apiRequest(
-            `/profile/refresh/${req.user.username}`,
+            `/profile/${req.user.username}`,
             "GET"
         );
         res.status(200).json(response.data);
@@ -330,7 +330,7 @@ async function getUserInfo(req, res) {
 async function getUserAccounts(req, res) {
     try {
         const response = await apiRequest(
-            `/cuentas/refresh/${req.user.username}`,
+            `/cuentas/${req.user.username}`,
             "GET"
         );
         res.status(200).json(response.data);
