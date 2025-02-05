@@ -31,13 +31,7 @@ const Authentication = () => {
                 </header>
                 <div className={"form-container"}>
                     {isLogin ? <LoginForm /> : <RegisterForm />}
-                    <div className="change-form">
-                        <button variant="link" onClick={handleToggle}>
-                            {isLogin
-                                ? "¿No tienes cuenta? Regístrate"
-                                : "Volver a Iniciar Sesión"}
-                        </button>
-                    </div>
+                  
                 </div>
             </div>
         </main>

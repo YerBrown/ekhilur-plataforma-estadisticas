@@ -170,7 +170,8 @@ const Home = () => {
                     <button
                         onClick={() => handleNavigate("/bonifications-shop")}
                     >
-                        <h3>Denda {t.bonificationTitle}</h3>
+                        <h3>{t.bonificationTitle}</h3>
+
                         <GraficoLibrerias
                             data={userData.gastosIngresos}
                             targetYear={new Date().getFullYear()}

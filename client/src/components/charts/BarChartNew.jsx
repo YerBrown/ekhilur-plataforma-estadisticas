@@ -61,15 +61,18 @@ const calculateRelativeYears = (year) => {
 };
 
 const transformDataForDisplay = (data, primaryKey, secondaryKey = null) => {
-    return data.map(item => ({
+    console.log("antes de transformar", data);
+    const tarnsformedData = data.map(item => ({
         ...item,
-        [primaryKey]: Math.abs(item[primaryKey] || 0),
-        ...(secondaryKey && { [secondaryKey]: Math.abs(item[secondaryKey] || 0) }),
+        [primaryKey]: Number(Math.abs(item[primaryKey].toFixed(2)) || 0),
+        ...(secondaryKey && { [secondaryKey]: Number(Math.abs(item[secondaryKey].toFixed(2)) || 0) }),
         originalValues: {
             [primaryKey]: item[primaryKey],
             ...(secondaryKey && { [secondaryKey]: item[secondaryKey] })
         }
     }));
+    console.log("despues de transformar", tarnsformedData);
+    return tarnsformedData;
 };
 
 const getFilteredData = (
@@ -162,7 +165,7 @@ const GraficoLibrerias = ({
         return entry.año;
     };
     return (
-        <div>
+        <>
             <ResponsiveContainer width="100%" height={400}>
                 <BarChart
                     data={getFilteredData(
@@ -222,7 +225,7 @@ const GraficoLibrerias = ({
                     </button>
                 </div>
             )}
-        </div>
+        </>
     );
 };
 
