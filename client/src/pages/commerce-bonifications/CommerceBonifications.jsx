@@ -3,11 +3,11 @@ import Layout from "../layout/Layout.jsx";
 import "./CommerceBonifications.css";
 import BarChartComponent from "../../components/charts/BarChart.jsx";
 import DateFilter from "../../components/DateFilter/DateFilter.jsx";
-import { getCashbackIssuedByMonthAndYear } from "../../api/realData.js";
+import { getCashbackGeneratedByMonth } from "../../api/realData.js";
 import { useLanguage } from "../../contexts/LanguageContext.jsx";
 import BonificationsFilter from "../../components/buttons/bonifications-filter/BonificationsFilter.jsx";
 import TransactionList from "../../components/transactions-list/TransactionsList";
-import mockData  from "../../components/transactions-list/mockData.js";
+import mockData from "../../components/transactions-list/mockData.js";
 
 const CommerceBonifications = () => {
     const { t } = useLanguage();
@@ -28,14 +28,14 @@ const CommerceBonifications = () => {
         setError(null);
         try {
             // 1. Obtener datos de la API
-            const data = await getCashbackIssuedByMonthAndYear();
+            const data = await getCashbackGeneratedByMonth();
 
             // 2. Transformar los datos al formato que espera el BarChart
-            const transformedData = data.map(item => ({
-                año: item.anio,                         // Mantener año
-                mes: item.mes,                          // Mantener mes
-                income: Number(item.total_cashback_recibido),    // Poner total_cantidad como income
-                expenses: Number(item.total_cashback_emitido),                          // Poner expenses a 0 (no lo usamos)
+            const transformedData = data.map((item) => ({
+                año: item.anio, // Mantener año
+                mes: item.mes, // Mantener mes
+                income: Number(item.total_cashback_recibido), // Poner total_cantidad como income
+                expenses: Number(item.total_cashback_emitido), // Poner expenses a 0 (no lo usamos)
             }));
 
             // 3. Guardar los datos transformados
@@ -53,7 +53,9 @@ const CommerceBonifications = () => {
             }
         } catch (error) {
             console.error("Error al cargar datos:", error);
-            setError("No se pudieron cargar los datos. Por favor, intente más tarde.");
+            setError(
+                "No se pudieron cargar los datos. Por favor, intente más tarde."
+            );
         } finally {
             setIsLoading(false);
         }
@@ -69,9 +71,10 @@ const CommerceBonifications = () => {
 
         const { year, month } = period;
         // Buscar los datos para el mes seleccionado
-        const monthData = data.find(item =>
-            item.año === year.toString() &&
-            parseInt(item.mes, 10) === month + 1
+        const monthData = data.find(
+            (item) =>
+                item.año === year.toString() &&
+                parseInt(item.mes, 10) === month + 1
         );
 
         // Actualizar el total de bonificaciones
@@ -91,7 +94,7 @@ const CommerceBonifications = () => {
     // Función para formatear números
     const formatCurrency = (value) => {
         const num = Number(value);
-        if (isNaN(num)) return '0€';
+        if (isNaN(num)) return "0€";
         return Number.isInteger(num) ? `${num}€` : `${num.toFixed(1)}€`;
     };
 
@@ -106,9 +109,18 @@ const CommerceBonifications = () => {
         if (filter === t.all) {
             setFilteredTransactions(mockData);
         } else if (filter === t.received) {
-            setFilteredTransactions(mockData.filter(transaction => !transaction.cantidad.toString().includes('-')));
+            setFilteredTransactions(
+                mockData.filter(
+                    (transaction) =>
+                        !transaction.cantidad.toString().includes("-")
+                )
+            );
         } else if (filter === t.emmited) {
-            setFilteredTransactions(mockData.filter(transaction => transaction.cantidad.toString().includes('-')));
+            setFilteredTransactions(
+                mockData.filter((transaction) =>
+                    transaction.cantidad.toString().includes("-")
+                )
+            );
         }
     };
 
@@ -118,16 +130,10 @@ const CommerceBonifications = () => {
                 <DateFilter onDateFilter={handleDateFilter} />
             </div>
 
-            {error && (
-                <div className="error-message">
-                    {error}
-                </div>
-            )}
+            {error && <div className="error-message">{error}</div>}
 
             {isLoading ? (
-                <div className="loading-message">
-                    Cargando datos...
-                </div>
+                <div className="loading-message">Cargando datos...</div>
             ) : (
                 <>
                     <div className="container-recibidos-emitidos">

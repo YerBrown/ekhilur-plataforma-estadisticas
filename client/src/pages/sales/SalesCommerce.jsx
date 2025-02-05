@@ -5,7 +5,7 @@ import "./SalesCommerce.css";
 import BarChartComponent from "../../components/charts/BarChart.jsx";
 import DateFilter from "../../components/DateFilter/DateFilter.jsx";
 import mockData from "../../components/transactions-list/mockData.js";
-import { getSalesByTypeMonthAndYear } from "../../api/realData.js";
+import { getSalesByMonth } from "../../api/realData.js";
 import TransactionList from "../../components/transactions-list/TransactionsList.jsx";
 
 const SalesCommerce = () => {
@@ -24,20 +24,20 @@ const SalesCommerce = () => {
         setError(null);
         try {
             // 1. Obtener datos de la API
-            const response = await getSalesByTypeMonthAndYear();
+            const response = await getSalesByMonth();
             const data = response.data;
 
             // 2. Transformar los datos al formato que espera el BarChart
-            const transformedData = data.map(item => ({
-                año: item.anio,                         // Mantener año
-                mes: item.mes,                          // Mantener mes
-                income: Number(item.total_ventas),      // Poner total_cantidad como income
-                expenses: 0                             // Poner expenses a 0 (no lo usamos)
+            const transformedData = data.map((item) => ({
+                año: item.anio, // Mantener año
+                mes: item.mes, // Mantener mes
+                income: Number(item.total_ventas), // Poner total_cantidad como income
+                expenses: 0, // Poner expenses a 0 (no lo usamos)
             }));
 
             // 3. Guardar los datos transformados
             setApiData(transformedData);
-            const transactionsData = data.map(item => ({
+            const transactionsData = data.map((item) => ({
                 fecha: `${item.anio}-${item.mes}-01`,
                 movimiento: item.tipo_movimiento,
                 cantidad: item.total_ventas,
@@ -50,7 +50,9 @@ const SalesCommerce = () => {
             }
         } catch (error) {
             console.error("Error al cargar datos:", error);
-            setError("No se pudieron cargar los datos. Por favor, intente más tarde.");
+            setError(
+                "No se pudieron cargar los datos. Por favor, intente más tarde."
+            );
         } finally {
             setIsLoading(false);
         }
@@ -65,26 +67,27 @@ const SalesCommerce = () => {
 
         const { year, month } = period;
         // Buscar los datos para el mes seleccionado
-        const monthData = data.find(item =>
-            item.año === year.toString() &&
-            parseInt(item.mes, 10) === month + 1
+        const monthData = data.find(
+            (item) =>
+                item.año === year.toString() &&
+                parseInt(item.mes, 10) === month + 1
         );
 
         // Actualizar el total de bonificaciones
         if (monthData) {
             setSalesCommerce({
-                totalSales: monthData.income
+                totalSales: monthData.income,
             });
         } else {
             setSalesCommerce({
-                totalSales: 0
+                totalSales: 0,
             });
         }
     };
 
     const formatCurrency = (value) => {
         const num = Number(value);
-        if (isNaN(num)) return '0€';
+        if (isNaN(num)) return "0€";
         return Number.isInteger(num) ? `${num}€` : `${num.toFixed(1)}€`;
     };
 
@@ -102,16 +105,10 @@ const SalesCommerce = () => {
                     <DateFilter onDateFilter={handleDateFilter} />
                 </div>
 
-                {error && (
-                    <div className="error-message">
-                        {error}
-                    </div>
-                )}
+                {error && <div className="error-message">{error}</div>}
 
                 {isLoading ? (
-                    <div className="loading-message">
-                        Cargando datos...
-                    </div>
+                    <div className="loading-message">Cargando datos...</div>
                 ) : (
                     <>
                         <div className="container-ingresos-gastos">

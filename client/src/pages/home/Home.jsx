@@ -7,15 +7,10 @@ import ProfileAvatar from "../../components/ProfileAvatar";
 import BarChartComponent from "../../components/charts/BarChart";
 import TransactionList from "../../components/transactions-list/TransactionsList";
 import mockData from "../../components/transactions-list/mockData.js";
+import { getUserHomeData } from "../../api/realData.js";
 import { useTheme } from "../../contexts/ThemeContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import "./Home.css";
-
-const walletDataJson = [
-    { label: "Euro", value: 400, color: "#FF6384" },
-    { label: "Ekhi", value: 300, color: "#36A2EB" },
-    { label: "Ekhi Hernani", value: 300, color: "#FFCE56" },
-];
 
 const Home = () => {
     const { t, setSpanish, setBasque } = useLanguage();
@@ -24,12 +19,11 @@ const Home = () => {
         month: new Date().getMonth + 1,
         year: new Date().getFullYear,
     });
-    const [filteredTransactions, setFilteredTransactions] = useState(
-        mockData.splice(3)
-    );
+    const [filteredTransactions, setFilteredTransactions] = useState();
+    const [isLoading, setIsLoading] = useState(false);
+    const [userData, setUserData] = useState(null);
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
-
     useEffect(() => {
         if (!user) {
             navigate("/authentication");
@@ -41,23 +35,31 @@ const Home = () => {
     };
     useEffect(() => {
         const fetchUserdata = async () => {
-            setLoading(true); // Detén el loader
+            setIsLoading(true); // Detén el loader
             try {
-                const userData = await verify(); // Llama a la API para obtener los datos
-                setUser(userData);
+                const userData = await getUserHomeData(); // Llama a la API para obtener los datos
+                setUserData(userData);
             } catch (error) {
                 console.error("Error al obtener los datos del usuario:", error);
-                setError(true); // Marca un error si no está autenticado
             } finally {
-                setLoading(false); // Detén el loader
+                setIsLoading(false); // Detén el loader
             }
         };
 
         fetchUserdata();
     }, []);
-    const walletLabels = walletDataJson.map((item) => item.label);
-    const walletValues = walletDataJson.map((item) => item.value);
-    const walletColors = walletDataJson.map((item) => item.color);
+    if (isLoading) {
+        return <>Loading...</>;
+    }
+    if (userData == null) {
+        return <>Failed...</>;
+    }
+    const filteredData = userData.wallet.data.cuentas.filter(
+        (item) => item.saldo > 0
+    );
+    const walletLabels = filteredData.map((item) => item.tipo);
+    const walletValues = filteredData.map((item) => item.saldo);
+    const walletColors = ["#FF6384", "#36A2EB", "#FFCE56", "#36A2EB"];
     const walletData = {
         labels: walletLabels,
         datasets: [
@@ -70,10 +72,7 @@ const Home = () => {
         ],
     };
 
-    const walletTotalValue = walletDataJson.reduce(
-        (acc, item) => acc + item.value,
-        0
-    );
+    const walletTotalValue = userData.wallet.data.saldo_total;
     const walletOptions = {
         responsive: true,
         maintainAspectRatio: false, // Permitir personalizar ancho y alto
