@@ -1,5 +1,12 @@
 .chart-container {
     width: 100%;
+    background-color: var(--background-color-principal);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    padding-top: 10px;
+    padding-bottom: 0px;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
 }
 
 .chart-controls {
@@ -38,6 +45,7 @@
 .chart-controls button:last-child {
     border-radius: 0px 0px 8px 0px;
 }
+
 .recharts-tooltip-cursor {
     fill: transparent !important;
 }

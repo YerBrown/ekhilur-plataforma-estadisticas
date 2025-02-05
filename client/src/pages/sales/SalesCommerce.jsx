@@ -111,14 +111,16 @@ const SalesCommerce = () => {
                             </span>
                         </div>
                     </div>
-                    <GraficoLibrerias
-                        data={apiData}
-                        targetYear={selectedPeriod.year}
-                        targetMonth={selectedPeriod.month}
-                        primaryKey={"ventas"}
-                        secondaryKey={null}
-                        showFilters={true}
-                    />
+                    <div className="chart-container">
+                        <GraficoLibrerias
+                            data={apiData}
+                            targetYear={selectedPeriod.year}
+                            targetMonth={selectedPeriod.month}
+                            primaryKey={"ventas"}
+                            secondaryKey={null}
+                            showFilters={true}
+                        />
+                    </div>
                     <TransactionList transactions={mockData} />
                 </div>
             )}

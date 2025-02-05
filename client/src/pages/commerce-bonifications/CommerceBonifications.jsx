@@ -140,14 +140,16 @@ const CommerceBonifications = () => {
                             </span>
                         </div>
                     </div>
-                    <GraficoLibrerias
-                        data={apiData}
-                        targetYear={selectedPeriod.year}
-                        targetMonth={selectedPeriod.month}
-                        primaryKey={"bonificaciones_recibidas"}
-                        secondaryKey={"bonificaciones_emitidas"}
-                        showFilters={true}
-                    />
+                    <div className="chart-container">
+                        <GraficoLibrerias
+                            data={apiData}
+                            targetYear={selectedPeriod.year}
+                            targetMonth={selectedPeriod.month}
+                            primaryKey={"bonificaciones_recibidas"}
+                            secondaryKey={"bonificaciones_emitidas"}
+                            showFilters={true}
+                        />
+                    </div>
                     <BonificationsFilter onFilterChange={handleFilterChange} />
                     <TransactionList transactions={filteredTransactions} />
                 </div>

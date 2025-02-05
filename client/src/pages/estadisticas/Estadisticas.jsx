@@ -178,14 +178,16 @@ const Estadisticas = () => {
                                 </span>
                             </div>
                         </div>
-                        <GraficoLibrerias
-                            data={apiData}
-                            targetYear={selectedPeriod.year}
-                            targetMonth={selectedPeriod.month}
-                            primaryKey={"gastos"}
-                            secondaryKey={"ingresos"}
-                            showFilters={true}
-                        />
+                        <div className="chart-container">
+                            <GraficoLibrerias
+                                data={apiData}
+                                targetYear={selectedPeriod.year}
+                                targetMonth={selectedPeriod.month}
+                                primaryKey={"gastos"}
+                                secondaryKey={"ingresos"}
+                                showFilters={true}
+                            />
+                        </div>
                         <CategoryChart categoryDataJson={categorydata} />
                         <TransactionList transactions={mockData} />
                     </>
