@@ -4,7 +4,7 @@ import Layout from "../layout/Layout";
 import "./Estadisticas.css";
 import GraficoLibrerias from "../../components/charts/BarChartNew";
 import DateFilter from "../../components/DateFilter/DateFilter";
-import { getIncomesAndExpensesByMonth} from "../../api/realData";
+import { getIncomesAndExpensesByMonth, getIncomesAndExpensesByYear} from "../../api/realData";
 import mockData from "../../components/transactions-list/mockData.js";
 import TransactionList from "../../components/transactions-list/TransactionsList";
 import CategoryChart from "../../components/charts/CategoryCharts";

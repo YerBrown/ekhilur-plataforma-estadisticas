@@ -1,0 +1,43 @@
+.chart-container {
+    width: 100%;
+}
+
+.chart-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    margin-top: 1rem;
+
+
+}
+
+.chart-controls button {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    border: none;
+    background-color: transparent;
+    color: var(--color-letra);
+
+}
+
+.chart-controls button.active {
+    background-color: transparent;
+    color: var(--color-naranja-principal);
+}
+
+.chart-controls button:not(.active) {
+    background-color: transparent;
+    color: var(--color-letra);
+}
+
+.chart-controls button:first-child {
+    border-radius: 0px 0px 0px 8px;
+}
+
+.chart-controls button:last-child {
+    border-radius: 0px 0px 8px 0px;
+}
+.recharts-tooltip-cursor {
+    fill: transparent !important;
+}
