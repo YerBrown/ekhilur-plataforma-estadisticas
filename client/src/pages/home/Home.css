@@ -17,13 +17,6 @@
     gap: 2rem
 }
 
-
-@media screen and (max-width: 450px) {
-    .home-page .header-content {
-        gap: 0.5rem
-    }
-}
-
 .language-button-container {
     display: flex;
     flex-direction: row;
@@ -65,7 +58,6 @@
     margin: auto;
 }
 
-
 .wallet-chart {
     box-sizing: border-box;
     width: 100%;
@@ -79,12 +71,12 @@
     border-radius: 20px;
     padding: 1rem;
     padding-top: 20px;
-
 }
 
 .bonifications-section,
 .sales-section,
-.statistics-section {
+.statistics-section,
+.transactions-section {
     display: flex;
     flex-direction: row;
     gap: 1rem;
@@ -141,24 +133,23 @@
     font-family: 'montserrat-700';
 }
 
-
-.home-page main>button {
+.square-button {
     border: none;
     width: 100%;
-    min-height: 30vh;
+    aspect-ratio: 1/1;
     background-color: var(--background-color-principal-05);
     padding: 1rem;
     box-sizing: border-box;
     justify-content: center;
     box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
+    border-radius: 20px;
     text-align: center;
     gap: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
 }
 
-.home-page main>button h3 {
-    text-align: center;
+.home-page> .transaction-list-container {
+    border-radius: 20px;
 }

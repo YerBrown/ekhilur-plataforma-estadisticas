@@ -269,9 +269,11 @@ const Home = () => {
                         </div>
                     </button>
                 </div>
-                <button onClick={() => handleNavigate("/transactions")}>
-                    <TransactionList transactions={mockData.slice(0, 3)} />
-                </button>
+                <div className="transactions-section">
+                    <button className="transactions-button" onClick={() => handleNavigate("/transactions")}>
+                        <TransactionList transactions={mockData.slice(0, 3)} />
+                    </button>
+                </div>
                 {/* <button onClick={() => handleNavigate("/map")}>
                     <h3>Mapa</h3>
                 </button> */}
