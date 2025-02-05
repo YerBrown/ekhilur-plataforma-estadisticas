@@ -86,7 +86,9 @@ async function getCategoryExpensesByMonth(mes = "", año = "") {
             queryParams.append("año", año);
         }
         const response = await apiRequest(
-            `/api/category-expenses-by-month?${queryParams.toString()}`,
+            `/api/category-expenses-by-month?mes=${mes
+                .toString()
+                .padStart(2, "0")}&año=${año}`,
             "GET"
         );
         console.log("Respuesta obtenida de la API externa:", response);

@@ -201,6 +201,14 @@ const Home = () => {
                 {user?.role === "commerce" && (
                     <button onClick={() => handleNavigate("/sales")}>
                         <h3>{t.salesTitle}</h3>
+                        <GraficoLibrerias
+                            data={userData.ventas}
+                            targetYear={new Date().getFullYear()}
+                            targetMonth={new Date().getMonth()}
+                            primaryKey={"ventas"}
+                            showFilters={false}
+                            height={200}
+                        />
                     </button>
                 )}
                 {/* <button onClick={() => handleNavigate("/map")}>

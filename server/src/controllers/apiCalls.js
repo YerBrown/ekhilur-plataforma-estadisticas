@@ -545,12 +545,22 @@ async function getHomeDataForUser(req, res) {
 
 async function getHomeDataForCommerce(req, res) {
     try {
-        const [wallet, bonificaciones, gastosIngresos] = await Promise.all([
-            apiRequest(`/cuentas/${req.user.username}`, "GET"),
-            apiRequest(`/cashback_emitido_mes_año/${req.user.username}`, "GET"),
-            apiRequest(`/ingresos_gastos/${req.user.username}`, "GET"),
-        ]);
-        const fullDataObject = { wallet, bonificaciones, gastosIngresos };
+        const [wallet, bonificaciones, gastosIngresos, ventas] =
+            await Promise.all([
+                apiRequest(`/cuentas/${req.user.username}`, "GET"),
+                apiRequest(
+                    `/cashback_emitido_mes_año/${req.user.username}`,
+                    "GET"
+                ),
+                apiRequest(`/ingresos_gastos/${req.user.username}`, "GET"),
+                apiRequest(`/ventas/${req.user.username}`, "GET"),
+            ]);
+        const fullDataObject = {
+            wallet,
+            bonificaciones,
+            gastosIngresos,
+            ventas,
+        };
         fullDataObject.bonificaciones =
             completarMesesFaltantesBonificacionesEmitidas(
                 fullDataObject.bonificaciones,
@@ -559,6 +569,11 @@ async function getHomeDataForCommerce(req, res) {
             );
         fullDataObject.gastosIngresos = completarMesesGastosIngresos(
             fullDataObject.gastosIngresos,
+            2022,
+            2025
+        );
+        fullDataObject.ventas = completarMesesVentas(
+            fullDataObject.ventas,
             2022,
             2025
         );
