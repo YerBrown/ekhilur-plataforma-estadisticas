@@ -31,7 +31,7 @@
 
 .search-bar {
     position: absolute;
-    top: 60px;
+    top: 58px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -57,14 +57,14 @@ input {
 .search-bar-name-input {
     width: 100%;
     border: none;
-    border-bottom: 2px solid var(--color-naranja-principal);
+    border: 2px solid var(--color-naranja-principal);
     padding: 0.5rem 0.8rem 0.5rem 0.8rem;
     font-size: 18px;
     color: var(--color-letra);
     outline: none;
     transition: border-color 0.3s;
     box-sizing: border-box;
-    border-radius: 4px;
+    border-radius: 20px;
 }
 
 .search-bar-name-input::placeholder,

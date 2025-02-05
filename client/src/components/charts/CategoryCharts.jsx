@@ -74,23 +74,26 @@ const matchValues = (categoryValues) => {
     const matchedCategories = categoryValues
         .map((categoryValue) => {
             const match = categoryTemplate.find(
-                (category) => category.label === categoryValue.label
+                (category) => category.label === categoryValue.categoria
             );
             return match ? { ...match, ...categoryValue } : null;
         })
         .filter((category) => category !== null);
     return matchedCategories;
 };
+
 const CategoryChart = ({ categoryDataJson }) => {
     const { t } = useLanguage();
     const [categories, setCategories] = useState(matchValues(categoryDataJson));
+    console.log("normal-json", categoryDataJson);
+    console.log("match-values", matchValues(categoryDataJson));
     const { theme } = useTheme();
     const getDataOptions = () => {
         const categoryData = categories.map((category) => ({
             datasets: [
                 {
                     label: "Single Category",
-                    data: [category.value, totalCategoryValue - category.value],
+                    data: [category.gasto, totalCategoryValue - category.gasto],
                     backgroundColor: [category.color, category["color-dark"]],
                     hoverBackgroundColor: [
                         category.color,
@@ -111,7 +114,7 @@ const CategoryChart = ({ categoryDataJson }) => {
                 },
                 centerText: {
                     color: theme === "light" ? "#000000" : "#ffffff",
-                    total: `${category.value} €`, // Pasar el total calculado
+                    total: `${category.gasto} €`, // Pasar el total calculado
                 },
                 datalabels: {
                     display: false,
@@ -137,10 +140,13 @@ const CategoryChart = ({ categoryDataJson }) => {
         return dataAndOptions;
     };
 
-    const categoryValues = categories.map((item) => item.value);
-    const totalCategoryValue = categoryValues.reduce(
-        (acc, currentValue) => (acc += currentValue)
-    );
+    const categoryValues = categories.map((item) => item.gasto);
+    const totalCategoryValue =
+        categoryValues.length > 0
+            ? categoryValues.reduce(
+                  (acc, currentValue) => (acc += currentValue)
+              )
+            : 0;
     return (
         <div className="category-charts">
             <h2>{t.categoriesTitle}</h2>
