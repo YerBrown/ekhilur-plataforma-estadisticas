@@ -29,15 +29,15 @@ services:
         networks:
             - fullstack_network
             - full_api_network
-    frontend:
-        build: ./client
-        container_name: frontend
-        restart: unless-stopped
-        ports:
-            - 5173:5173
-        volumes:
-            - ./client:/app
-            - app/node_modules
+#    frontend:
+#        build: ./client
+#        container_name: frontend
+#        restart: unless-stopped
+#        ports:
+#            - 5173:5173
+#        volumes:
+#            - ./client:/app
+#            - app/node_modules
     api:
         build: ./API
         container_name: api_ekhidata
