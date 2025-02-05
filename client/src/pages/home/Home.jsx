@@ -63,6 +63,11 @@ const Home = () => {
     const walletLabels = filteredData.map((item) => item.tipo);
     const walletValues = filteredData.map((item) => item.saldo);
     const walletColors = ["#FF6384", "#36A2EB", "#FFCE56", "#36A2EB"];
+    const legendData = walletLabels.map((label, index) => ({
+        label,
+        value: walletValues[index],
+        color: walletColors[index],
+    }));
     const walletData = {
         labels: walletLabels,
         datasets: [
@@ -78,49 +83,29 @@ const Home = () => {
     const walletTotalValue = userData.wallet.data.saldo_total;
     const walletOptions = {
         responsive: true,
-        maintainAspectRatio: false, // Permitir personalizar ancho y alto
+        maintainAspectRatio: false,
         plugins: {
             legend: {
-                display: false, // Oculta completamente la leyenda
-                labels: {
-                    usePointStyle: true, // Cambia los cuadrados a puntos (si no deseas ocultarlos)
-                },
-            },
-            tooltip: {
-                enabled: false,
-                callbacks: {
-                    label: function (tooltipItem) {
-                        return `${tooltipItem.label}: ${tooltipItem.raw} €`;
-                    },
-                },
+                display: false,
             },
             datalabels: {
-                color: theme === "light" ? "#000000" : "#ffffff", // Color del texto
-                font: {
-                    size: 14,
-                    family: "Noway",
-                },
-                formatter: (value, context) => {
-                    const label = context.chart.data.labels[context.dataIndex];
-                    return `${label}\n ${value} €`; // Muestra label y valor
-                },
-                anchor: "end", // Posicionar fuera del gráfico
-                align: "end", // Alineación externa
-                offset: 10,
+                display: false,
+            },
+            tooltip: {
+                enabled: false, // Desactiva tooltip si solo quieres mostrar valores en la leyenda
             },
             centerText: {
                 color: theme === "light" ? "#000000" : "#ffffff",
                 total: `${walletTotalValue}€`, // Pasar el total calculado
             },
         },
+        cutout: "85%", // Ajusta el tamaño del agujero central del donut
+        radius: "70%",
         elements: {
             arc: {
-                borderWidth: 0, // Grosor del borde del arco
+                borderWidth: 0,
             },
         },
-
-        cutout: "70%", // Ajusta el tamaño del agujero central del donut (más grande o más pequeño)
-        radius: "60%",
     };
 
     const currentDate = new Date();
@@ -187,7 +172,11 @@ const Home = () => {
             </header>
             <main>
                 <div className="wallet-chart">
-                    <DonutChart data={walletData} options={walletOptions} />
+                    <DonutChart
+                        data={walletData}
+                        options={walletOptions}
+                        legendValues={legendData}
+                    />
                 </div>
                 {user?.role === "user" && (
                     <div className="user-bonifications-section">
