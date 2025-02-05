@@ -115,14 +115,16 @@ const UserBonifications = () => {
                                 </span>
                             </div>
                         </div>
-                        <GraficoLibrerias
-                            data={apiData}
-                            targetYear={selectedPeriod.year}
-                            targetMonth={selectedPeriod.month}
-                            primaryKey={"bonificaciones"}
-                            secondaryKey={null}
-                            showFilters={true}
-                        />
+                        <div className="chart-container">
+                            <GraficoLibrerias
+                                data={apiData}
+                                targetYear={selectedPeriod.year}
+                                targetMonth={selectedPeriod.month}
+                                primaryKey={"bonificaciones"}
+                                secondaryKey={null}
+                                showFilters={true}
+                            />
+                        </div>
                         <TransactionList transactions={mockData} />
                     </>
                 )}
