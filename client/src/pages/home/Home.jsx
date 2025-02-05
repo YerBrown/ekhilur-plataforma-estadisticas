@@ -14,15 +14,12 @@ import "./Home.css";
 const Home = () => {
     const { t, setSpanish, setBasque } = useLanguage();
     const { theme } = useTheme();
-    const [selectedPeriod, setSelectedPeriod] = useState({
-        month: new Date().getMonth + 1,
-        year: new Date().getFullYear,
-    });
+    const { user } = useContext(AuthContext);
     const [filteredTransactions, setFilteredTransactions] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const [userData, setUserData] = useState(null);
     const navigate = useNavigate();
-    const { user } = useContext(AuthContext);
+
     useEffect(() => {
         if (!user) {
             navigate("/authentication");
@@ -42,6 +39,7 @@ const Home = () => {
                     setUserData(userData);
                 } else {
                     const userData = await getUserHomeData(); // Llama a la API para obtener los datos
+                    console.log("datos home", userData);
                     setUserData(userData);
                 }
             } catch (error) {
@@ -125,6 +123,48 @@ const Home = () => {
         radius: "60%",
     };
 
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth() + 1; // Mes actual (1-12)
+    const currentYear = currentDate.getFullYear();
+    const previousMonth = currentMonth === 1 ? 12 : currentMonth - 1;
+    const previousYear = currentMonth === 1 ? currentYear - 1 : currentYear;
+
+    // BUSCAR BONIFICACIONES
+    const currentBonus = userData.bonificaciones.find(
+        (b) => parseInt(b.mes) === currentMonth && parseInt(b.año) === currentYear
+    )?.bonificaciones || 0;
+
+    const previousBonus = userData.bonificaciones.find(
+        (b) => parseInt(b.mes) === previousMonth && parseInt(b.año) === previousYear
+    )?.bonificaciones || 0;
+
+    // BUSCAR BONIFICACIONES DE COMERCIO
+    const emmitedShopBonus = userData.bonificaciones.find(
+        (b) => parseInt(b.mes) === currentMonth && parseInt(b.año) === currentYear
+    )?.bonificaciones_emitidas || 0;
+
+    const receivedShopBonus = userData.bonificaciones.find(
+        (b) => parseInt(b.mes) === currentMonth && parseInt(b.año) === currentYear
+    )?.bonificaciones_recibidas || 0;
+
+    // BUSCAR GASTOS E INGRESOS
+    const expenses = userData.bonificaciones.find(
+        (b) => parseInt(b.mes) === currentMonth && parseInt(b.año) === currentYear
+    )?.gastos || 0;
+
+    const income = userData.bonificaciones.find(
+        (b) => parseInt(b.mes) === currentMonth && parseInt(b.año) === currentYear
+    )?.ingresos || 0;
+
+    // BUSCAR VENTAS
+    const currentSales = userData.bonificaciones.find(
+        (b) => parseInt(b.mes) === currentMonth && parseInt(b.año) === currentYear
+    )?.ventas || 0;
+
+    const previousSales = userData.bonificaciones.find(
+        (b) => parseInt(b.mes) === previousMonth && parseInt(b.año) === previousYear
+    )?.ventas || 0;
+
     return (
         <div className="home-page">
             <header>
@@ -146,71 +186,60 @@ const Home = () => {
                 </div>
             </header>
             <main>
-                <h1>
-                    {t.welcome}, {user?.username}!
-                </h1>
                 <div className="wallet-chart">
-                    <h3>{t.wallet}</h3>
                     <DonutChart data={walletData} options={walletOptions} />
                 </div>
                 {user?.role === "user" && (
-                    <button onClick={() => handleNavigate("/bonifications")}>
-                        <h3>{t.bonificationTitle}</h3>
-                        <GraficoLibrerias
-                            data={userData.bonificaciones}
-                            targetYear={new Date().getFullYear()}
-                            targetMonth={new Date().getMonth()}
-                            primaryKey={"bonificaciones"}
-                            showFilters={false}
-                            height={200}
-                        />
-                    </button>
+                    <div className="user-bonifications-section">
+                        <button onClick={() => handleNavigate("/bonifications")}>
+                            <h3>{t.bonificationTitle}</h3>
+                            <h4>{currentBonus.toFixed(2)} €</h4>
+                        </button>
+                        <button onClick={() => handleNavigate("/bonifications")}>
+                            <h3>{t.bonificationTitle}</h3>
+                            <h4>{previousBonus.toFixed(2)} €</h4>
+                        </button>
+                    </div>
                 )}
                 {user?.role === "commerce" && (
-                    <button
-                        onClick={() => handleNavigate("/bonifications-shop")}
-                    >
-                        <h3>{t.bonificationTitle}</h3>
-
-                        <GraficoLibrerias
-                            data={userData.gastosIngresos}
-                            targetYear={new Date().getFullYear()}
-                            targetMonth={new Date().getMonth()}
-                            primaryKey={"bonificaciones_emitidas"}
-                            secondaryKey={"bonificaciones_recibidas"}
-                            showFilters={false}
-                            height={200}
-                        />
-                    </button>
+                    <div className="commerce-bonifications-section">
+                        <button
+                            onClick={() => handleNavigate("/bonifications-shop")}>
+                            <h3>{t.bonificationTitle}</h3>
+                            <h4>{emmitedShopBonus.toFixed(2)} €</h4>
+                        </button>
+                        <button
+                            onClick={() => handleNavigate("/bonifications-shop")}>
+                            <h3>{t.bonificationTitle}</h3>
+                            <h4>{receivedShopBonus.toFixed(2)} €</h4>
+                        </button>
+                    </div>
                 )}
-                <button onClick={() => handleNavigate("/statistics")}>
-                    <h3>{t.statisticsTitle}</h3>
-                    <GraficoLibrerias
-                        data={userData.gastosIngresos}
-                        targetYear={new Date().getFullYear()}
-                        targetMonth={new Date().getMonth()}
-                        primaryKey={"gastos"}
-                        secondaryKey={"ingresos"}
-                        showFilters={false}
-                        height={200}
-                    />
-                </button>
+                <div className="statistics-section">
+                    <button onClick={() => handleNavigate("/statistics")}>
+                        <h3>{t.statisticsTitle}</h3>
+                        <h4>{income.toFixed(2)} €</h4>
+                    </button>
+                    <button onClick={() => handleNavigate("/statistics")}>
+                        <h3>{t.statisticsTitle}</h3>
+                        <h4>{expenses.toFixed(2)} €</h4>
+                    </button>
+                </div>
                 <button onClick={() => handleNavigate("/transactions")}>
                     <h3>{t.transactionTitle}</h3>
                     <TransactionList transactions={mockData.slice(0, 3)} />
                 </button>
                 {user?.role === "commerce" && (
-                    <button onClick={() => handleNavigate("/sales")}>
-                        <h3>{t.salesTitle}</h3>
-                        <GraficoLibrerias
-                            data={userData.ventas}
-                            targetYear={new Date().getFullYear()}
-                            targetMonth={new Date().getMonth()}
-                            primaryKey={"ventas"}
-                            showFilters={false}
-                            height={200}
-                        />
-                    </button>
+                    <div className="sales-section">
+                        <button onClick={() => handleNavigate("/sales")}>
+                            <h3>{t.salesTitle}</h3>
+                            <h4>{currentSales.toFixed(2)} €</h4>
+                        </button>
+                        <button onClick={() => handleNavigate("/sales")}>
+                            <h3>{t.salesTitle}</h3>
+                            <h4>{previousSales.toFixed(2)} €</h4>
+                        </button>
+                    </div>
                 )}
                 {/* <button onClick={() => handleNavigate("/map")}>
                     <h3>Mapa</h3>
