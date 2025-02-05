@@ -2,25 +2,11 @@ import { useState, useEffect } from "react";
 import { useLanguage } from "../../contexts/LanguageContext";
 import Layout from "../layout/Layout";
 import "./Estadisticas.css";
-import BarChartComponent from "../../components/charts/BarChart";
 import GraficoLibrerias from "../../components/charts/BarChartNew";
 import DateFilter from "../../components/DateFilter/DateFilter";
-import { getIncomesAndExpensesByMonth } from "../../api/realData";
-import mockData from "../../components/transactions-list/mockData.js";
-import { getIncomesAndExpensesByMonth } from "../../api/realData";
+import { getIncomesAndExpensesByMonth} from "../../api/realData";
 import mockData from "../../components/transactions-list/mockData.js";
 import TransactionList from "../../components/transactions-list/TransactionsList";
-import {
-    FaAppleAlt,
-    FaCoffee,
-    FaTshirt,
-    FaHeart,
-    FaStore,
-    FaIndustry,
-    FaPaintBrush,
-    FaFutbol,
-    FaHandsHelping,
-} from "react-icons/fa";
 import CategoryChart from "../../components/charts/CategoryCharts";
 
 const fakeApiData = [
@@ -180,10 +166,6 @@ const Estadisticas = () => {
                                         statistics.totalGastos,
                                         true
                                     )}
-                                    {getAmountStyle(
-                                        statistics.totalGastos,
-                                        true
-                                    )}
                                 </span>
                             </div>
                         </div>
@@ -194,7 +176,7 @@ const Estadisticas = () => {
                                 targetMonth={selectedPeriod.month}
                                 primaryKey={"gastos"}
                                 secondaryKey={"ingresos"}
-                                showFilters={false}
+                                showFilters={true}
                             />
                         </div>
                         <CategoryChart categoryDataJson={fakeApiData} />

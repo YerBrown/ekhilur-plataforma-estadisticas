@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
     BarChart,
     Bar,
     XAxis,
     YAxis,
     Tooltip,
-    CartesianGrid,
     ResponsiveContainer,
     LabelList,
 } from "recharts";
@@ -65,7 +64,7 @@ const getFilteredData = (
     targetMonth,
     filterType,
     primaryKey,
-    secondaryKey = null
+    secondaryKey = null,
 ) => {
     const { previous, current, next } = calculateRelativeYears(targetYear);
     let filteredData = [];

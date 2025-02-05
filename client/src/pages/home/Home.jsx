@@ -159,7 +159,7 @@ const Home = () => {
                     <button
                         onClick={() => handleNavigate("/bonifications-shop")}
                     >
-                        <h3>Denda {t.bonificationTitle}</h3>
+                        <h3> {t.bonificationTitle}</h3>
                         {/* <BarChartComponent selectedPeriod={selectedPeriod} /> */}
                     </button>
                 )}
