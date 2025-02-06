@@ -202,7 +202,7 @@ const Home = () => {
                                 <h4>{previousBonus.toFixed(2).replace(".", ",")}</h4>
                             </div>
                         </button>
-                        <button className="square-button-bonifications" onClick={() => handleNavigate("/bonifications")}>
+                        <button className="square-button-bonifications-2" onClick={() => handleNavigate("/bonifications")}>
                             <div className="info">
                                 <h3>{t.bonificationTitle}</h3>
                                 <p>{currentMonthFormatted}</p>
@@ -249,7 +249,7 @@ const Home = () => {
                                 <h4>{emmitedShopBonus.toFixed(2).replace(".", ",")}</h4>
                             </div>
                         </button>
-                        <button className="square-button-bonifications" onClick={() => handleNavigate("/bonifications-shop")}>
+                        <button className="square-button-bonifications-received" onClick={() => handleNavigate("/bonifications-shop")}>
                             <div className="info">
                                 <h3>{t.bonificationTitle} {t.received}</h3>
                             </div>

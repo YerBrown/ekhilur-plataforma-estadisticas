@@ -95,9 +95,10 @@
   --color-dark: rgba(255, 255, 255);
   --color-barras: rgb(66, 28, 4);
   --color-naranja: rgb(255, 102, 0, 1);
+  --color-naranja-08: rgb(255, 102, 0, 0.8);
   --color-naranja-background: rgba(255, 144, 18, 0.8);
   --color-naranja-background-2: rgba(255, 242, 227, 0.5);
-  --color-azul: rgba(0, 71, 184, 1);
+  --color-azul: rgb(0, 71, 184);
   --color-azul-background: rgba(0, 71, 184, 0.8);
   --color-azul-background-2: rgba(91, 107, 138, 0.4);
   --color-blanco: rgba(255, 255, 255, 1);
