@@ -8,44 +8,10 @@ import {
     getIncomesAndExpensesByMonth,
     getCategoryExpensesByMonth,
 } from "../../api/realData";
-import mockData from "../../components/transactions-list/mockData.js";
 import TransactionList from "../../components/transactions-list/TransactionsList";
 import CategoryChart from "../../components/charts/CategoryCharts";
+import mockData from "../../api/mockDataUser.js";
 
-const fakeApiData = [
-    {
-        label: "Alimentación",
-        value: 50,
-    },
-    {
-        label: "Moda y Complementos",
-        value: 14,
-    },
-    {
-        label: "Salud y Estética",
-        value: 67,
-    },
-    {
-        label: "Servicios y Comercio General",
-        value: 32,
-    },
-    {
-        label: "Industria y Construcción",
-        value: 15,
-    },
-    {
-        label: "Arte y Cultura",
-        value: 13,
-    },
-    {
-        label: "Deporte y Ocio",
-        value: 6,
-    },
-    {
-        label: "Asociaciones y Cooperativas",
-        value: 120,
-    },
-];
 
 const Estadisticas = () => {
     const { t } = useLanguage();
@@ -71,6 +37,22 @@ const Estadisticas = () => {
         { año: "2024", mes: "03", valor: 300, otroValor: 270 },
     ]);
     const [categorydata, setCategoryData] = useState([]);
+    const [filteredTransactions, setFilteredTransactions] = useState(mockData);
+
+    useEffect(() => {
+        // Filtrar las transacciones basadas en el periodo seleccionado
+        const filteredData = mockData.filter((transaction) => {
+            const transactionYear = parseInt(transaction.año, 10);
+            const transactionMonth = parseInt(transaction.mes, 10);
+
+            return (
+                transactionYear === selectedPeriod.year &&
+                transactionMonth === selectedPeriod.month + 1
+            );
+        });
+
+        setFilteredTransactions(filteredData);
+    }, [selectedPeriod]);
 
     const loadApiData = async () => {
         setIsLoading(true);
@@ -189,7 +171,7 @@ const Estadisticas = () => {
                             />
                         </div>
                         <CategoryChart categoryDataJson={categorydata} />
-                        <TransactionList transactions={mockData} />
+                        <TransactionList transactions={filteredTransactions} />
                     </>
                 )}
             </div>
