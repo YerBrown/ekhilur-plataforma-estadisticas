@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../../contexts/LanguageContext.jsx";
 import { GoPlusCircle } from "react-icons/go";
 import { TbPigMoney } from "react-icons/tb";
+import { logout } from "../../api/auth.js";
 import DonutChart from "../../components/charts/DonutChart";
 import ProfileAvatar from "../../components/ProfileAvatar";
 import TransactionList from "../../components/transactions-list/TransactionsList";
@@ -15,14 +16,16 @@ import {
 import { useTheme } from "../../contexts/ThemeContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import "./Home.css";
+import UserPage from "../userpage/UserPage.jsx";
 
 const Home = () => {
-    const { t } = useLanguage();
+    const { t, setSpanish, setBasque } = useLanguage();
     const { theme } = useTheme();
-    const { user } = useContext(AuthContext);
+    const { user, logoutUser } = useContext(AuthContext);
     const [filteredTransactions, setFilteredTransactions] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const [userData, setUserData] = useState(null);
+    const [showAside, setShowAside] = useState(false);
     const [transData, setTransData] = useState([]);
     const navigate = useNavigate();
 
@@ -35,9 +38,14 @@ const Home = () => {
     const handleNavigate = (path) => {
         navigate(path);
     };
+    const handleLogout = async () => {
+        await logout();
+        await logoutUser();
+        navigate("/authentication");
+    };
     useEffect(() => {
         const fetchUserdata = async () => {
-            setIsLoading(true); // Detén el loader
+            setIsLoading(true);
             try {
                 if (user?.role === "commerce") {
                     const userData = await getCommerceHomeData(); // Llama a la API para obtener los datos
@@ -54,18 +62,20 @@ const Home = () => {
             } catch (error) {
                 console.error("Error al obtener los datos del usuario:", error);
             } finally {
-                setIsLoading(false); // Detén el loader
+                setIsLoading(false);
             }
         };
 
         fetchUserdata();
-    }, []);
+    }, [user?.role]);
+
     if (isLoading) {
         return <>Loading...</>;
     }
     if (userData == null) {
         return <>Failed...</>;
     }
+
     const filteredData = userData.wallet.data.cuentas.filter(
         (item) => item.saldo > 0
     );
@@ -101,11 +111,11 @@ const Home = () => {
                 display: false,
             },
             tooltip: {
-                enabled: false, // Desactiva tooltip si solo quieres mostrar valores en la leyenda
+                enabled: false,
             },
             centerText: {
                 color: theme === "light" ? "#000000" : "#ffffff",
-                total: `${walletTotalValue}€`, // Pasar el total calculado
+                total: `${walletTotalValue}€`,
             },
         },
         cutout: "80%", // Ajusta el tamaño del agujero central del donut
@@ -211,9 +221,38 @@ const Home = () => {
             <header>
                 <img src="logo_dos.png" alt="Logo Ekhidata" />
                 <div className="header-content">
-                    <ProfileAvatar />
+                    <div onClick={() => setShowAside(true)}>
+                        <ProfileAvatar />
+                    </div>
                 </div>
             </header>
+
+            {showAside && (
+                <>
+                    <div
+                        className="aside-overlay"
+                        onClick={() => setShowAside(false)}
+                    />
+
+                    <aside className={`profile-aside ${theme}`}>
+                            <button
+                                className="button-no"
+                                onClick={() => setShowAside(false)}
+                            >
+                                ×
+                            </button>
+                        <div className="user-buttons">
+                            <div className="language-selector">
+                                <button className="button-yes" onClick={setSpanish}>ES</button>
+                                <button className="button-yes" onClick={setBasque}>EU</button>
+                            </div>
+                            <button className="button-yes" onClick={handleLogout}>{t.logout}</button>
+                        </div>
+                        <UserPage />
+                    </aside>
+                </>
+            )}
+
             <main>
                 <div className="wallet-chart">
                     <div className="wallet-icon">

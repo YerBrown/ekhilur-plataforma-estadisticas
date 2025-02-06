@@ -41,6 +41,43 @@
     transform: scale(1.1);
 }
 
+.user-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.button-no {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button-yes {
+    border: none;
+    background-color: var(--color-naranja-principal-background);
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 0.5rem;
+    width: 30%;
+    box-sizing: border-box;
+    font-size: 1rem;
+    outline: none;
+}
+
+.user-buttons>.language-selector {
+    gap: 5px;
+}
+
+aside .user-profile-info {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
 .home-page header img {
     height: 100%;
     width: 50%;
