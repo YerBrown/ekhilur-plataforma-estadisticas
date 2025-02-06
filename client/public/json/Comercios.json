@@ -536,7 +536,115 @@
         "Direccion": "Nafar Kalea, 21 - Hernani (20120)",
         "Coordenadas": [
             43.2664535,
-            -1.9765077
+            -1.967355
+        ]
+    },
+    {
+        "Tipo": "Alimentación",
+        "Nombre Comercio": "Frutas Iñigo Diez",
+        "Direccion": "Kale Nagusia, 37 - Hernani (20120)",
+        "Coordenadas": [
+            43.2669236,
+            -1.9746664
+        ]
+    },
+    {
+        "Tipo": "Asociaciones y Cooperativas",
+        "Nombre Comercio": "Fundación Economistas sin Fronteras",
+        "Direccion": "Erronda Kalea - Bilbo (48005)",
+        "Coordenadas": [
+            43.2566402,
+            -2.9223091
+        ]
+    },
+    {
+        "Tipo": "Arte y Cultura",
+        "Nombre Comercio": "GABRIEL ARESTI EUSKALTEGIA",
+        "Direccion": "Done Bikendi Kalea, 2 - Bilbo (48001)",
+        "Coordenadas": [
+            43.2637353,
+            -2.927873
+        ]
+    },
+    {
+        "Tipo": "Salud y Estética",
+        "Nombre Comercio": "Gaindituz Fisioterapia",
+        "Direccion": "Antziola Auzoa, 28 - Hernani (20120)",
+        "Coordenadas": [
+            43.2713317,
+            -1.9760945
+        ]
+    },
+    {
+        "Tipo": "Deporte y Ocio",
+        "Nombre Comercio": "Galarreta Pilotalekua",
+        "Direccion": "Jauregi Bailara - Hernani (20120)",
+        "Coordenadas": [
+            43.2749174,
+            -1.9851314
+        ]
+    },
+    {
+        "Tipo": "Alimentación",
+        "Nombre Comercio": "Garin Harategia",
+        "Direccion": "Andre Kalea, 38 - Hernani (20120)",
+        "Coordenadas": [
+            43.2661041,
+            -1.9743627
+        ]
+    },
+    {
+        "Tipo": "Salud y Estética",
+        "Nombre Comercio": "Gaspar Ileapaindegia",
+        "Direccion": "Elkano Kalea, 16 - Hernani (20120)",
+        "Coordenadas": [
+            43.2676997,
+            -1.9762095
+        ]
+    },
+    {
+        "Tipo": "Alimentación",
+        "Nombre Comercio": "Goikoetxea Okindegia",
+        "Direccion": "Karmelo Labaka Kalea, 4 - Hernani (20120)",
+        "Coordenadas": [
+            43.269402,
+            -1.9749751
+        ]
+    },
+    {
+        "Tipo": "Hostelería",
+        "Nombre Comercio": "Goiz Eguzki Jatetxea",
+        "Direccion": "Atzieta Kalea, 16 - Hernani (20120)",
+        "Coordenadas": [
+            43.264978,
+            -1.974395
+        ]
+    },
+    {
+        "Tipo": "Asociaciones y Cooperativas",
+        "Nombre Comercio": "Gure Txoko",
+        "Direccion": "Barrenkale, 31 - Bilbo (48005)",
+        "Coordenadas": [
+            43.2574095,
+            -2.9247317
+        ]
+    },
+    {
+        "Tipo": "Servicios y Comercio General",
+        "Nombre Comercio": "Gurutzeta Baserria (Arkupeak)",
+        "Direccion": "Gvdarien Plaza - Hernani (20120)",
+        "Coordenadas": [
+            43.26615,
+            -1.97615
+        ]
+    },
+    {
+        "Tipo": "Asociaciones y Cooperativas",
+        "Nombre Comercio": "Herrilur Kontsumo Elkartea",
+        "Direccion": "Ispizua Kalea, 13 - Hernani (20120)",
+        "Coordenadas": [
+            43.2650056,
+            -1.9791299
         ]
     }
 ]
