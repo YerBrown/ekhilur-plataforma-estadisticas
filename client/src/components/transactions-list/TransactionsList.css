@@ -35,7 +35,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--background-color-principal-05);
+    background-color: var(--opcion-ok-background-claro);
     padding: 1rem;
     margin-left: 1rem;
     margin-right: 1rem;
@@ -78,15 +78,15 @@
 
 .transaction-item-amounts-container {
     text-align: right;
-    margin-left: 0.5rem;
+  
 }
 
 .transaction-item-amount {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-family: 'montserrat-700';
     color: var(--color-letra);
     border-radius: 20px;
-    padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    padding: 0.2rem 0.4rem 0.2rem 0.5rem;
     margin-top: 0;
 }
 

@@ -5,7 +5,6 @@ import {
     Bar,
     XAxis,
     YAxis,
-    Tooltip,
     ResponsiveContainer,
     LabelList,
 } from "recharts";
@@ -22,9 +21,8 @@ const singleGradient = {
 const dualGradient1 = {
     id: "dualBarGradient1",
     colors: {
-        start: "#00E1FD",
-        middle: "#0094DB",
-        end: "#002E78"
+        start: "#0047ba",    
+        end: "#0094DB"
     }
 };
 
@@ -32,8 +30,7 @@ const dualGradient2 = {
     id: "dualBarGradient2",
     colors: {
         start: "#FF9012",
-        middle: "#FF5A1C",
-        end: "#CC0000"
+        end: "#FF5A1C"
     }
 };
 
@@ -225,14 +222,12 @@ const GraficoLibrerias = ({
                             <stop offset="80%" stopColor={singleGradient.colors.end} stopOpacity={0.9} />
                         </linearGradient>
                         <linearGradient id={dualGradient1.id} x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stopColor={dualGradient1.colors.start} stopOpacity={0.8} />
-                            <stop offset="30%" stopColor={dualGradient1.colors.middle} stopOpacity={0.8} />
-                            <stop offset="100%" stopColor={dualGradient1.colors.end} stopOpacity={0.7} />
+                            <stop offset="20%" stopColor={dualGradient1.colors.start} stopOpacity={1} />
+                            <stop offset="100%" stopColor={dualGradient1.colors.end} stopOpacity={0.3} />
                         </linearGradient>
                         <linearGradient id={dualGradient2.id} x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stopColor={dualGradient2.colors.start} stopOpacity={0.8} />
-                            <stop offset="30%" stopColor={dualGradient2.colors.middle} stopOpacity={0.8} />
-                            <stop offset="100%" stopColor={dualGradient2.colors.end} stopOpacity={0.7} />
+                            <stop offset="20%" stopColor={dualGradient2.colors.start} stopOpacity={0.5} />
+                            <stop offset="100%" stopColor={dualGradient2.colors.end} stopOpacity={1} />
                         </linearGradient>
                     </defs>
 
@@ -251,6 +246,7 @@ const GraficoLibrerias = ({
                         <LabelList
                             dataKey={primaryKey}
                             position="top"
+                            fontSize={13}
                             fill="var(--color-letra)"
                             formatter={(value) => (value === 0 ? "" : value)}
                         />
@@ -267,6 +263,7 @@ const GraficoLibrerias = ({
                             <LabelList
                                 dataKey={secondaryKey}
                                 position="top"
+                                fontSize={13}
                                 fill="var(--color-letra)"
                                 formatter={(value) =>
                                     value === 0 ? "" : value

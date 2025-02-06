@@ -92,6 +92,15 @@
 }
 
 .square-button-bonifications,
+.square-button-bonifications-received,
+.square-button-bonifications-2{
+    color:white
+}
+
+
+
+
+.square-button-bonifications,
 .square-button-sales,
 .square-button-statistics,
 .square-button-bonifications-received,
@@ -130,12 +139,12 @@
 
 .square-button-statistics h3 {
     color: var(--color-naranja);
+    font-size: 1.4rem !important;
 }
 
 
 .square-button-bonifications h3, .square-button-sales h3, .square-button-bonifications-received h3, .square-button-bonifications-2 h3 {
     color: var(--color-blanco);
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .square-button-sales {
@@ -189,6 +198,7 @@
     border-radius: 20px;
     padding: 0;
     text-align: start;
+    background: transparent;
 }
 
 .home-page .transaction-list-container {
