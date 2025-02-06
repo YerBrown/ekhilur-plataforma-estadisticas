@@ -171,7 +171,12 @@ const Estadisticas = () => {
                             />
                         </div>
                         <CategoryChart categoryDataJson={categorydata} />
-                        <TransactionList transactions={filteredTransactions} />
+                        {filteredTransactions.length === 0 ? (
+                            <>
+                            </>
+                        ) : (
+                            <TransactionList transactions={filteredTransactions} />
+                        )}
                     </>
                 )}
             </div>

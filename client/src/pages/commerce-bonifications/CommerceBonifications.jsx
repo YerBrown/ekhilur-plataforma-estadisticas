@@ -167,7 +167,12 @@ const CommerceBonifications = () => {
                         />
                     </div>
                     <BonificationsFilter onFilterChange={handleFilterChange} />
-                    <TransactionList transactions={filteredTransactions} />
+                    {filteredTransactions.length === 0 ? (
+                        <>
+                        </>
+                    ) : (
+                        <TransactionList transactions={filteredTransactions} />
+                    )}
                 </div>
             )}
         </Layout>

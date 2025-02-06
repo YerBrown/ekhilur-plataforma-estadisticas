@@ -137,7 +137,12 @@ const SalesCommerce = () => {
                             showFilters={true}
                         />
                     </div>
-                    <TransactionList transactions={filteredTransactions} />
+                    {filteredTransactions.length === 0 ? (
+                        <>
+                        </>
+                    ) : (
+                        <TransactionList transactions={filteredTransactions} />
+                    )}
                 </div>
             )}
         </Layout>
