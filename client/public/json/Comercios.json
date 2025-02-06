@@ -1,0 +1,542 @@
+[
+    {
+        "Tipo": "Servicios y Comercio General",
+        "Nombre Comercio": "Abokatua Ane Iturbe  Mujika",
+        "Direccion": "Gvdarien Plaza, 3 - Hernani (20120)",
+        "Coordenadas": [
+            43.26615,
+            -1.97615
+        ]
+    },
+    {
+        "Tipo": "Servicios y Comercio General",
+        "Nombre Comercio": "Adarra Burdindegia",
+        "Direccion": "Txirrita Kalea, 8 - Hernani (20120)",
+        "Coordenadas": [
+            43.2675526,
+            -1.9752458
+        ]
+    },
+    {
+        "Tipo": "Salud y Estética",
+        "Nombre Comercio": "Adats ileapaindegia",
+        "Direccion": "Nafar Kalea, 14 - Hernani (20120)",
+        "Coordenadas": [
+            43.2663717,
+            -1.9757467
+        ]
+    },
+    {
+        "Tipo": "Alimentación",
+        "Nombre Comercio": "Aliprox",
+        "Direccion": "Kale Nagusia, 21 - Hernani (20120)",
+        "Coordenadas": [
+            43.2663346,
+            -1.9750242
+        ]
+    },
+    {
+        "Tipo": "Hostelería",
+        "Nombre Comercio": "Almodobar",
+        "Direccion": "Gorte Kalea, 18 - Bilbo (48003)",
+        "Coordenadas": [
+            43.257764,
+            -2.943493
+        ]
+    },
+    {
+        "Tipo": "Alimentación",
+        "Nombre Comercio": "Amaia Arrandegia",
+        "Direccion": "Andre Kalea, 34 - Hernani (20120)",
+        "Coordenadas": [
+            43.2660173,
+            -1.9744516
+        ]
+    },
+    {
+        "Tipo": "Servicios y Comercio General",
+        "Nombre Comercio": "Amegar etxetresnak",
+        "Direccion": "Txirrita Kalea, 15 - Hernani (20120)",
+        "Coordenadas": [
+            43.266772,
+            -1.980474
+        ]
+    },
+    {
+        "Tipo": "Comercio",
+        "Nombre Comercio": "ANTI liburudenda",
+        "Direccion": "Maiatzaren Biko Kalea, 2 - Bilbo (48003)",
+        "Coordenadas": [
+            43.2678363,
+            -1.9748113
+        ]
+    },
+    {
+        "Tipo": "Alimentación",
+        "Nombre Comercio": "Ares Frutadenda",
+        "Direccion": "Antziola Auzoa, 26 - Hernani (20120)",
+        "Coordenadas": [
+            43.2709866,
+            -1.9758949
+        ]
+    },
+    {
+        "Tipo": "Servicios y Comercio General",
+        "Nombre Comercio": "Arkiled",
+        "Direccion": "Elkano Kalea, 1 - Hernani (20120)",
+        "Coordenadas": [
+            43.2651407,
+            -1.9764746
+        ]
+    },
+    {
+        "Tipo": "Alimentación",
+        "Nombre Comercio": "Arregi Janaridenda",
+        "Direccion": "Victor Hugo Kalea, 3 - Hernani (20120)",
+        "Coordenadas": [
+            43.2632324,
+            -1.9785519
+        ]
+    },
+    {
+        "Tipo": "Alimentación",
+        "Nombre Comercio": "Arriatzu barazki eta frutadenda",
+        "Direccion": "Atzieta Kalea, 41 - Hernani (20120)",
+        "Coordenadas": [
+            43.265743,
+            -1.9743575
+        ]
+    },
+    {
+        "Tipo": "Salud y Estética",
+        "Nombre Comercio": "Arrosak edergintza",
+        "Direccion": "Antziola Auzoa, 9 - Hernani (20120)",
+        "Coordenadas": [
+            43.2702955,
+            -1.9759444
+        ]
+    },
+    {
+        "Tipo": "Arte y Cultura",
+        "Nombre Comercio": "ArteTokia",
+        "Direccion": "Gvdarien Plaza, 4 - Hernani (20120)",
+        "Coordenadas": [
+            43.277138,
+            -1.978476
+        ]
+    },
+    {
+        "Tipo": "Alimentación",
+        "Nombre Comercio": "Artola Harategia",
+        "Direccion": "Andre Kalea, 20 - Hernani (20120)",
+        "Coordenadas": [
+            43.26615,
+            -1.97615
+        ]
+    },
+    {
+        "Tipo": "Asociaciones y Cooperativas",
+        "Nombre Comercio": "Asoc. Eme Komunikazioa",
+        "Direccion": "Lamana Kalea, 2 - Bilbo (48003)",
+        "Coordenadas": [
+            43.2573315,
+            -2.9281206
+        ]
+    },
+    {
+        "Tipo": "Asociaciones y Cooperativas",
+        "Nombre Comercio": "Asociaciacion Finanzas Éticas Euskadi",
+        "Direccion": "Harrobi Plaza, 4 - Bilbo (48003)",
+        "Coordenadas": [
+            43.26271,
+            -2.92528
+        ]
+    },
+    {
+        "Tipo": "Asociaciones y Cooperativas",
+        "Nombre Comercio": "Asociacion Educativa Reciclanet Hezkuntza Elkartea",
+        "Direccion": "Ribera de Axpe Etorbidea, 11 - Erandio (48950)",
+        "Coordenadas": [
+            43.3055981,
+            -2.9729697
+        ]
+    },
+    {
+        "Tipo": "Arte y Cultura",
+        "Nombre Comercio": "Asukar",
+        "Direccion": "Antziola Auzoa, 4 - Hernani (20120)",
+        "Coordenadas": [
+            43.2691174,
+            -1.9748966
+        ]
+    },
+    {
+        "Tipo": "Servicios y Comercio General",
+        "Nombre Comercio": "Balantxa Baserria",
+        "Direccion": "Antziola Auzoa, 96 - Hernani (20120)",
+        "Coordenadas": [
+            43.2774549,
+            -1.9769443
+        ]
+    },
+    {
+        "Tipo": "Alimentación",
+        "Nombre Comercio": "Balerdi Harategia (Ahorra mas)",
+        "Direccion": "Ispizua Kalea, 15 - Hernani (20120)",
+        "Coordenadas": [
+            43.2657241,
+            -1.9768597
+        ]
+    },
+    {
+        "Tipo": "Servicios y Comercio General",
+        "Nombre Comercio": "Barakaldo Bidaiak",
+        "Direccion": "Nafarroa Kalea, 3 - Barakaldo (48901)",
+        "Coordenadas": [
+            43.2967812,
+            -2.9881874
+        ]
+    },
+    {
+        "Tipo": "Salud y Estética",
+        "Nombre Comercio": "Begira Optika",
+        "Direccion": "Urbieta Kalea, 8 - Hernani (20120)",
+        "Coordenadas": [
+            43.2671408,
+            -1.9755908
+        ]
+    },
+    {
+        "Tipo": "Asociaciones y Cooperativas",
+        "Nombre Comercio": "Berriak Elkartea",
+        "Direccion": "Andre Kalea, 30 - Hernani (20120)",
+        "Coordenadas": [
+            43.265931,
+            -1.9744886
+        ]
+    },
+    {
+        "Tipo": "Salud y Estética",
+        "Nombre Comercio": "Biak Estilistak",
+        "Direccion": "Kale Nagusia, 2 - Hernani (20120)",
+        "Coordenadas": [
+            43.2653981,
+            -1.9753723
+        ]
+    },
+    {
+        "Tipo": "Alimentación",
+        "Nombre Comercio": "Boga Euskal Garagardoa",
+        "Direccion": "Calle Luisene, 2 - Mungia (48100)",
+        "Coordenadas": [
+            43.35,
+            -2.83333
+        ]
+    },
+    {
+        "Tipo": "Servicios y Comercio General",
+        "Nombre Comercio": "Brintza Aholkularitza",
+        "Direccion": "Urbieta Kalea, 15 - Hernani (20120)",
+        "Coordenadas": [
+            43.2677552,
+            -1.9780956
+        ]
+    },
+    {
+        "Tipo": "Arte y Cultura",
+        "Nombre Comercio": "Brixton Denda",
+        "Direccion": "Goienkale, 24 - Bilbo (48005)",
+        "Coordenadas": [
+            43.257062,
+            -2.9223751
+        ]
+    },
+    {
+        "Tipo": "Asociaciones y Cooperativas",
+        "Nombre Comercio": "Butroi Bizirik en transicion",
+        "Direccion": "Ibaigane Kalea, 10 - Mungia (48100)",
+        "Coordenadas": [
+            43.3553134,
+            -2.8496975
+        ]
+    },
+    {
+        "Tipo": "Servicios y Comercio General",
+        "Nombre Comercio": "Buztin Artean",
+        "Direccion": "Calle Belosticalle, 14 - Bilbao (48005)",
+        "Coordenadas": [
+            43.2563733,
+            -2.9242288
+        ]
+    },
+    {
+        "Tipo": "Hostelería",
+        "Nombre Comercio": "Cafe Okapi",
+        "Direccion": "Calle Belosticalle, 26 - Bilbao (48005)",
+        "Coordenadas": [
+            43.2568307,
+            -2.9239711
+        ]
+    },
+    {
+        "Tipo": "Alimentación",
+        "Nombre Comercio": "Carniceria Ali Halal",
+        "Direccion": "Larramendi Kalea, 17 - Hernani (20120)",
+        "Coordenadas": [
+            43.2637816,
+            -1.9785427
+        ]
+    },
+    {
+        "Tipo": "Otros",
+        "Nombre Comercio": "Clínica Dental Villarias",
+        "Direccion": "Adiskidetasun Kalea, 4 - Bilbo (48001)",
+        "Coordenadas": [
+            43.2612043,
+            -2.9256045
+        ]
+    },
+    {
+        "Tipo": "Asociaciones y Cooperativas",
+        "Nombre Comercio": "COLECTIVA XXK FEMINISMOS PENSAMIENTO Y ACCION",
+        "Direccion": "Gardoki Kardenalaren Kalea, 9 - Bilbo (48008)",
+        "Coordenadas": [
+            43.2609645,
+            -2.9313611
+        ]
+    },
+    {
+        "Tipo": "Alimentación",
+        "Nombre Comercio": "Conservas Margari",
+        "Direccion": "Erribera Kalea - Bilbo (48005)",
+        "Coordenadas": [
+            43.2577421,
+            -2.9264201
+        ]
+    },
+    {
+        "Tipo": "Industria y Construcción",
+        "Nombre Comercio": "Dekolanak",
+        "Direccion": "Kale Nagusia, 41 - Hernani (20120)",
+        "Coordenadas": [
+            43.2670603,
+            -1.9745491
+        ]
+    },
+    {
+        "Tipo": "Moda y Complementos",
+        "Nombre Comercio": "Distira Denda",
+        "Direccion": "Kale Nagusia, 27 - Hernani (20120)",
+        "Coordenadas": [
+            43.266556,
+            -1.9748662
+        ]
+    },
+    {
+        "Tipo": "Arte y Cultura",
+        "Nombre Comercio": "Dobera Euskara Elkartea (Kronika)",
+        "Direccion": "Larramendi Kalea, 11 - Hernani (20120)",
+        "Coordenadas": [
+            43.2642605,
+            -1.9779221
+        ]
+    },
+    {
+        "Tipo": "Hostelería",
+        "Nombre Comercio": "Egurre",
+        "Direccion": "Muñoz Maria Kalea, 6 - Bilbo (48005)",
+        "Coordenadas": [
+            43.2578184,
+            -2.9216132
+        ]
+    },
+    {
+        "Tipo": "Asociaciones y Cooperativas",
+        "Nombre Comercio": "Ekhi Elkartea",
+        "Direccion": "Harrobi Plaza, 4 - Bilbo (48003)",
+        "Coordenadas": [
+            43.26271,
+            -2.92528
+        ]
+    },
+    {
+        "Tipo": "Arte y Cultura",
+        "Nombre Comercio": "Elkar Hernani Liburudenda",
+        "Direccion": "Kale Nagusia, 30 - Hernani (20120)",
+        "Coordenadas": [
+            43.2660525,
+            -1.9750879
+        ]
+    },
+    {
+        "Tipo": "Asociaciones y Cooperativas",
+        "Nombre Comercio": "Elkartenet Hezkuntza Elkartea",
+        "Direccion": "Calle Morgan Kalea, 4 - Bilbao (48014)",
+        "Coordenadas": [
+            43.2687105,
+            -2.9544212
+        ]
+    },
+    {
+        "Tipo": "Asociaciones y Cooperativas",
+        "Nombre Comercio": "Enherkom",
+        "Direccion": "Florida Auzoa, 28 - Hernani (20120)",
+        "Coordenadas": [
+            43.2696272,
+            -1.9718885
+        ]
+    },
+    {
+        "Tipo": "Servicios y Comercio General",
+        "Nombre Comercio": "Enjabonadas",
+        "Direccion": "Dorre Kalea, 15 - Bilbo (48005)",
+        "Coordenadas": [
+            43.2574832,
+            -2.9250662
+        ]
+    },
+    {
+        "Tipo": "Servicios y Comercio General",
+        "Nombre Comercio": "Epele Loradenda",
+        "Direccion": "Kale Nagusia, 43 - Hernani (20120)",
+        "Coordenadas": [
+            43.267839,
+            -1.981665
+        ]
+    },
+    {
+        "Tipo": "Alimentación",
+        "Nombre Comercio": "Ereñozuko denda (Coviran)",
+        "Direccion": "- Ereñotzu (20128)",
+        "Coordenadas": [
+            43.2671354,
+            -1.9745058
+        ]
+    },
+    {
+        "Tipo": "Servicios y Comercio General",
+        "Nombre Comercio": "Erotic shop Sexdlux",
+        "Direccion": "Pilota Kalea, 2 - Bilbo (48005)",
+        "Coordenadas": [
+            43.2570802,
+            -2.9257512
+        ]
+    },
+    {
+        "Tipo": "Moda y Complementos",
+        "Nombre Comercio": "Erratz",
+        "Direccion": "Antziola Auzoa, 2 - Hernani (20120)",
+        "Coordenadas": [
+            43.264989,
+            -1.982958
+        ]
+    },
+    {
+        "Tipo": "Asociaciones y Cooperativas",
+        "Nombre Comercio": "ERREKA MULTIMEDIA",
+        "Direccion": "Biarritz Kalea, 13 - Bilbo (48002)",
+        "Coordenadas": [
+            43.268986,
+            -1.9748314
+        ]
+    },
+    {
+        "Tipo": "Hostelería",
+        "Nombre Comercio": "Errioguarda-Enea Jatetxea",
+        "Direccion": "Iturriaga Kalea, 12 - Hernani (20120)",
+        "Coordenadas": [
+            43.2665062,
+            -1.975214
+        ]
+    },
+    {
+        "Tipo": "Alimentación",
+        "Nombre Comercio": "Esnal Gozotegia",
+        "Direccion": "Ispizua Kalea, 7 - Hernani (20120)",
+        "Coordenadas": [
+            43.2657241,
+            -1.9768597
+        ]
+    },
+    {
+        "Tipo": "Moda y Complementos",
+        "Nombre Comercio": "Eukene Jantzidenda",
+        "Direccion": "Nafar Kalea, 14 - Hernani (20120)",
+        "Coordenadas": [
+            43.2663717,
+            -1.9757467
+        ]
+    },
+    {
+        "Tipo": "Alimentación",
+        "Nombre Comercio": "Euskal Pizza",
+        "Direccion": "Larramendi Kalea, 3 - Hernani (20120)",
+        "Coordenadas": [
+            43.2637943,
+            -1.9779511
+        ]
+    },
+    {
+        "Tipo": "Salud y Estética",
+        "Nombre Comercio": "Ezkati Ileapaindegia",
+        "Direccion": "Iturregi Kalea, 4 - Hernani (20120)",
+        "Coordenadas": [
+            43.2658898,
+           -1.9789756
+        ]
+    },
+    {
+        "Tipo": "Salud y Estética",
+        "Nombre Comercio": "Farmacia Aldabe",
+        "Direccion": "Perkaiztegi Kalea, 8 - Hernani (20120)",
+        "Coordenadas": [
+            43.2709953,
+            -1.9750964
+        ]
+    },
+    {
+        "Tipo": "Salud y Estética",
+        "Nombre Comercio": "Farmacia Castilla-Larburu",
+        "Direccion": "Urbieta Kalea, 5 - Hernani (20120)",
+        "Coordenadas": [
+            43.2668408,
+            -1.9755407
+        ]
+    },
+    {
+        "Tipo": "Salud y Estética",
+        "Nombre Comercio": "Farmacia Etxebarria",
+        "Direccion": "Andre Kalea, 48 - Hernani (20120)",
+        "Coordenadas": [
+            43.2663689,
+            -1.9739827
+        ]
+    },
+    {
+        "Tipo": "Salud y Estética",
+        "Nombre Comercio": "Farmacia Marina Gomez",
+        "Direccion": "Kale Nagusia, 14 - Hernani (20120)",
+        "Coordenadas": [
+            43.265736,
+            -1.975286
+        ]
+    },
+    {
+        "Tipo": "Arte y Cultura",
+        "Nombre Comercio": "Fotos Torres",
+        "Direccion": "Atzieta Kalea, 2 - Hernani (20120)",
+        "Coordenadas": [
+            43.2647483,
+            -1.9759114
+        ]
+    },
+    {
+        "Tipo": "Moda y Complementos",
+        "Nombre Comercio": "Franchesca moda",
+        "Direccion": "Nafar Kalea, 21 - Hernani (20120)",
+        "Coordenadas": [
+            43.2664535,
+            -1.9765077
+        ]
+    }
+]

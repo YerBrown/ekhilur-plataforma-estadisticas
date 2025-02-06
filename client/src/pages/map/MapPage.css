@@ -1,0 +1,174 @@
+.map-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    background-color: var(--background-color-principal);
+}
+
+/* Contenedor del mapa */
+.map-container {
+    width: 100%;
+    height: 550px;
+    margin: 0;
+    padding: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--background-color-principal-05);
+}
+
+/* Galería de comercios */
+.gallery {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.gallery h2 {
+    margin-bottom: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--color-letra);
+}
+
+.gallery-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-content: center;
+    padding: 10px;
+}
+
+.gallery-item {
+    background: var(--background-color-principal-05);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.gallery-item h3 {
+    margin: 10px 0 5px;
+    font-size: 20px;
+    color: var(--color-letra);
+}
+
+.gallery-item p {
+    color: var(--color-letra);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px auto;
+    max-width: 400px;
+    background-color: var(--background-color-principal-05);
+    border: 1px solid var(--background-color-principal-05);
+    border-radius: 8px;
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
+}
+
+.filter-container select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid var(--background-color-principal-05);
+    border-radius: 8px;
+    background-color: var(--background-color-principal-05);
+    color: var(--color-letra);
+    transition: border-color 0.3s ease;
+}
+
+.filter-container select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.navigate-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.navigate-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Pantallas grandes (PC) */
+@media screen and (min-width: 1200px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .map-container {
+        height: 500px;
+    }
+}
+
+/* Tablets grandes */
+@media screen and (max-width: 1199px) and (min-width: 900px) {
+    .map-container {
+        height: 400px;
+    }
+
+    .filter-container {
+        max-width: 350px;
+    }
+}
+
+/* Tablets pequeñas */
+@media screen and (max-width: 899px) and (min-width: 600px) {
+    .map-container {
+        height: 300px;
+    }
+
+    .filter-container {
+        max-width: 300px;
+    }
+}
+
+/* Móviles grandes */
+@media screen and (max-width: 599px) and (min-width: 400px) {
+    .map-container {
+        height: 250px;
+    }
+
+    .filter-container {
+        max-width: 280px;
+    }
+}
+
+/* Móviles pequeños */
+@media screen and (max-width: 399px) {
+    .map-container {
+        height: 200px;
+    }
+
+    .filter-container {
+        max-width: 260px;
+    }
+}

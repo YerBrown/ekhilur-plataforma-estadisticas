@@ -4,20 +4,20 @@ import { checkAuthorization } from "../helpers/middleware.js";
 
 const router = Router();
 
+router.get("/user-info", checkAuthorization, apiCalls.getUserInfo);
+router.get("/user-accounts", checkAuthorization, apiCalls.getUserAccounts);
+router.get("/user-transactions", checkAuthorization, apiCalls.getTransactions);
+router.get("/user-transactions-by-month", checkAuthorization, apiCalls.getTransactionsByMonth);
+router.get("/user-transactions-cashbacks-by-month", checkAuthorization, apiCalls.getTransactionsCashbacksByMonth);
 router.get(
-    "/total-transactions",
+    "/total-cashbacks-by-month",
     checkAuthorization,
-    apiCalls.getTotalTransactions
+    apiCalls.getCashbacksIssuedByMonth
 );
 router.get(
-    "/total-cashback-by-month",
+    "/total-cashbacks-by-year",
     checkAuthorization,
-    apiCalls.getCashbackIssuedByMonth
-);
-router.get(
-    "/total-cashback-by-year",
-    checkAuthorization,
-    apiCalls.getCashbackIssuedByYear
+    apiCalls.getCashbacksIssuedByYear
 );
 router.get(
     "/cashback-generated-by-month",
@@ -29,8 +29,11 @@ router.get(
     checkAuthorization,
     apiCalls.getCashbackGeneratedByYear
 );
-
-//////////////
+router.get(
+    "/category-expenses-by-month",
+    checkAuthorization,
+    apiCalls.getCategoryExpensesByMonth
+);
 router.get(
     "/incomes-and-expenses-by-month",
     checkAuthorization,
@@ -41,13 +44,13 @@ router.get(
     checkAuthorization,
     apiCalls.getIncomesAndExpensesByYear
 );
-router.get(
-    "/expenses-category-summary",
-    checkAuthorization,
-    apiCalls.getExpensesSummary
-);
-////////////
 router.get("/sales-by-month", checkAuthorization, apiCalls.getSalesByMonth);
 router.get("/sales-by-year", checkAuthorization, apiCalls.getSalesByYear);
+router.get("/home-data-user", checkAuthorization, apiCalls.getHomeDataForUser);
+router.get(
+    "/home-data-commerce",
+    checkAuthorization,
+    apiCalls.getHomeDataForCommerce
+);
 
 export default router;
