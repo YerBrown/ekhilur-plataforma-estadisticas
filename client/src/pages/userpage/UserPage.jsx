@@ -1,69 +1,107 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import { useLanguage } from "../../contexts/LanguageContext.jsx";
+import { getUserInfo } from "../../api/realData";
 import Layout from "../layout/Layout";
+import { Eye, EyeOff } from "lucide-react";
 import "./UserPage.css";
 
 const UserPage = () => {
-    // Datos falsos para simular la información enviada por la aplicación
-    const userData = {
-        username: "ilandatxe",
-        phone: "+34612345678",
-        email: "ilandatxe@example.com",
-        address: "Calle Falsa 123, Madrid, España",
-        birthdate: "1990-01-01",
-        ocupacion: "Desarrollador Web",
-        iban: "ES9121000418450200051332",
-        socialCapital: "5000 €",
+    const { t } = useLanguage();
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [apiData, setApiData] = useState([]);
+    const [showIban, setShowIban] = useState(false);
+    const [showPhone, setShowPhone] = useState(false);
+    const [showAddress, setShowAddress] = useState(false);
+
+    const loadApiData = async () => {
+        setIsLoading(true);
+        setError(null);
+        try {
+            const data = await getUserInfo();
+            setApiData(data);
+        } catch (error) {
+            console.error("Error al cargar datos:", error);
+            setError("No se pudieron cargar los datos. Por favor, intente más tarde.");
+        } finally {
+            setIsLoading(false);
+        }
     };
 
+    useEffect(() => {
+        loadApiData();
+    }, []);
+
     return (
-        <>
-            <Layout title="Perfil de usuario">
+        <Layout title={t.profileTitle}>
+            {error && <div className="error-message">{error}</div>}
+
+            {isLoading ? (
+                <div className="loading-message">Cargando datos...</div>
+            ) : (
                 <div className="user-profile-container">
-                    <h1>Perfil de Usuario</h1>
+                    <div className="user-profile-header">
+                        <img src="/logo_uno.png" alt="Foto de perfil" />
+                    </div>
                     <div className="user-profile-info">
                         <div className="info-group">
-                            <span className="info-label">Nombre de usuario:</span>
-                            <span className="info-value">{userData.username}</span>
+                            <span className="info-label">{t.username}:</span>
+                            <span className="info-value">{apiData.nombre_usuario}</span>
                         </div>
 
                         <div className="info-group">
-                            <span className="info-label">Teléfono:</span>
-                            <span className="info-value">{userData.phone}</span>
+                            <span className="info-label">{t.phone}:</span>
+                            <span className="info-value">
+                                {showPhone ? apiData.telefono : `${apiData.telefono?.slice(0, 3)}*** *** ***`}
+                            </span>
+                            <button onClick={() => setShowPhone(!showPhone)} className="toggle-button">
+                                {showPhone ? <EyeOff size={16} /> : <Eye size={16} />}
+                            </button>
                         </div>
 
                         <div className="info-group">
-                            <span className="info-label">Email:</span>
-                            <span className="info-value">{userData.email}</span>
+                            <span className="info-label">{t.email}:</span>
+                            <span className="info-value">{apiData.email}</span>
                         </div>
 
                         <div className="info-group">
-                            <span className="info-label">Dirección:</span>
-                            <span className="info-value">{userData.address}</span>
+                            <span className="info-label">{t.address}:</span>
+                            <span className="info-value">
+                                {showAddress ? apiData.direccion : `***************${apiData.direccion?.slice(15)}`}
+                            </span>
+                            <button onClick={() => setShowAddress(!showAddress)} className="toggle-button">
+                                {showAddress ? <EyeOff size={16} /> : <Eye size={16} />}
+                            </button>
                         </div>
 
                         <div className="info-group">
-                            <span className="info-label">Fecha de Nacimiento:</span>
-                            <span className="info-value">{userData.birthdate}</span>
+                            <span className="info-label">{t.birthdate}:</span>
+                            <span className="info-value">{apiData.fecha_nacimiento}</span>
                         </div>
 
                         <div className="info-group">
-                            <span className="info-label">Ocupación:</span>
-                            <span className="info-value">{userData.ocupacion}</span>
+                            <span className="info-label">{t.job}:</span>
+                            <span className="info-value">{apiData.ocupacion}</span>
                         </div>
 
                         <div className="info-group">
-                            <span className="info-label">IBAN:</span>
-                            <span className="info-value">{userData.iban}</span>
+                            <span className="info-label">{t.iban}:</span>
+                            <span className="info-value">
+                                {showIban ? apiData.iban : `${apiData.iban?.slice(0, 3)}****************`}
+                            </span>
+                            <button onClick={() => setShowIban(!showIban)} className="toggle-button">
+                                {showIban ? <EyeOff size={16} /> : <Eye size={16} />}
+                            </button>
                         </div>
 
                         <div className="info-group">
-                            <span className="info-label">Capital social abonado:</span>
-                            <span className="info-value">{userData.socialCapital}</span>
+                            <span className="info-label">{t.capital}:</span>
+                            <span className="info-value">{apiData.capital_social_abonado === "Sí" ? t.yes : t.no}</span>
                         </div>
                     </div>
                 </div>
-            </Layout>
-        </>
+            )}
+        </Layout>
     );
 };
 

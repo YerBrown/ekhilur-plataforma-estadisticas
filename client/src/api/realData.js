@@ -1,6 +1,6 @@
 import { apiRequest } from "./apiRequest.js";
 
-async function getUserInfo () {
+async function getUserInfo() {
     try {
         const response = await apiRequest("/api/user-info", "GET");
         console.log("Respuesta obtenida de la API externa:", response);
@@ -9,9 +9,9 @@ async function getUserInfo () {
         console.error("Error al obtener los datos:", error);
         throw new Error("Error al obtener los datos");
     }
-};
+}
 
-async function getUserAccounts () {
+async function getUserAccounts() {
     try {
         const response = await apiRequest("/api/user-accounts", "GET");
         console.log("Respuesta obtenida de la API externa:", response);
@@ -20,51 +20,63 @@ async function getUserAccounts () {
         console.error("Error al obtener los datos:", error);
         throw new Error("Error al obtener los datos");
     }
-};
+}
 
-async function getCashbacksByMonth () {
+async function getCashbacksByMonth() {
     try {
-        const response = await apiRequest("/api/total-cashbacks-by-month", "GET");
+        const response = await apiRequest(
+            "/api/total-cashbacks-by-month",
+            "GET"
+        );
         console.log("Respuesta obtenida de la API externa:", response);
         return response;
     } catch (error) {
         console.error("Error al obtener los datos:", error);
         throw new Error("Error al obtener los datos");
     }
-};
-async function getCashbacksByYear () {
+}
+async function getCashbacksByYear() {
     try {
-        const response = await apiRequest("/api/total-cashbacks-by-year", "GET");
+        const response = await apiRequest(
+            "/api/total-cashbacks-by-year",
+            "GET"
+        );
         console.log("Respuesta obtenida de la API externa:", response);
         return response;
     } catch (error) {
         console.error("Error al obtener los datos:", error);
         throw new Error("Error al obtener los datos");
     }
-};
+}
 
-async function getCashbackGeneratedByMonth () {
+async function getCashbackGeneratedByMonth() {
     try {
-        const response = await apiRequest("/api/cashback-generated-by-month", "GET");
+        const response = await apiRequest(
+            "/api/cashback-generated-by-month",
+            "GET"
+        );
         console.log("Respuesta obtenida de la API externa:", response);
         return response;
     } catch (error) {
         console.error("Error al obtener los datos:", error);
         throw new Error("Error al obtener los datos");
     }
-};
-async function getCashbackGeneratedByYear () {
+}
+async function getCashbackGeneratedByYear() {
     try {
-        const response = await apiRequest("/api/cashback-generated-by-year", "GET");
+        const response = await apiRequest(
+            "/api/cashback-generated-by-year",
+            "GET"
+        );
         console.log("Respuesta obtenida de la API externa:", response);
         return response;
     } catch (error) {
         console.error("Error al obtener los datos:", error);
         throw new Error("Error al obtener los datos");
     }
-};
+}
 
-async function getCategoryExpensesByMonth (mes = "", año = "") {
+async function getCategoryExpensesByMonth(mes = "", año = "") {
     try {
         const queryParams = new URLSearchParams();
         if (mes) {
@@ -73,38 +85,48 @@ async function getCategoryExpensesByMonth (mes = "", año = "") {
         if (año) {
             queryParams.append("año", año);
         }
-        const response = await apiRequest(`/api/category-expenses-by-month?${queryParams.toString()}`, "GET");
+        const response = await apiRequest(
+            `/api/category-expenses-by-month?mes=${mes
+                .toString()
+                .padStart(2, "0")}&año=${año}`,
+            "GET"
+        );
         console.log("Respuesta obtenida de la API externa:", response);
         return response;
     } catch (error) {
         console.error("Error al obtener los datos:", error);
         throw new Error("Error al obtener los datos");
     }
-};
+}
 
-async function getIncomesAndExpensesByMonth () {
+async function getIncomesAndExpensesByMonth() {
     try {
-        const response = await apiRequest("/api/incomes-and-expenses-by-month", "GET");
+        const response = await apiRequest(
+            "/api/incomes-and-expenses-by-month",
+            "GET"
+        );
         console.log("Respuesta obtenida de la API externa:", response);
         return response;
     } catch (error) {
         console.error("Error al obtener los datos:", error);
         throw new Error("Error al obtener los datos");
     }
-};
-async function getIncomesAndExpensesByYear () {
+}
+async function getIncomesAndExpensesByYear() {
     try {
-        const response = await apiRequest("/api/incomes-and-expenses-by-year", "GET");
+        const response = await apiRequest(
+            "/api/incomes-and-expenses-by-year",
+            "GET"
+        );
         console.log("Respuesta obtenida de la API externa:", response);
         return response;
     } catch (error) {
         console.error("Error al obtener los datos:", error);
         throw new Error("Error al obtener los datos");
     }
-};
+}
 
-
-async function getSalesByMonth () {
+async function getSalesByMonth() {
     try {
         const response = await apiRequest("/api/sales-by-month", "GET");
         console.log("Respuesta obtenida de la API externa:", response);
@@ -113,9 +135,9 @@ async function getSalesByMonth () {
         console.error("Error al obtener los datos:", error);
         throw new Error("Error al obtener los datos");
     }
-};
+}
 
-async function getSalesByYear () {
+async function getSalesByYear() {
     try {
         const response = await apiRequest("/api/sales-by-year", "GET");
         console.log("Respuesta obtenida de la API externa:", response);
@@ -124,9 +146,28 @@ async function getSalesByYear () {
         console.error("Error al obtener los datos:", error);
         throw new Error("Error al obtener los datos");
     }
-};
+}
 
-
+async function getUserHomeData() {
+    try {
+        const response = await apiRequest("api/home-data-user", "GET");
+        console.log("Respuesta obtenida de la API externa:", response);
+        return response;
+    } catch (error) {
+        console.error("Error al obtener los datos:", error);
+        throw new Error("Error al obtener los datos");
+    }
+}
+async function getCommerceHomeData() {
+    try {
+        const response = await apiRequest("api/home-data-commerce", "GET");
+        console.log("Respuesta obtenida de la API externa:", response);
+        return response;
+    } catch (error) {
+        console.error("Error al obtener los datos:", error);
+        throw new Error("Error al obtener los datos");
+    }
+}
 export {
     getUserInfo,
     getUserAccounts,
@@ -138,5 +179,7 @@ export {
     getIncomesAndExpensesByMonth,
     getIncomesAndExpensesByYear,
     getSalesByMonth,
-    getSalesByYear
+    getSalesByYear,
+    getUserHomeData,
+    getCommerceHomeData,
 };

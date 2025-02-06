@@ -37,10 +37,14 @@ const completarMesesFaltantesBonificacionesEmitidas = (
         (a, b) => a.año - b.año || a.mes - b.mes
     );
 };
-const completarAñosFaltantesBonificacionesEmitidas = (data, anioInicio, anioFin) => {
+const completarAñosFaltantesBonificacionesEmitidas = (
+    data,
+    anioInicio,
+    anioFin
+) => {
     // Filtrar objetos con año null y convertir a conjunto para verificar años existentes
-    const dataFiltrada = data.filter(item => item.año !== null);
-    const añosExistentes = new Set(dataFiltrada.map(item => item.año));
+    const dataFiltrada = data.filter((item) => item.año !== null);
+    const añosExistentes = new Set(dataFiltrada.map((item) => item.año));
 
     const añosCompletos = [];
 
@@ -275,16 +279,21 @@ const completarMesesGastosCategoria = (data, anioInicio, anioFin) => {
 
     const gastosCompletos = [];
 
-    const categoriasUnicas = [...new Set(datosFiltrados.map(item => item.categoria))];
+    const categoriasUnicas = [
+        ...new Set(datosFiltrados.map((item) => item.categoria)),
+    ];
 
     for (let año = anioInicio; año <= anioFin; año++) {
         for (let mes = 1; mes <= 12; mes++) {
             const mesStr = mes.toString().padStart(2, "0"); // Formato "01", "02", etc.
 
-            categoriasUnicas.forEach(categoria => {
+            categoriasUnicas.forEach((categoria) => {
                 // Buscar si el mes y la categoría ya existen en los datos
                 const existe = datosFiltrados.find(
-                    item => item.año === año.toString() && item.mes === mesStr && item.categoria === categoria
+                    (item) =>
+                        item.año === año.toString() &&
+                        item.mes === mesStr &&
+                        item.categoria === categoria
                 );
 
                 if (existe) {
@@ -297,22 +306,19 @@ const completarMesesGastosCategoria = (data, anioInicio, anioFin) => {
                         categoria: categoria, // Mantener la categoría
                         gasto: 0, // Se mantiene en 0 si no hay datos
                     });
-            }
-        });
+                }
+            });
         }
     }
 
     return gastosCompletos.sort((a, b) => a.año - b.año || a.mes - b.mes);
 };
 
-
-
-
 // USER
 async function getUserInfo(req, res) {
     try {
         const response = await apiRequest(
-            `/profile/refresh/${req.user.username}`,
+            `/profile/${req.user.username}`,
             "GET"
         );
         res.status(200).json(response.data);
@@ -324,7 +330,7 @@ async function getUserInfo(req, res) {
 async function getUserAccounts(req, res) {
     try {
         const response = await apiRequest(
-            `/cuentas/refresh/${req.user.username}`,
+            `/cuentas/${req.user.username}`,
             "GET"
         );
         res.status(200).json(response.data);
@@ -333,7 +339,6 @@ async function getUserAccounts(req, res) {
         res.status(500).json({ error: "Error al obtener las cuentas" });
     }
 }
-
 
 // CASHBACK
 async function getCashbacksIssuedByMonth(req, res) {
@@ -382,11 +387,10 @@ async function getCashbackGeneratedByMonth(req, res) {
             response,
             2022,
             2025
-        )
-            .map(item => ({
-                ...item,
-                bonificaciones: parseFloat(item.bonificaciones.toFixed(2)),
-            }));
+        ).map((item) => ({
+            ...item,
+            bonificaciones: parseFloat(item.bonificaciones.toFixed(2)),
+        }));
         res.status(200).json(mesesCompletos);
     } catch (error) {
         console.error("Error al obtener el cashback:", error);
@@ -403,11 +407,10 @@ async function getCashbackGeneratedByYear(req, res) {
             response,
             2022,
             2025
-        )
-            .map(item => ({
-                ...item,
-                bonificaciones: parseFloat(item.bonificaciones.toFixed(2)),
-            }));
+        ).map((item) => ({
+            ...item,
+            bonificaciones: parseFloat(item.bonificaciones.toFixed(2)),
+        }));
         res.status(200).json(bonificacionesAnuales);
     } catch (error) {
         console.error("Error al obtener el cashback:", error);
@@ -427,14 +430,16 @@ async function getCategoryExpensesByMonth(req, res) {
             response,
             2022,
             2025
-        )
+        );
         const filteredResponse = goodResponse.filter(
-            item => (!mes ||item.mes === mes) && (!año || item.año === año)
-        )
+            (item) => (!mes || item.mes === mes) && (!año || item.año === año)
+        );
         res.status(200).json(filteredResponse);
     } catch (error) {
         console.error("Error al obtener los gastos por categoria:", error);
-        res.status(500).json({ error: "Error al obtener los gastos por categoria" });
+        res.status(500).json({
+            error: "Error al obtener los gastos por categoria",
+        });
     }
 }
 
@@ -449,12 +454,11 @@ async function getIncomesAndExpensesByMonth(req, res) {
             response,
             2022,
             2025
-        )
-            .map(item => ({
-                ...item,
-                ingresos: parseFloat(item.ingresos.toFixed(2)),
-                gastos: parseFloat(item.gastos.toFixed(2)),
-            }));
+        ).map((item) => ({
+            ...item,
+            ingresos: parseFloat(item.ingresos.toFixed(2)),
+            gastos: parseFloat(item.gastos.toFixed(2)),
+        }));
         res.status(200).json(datosMensuales);
     } catch (error) {
         console.error("Error al obtener el gasto e ingreso:", error);
@@ -471,19 +475,17 @@ async function getIncomesAndExpensesByYear(req, res) {
             response,
             2022,
             2025
-        )
-            .map(item => ({
-                ...item,
-                ingresos: parseFloat(item.ingresos.toFixed(2)),
-                gastos: parseFloat(item.gastos.toFixed(2)),
-            }));
+        ).map((item) => ({
+            ...item,
+            ingresos: parseFloat(item.ingresos.toFixed(2)),
+            gastos: parseFloat(item.gastos.toFixed(2)),
+        }));
         res.status(200).json(datosAnuales);
     } catch (error) {
         console.error("Error al obtener el cashback:", error);
         res.status(500).json({ error: "Error al obtener el cashback" });
     }
 }
-
 
 // VENTAS
 async function getSalesByMonth(req, res) {
@@ -492,11 +494,7 @@ async function getSalesByMonth(req, res) {
             `/ventas/${req.user.username}`,
             "GET"
         );
-        const goodResponse = completarMesesVentas(
-            response,
-            2022,
-            2025
-        )
+        const goodResponse = completarMesesVentas(response, 2022, 2025);
         res.status(200).json(goodResponse);
     } catch (error) {
         console.error("Error al obtener las ventas:", error);
@@ -509,11 +507,7 @@ async function getSalesByYear(req, res) {
             `/ventas/${req.user.username}`,
             "GET"
         );
-        const goodResponse = completarVentasPorAño(
-            response,
-            2022,
-            2025
-        )
+        const goodResponse = completarVentasPorAño(response, 2022, 2025);
         res.status(200).json(goodResponse);
     } catch (error) {
         console.error("Error al obtener las ventas:", error);
@@ -521,6 +515,74 @@ async function getSalesByYear(req, res) {
     }
 }
 
+async function getHomeDataForUser(req, res) {
+    try {
+        const [wallet, bonificaciones, gastosIngresos] = await Promise.all([
+            apiRequest(`/cuentas/${req.user.username}`, "GET"),
+            apiRequest(
+                `/cashback_generado_total_mes_año/${req.user.username}`,
+                "GET"
+            ),
+            apiRequest(`/ingresos_gastos/${req.user.username}`, "GET"),
+        ]);
+        const fullDataObject = { wallet, bonificaciones, gastosIngresos };
+        fullDataObject.bonificaciones = completarMesesBonificaciones(
+            fullDataObject.bonificaciones,
+            2022,
+            2025
+        );
+        fullDataObject.gastosIngresos = completarMesesGastosIngresos(
+            fullDataObject.gastosIngresos,
+            2022,
+            2025
+        );
+        res.status(200).json(fullDataObject);
+    } catch (error) {
+        console.error("Error al obtener los datos de home:", error);
+        res.status(500).json({ error: "Error al obtener los datos de home" });
+    }
+}
+
+async function getHomeDataForCommerce(req, res) {
+    try {
+        const [wallet, bonificaciones, gastosIngresos, ventas] =
+            await Promise.all([
+                apiRequest(`/cuentas/${req.user.username}`, "GET"),
+                apiRequest(
+                    `/cashback_emitido_mes_año/${req.user.username}`,
+                    "GET"
+                ),
+                apiRequest(`/ingresos_gastos/${req.user.username}`, "GET"),
+                apiRequest(`/ventas/${req.user.username}`, "GET"),
+            ]);
+        const fullDataObject = {
+            wallet,
+            bonificaciones,
+            gastosIngresos,
+            ventas,
+        };
+        fullDataObject.bonificaciones =
+            completarMesesFaltantesBonificacionesEmitidas(
+                fullDataObject.bonificaciones,
+                2022,
+                2025
+            );
+        fullDataObject.gastosIngresos = completarMesesGastosIngresos(
+            fullDataObject.gastosIngresos,
+            2022,
+            2025
+        );
+        fullDataObject.ventas = completarMesesVentas(
+            fullDataObject.ventas,
+            2022,
+            2025
+        );
+        res.status(200).json(fullDataObject);
+    } catch (error) {
+        console.error("Error al obtener los datos de home:", error);
+        res.status(500).json({ error: "Error al obtener los datos de home" });
+    }
+}
 
 export default {
     getUserInfo,
@@ -534,4 +596,6 @@ export default {
     getIncomesAndExpensesByYear,
     getSalesByYear,
     getSalesByMonth,
+    getHomeDataForUser,
+    getHomeDataForCommerce,
 };
