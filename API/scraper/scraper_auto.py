@@ -176,7 +176,7 @@ class AutoScraper:
             
             if script.string:
                 if any(term in script.string.lower() for term in 
-                   ['datatable', 'datatables', 'table.data']):
+                    ['datatable', 'datatables', 'table.data']):
                     results["table_configurations"].append(script.string[:500])
         
         print(f"✓ Encontrados {len(results['datatable_scripts'])} scripts de DataTable")
