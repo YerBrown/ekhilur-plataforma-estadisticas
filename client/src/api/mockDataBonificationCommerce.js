@@ -3,8 +3,6 @@ const mockData = [
         "fecha": "2024-12-09",
         "mes": "12",
         "año": "2024",
-        "mes": "05",
-        "año": "2022",
         "hora": "11:11",
         "movimiento": "Pago a usuario",
         "cantidad": "15,00",

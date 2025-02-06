@@ -6,7 +6,7 @@ import GraficoLibrerias from "../../components/charts/BarChartNew";
 import DateFilter from "../../components/DateFilter/DateFilter";
 import { getCashbackGeneratedByMonth } from "../../api/realData";
 import TransactionList from "../../components/transactions-list/TransactionsList";
-import mockData from "../../components/transactions-list/mockData.js";
+import mockData from "../../api/mockDataUser.js";
 
 const UserBonifications = () => {
     const { t } = useLanguage();
@@ -31,6 +31,22 @@ const UserBonifications = () => {
         { año: "2024", mes: "03", valor: 300, otroValor: 270 },
     ]);
     const [filteredTransactions, setFilteredTransactions] = useState(mockData);
+    
+    useEffect(() => {
+        // Filtrar las transacciones basadas en el periodo seleccionado
+        const filteredData = mockData.filter((transaction) => {
+            const transactionYear = parseInt(transaction.año, 10);
+            const transactionMonth = parseInt(transaction.mes, 10);
+
+            return (
+                transactionYear === selectedPeriod.year &&
+                transactionMonth === selectedPeriod.month + 1
+            );
+        });
+
+        setFilteredTransactions(filteredData);
+    }, [selectedPeriod]);
+
     const loadApiData = async () => {
         setIsLoading(true);
         setError(null);
@@ -125,7 +141,7 @@ const UserBonifications = () => {
                                 showFilters={true}
                             />
                         </div>
-                        <TransactionList transactions={mockData} />
+                        <TransactionList transactions={filteredTransactions} />
                     </>
                 )}
             </div>
