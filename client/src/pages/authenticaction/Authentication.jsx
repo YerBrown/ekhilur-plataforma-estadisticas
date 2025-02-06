@@ -19,19 +19,28 @@ const Authentication = () => {
         }, 200);
     };
 
+
     return (
-        <main>
-            <div
-                className={`auth-window ${isLogin ? "login" : "register"} ${
+        <main className="login-page">
+            {/* En móvil solo se ve la sección del formulario */}
+            {/* En desktop se ven ambas secciones lado a lado */}
+            <div className="login-container">
+                <div className="login-image-section">
+                    {/* Logo grande en la sección izquierda (solo visible en desktop) */}
+                    <h2 className="logo-login">ekhidata</h2>
+                </div>
+                
+                <div className={`auth-window ${isLogin ? "login" : "register"} ${
                     animating ? "fade-out" : "fade-in"
-                }`}
-            >
-                <header>
-                    <h3>{isLogin ? "Iniciar Sesión" : "Registrarse"}</h3>
-                </header>
-                <div className={"form-container"}>
-                    {isLogin ? <LoginForm /> : <RegisterForm />}
-                  
+                }`}>
+                    {/* Logo que se ve en móvil (se oculta en desktop) */}
+                    <header className="mobile-header">
+                        <h2 className="logo-login">ekhidata</h2>
+                    </header>
+
+                    <div className="form-container">
+                        {isLogin ? <LoginForm /> : <RegisterForm />}
+                    </div>
                 </div>
             </div>
         </main>

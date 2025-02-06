@@ -4,7 +4,7 @@ import { useLanguage } from "../../contexts/LanguageContext.jsx";
 import { GoPlusCircle } from "react-icons/go";
 import DonutChart from "../../components/charts/DonutChart";
 import ProfileAvatar from "../../components/ProfileAvatar";
-import GraficoLibrerias from "../../components/charts/BarChartNew.jsx";
+import GraficoLibrerias from "../../components/charts/BarChartNew";
 import TransactionList from "../../components/transactions-list/TransactionsList";
 import mockData from "../../components/transactions-list/mockData.js";
 import { getUserHomeData, getCommerceHomeData } from "../../api/realData.js";
@@ -63,7 +63,7 @@ const Home = () => {
     );
     const walletLabels = filteredData.map((item) => item.tipo);
     const walletValues = filteredData.map((item) => item.saldo);
-    const walletColors = ["#FF6384", "#36A2EB", "#FFCE56", "#36A2EB"];
+    const walletColors = [ "#0047ba","#FF9012"];
     const legendData = walletLabels.map((label, index) => ({
         label,
         value: walletValues[index],
@@ -181,7 +181,7 @@ const Home = () => {
                 </div>
                 {user?.role === "user" && (
                     <div className="bonifications-section">
-                        <button className="square-button" onClick={() => handleNavigate("/bonifications")}>
+                        <button className="square-button-bonifications" onClick={() => handleNavigate("/bonifications")}>
                             <div className="info">
                                 <h3>{t.bonificationTitle}</h3>
                                 <p>{previousMonth}-{previousYear}</p>
@@ -191,7 +191,7 @@ const Home = () => {
                                 <h4>{previousBonus.toFixed(2).replace(".", ",")}</h4>
                             </div>
                         </button>
-                        <button className="square-button" onClick={() => handleNavigate("/bonifications")}>
+                        <button className="square-button-bonifications" onClick={() => handleNavigate("/bonifications")}>
                             <div className="info">
                                 <h3>{t.bonificationTitle}</h3>
                                 <p>{currentMonth}-{currentYear}</p>
@@ -205,7 +205,7 @@ const Home = () => {
                 )}
                 {user?.role === "commerce" && (
                     <div className="sales-section">
-                        <button className="square-button" onClick={() => handleNavigate("/sales")}>
+                        <button className="square-button-sales" onClick={() => handleNavigate("/sales")}>
                             <div className="info">
                                 <h3>{t.salesTitle}</h3>
                                 <p>{previousMonth}-{previousYear}</p>
@@ -215,7 +215,7 @@ const Home = () => {
                                 <h4>{previousSales.toFixed(2).replace(".", ",")}</h4>
                             </div>
                         </button>
-                        <button className="square-button" onClick={() => handleNavigate("/sales")}>
+                        <button className="square-button-sales" onClick={() => handleNavigate("/sales")}>
                             <div className="info">
                                 <h3>{t.salesTitle}</h3>
                                 <p>{currentMonth}-{currentYear}</p>
@@ -229,7 +229,7 @@ const Home = () => {
                 )}
                 {user?.role === "commerce" && (
                     <div className="bonifications-section">
-                        <button className="square-button" onClick={() => handleNavigate("/bonifications-shop")}>
+                        <button className="square-button-bonifications" onClick={() => handleNavigate("/bonifications-shop")}>
                             <div className="info">
                                 <h3>{t.bonificationTitle} {t.emmited}</h3>
                             </div>
@@ -238,7 +238,7 @@ const Home = () => {
                                 <h4>{emmitedShopBonus.toFixed(2).replace(".", ",")}</h4>
                             </div>
                         </button>
-                        <button className="square-button" onClick={() => handleNavigate("/bonifications-shop")}>
+                        <button className="square-button-bonifications" onClick={() => handleNavigate("/bonifications-shop")}>
                             <div className="info">
                                 <h3>{t.bonificationTitle} {t.received}</h3>
                             </div>
@@ -250,7 +250,7 @@ const Home = () => {
                     </div>
                 )}
                 <div className="statistics-section">
-                    <button className="square-button" onClick={() => handleNavigate("/statistics")}>
+                    <button className="square-button-statistics" onClick={() => handleNavigate("/statistics")}>
                         <div className="info">
                             <h3>{t.incomes}</h3>
                         </div>
@@ -259,7 +259,7 @@ const Home = () => {
                             <h4>{income.toFixed(2).replace(".", ",").replace(".", ",")}</h4>
                         </div>
                     </button>
-                    <button className="square-button" onClick={() => handleNavigate("/statistics")}>
+                    <button className="square-button-statistics" onClick={() => handleNavigate("/statistics")}>
                         <div className="info">
                             <h3>{t.expenses}</h3>
                         </div>
