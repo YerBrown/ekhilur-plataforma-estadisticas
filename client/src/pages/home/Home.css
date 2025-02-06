@@ -79,7 +79,7 @@
     left: 10px;
     top: 10px;
     height: 100%;
-    color: #FF9012
+    color: var(--color-letra);
 }
 
 .bonifications-section,
