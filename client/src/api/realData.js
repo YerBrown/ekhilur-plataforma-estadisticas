@@ -1,5 +1,62 @@
 import { apiRequest } from "./apiRequest.js";
 
+async function getTransactions() {
+    try {
+        const response = await apiRequest("/api/user-transactions", "GET");
+        console.log("Respuesta obtenida de la API externa:", response);
+        return response;
+    } catch (error) {
+        console.error("Error al obtener los datos:", error);
+        throw new Error("Error al obtener los datos");
+    }
+}
+
+async function getTransactionsByMonth(mes = "", año = "") {
+    try {
+        const queryParams = new URLSearchParams();
+        if (mes) {
+            queryParams.append("mes", mes);
+        }
+        if (año) {
+            queryParams.append("año", año);
+        }
+        const response = await apiRequest(
+            `/api/user-transactions-by-month?mes=${mes
+                .toString()
+                .padStart(2, "0")}&año=${año}`,
+            "GET"
+        );
+        console.log("Respuesta obtenida de la API externa:", response);
+        return response;
+    } catch (error) {
+        console.error("Error al obtener los datos:", error);
+        throw new Error("Error al obtener los datos");
+    }
+}
+
+async function getTransactionsCashbacksByMonth(mes = "", año = "") {
+    try {
+        const queryParams = new URLSearchParams();
+        if (mes) {
+            queryParams.append("mes", mes);
+        }
+        if (año) {
+            queryParams.append("año", año);
+        }
+        const response = await apiRequest(
+            `/api/user-transactions-cashbacks-by-month?mes=${mes
+                .toString()
+                .padStart(2, "0")}&año=${año}`,
+            "GET"
+        );
+        console.log("Respuesta obtenida de la API externa:", response);
+        return response;
+    } catch (error) {
+        console.error("Error al obtener los datos:", error);
+        throw new Error("Error al obtener los datos");
+    }
+}
+
 async function getUserInfo() {
     try {
         const response = await apiRequest("/api/user-info", "GET");
@@ -169,6 +226,9 @@ async function getCommerceHomeData() {
     }
 }
 export {
+    getTransactions,
+    getTransactionsByMonth,
+    getTransactionsCashbacksByMonth,
     getUserInfo,
     getUserAccounts,
     getCashbacksByMonth,
