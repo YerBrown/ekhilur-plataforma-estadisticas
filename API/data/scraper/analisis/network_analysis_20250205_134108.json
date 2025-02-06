@@ -1,0 +1,8 @@
+{
+    "ajax_requests": [],
+    "data_urls": [
+        "/includes/acciones_ses.php?a=keep_alive",
+        "/includes/acciones_ses.php?a=ses_status"
+    ],
+    "api_endpoints": []
+}

@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import json
 from datetime import datetime
 import os
+import re
 
 class EkhilurScraper:
     def __init__(self):
@@ -48,7 +49,7 @@ class EkhilurScraper:
             print(f"Error en login: {str(e)}")
             return False
 
-    def get_profile_data(self):
+    def get_perfil_data(self):
         """
         Obtiene los datos del perfil
         """
@@ -78,22 +79,43 @@ class EkhilurScraper:
                     if email_div and email_div.find_next('dd'):
                         profile_data['email'] = email_div.find_next('dd').text.strip()
 
-                    # Dirección - con formato especial
+                    # Dirección - Implementación mejorada
                     dir_div = main_container.find('dt', string=lambda x: x and 'Dirección' in x)
                     if dir_div and dir_div.find_next('dd'):
                         direccion_completa = dir_div.find_next('dd').text.strip()
                         
-                        # Separar la dirección en sus componentes
-                        partes = direccion_completa.split('Zarautz')
-                        if len(partes) > 0:
-                            calle = partes[0].strip()
-                            profile_data['direccion'] = {
-                                'calle': calle,
-                                'municipio': 'Zarautz',
-                                'cp': '20800'
-                            }
+                        # Primero intentamos separar por guión
+                        partes = direccion_completa.split('-')
+                        primera_parte = partes[0].strip()
+                        
+                        # Buscar el código postal (5 dígitos)
+                        cp_match = re.search(r'(\d{5})', direccion_completa)
+                        cp = cp_match.group(1) if cp_match else ""
+                        
+                        # Si encontramos CP, usamos eso como punto de referencia
+                        if cp_match:
+                            # Todo lo que está antes del CP (excluyendo números al final)
+                            calle = re.sub(r'\s*\d+\s*$', '', primera_parte).strip()
+                            
+                            # El municipio está después del CP o en la segunda parte
+                            if len(partes) > 1:
+                                municipio = partes[1].strip()
+                            else:
+                                # Intentar extraer el municipio de la primera parte
+                                municipio_match = re.search(r'([A-Za-z]+)\s*' + cp, primera_parte)
+                                municipio = municipio_match.group(1) if municipio_match else ""
                         else:
-                            profile_data['direccion'] = direccion_completa
+                            # Si no hay CP, intentamos separar por espacios
+                            partes_espacio = primera_parte.split()
+                            calle = ' '.join(partes_espacio[:-2]) if len(partes_espacio) > 2 else primera_parte
+                            municipio = partes_espacio[-2] if len(partes_espacio) > 2 else ""
+                            cp = partes_espacio[-1] if len(partes_espacio) > 2 and partes_espacio[-1].isdigit() else ""
+                        
+                        profile_data['direccion'] = {
+                            'calle': calle,
+                            'municipio': municipio,
+                            'cp': cp
+                        }
 
                     # Fecha Nacimiento
                     fecha_div = main_container.find('dt', string=lambda x: x and 'Fecha Nacimiento' in x)
@@ -176,7 +198,7 @@ def scrape_user(scraper, username, credentials):
     if scraper.login(creds["username"], creds["password"]):
         print("✓ Login exitoso")
         
-        profile_data = scraper.get_profile_data()
+        profile_data = scraper.get_perfil_data()
         if profile_data:
             print("✓ Datos obtenidos correctamente")
             filepath = scraper.save_results(profile_data, username)

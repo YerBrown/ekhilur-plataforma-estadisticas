@@ -1,0 +1,81 @@
+PREGUNTAS FRECUENTES SOBRE EL WEB SCRAPING EN EKHILUR
+===================================================
+
+1. ¿Por qué elegisteis hacer web scraping en lugar de usar una API?
+----------------------------------------------------------------
+- Ekhilur no proporciona una API pública para acceder a los datos
+- El web scraping nos permite obtener datos en tiempo real
+- Podemos automatizar la extracción de datos de manera eficiente
+- Es una solución flexible que se adapta a nuestras necesidades específicas
+
+2. ¿Por qué usasteis Playwright en lugar de otras herramientas como Selenium?
+--------------------------------------------------------------------------
+- Playwright es más moderno y tiene mejor rendimiento
+- Maneja mejor el contenido dinámico y JavaScript
+- Tiene mejor soporte para la automatización de navegadores modernos
+- Es más estable y requiere menos mantenimiento
+- Permite manejar múltiples pestañas y contextos de manera eficiente
+
+3. ¿Cómo manejáis la seguridad de las credenciales?
+-------------------------------------------------
+- Las credenciales están cifradas usando la biblioteca cryptography
+- Utilizamos el algoritmo Fernet para el cifrado/descifrado
+- Las credenciales solo se descifran en memoria cuando son necesarias
+- Implementamos un sistema de backup automático de los datos
+- Los datos sensibles nunca se almacenan en texto plano
+
+4. ¿Cómo gestionáis los errores y la fiabilidad del scraping?
+-----------------------------------------------------------
+- Sistema de logs detallado para monitorear el proceso
+- Manejo de excepciones en cada paso del proceso
+- Reintentos automáticos en caso de fallos
+- Verificación de datos extraídos
+- Sistema de backup antes de sobrescribir datos
+
+5. ¿Cómo habéis estructurado el código del scraper?
+-------------------------------------------------
+- Arquitectura modular con separación clara de responsabilidades
+- Clase AutoScraper para la lógica principal de scraping
+- Endpoints separados para diferentes funcionalidades
+- Sistema de logging para monitorización
+- Configuración flexible mediante variables de entorno
+
+6. ¿Cómo manejáis la actualización de datos?
+------------------------------------------
+- Extracción programada diaria
+- Sistema de versionado de datos
+- Backup automático antes de cada actualización
+- Verificación de integridad de datos
+- Logs detallados de cada actualización
+
+7. ¿Qué desafíos técnicos encontrasteis y cómo los resolvisteis?
+--------------------------------------------------------------
+- Manejo de contenido dinámico → Resuelto con Playwright
+- Autenticación → Sistema robusto de login con manejo de sesiones
+- Rendimiento → Optimización de consultas y paralelización
+- Fiabilidad → Sistema de logs y reintentos
+- Seguridad → Cifrado de credenciales y datos sensibles
+
+8. ¿Cómo se integra el scraper con el resto de la aplicación?
+----------------------------------------------------------
+- Endpoints REST para acceder a los datos
+- Sistema de caché para optimizar rendimiento
+- Integración con el sistema de análisis de datos
+- Arquitectura modular que permite fácil mantenimiento
+- Documentación clara de la API
+
+9. ¿Qué mejoras futuras tenéis planificadas?
+------------------------------------------
+- Implementación de sistema de colas para mejor escalabilidad
+- Mejora en el sistema de monitorización
+- Optimización del rendimiento en extracciones grandes
+- Implementación de tests automatizados más exhaustivos
+- Mejora en la gestión de errores y recuperación
+
+10. ¿Cómo aseguráis el cumplimiento legal y ético del scraping?
+------------------------------------------------------------
+- Respetamos los términos de servicio de Ekhilur
+- Solo accedemos a datos de usuarios autorizados
+- Implementamos delays apropiados entre peticiones
+- Mantenemos la privacidad y seguridad de los datos
+- Documentamos todo el proceso de manera transparente 
