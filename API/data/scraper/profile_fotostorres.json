@@ -3,15 +3,9 @@
     "telefono": "688624463",
     "email": "fotostorreshernani@gmail.com",
     "direccion": {
-<<<<<<< HEAD
-        "calle": "Atzieta Kalea, 2Hernani",
-        "municipio": "SS",
-        "cp": "20120"
-=======
         "calle": "Atzieta Kalea, 2Hernani20120 - SS",
         "municipio": "Zarautz",
         "cp": "20800"
->>>>>>> 040cffd83bd40274ad9dce243d2f3cfcb37b00cd
     },
     "fecha_nacimiento": "25/11/1961",
     "ocupacion": "Fotógrafos",
