@@ -2,55 +2,53 @@ import { useState, useEffect } from "react";
 import { useLanguage } from "../../contexts/LanguageContext.jsx";
 import Layout from "../layout/Layout";
 import "./UserBonifications.css";
-import BarChartComponent from "../../components/charts/BarChart";
+import GraficoLibrerias from "../../components/charts/BarChartNew";
 import DateFilter from "../../components/DateFilter/DateFilter";
-import mockData  from "../../components/transactions-list/mockData.js";
-import { getCashbackGeneratedByTypeMonthAndYear } from "../../api/realData";
+import { getCashbackGeneratedByMonth } from "../../api/realData";
 import TransactionList from "../../components/transactions-list/TransactionsList";
-
+import mockData from "../../components/transactions-list/mockData.js";
 
 const UserBonifications = () => {
     const { t } = useLanguage();
-    const [selectedPeriod, setSelectedPeriod] = useState(null);
+    const [selectedPeriod, setSelectedPeriod] = useState({
+        year: new Date().getFullYear(),
+        month: new Date().getMonth() + 1,
+    });
     const [bonifications, setBonifications] = useState({
         totalBonifications: 0,
     });
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [apiData, setApiData] = useState(null);
-    const [transactions, setTransactions] = useState(null);
-
+    const [apiData, setApiData] = useState([
+        { año: "2022", mes: "11", valor: 100, otroValor: 80 },
+        { año: "2022", mes: "12", valor: 150, otroValor: 120 },
+        { año: "2023", mes: "01", valor: 200, otroValor: 180 },
+        { año: "2023", mes: "02", valor: 250, otroValor: 220 },
+        { año: "2023", mes: "03", valor: 300, otroValor: 270 },
+        { año: "2024", mes: "12", valor: 150, otroValor: 120 },
+        { año: "2024", mes: "01", valor: 200, otroValor: 180 },
+        { año: "2024", mes: "02", valor: 250, otroValor: 220 },
+        { año: "2024", mes: "03", valor: 300, otroValor: 270 },
+    ]);
+    const [filteredTransactions, setFilteredTransactions] = useState(mockData);
     const loadApiData = async () => {
         setIsLoading(true);
         setError(null);
         try {
-            // 1. Obtener datos de la API
-            const data = await getCashbackGeneratedByTypeMonthAndYear();
+            const data = await getCashbackGeneratedByMonth();
+            setApiData(data);
 
-            // 2. Transformar los datos al formato que espera el BarChart
-            const transformedData = data.map(item => ({
-                año: item.anio,                         // Mantener año
-                mes: item.mes,                          // Mantener mes
-                income: Number(item.total_cantidad),    // Poner total_cantidad como income
-                expenses: 0                             // Poner expenses a 0 (no lo usamos)
-            }));
-
-            // 3. Guardar los datos transformados
-            setApiData(transformedData);
-            const transactionsData = data.map(item => ({
-                fecha: `${item.anio}-${item.mes}-01`,
-                movimiento: item.Movimiento,
-                cantidad: item.total_cantidad,
-            }));
-            setTransactions(transactionsData);
-
-            // 4. Si hay un período seleccionado, actualizar las bonificaciones
             if (selectedPeriod) {
-                updateBonifications(transformedData, selectedPeriod);
+                updateBonifications(data, selectedPeriod);
             }
         } catch (error) {
             console.error("Error al cargar datos:", error);
-            setError("No se pudieron cargar los datos. Por favor, intente más tarde.");
+            setError(
+                "No se pudieron cargar los datos. Por favor, intente más tarde."
+            );
+            setError(
+                "No se pudieron cargar los datos. Por favor, intente más tarde."
+            );
         } finally {
             setIsLoading(false);
         }
@@ -65,26 +63,27 @@ const UserBonifications = () => {
 
         const { year, month } = period;
         // Buscar los datos para el mes seleccionado
-        const monthData = data.find(item =>
-            item.año === year.toString() &&
-            parseInt(item.mes, 10) === month + 1
+        const monthData = data.find(
+            (item) =>
+                item.año === year.toString() &&
+                parseInt(item.mes, 10) === month + 1
         );
 
         // Actualizar el total de bonificaciones
         if (monthData) {
             setBonifications({
-                totalBonifications: monthData.income
+                totalBonifications: Number(monthData.bonificaciones),
             });
         } else {
             setBonifications({
-                totalBonifications: 0
+                totalBonifications: 0,
             });
         }
     };
 
     const formatCurrency = (value) => {
         const num = Number(value);
-        if (isNaN(num)) return '0€';
+        if (isNaN(num)) return "0€";
         return Number.isInteger(num) ? `${num}€` : `${num.toFixed(1)}€`;
     };
 
@@ -96,43 +95,41 @@ const UserBonifications = () => {
     };
 
     return (
-        <div className="bonifications-page">
-            <Layout title={t.bonificationTitle}>
-                <div className="container-date-filter">
-                    <DateFilter onDateFilter={handleDateFilter} />
-                </div>
+        <Layout title={t.bonificationTitle}>
+            <div className="bonifications-content-container">
+                <DateFilter onDateFilter={handleDateFilter} />
 
-                {error && (
-                    <div className="error-message">
-                        {error}
-                    </div>
-                )}
+                {error && <div className="error-message">{error}</div>}
 
                 {isLoading ? (
-                    <div className="loading-message">
-                        Cargando datos...
-                    </div>
+                    <div className="loading-message">Cargando datos...</div>
                 ) : (
                     <>
                         <div className="container-ingresos-gastos">
                             <div className="item-ingresos-gastos">
                                 <p className="label-ingresos">{t.received}</p>
                                 <span className="amount-ingresos">
-                                    {formatCurrency(bonifications.totalBonifications)}
+                                    {formatCurrency(
+                                        bonifications.totalBonifications
+                                    )}
                                 </span>
                             </div>
                         </div>
-                        <div className="chart-section">
-                            <BarChartComponent
-                                selectedPeriod={selectedPeriod}
-                                dataBars={apiData || []}
+                        <div className="chart-container">
+                            <GraficoLibrerias
+                                data={apiData}
+                                targetYear={selectedPeriod.year}
+                                targetMonth={selectedPeriod.month}
+                                primaryKey={"bonificaciones"}
+                                secondaryKey={null}
+                                showFilters={true}
                             />
                         </div>
                         <TransactionList transactions={mockData} />
                     </>
                 )}
-            </Layout>
-        </div>
+            </div>
+        </Layout>
     );
 };
 

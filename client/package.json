@@ -14,17 +14,24 @@
         "@emotion/styled": "^11.14.0",
         "@mui/icons-material": "^6.4.1",
         "@mui/material": "^6.4.1",
+        "@react-google-maps/api": "^2.20.5",
+        "@vis.gl/react-google-maps": "^1.5.0",
         "chart.js": "^4.4.7",
         "chartjs-plugin-datalabels": "^2.2.0",
         "crypto-js": "^4.2.0",
         "js-cookie": "^3.0.5",
+        "leaflet": "^1.9.4",
+        "leaflet-control-geocoder": "^3.1.0",
+        "leaflet-routing-machine": "^3.2.12",
+        "lucide-react": "^0.474.0",
         "react": "^18.3.1",
         "react-chartjs-2": "^5.3.0",
+        "react-datepicker": "^7.6.0",
         "react-dom": "^18.3.1",
         "react-icons": "^5.4.0",
+        "react-leaflet": "^4.2.1",
         "react-router-dom": "^6.1.3",
-        "recharts": "^2.15.1",
-        "react-datepicker": "^7.6.0"
+        "recharts": "^2.15.1"
     },
     "devDependencies": {
         "@eslint/js": "^9.17.0",
@@ -36,6 +43,6 @@
         "eslint-plugin-react-hooks": "^5.0.0",
         "eslint-plugin-react-refresh": "^0.4.16",
         "globals": "^15.14.0",
-        "vite": "^6.0.5"
+        "vite": "^6.0.11"
     }
 }

@@ -8,7 +8,9 @@
     text-align: center;
     width: 100%;
     overflow: hidden;
-    height: 90vh;
+    max-height: 90vh;
+    min-height: 100px;
+    margin-bottom: 1rem;
 }
 
 .categories-spend-donut {

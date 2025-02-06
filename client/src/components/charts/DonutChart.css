@@ -1,0 +1,38 @@
+.donut-chart {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.donut-chart .donut-canvas {
+    height: 100%;
+    width: 60%;
+}
+
+.donut-chart .legends-container {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.donut-chart .legends-container .legend {
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    gap: 0 10px;
+
+}
+
+
+.legend .legend-value {
+    grid-column-start: 2
+}
+
+.legend p {
+    margin: 0;
+    font-size: 1.2rem;
+}
