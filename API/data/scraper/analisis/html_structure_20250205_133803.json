@@ -1,0 +1,103 @@
+{
+    "tables": [
+        {
+            "id": "table_datos_users",
+            "class": [
+                "table",
+                "table-bordered",
+                "table-striped",
+                "data_table"
+            ],
+            "headers": [
+                "Usuario",
+                "Nombre de usuario",
+                "Capital social abonado",
+                "Total disponible",
+                "Estado",
+                "Usuario",
+                "Nombre de usuario",
+                "Capital social abonado",
+                "Total disponible",
+                "Estado"
+            ],
+            "num_rows": 1,
+            "data_attributes": {}
+        },
+        {
+            "id": "table_datos_movs",
+            "class": [
+                "table",
+                "table-bordered",
+                "table-striped",
+                "data_table",
+                "movs_gen",
+                "mgg"
+            ],
+            "headers": [
+                "Fecha",
+                "Movimiento",
+                "Cantidad",
+                "Concepto",
+                "Usuario asociado",
+                "Saldo",
+                "Cuenta",
+                "Fecha",
+                "Movimiento",
+                "Cantidad",
+                "Concepto",
+                "Usuario asociado",
+                "Saldo",
+                "Cuenta"
+            ],
+            "num_rows": 105,
+            "data_attributes": {}
+        }
+    ],
+    "table_containers": [
+        {
+            "id": "",
+            "class": [
+                "box-body",
+                "table-responsive"
+            ],
+            "data_attributes": {},
+            "has_table": true,
+            "has_pagination": false
+        },
+        {
+            "id": "",
+            "class": [
+                "box-body",
+                "table-responsive"
+            ],
+            "data_attributes": {},
+            "has_table": true,
+            "has_pagination": true
+        }
+    ],
+    "pagination": [],
+    "filters": [
+        {
+            "id": "pay_type",
+            "class": [
+                "form-control",
+                "select2_comp"
+            ],
+            "type": "select",
+            "inputs": [],
+            "selects": [],
+            "data_attributes": {}
+        },
+        {
+            "id": "cuentas",
+            "class": [
+                "form-control",
+                "select2_comp"
+            ],
+            "type": "select",
+            "inputs": [],
+            "selects": [],
+            "data_attributes": {}
+        }
+    ]
+}

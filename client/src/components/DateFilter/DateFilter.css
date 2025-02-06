@@ -1,46 +1,85 @@
-/* DateFilter.css */
 .date-filter-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-  }
-  
-  .date-filter-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .date-filter-label {
-    font-size: 0.9rem;
-    color: #555;
-  }
-  
-  .date-filter-input {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .date-filter-button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #6200ea;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
-  }
-  
-  .date-filter-button:hover {
-    background-color: #4500b3;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 0px;
+  padding-bottom: 20px;
+  margin: 0 0 0px 0;
+  align-items: center;
+}
+
+/* El resto del CSS se mantiene igual */
+.date-filter-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filter-dropdown {
+  position: relative;
+  flex: 1;
+}
+
+.date-filter-button {
+  width: 120%;
+  padding: 0.5rem 1rem;
+  font-size: 24px;
+  color: var(--color-letra);
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.date-filter-button:hover {
+  background-color: var();
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+
+  margin-top: 0.5rem;
+  background-color: transparent;
+  border-bottom: 2px solid var(--color-naranja-principal);
+  border-radius: 4px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: grid;
+  /* Cambiamos a grid */
+  grid-template-columns: repeat(2, 1fr);
+  /* Dos columnas iguales */
+  width: 240px;
+  /* Ancho fijo para el dropdown */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(60px);
+
+}
+
+.dropdown-item {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  padding-right: 0px;
+  font-size: 1rem;
+  color: var(--color-letra);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+
+.dropdown-item:hover {
+  color: var(--color-naranja-principal);
+}
+
+.icon-small {
+  width: 16px;
+  height: 16px;
+  padding-top: 4px;
+}

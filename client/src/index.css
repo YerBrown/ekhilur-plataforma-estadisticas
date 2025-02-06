@@ -13,8 +13,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: var(--color-dark);
-  background-color: var(--background-color-dark);
+  color: var(--color-letra);
+  background-color: var(--background-color-principal);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,15 +29,17 @@
   --background-color-dark-05: rgba(94, 94, 94, 0.2);
   --color-light: rgba(30, 30, 30);
   --color-dark: rgba(255, 255, 255);
-  --color-naranja: rgba(255, 144, 18, 1);
+  --color-naranja: rgba(255, 144, 18, 1); 
   --color-naranja-background: rgba(255, 144, 18, 0.8);
+  --color-naranja-background-2:rgb(252, 197, 138);
   --color-azul: rgba(0, 71, 184, 1);
   --color-azul-background: rgba(0, 71, 184, 0.8);
+  --color-azul-background-2:  rgba(152, 178, 226);
   --color-blanco: rgba(255, 255, 255, 1);
   --color-negro: rgba(0, 0, 0, 1);
   --color-placeholder-light: rgba(0, 0, 0, 0.6);
   --color-placeholder-dark: rgba(255, 255, 255, 0.6);
-  --color-letra-2: rgba(0, 0, 0, 0.6);
+  --color-letra-2-light: rgba(0, 0, 0, 0.6);
   --color-letra-2-dark: rgba(255, 255, 255, 0.6);
   --color-gasto: rgba(255, 0, 0, 0.4);
   --color-ingreso: rgba(0, 128, 0, 0.4);
@@ -46,14 +48,17 @@
   --background-color-principal: var(--background-color-light);
   --background-color-principal-05: var(--background-color-light-05);
   --color-letra: var(--color-light);
-  --color-letra-2: var(--color-letra-2);
+  --color-letra-2: var(--color-letra-2-light);
   --color-letra-blanca: var(--color-dark);
   --color-placeholder: var(--color-placeholder-light);
   --color-naranja-principal: var(--color-naranja);
   --color-naranja-principal-background: var(--color-naranja-background);
+  --color-grafico-naranja: var(--color-naranja-background);
+  --color-grafico-naranja-claro: var(--color-naranja-background-2);
+  --color-grafico-azul: var(--color-azul-background);
   /*Ekhilur colors - No cambiar*/
-  
-  
+
+
   --e-global-color-490e56ae: rgba(34, 34, 34);
   --e-global-color-58968a1c: rgba(2, 1, 1);
   --e-global-color-4879d4b4: rgba(0, 0, 0);
@@ -109,6 +114,7 @@ footer {
 button {
   cursor: pointer;
   font-family: "Noway", Arial, sans-serif;
+  outline: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -121,5 +127,8 @@ button {
     --color-placeholder: var(--color-placeholder-dark);
     --color-naranja-principal: var(--color-azul);
     --color-naranja-principal-background: var(--color-azul-background);
+    --color-grafico-naranja: var(--color-azul-background);
+    --color-grafico-naranja-claro: var(--color-azul-background-2);
+  
   }
 }

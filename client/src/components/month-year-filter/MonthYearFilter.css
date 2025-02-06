@@ -1,0 +1,48 @@
+.filter-container {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.filter-option.active {
+  box-shadow: 
+  1px 0 4px rgba(0, 0, 0, 0.2), /* derecha */
+  -1px 0 4px rgba(0, 0, 0, 0.2), /* izquierda */
+  0 2px 4px rgba(0, 0, 0, 0.2); /* abajo */
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+}
+
+.filter-option.inactive {
+  box-shadow: 1px 0 4px rgba(0, 0, 0, 0.2),  /* derecha */
+  -1px 0 4px rgba(0, 0, 0, 0.2),  /* izquierda */
+   0 2px 4px rgba(0, 0, 0, 0.2);   /* abajo */
+  background-color: transparent;
+  color: var(--color-naranja-principal);
+}
+
+.filter-label {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.filter-option:first-child {
+  border-radius: 0px 8px 8px 8px;}
+
+.filter-option:last-child {
+  border-radius: 8px 0px 8px 8px;
+}
+

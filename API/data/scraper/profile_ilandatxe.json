@@ -1,0 +1,20 @@
+{
+    "nombre_usuario": "ILZ",
+    "telefono": "688735843",
+    "email": "ilandatxe@gmail.com",
+    "direccion": {
+<<<<<<< HEAD
+        "calle": "Andrekale 60 4BHernani",
+        "municipio": "Gipuzkoa",
+        "cp": "20120"
+=======
+        "calle": "Andrekale 60 4BHernani20120 - Gipuzkoa",
+        "municipio": "Zarautz",
+        "cp": "20800"
+>>>>>>> 040cffd83bd40274ad9dce243d2f3cfcb37b00cd
+    },
+    "fecha_nacimiento": "13/07/1965",
+    "ocupacion": "Agentes y representantes comerciales",
+    "iban": "ES8330350025840250120475",
+    "capital_social_abonado": "Sí"
+}

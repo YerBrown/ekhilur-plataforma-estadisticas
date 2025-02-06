@@ -8,6 +8,7 @@
 
 .transaction-group-container {
     margin-bottom: 24px;
+    padding-bottom: 20px;
 }
 
 .transaction-group-header {
@@ -19,6 +20,8 @@
     font-weight: bold;
     color: var(--color-letra);
     padding-left: 1rem;
+    padding-top: 1rem;
+    margin: 0;
 }
 
 /* Lista de transacciones */
@@ -30,25 +33,39 @@
 
 .transaction-item {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     background-color: var(--background-color-principal-05);
     padding: 1rem;
     margin-left: 1rem;
     margin-right: 1rem;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
+}
+
+.transaction-item-time {
+    font-size: 14px;
+    color: var(--color-letra-2);
+    margin: 0;
+}
+
+.transaction-item-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .transaction-item-image-container {
-    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
 }
 
 .transaction-item-image {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    padding-top: 0.4rem;
+    margin-right: 0.5rem;
 }
 
 .transaction-item-details {
@@ -71,19 +88,30 @@
 
 .transaction-item-amounts-container {
     text-align: right;
+    margin-left: 0.5rem;
 }
 
 .transaction-item-amount {
     font-size: 16px;
     font-weight: bold;
     color: var(--color-letra);
-    background-color: rgba(0, 128, 0, 0.4);
     border-radius: 5px;
-    padding: 0.2rem;
+    padding: 0.2rem 0.4rem 0.2rem 0.4rem;
+    margin-top: 0;
+}
+
+.transaction-item-amount.positive {
+    background-color: var(--color-naranja-principal-background);
+    color: white;
+}
+
+.transaction-item-amount.negative {
+    background-color: none;
 }
 
 .transaction-item-remaining {
     font-size: 14px;
     color: var(--color-letra-2);
     margin-top: 4px;
+    padding-right: 0.3rem;
 }

@@ -1,13 +1,29 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useLanguage } from "../../../contexts/LanguageContext.jsx";
 import "./TransactionsFilter.css";
 
-const TransactionsFilter = ({onFilterChange}) => {
-    const [activeButton, setActiveButton] = useState("Todas");
+const TransactionsFilter = ({ onFilterChange }) => {
+    const { t } = useLanguage();
+    const [activeButton, setActiveButton] = useState("all");
     const [sliderStyles, setSliderStyles] = useState({ width: 0, left: 0 });
     const containerRef = useRef(null);
 
-    const handleButtonClick = (label, index) => {
-        setActiveButton(label);
+    const handleButtonClick = (key, index) => {
+        let label;
+        switch (key) {
+            case "all":
+                label = t.all;
+                break;
+            case "incomes":
+                label = t.incomes;
+                break;
+            case "expenses":
+                label = t.expenses;
+                break;
+            default:
+                label = t.all;
+        }
+        setActiveButton(key);
         onFilterChange(label);
         updateSliderPosition(index);
     };
@@ -39,11 +55,15 @@ const TransactionsFilter = ({onFilterChange}) => {
                 }}
             ></div>
 
-            {["Todas", "Ingresos", "Gastos"].map((label, index) => (
+            {[
+                { key: "all", label: t.all },
+                { key: "incomes", label: t.incomes },
+                { key: "expenses", label: t.expenses }
+            ].map(({ key, label }, index) => (
                 <button
-                    key={label}
-                    className={`transactions-button ${activeButton === label ? "active" : ""}`}
-                    onClick={() => handleButtonClick(label, index)}
+                    key={key}
+                    className={`transactions-button ${activeButton === key ? "active" : ""}`}
+                    onClick={() => handleButtonClick(key, index)}
                 >
                     <p>{label}</p>
                 </button>

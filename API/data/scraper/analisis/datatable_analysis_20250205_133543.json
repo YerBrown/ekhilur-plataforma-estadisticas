@@ -1,0 +1,29 @@
+{
+    "datatable_scripts": [
+        "/js/plugins/DataTables-1.10.21/DataTables-1.10.21/js/jquery.dataTables.min.js?r=Pw4s1643aSab",
+        "/js/plugins/DataTables-1.10.21/DataTables-1.10.21/js/dataTables.bootstrap.min.js?r=Pw4s1643aSab",
+        "/js/plugins/DataTables-1.10.21/Responsive-2.2.5/js/dataTables.responsive.min.js?r=Pw4s1643aSab",
+        "/js/plugins/DataTables-1.10.21/Scroller-2.0.2/js/dataTables.scroller.min.js?r=Pw4s1643aSab",
+        "/js/plugins/DataTables-1.10.21/Select-1.3.1/js/dataTables.select.min.js?r=Pw4s1643aSab",
+        "/js/plugins/DataTables-1.10.21/RowReorder-1.2.7/js/dataTables.rowReorder.min.js?r=Pw4s1643aSab",
+        "/js/plugins/DataTables-1.10.21/FixedHeader-3.1.7/js/dataTables.fixedHeader.min.js?r=Pw4s1643aSab",
+        "../js/plugins/DataTables-1.10.21/Buttons-1.6.2/js/dataTables.buttons.min.js?r=Pw4s1643aSab",
+        "../js/plugins/DataTables-1.10.21/Buttons-1.6.2/js/buttons.colVis.min.js?r=Pw4s1643aSab",
+        "/js/plugins/DataTables-1.10.21/Buttons-1.6.2/js/dataTables.buttons.min.js",
+        "../js/plugins/DataTables-1.10.21/Buttons-1.6.2/js/buttons.flash.min.js",
+        "../js/plugins/DataTables-1.10.21/JSZip-2.5.0/jszip.min.js",
+        "../js/plugins/DataTables-1.10.21/pdfmake-0.1.36/pdfmake.min.js",
+        "../js/plugins/DataTables-1.10.21/pdfmake-0.1.36/vfs_fonts.js",
+        "../js/plugins/DataTables-1.10.21/Buttons-1.6.2/js/buttons.html5.min.js",
+        "../js/plugins/DataTables-1.10.21/Buttons-1.6.2/js/buttons.print.min.js",
+        "../js/plugins/DataTables-1.10.21/Buttons-1.6.2/js/buttons.colVis.min.js"
+    ],
+    "table_configurations": [
+        "\n\n\nfunction columnToLetter(column)\n{\n  var temp, letter = '';\n  while (column > 0)\n  {\n    temp = (column - 1) % 26;\n    letter = String.fromCharCode(temp + 65) + letter;\n    column = (column - temp - 1) / 26;\n  }\n  return letter;\n}\n\nfunction remove_tags(html)\n {\n   html = html.replace(/<br>/g,\"$br$\"); \n   html = html.replace(/(?:\\r\\n|\\r|\\n)/g, '$n$');\n   var tmp = document.createElement(\"DIV\");\n   tmp.innerHTML = html;\n   html = tmp.textContent||tmp.innerText;\n\n   html = html.replace(/\\$br\\$/g,",
+        "\n\n\nfunction columnToLetter(column)\n{\n  var temp, letter = '';\n  while (column > 0)\n  {\n    temp = (column - 1) % 26;\n    letter = String.fromCharCode(temp + 65) + letter;\n    column = (column - temp - 1) / 26;\n  }\n  return letter;\n}\n\nfunction remove_tags(html)\n {\n   html = html.replace(/<br>/g,\"$br$\"); \n   html = html.replace(/(?:\\r\\n|\\r|\\n)/g, '$n$');\n   var tmp = document.createElement(\"DIV\");\n   tmp.innerHTML = html;\n   html = tmp.textContent||tmp.innerText;\n\n   html = html.replace(/\\$br\\$/g,"
+    ],
+    "jquery_includes": [
+        "/js/plugins/jquery-ui.min.js?r=Pw4s1643aSab",
+        "/js/plugins/jqueryKnob/jquery.knob.js?r=Pw4s1643aSab"
+    ]
+}

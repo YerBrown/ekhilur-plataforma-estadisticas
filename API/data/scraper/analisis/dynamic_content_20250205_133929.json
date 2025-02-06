@@ -1,0 +1,13 @@
+{
+    "iframes": [],
+    "dynamic_divs": [
+        {
+            "id": "",
+            "class": [
+                "tab-content"
+            ],
+            "data_attributes": {}
+        }
+    ],
+    "ajax_containers": []
+}

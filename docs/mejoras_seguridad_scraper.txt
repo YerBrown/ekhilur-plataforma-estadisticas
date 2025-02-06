@@ -1,0 +1,46 @@
+MEJORAS DE SEGURIDAD EN ENDPOINTS DE SCRAPING
+===========================================
+
+1. Cifrado de Credenciales
+-------------------------
+- Implementación de un sistema de cifrado usando la biblioteca cryptography
+- Las credenciales de los usuarios ya no están en texto plano en el código
+- Se usa el algoritmo Fernet para el cifrado/descifrado
+- Las credenciales se cifran al inicializar y solo se descifran cuando se necesitan
+
+2. Estructura Implementada
+-------------------------
+- Nuevo módulo: utils/crypto_utils.py
+  * Clase CredentialsCipher para manejar el cifrado
+  * Uso de PBKDF2 para generar claves seguras
+  * Salt único para aumentar la seguridad
+  * Métodos encrypt() y decrypt() para manejar las credenciales
+
+3. Cambios en los Endpoints
+--------------------------
+- scraper_cuentas_endpoint.py y scraper_perfil_endpoint.py:
+  * Las credenciales se almacenan cifradas
+  * Se descifran solo al momento de hacer el login
+  * Mayor seguridad en caso de acceso no autorizado al código
+
+4. Beneficios de Seguridad
+-------------------------
+- Protección contra exposición accidental de credenciales
+- Las credenciales no son legibles en el código fuente
+- El cifrado es reversible solo con la clave maestra
+- Mejor práctica de seguridad para manejo de datos sensibles
+
+5. Proceso de Funcionamiento
+---------------------------
+1. Al iniciar: Las credenciales se almacenan cifradas
+2. Al hacer request: 
+   - Se obtienen las credenciales cifradas
+   - Se descifran temporalmente para el login
+   - Se usan para la autenticación
+   - Se descartan después del uso
+
+6. Consideraciones Adicionales
+----------------------------
+- La clave maestra se puede configurar por variable de entorno
+- El sistema es escalable para más usuarios
+- Fácil mantenimiento y actualización de credenciales 

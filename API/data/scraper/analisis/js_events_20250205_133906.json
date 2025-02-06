@@ -1,0 +1,31 @@
+{
+    "onclick_events": [
+        {
+            "element": "span",
+            "event": "onclick",
+            "handler": "set_lang('');"
+        },
+        {
+            "element": "span",
+            "event": "onclick",
+            "handler": "set_lang('eng');"
+        },
+        {
+            "element": "span",
+            "event": "onclick",
+            "handler": "set_lang('eus');"
+        },
+        {
+            "element": "select",
+            "event": "onchange",
+            "handler": "chng_account();"
+        },
+        {
+            "element": "select",
+            "event": "onchange",
+            "handler": "chng_account();"
+        }
+    ],
+    "onload_events": [],
+    "event_listeners": []
+}

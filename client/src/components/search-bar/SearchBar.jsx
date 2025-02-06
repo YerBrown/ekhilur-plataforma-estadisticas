@@ -1,66 +1,95 @@
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import { useLanguage } from "../../contexts/LanguageContext.jsx";
 import { GoSearch } from "react-icons/go";
 import { IoCloseOutline } from "react-icons/io5";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import "./SearchBar.css";
 
 const SearchBar = ({ onSearch }) => {
+    const { t } = useLanguage();
     const [isOpen, setIsOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
     const [minAmount, setMinAmount] = useState("");
     const [maxAmount, setMaxAmount] = useState("");
+    const searchBarRef = useRef(null);
+    const buttonRef = useRef(null);
+    const searchTimeout = useRef(null);
 
-    const handleSearch = () => {
-        const filters = {
-            date: startDate || endDate ? { startDate, endDate } : null,
-            name: searchTerm ? searchTerm : null,
-            amount: minAmount || maxAmount ? { minAmount, maxAmount } : null,
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                searchBarRef.current &&
+                !searchBarRef.current.contains(event.target) &&
+                buttonRef.current &&
+                !buttonRef.current.contains(event.target)
+            ) {
+                setIsOpen(false);
+            }
         };
-        onSearch(filters);
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+    const toggleMenu = (e) => {
+        e.stopPropagation();
+        setIsOpen((prev) => !prev);
+    };
+
+    const triggerSearch = () => {
+        clearTimeout(searchTimeout.current);
+        searchTimeout.current = setTimeout(() => {
+            onSearch({
+                date: startDate && endDate ? { startDate, endDate } : null,
+                name: searchTerm || null,
+                amount: minAmount && maxAmount ? { minAmount, maxAmount } : null,
+            });
+
+            // Solo ejecutar la búsqueda si los filtros de fecha o importe están completos
+            if ((startDate && endDate) || (minAmount && maxAmount)) {
+                onSearch(filters);
+            }
+        }, 500); // 1 segundo de espera
     };
 
     const handleNameChange = (e) => {
         setSearchTerm(e.target.value);
-        handleSearch();
+        triggerSearch();
     };
 
-    const handleDateChange = (start, end) => {
-        setStartDate(start);
-        setEndDate(end);
-        handleSearch();
-    };
-
-    const handleAmountChange = (min, max) => {
-        setMinAmount(min);
-        setMaxAmount(max);
-        handleSearch();
+    const handleAmountChange = (event, type) => {
+        const value = event.target.value;
+        if (type === "min") {
+            setMinAmount(value);
+        } else {
+            setMaxAmount(value);
+        }
+        triggerSearch();
     };
 
     const clearFilters = () => {
         setSearchTerm("");
-        setStartDate(null);
-        setEndDate(null);
         setMinAmount("");
         setMaxAmount("");
-        handleSearch();
+        onSearch({ date: null, name: null, amount: null });
     };
 
     return (
         <div className="search-bar-container">
-            <button className="search-button" onClick={() => setIsOpen(!isOpen)}>
+            <button className="search-button" ref={buttonRef} onClick={toggleMenu}>
                 <GoSearch className="search-icon" size={24} />
             </button>
 
             {isOpen && (
-                <div className="search-bar">
+                <div className="search-bar" onClick={(e) => e.stopPropagation()} ref={searchBarRef}>
                     <div className="search-bar-name">
                         <div className="search-bar-name-input-container">
                             <input
                                 type="text"
-                                placeholder="Buscar transacciones"
+                                placeholder={t.searchBarInput}
                                 value={searchTerm}
                                 onChange={handleNameChange}
                                 className="search-bar-name-input"
@@ -72,48 +101,26 @@ const SearchBar = ({ onSearch }) => {
                         </div>
                     </div>
 
-                    <div className="search-bar-filters">
-                        <div className="filter-group">
-                            <label className="filter-label">Periodo:</label>
-                            <div className="filter-dates">
-                                <DatePicker
-                                    selected={startDate}
-                                    onChange={(date) => handleDateChange(date, endDate)}
-                                    placeholderText="Desde"
-                                    className="search-bar-date-input"
-                                />
-                                <DatePicker
-                                    selected={endDate}
-                                    onChange={(date) => handleDateChange(startDate, date)}
-                                    placeholderText="Hasta"
-                                    className="search-bar-date-input"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="filter-group">
-                            <label className="filter-label">Importe</label>
-                            <div className="filter-amounts">
-                                <input
-                                    type="number"
-                                    placeholder="Min."
-                                    value={minAmount}
-                                    onChange={(e) => handleAmountChange(e.target.value, maxAmount)}
-                                    className="filter-input"
-                                />
-                                <input
-                                    type="number"
-                                    placeholder="Max."
-                                    value={maxAmount}
-                                    onChange={(e) => handleAmountChange(minAmount, e.target.value)}
-                                    className="filter-input"
-                                />
-                            </div>
-                        </div>
+                    <div className="filter-group">
+                        <input
+                            type="text"
+                            placeholder={t.inputImportMin}
+                            value={minAmount}
+                            onChange={(e) => handleAmountChange(e, "min")}
+                            className="filter-input"
+                        />
+                        <input
+                            type="text"
+                            placeholder={t.inputImportMax}
+                            value={maxAmount}
+                            onChange={(e) => handleAmountChange(e, "max")}
+                            className="filter-input"
+                        />
                     </div>
                 </div>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 };
 
