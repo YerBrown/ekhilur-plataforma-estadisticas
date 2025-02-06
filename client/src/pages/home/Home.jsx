@@ -112,9 +112,26 @@ const Home = () => {
 
     const currentDate = new Date();
     const currentMonth = currentDate.getMonth() + 1; // Mes actual (1-12)
-    const currentYear = currentDate.getFullYear();
+    const currentYear = currentDate.getFullYear(); // Obtener el año completo
+
     const previousMonth = currentMonth === 1 ? 12 : currentMonth - 1;
     const previousYear = currentMonth === 1 ? currentYear - 1 : currentYear;
+
+    // Obtener los últimos dos dígitos del año
+    const currentYearShort = (currentYear % 100).toString().padStart(2, "0");
+    const previousYearShort = (previousYear % 100).toString().padStart(2, "0");
+
+    // Obtener la abreviatura del mes en español
+    const getMonthAbbreviation = (monthNumber) => {
+        const date = new Date(2025, monthNumber - 1); // Crear una fecha con el mes dado
+        const monthShort = date.toLocaleString("es-ES", { month: "short" }).toLowerCase().replace('.', ''); // Quitar el punto si existe
+        return t.monthsAbbreviations[monthShort] || monthShort; // Usar la traducción o la abreviatura original
+    };
+
+    // Formatear las fechas correctamente
+    const previousMonthFormatted = `${getMonthAbbreviation(previousMonth)} ${previousYearShort}`;
+    const currentMonthFormatted = `${getMonthAbbreviation(currentMonth)} ${currentYearShort}`;
+
 
     // BUSCAR BONIFICACIONES
     const currentBonus = userData.bonificaciones.find(
@@ -175,7 +192,7 @@ const Home = () => {
             <main>
                 <div className="wallet-chart">
                     <div className="wallet-icon">
-                        <TbPigMoney size={50}/>
+                        <TbPigMoney size={50} />
                     </div>
                     <DonutChart
                         data={walletData}
@@ -188,7 +205,7 @@ const Home = () => {
                         <button className="square-button-bonifications" onClick={() => handleNavigate("/bonifications")}>
                             <div className="info">
                                 <h3>{t.bonificationTitle}</h3>
-                                <p>{previousMonth}-{previousYear}</p>
+                                <p>{previousMonthFormatted}</p>
                             </div>
                             <div className="value">
                                 <GoPlusCircle />
@@ -198,7 +215,7 @@ const Home = () => {
                         <button className="square-button-bonifications" onClick={() => handleNavigate("/bonifications")}>
                             <div className="info">
                                 <h3>{t.bonificationTitle}</h3>
-                                <p>{currentMonth}-{currentYear}</p>
+                                <p>{currentMonthFormatted}</p>
                             </div>
                             <div className="value">
                                 <GoPlusCircle />
@@ -212,7 +229,7 @@ const Home = () => {
                         <button className="square-button-sales" onClick={() => handleNavigate("/sales")}>
                             <div className="info">
                                 <h3>{t.salesTitle}</h3>
-                                <p>{previousMonth}-{previousYear}</p>
+                                <p>{previousMonthFormatted}</p>
                             </div>
                             <div className="value">
                                 <GoPlusCircle />
@@ -222,7 +239,7 @@ const Home = () => {
                         <button className="square-button-sales" onClick={() => handleNavigate("/sales")}>
                             <div className="info">
                                 <h3>{t.salesTitle}</h3>
-                                <p>{currentMonth}-{currentYear}</p>
+                                <p>{currentMonthFormatted}</p>
                             </div>
                             <div className="value">
                                 <GoPlusCircle />
