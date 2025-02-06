@@ -1,8 +1,8 @@
 .chart-container {
     width: 100%;
     background-color: var(--background-color-principal);
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
     padding-top: 10px;
     box-sizing: border-box;
 }
@@ -29,7 +29,6 @@
     align-items: center;
     justify-content: center;
     font-size: 18px;
-
 }
 
 .chart-controls button.active {
@@ -39,15 +38,14 @@
 
 .chart-controls button:not(.active) {
     background-color: transparent;
- 
 }
 
 .chart-controls button:first-child {
-    border-radius: 0px 0px 0px 8px;
+    border-radius: 20px;
 }
 
 .chart-controls button:last-child {
-    border-radius: 0px 0px 8px 0px;
+    border-radius: 20px;
 }
 
 .recharts-tooltip-cursor {

@@ -26,7 +26,7 @@
     text-decoration: none;
     padding: 10px 20px;
     border: 2px solid var(--e-global-color-5743e3e4);
-    border-radius: 5px;
+    border-radius: 20px;
     transition: all 0.3s ease;
 }
 

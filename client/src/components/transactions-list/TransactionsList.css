@@ -2,7 +2,7 @@
 .transaction-list-container {
     width: 100%;
     border-radius: 20px;
-    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
     background-color: var(--color-grafico-naranja-claro);
     padding-bottom: 10px;
 }
@@ -85,8 +85,8 @@
     font-size: 1.1rem;
     font-family: 'montserrat-700';
     color: var(--color-letra);
-    border-radius: 5px;
-    padding: 0.2rem 0.4rem 0.2rem 0.4rem;
+    border-radius: 20px;
+    padding: 0.3rem 0.5rem 0.3rem 0.5rem;
     margin-top: 0;
 }
 
