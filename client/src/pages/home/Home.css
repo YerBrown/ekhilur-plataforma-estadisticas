@@ -362,12 +362,6 @@ aside .user-profile-info {
         display: none !important; /* Asegura que el overlay no se muestre */
     }
 }
-.square-button-bonifications {
-    background: linear-gradient(45deg,
-            #FFF 0%,
-            #FF9012 40%,
-            #0047ba 90%);
-}
 
 .square-button-statistics {
     background-color: var(--color-grafico-naranja-claro);
@@ -488,12 +482,6 @@ aside .user-profile-info {
     .aside-overlay {
         display: none !important; /* Asegura que el overlay no se muestre */
     }
-}
-.square-button-bonifications {
-    background: linear-gradient(45deg,
-            #FFF 0%,
-            #FF9012 40%,
-            #0047ba 90%);
 }
 
 .square-button-statistics {
