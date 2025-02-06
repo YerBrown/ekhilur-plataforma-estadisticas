@@ -189,3 +189,13 @@
     animation: slide-in 0.3s ease-out;
 }
 
+
+@media (max-width: 600px) {
+    .profile-aside {
+        display: none !important; /* Asegura que el aside no se muestre */
+    }
+
+    .aside-overlay {
+        display: none !important; /* Asegura que el overlay no se muestre */
+    }
+}
