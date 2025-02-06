@@ -6,6 +6,9 @@ const router = Router();
 
 router.get("/user-info", checkAuthorization, apiCalls.getUserInfo);
 router.get("/user-accounts", checkAuthorization, apiCalls.getUserAccounts);
+router.get("/user-transactions", checkAuthorization, apiCalls.getTransactions);
+router.get("/user-transactions-by-month", checkAuthorization, apiCalls.getTransactionsByMonth);
+router.get("/user-transactions-cashbacks-by-month", checkAuthorization, apiCalls.getTransactionsCashbacksByMonth);
 router.get(
     "/total-cashbacks-by-month",
     checkAuthorization,
