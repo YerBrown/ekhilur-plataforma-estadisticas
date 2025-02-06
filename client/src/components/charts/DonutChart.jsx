@@ -2,9 +2,9 @@ import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { FaCircle } from "react-icons/fa";
-
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import "./DonutChart.css";
+
 // Registrar los componentes de Chart.js y el plugin personalizado
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels, {
     id: "centerText", // Nombre del plugin
@@ -19,7 +19,7 @@ ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels, {
         const color = chart.config.options.plugins.centerText?.color || "#fff"; // Color del texto
 
         ctx.save();
-        ctx.font = "bold 25px Noway"; // Estilo del texto
+        ctx.font = " 1.8rem montserrat-700"; // Estilo del texto
         ctx.fillStyle = color;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";

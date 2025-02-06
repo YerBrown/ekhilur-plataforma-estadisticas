@@ -1,47 +1,63 @@
 .category-charts {
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
     text-align: center;
+    padding: 20px;
+}
+
+
+.category-container {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    overflow: hidden;
-    max-height: 90vh;
-    min-height: 100px;
-    margin-bottom: 1rem;
+    max-width: 600px;
+    margin: auto;
+    gap: 1.8rem;
 }
 
-.categories-spend-donut {
-    height: 250px;
-}
-
-.category-charts .category-extra {
-    height: 100%;
-    overflow-y: scroll;
-}
-
-.category-charts .category-container {
+.category-item {
     display: flex;
     flex-direction: column;
 }
 
-.category-charts .category-item {
+.category-item>div.label {
     display: flex;
+    flex-direction: row;
+    gap: 1rem;
     align-items: center;
-    box-sizing: border-box;
-    padding: 20px;
-    height: 150px;
+}
+
+.category-item>div.value {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
+    gap: 1rem;
+    border-radius: 8px;
+}
+
+.category-item h4 {
+    margin: 0;
+}
+
+.category-item h4.label {
     text-align: left;
+    font-size: 1.2rem;
 }
 
-.category-charts .category-item h4 {
-    width: 30%;
+.category-item h4.gasto {
+    width: 20%;
+    text-align: right;
 }
 
-.category-charts .category-item .donut {
-    width: 30%;
+/* Estilos para la barra de gasto */
+.gasto-bar {
+    width: 60%;
+    height: 12px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.gasto-fill {
     height: 100%;
+    transition: width 0.5s ease-in-out;
+    border-radius: 6px;
 }

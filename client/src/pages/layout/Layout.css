@@ -39,12 +39,11 @@
 .page-title {
   margin: 0;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-family: 'montserrat-500';
 }
 
 .page-content {
   justify-content: flex-start;
   margin-top: 4rem;
-  background-color: var(--background-color-principal);
   gap: 1rem;
 }

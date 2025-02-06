@@ -11,6 +11,32 @@ import {
 } from "recharts";
 import "./BarChartNew.css";
 
+const singleGradient = {
+    id: "singleBarGradient",
+    colors: {
+        start: "#FF9012",
+        end: "#0047ba"
+    }
+};
+
+const dualGradient1 = {
+    id: "dualBarGradient1",
+    colors: {
+        start: "#00E1FD",
+        middle: "#0094DB",
+        end: "#002E78"
+    }
+};
+
+const dualGradient2 = {
+    id: "dualBarGradient2",
+    colors: {
+        start: "#FF9012",
+        middle: "#FF5A1C",
+        end: "#CC0000"
+    }
+};
+
 const getAbbreviatedMonth = (month, t) => {
     const abbreviations = [
         "ene",
@@ -155,7 +181,7 @@ const getFilteredData = (
 const GraficoLibrerias = ({
     data,
     colors = {
-        primary: "var(--color-grafico-naranja)",
+        primary: "var(--color-barras)",
         secondary: "var(--color-grafico-naranja-claro)",
     },
     targetYear,
@@ -193,32 +219,55 @@ const GraficoLibrerias = ({
                         bottom: 0,
                     }}
                 >
-                    <XAxis dataKey={formatXAxis} />
-                    <YAxis tickCount={3} />
+                    <defs>
+                        <linearGradient id={singleGradient.id} x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor={singleGradient.colors.start} stopOpacity={0.8} />
+                            <stop offset="100%" stopColor={singleGradient.colors.end} stopOpacity={0.9} />
+                        </linearGradient>
+                        <linearGradient id={dualGradient1.id} x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor={dualGradient1.colors.start} stopOpacity={0.8} />
+                            <stop offset="30%" stopColor={dualGradient1.colors.middle} stopOpacity={0.8} />
+                            <stop offset="100%" stopColor={dualGradient1.colors.end} stopOpacity={0.7} />
+                        </linearGradient>
+                        <linearGradient id={dualGradient2.id} x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor={dualGradient2.colors.start} stopOpacity={0.8} />
+                            <stop offset="30%" stopColor={dualGradient2.colors.middle} stopOpacity={0.8} />
+                            <stop offset="100%" stopColor={dualGradient2.colors.end} stopOpacity={0.7} />
+                        </linearGradient>
+                    </defs>
+
+                    <XAxis dataKey={formatXAxis}
+                        stroke="var(--color-letra)" />
+                    <YAxis tickCount={3}
+                        stroke="var(--color-letra)" />
                     {/*<Tooltip />*/}
                     <Bar
                         dataKey={primaryKey}
-                        fill={colors.primary}
+                        fill={`url(#${secondaryKey ? dualGradient1.id : singleGradient.id})`}
                         radius={[6, 6, 0, 0]}
+                        barSize={80}
                         maxBarSize={150}
                     >
                         <LabelList
                             dataKey={primaryKey}
                             position="top"
+                            fill="var(--color-letra)"
                             formatter={(value) => (value === 0 ? "" : value)}
                         />
                     </Bar>
                     {secondaryKey && (
                         <Bar
                             dataKey={secondaryKey}
-                            fill={colors.secondary}
+                            fill={`url(#${dualGradient2.id})`}
                             radius={[6, 6, 0, 0]}
                             name={secondaryKey}
+                            barSize={80}
                             maxBarSize={150}
                         >
                             <LabelList
                                 dataKey={secondaryKey}
                                 position="top"
+                                fill="var(--color-letra)"
                                 formatter={(value) =>
                                     value === 0 ? "" : value
                                 }
@@ -229,8 +278,8 @@ const GraficoLibrerias = ({
             </ResponsiveContainer>
             {showFilters && (
                 <div className="chart-controls">
-                    <button onClick={() => setFilterType("mes")}>Meses</button>
-                    <button onClick={() => setFilterType("año")}>Años</button>
+                    <button onClick={() => setFilterType("mes")}>MESES</button>
+                    <button onClick={() => setFilterType("año")}>AÑOS</button>
                 </div>
             )}
         </>
