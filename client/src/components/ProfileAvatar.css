@@ -29,10 +29,11 @@ button.user-avatar:hover {
 
 .logout-modal.active button {
     pointer-events: all;
+    color: white;
 }
 
 .logout-modal button {
-    background-color: var(--color-naranja-principal);
+    background-color: var(--color-naranja-principal-background);
     border-radius: 20px;
     padding: .5rem;
     border: none;
@@ -42,7 +43,7 @@ button.user-avatar:hover {
 
 .logout-modal button:hover {
     text-decoration: none;
-    background-color: var(--color-naranja-principal-background);
+
 }
 
 /* Nuevos estilos para el contenedor de idiomas */
@@ -50,9 +51,11 @@ button.user-avatar:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px; /* Espacio entre botones de idioma */
+    gap: 10px;
+    /* Espacio entre botones de idioma */
 }
 
 .language-selector button {
-    min-width: 45px; /* Ancho mínimo para los botones de idioma */
+    min-width: 45px;
+    /* Ancho mínimo para los botones de idioma */
 }

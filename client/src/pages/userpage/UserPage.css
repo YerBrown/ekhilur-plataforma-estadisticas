@@ -15,7 +15,13 @@
     text-align: center;
     margin-bottom: 20px;
     grid-column: 1 / -1;
-
+    min-height: 100px;
+    /* Establece una altura mínima para el header */
+    display: flex;
+    align-items: center;
+    /* Alinea el contenido verticalmente */
+    justify-content: center;
+    /* Centra el contenido */
 }
 
 .user-profile-container img {
@@ -25,33 +31,75 @@
 
 .user-profile-info {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Dos columnas por defecto */
-    gap: 20px; /* Espacio entre los grupos de información */
-
+    grid-template-columns: repeat(2, 1fr);
+    /* Dos columnas por defecto */
+    gap: 20px;
+    /* Espacio entre los grupos de información */
     padding: 1rem;
     border-radius: 20px;;
 }
 
 .info-group {
+
     display: flex;
     flex-direction: column;
     gap: 5px;
+    border-bottom: 0.5px solid var(--color-placeholder);
 }
 
 .info-label {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     color: var(--color-naranja-principal);
 }
 
+/* Modificación aquí */
 .info-value {
     border: 0.5px solid var(--color-placeholder);
     border-radius: 20px;
     padding: 10px;
-    font-size: 16px;
+    font-size: 0.7rem;
+    color: var(--color-letra-2);
     outline: none;
     transition: border-color 0.3s;
+    width: 80%;
+    /* Ahora ocupa el 80% */
+}
+
+.info-container {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Alinea el texto a la izquierda y el botón a la derecha */
     font-size: 1.2rem;
-    color: var(--color-letra-2)
+    color: var(--color-light);
+}
+
+/* Modificación aquí */
+.info-container .info-value {
+    flex-grow: 0;
+    /* Elimina el crecimiento del espacio, ya que se establece el 80% en .info-value */
+    margin-right: 10px;
+    /* Añade espacio entre el texto y el botón */
+}
+
+.toggle-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: auto;
+    /* Asegura que el botón esté completamente a la derecha */
+    display: flex;
+    align-items: center;
+    /* Alinea el icono del ojo verticalmente */
+    justify-content: center;
+    /* Centra el icono en el medio */
+}
+
+.toggle-button svg {
+    width: 16px;
+    height: 16px;
 }
 
 /* Media query para pantallas pequeñas (una columna) */

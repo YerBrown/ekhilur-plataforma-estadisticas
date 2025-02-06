@@ -41,6 +41,43 @@
     transform: scale(1.1);
 }
 
+.user-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.button-no {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button-yes {
+    border: none;
+    background-color: var(--color-naranja-principal-background);
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 0.5rem;
+    width: 30%;
+    box-sizing: border-box;
+    font-size: 1rem;
+    outline: none;
+}
+
+.user-buttons>.language-selector {
+    gap: 5px;
+}
+
+aside .user-profile-info {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
 .home-page header img {
     height: 100%;
     width: 50%;
@@ -89,6 +126,15 @@
     flex-direction: row;
     gap: 0.5rem;
     width: 100%;
+    width: 100%;
+}
+
+.statistics-section .mobile-statistics {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
 }
 
 .square-button-bonifications,
@@ -152,6 +198,9 @@
 
 }
 
+.statistics-section .desktop-statistics {
+    display: none;
+}
 
 .info {
     display: flex;
@@ -217,4 +266,116 @@
     right: 10px;
     border: none;
     cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+    .home-page main {
+        max-width: 1060px;
+        height: 1000px;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        box-sizing: border-box;
+    }
+
+    .home-page header {
+        align-items: center;
+    }
+
+    .home-page header img {
+        height: 70%;
+    }
+
+    .wallet-chart {
+        grid-row: 1;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        width: 100%;
+        height: 100%;
+    }
+
+    .sales-section {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 3;
+        grid-column-end: 5;
+        width: 100%;
+        height: 100%;
+
+    }
+
+    .bonifications-section {
+        grid-column-start: 3;
+        grid-column-end: 5;
+        grid-row: 1;
+        width: 100%;
+        height: 100%;
+        gap: 20px;
+        box-sizing: border-box;
+    }
+
+    .bonifications-section button {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        aspect-ratio: 0;
+    }
+
+    .square-button-bonifications,
+    .square-button-sales,
+    .square-button-statistics {
+        aspect-ratio: 0;
+        width: 100%;
+    }
+
+    .statistics-section {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 4;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+
+    .statistics-section .mobile-statistics {
+        display: none;
+    }
+
+    .statistics-section .desktop-statistics {
+        width: 100%;
+        border-radius: 20px;
+        border: none;
+        display: flex;
+        box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.3);
+        background-color: var(--color-grafico-naranja-claro);
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .statistics-section .desktop-statistics h3 {
+        font-size: 2rem;
+        font-family: 'montserrat-700';
+        margin: auto;
+    }
+
+    .transactions-section {
+        grid-column-start: 3;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 4;
+    }
+
+
+
+    .transactions-section.commerce {
+        grid-column-start: 3;
+        grid-column-end: 5;
+        grid-row-start: 3;
+        grid-row-end: 4;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
 }
