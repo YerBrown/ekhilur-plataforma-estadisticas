@@ -1,17 +1,79 @@
 @font-face {
-  font-family: "Noway";
-  src: url("./assets/fonts/noway-regular-webfont.woff2") format("woff2"),
-    url("./assets/fonts/noway-regular-webfont.woff") format("woff");
-  font-weight: normal;
+  font-family: "montserrat-100";
+  src: url("./assets/fonts/Montserrat-Thin.woff") format("woff");
+  font-weight: 100;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "montserrat-200";
+  src: url("./assets/fonts/Montserrat-ExtraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "montserrat-300";
+  src: url("./assets/fonts/Montserrat-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "montserrat-400";
+  src: url("./assets/fonts/Montserrat-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "montserrat-500";
+  src: url("./assets/fonts/Montserrat-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "montserrat-600";
+  src: url("./assets/fonts/Montserrat-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "montserrat-700";
+  src: url("./assets/fonts/Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "montserrat-800";
+  src: url("./assets/fonts/Montserrat-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "montserrat-900";
+  src: url("./assets/fonts/Montserrat-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 
 :root {
-  font-family: "Noway", Arial, sans-serif;
+  font-family: "montserrat-500", sans-serif;
   line-height: 1.5;
-  font-weight: 400;
-
   color-scheme: light dark;
   color: var(--color-letra);
   background-color: var(--background-color-principal);
@@ -29,12 +91,13 @@
   --background-color-dark-05: rgba(94, 94, 94, 0.2);
   --color-light: rgba(30, 30, 30);
   --color-dark: rgba(255, 255, 255);
-  --color-naranja: rgba(255, 144, 18, 1); 
+  --color-barras: rgb(66, 28, 4);
+  --color-naranja: rgb(255, 102, 0, 1);
   --color-naranja-background: rgba(255, 144, 18, 0.8);
-  --color-naranja-background-2:rgb(252, 197, 138);
+  --color-naranja-background-2: rgba(255, 242, 227, 0.5);
   --color-azul: rgba(0, 71, 184, 1);
   --color-azul-background: rgba(0, 71, 184, 0.8);
-  --color-azul-background-2:  rgba(152, 178, 226);
+  --color-azul-background-2: rgba(152, 178, 226, 0.6);
   --color-blanco: rgba(255, 255, 255, 1);
   --color-negro: rgba(0, 0, 0, 1);
   --color-placeholder-light: rgba(0, 0, 0, 0.6);
@@ -43,6 +106,14 @@
   --color-letra-2-dark: rgba(255, 255, 255, 0.6);
   --color-gasto: rgba(255, 0, 0, 0.4);
   --color-ingreso: rgba(0, 128, 0, 0.4);
+  --naranja-light: rgba(255, 102, 0, 0.7);
+  --naranja-degradado: rgba(255, 30, 0, 0.966);
+  --color-white-03:  rgba(247, 239, 234, 0.7);
+ 
+
+  /*NEW COLORS*/
+
+
 
   /*THEME COLORS (LOS QUE HAY USAR)*/
   --background-color-principal: var(--background-color-light);
@@ -56,6 +127,7 @@
   --color-grafico-naranja: var(--color-naranja-background);
   --color-grafico-naranja-claro: var(--color-naranja-background-2);
   --color-grafico-azul: var(--color-azul-background);
+  --apartado-dinero:var(--naranja-light);
   /*Ekhilur colors - No cambiar*/
 
 
@@ -63,14 +135,6 @@
   --e-global-color-58968a1c: rgba(2, 1, 1);
   --e-global-color-4879d4b4: rgba(0, 0, 0);
   --e-global-color-2db7b2b0: rgba(255, 255, 255);
-  --e-global-typography-primary-font-family: "Noway Medium";
-  --e-global-typography-primary-font-weight: normal;
-  --e-global-typography-secondary-font-family: "Noway Medium";
-  --e-global-typography-secondary-font-weight: normal;
-  --e-global-typography-text-font-family: "Noway Regular";
-  --e-global-typography-text-font-weight: normal;
-  --e-global-typography-accent-font-family: "Roboto";
-  --e-global-typography-accent-font-weight: 500
 }
 
 
@@ -80,6 +144,10 @@ body {
   place-items: center;
   min-height: 100vh;
   margin: 0;
+}
+
+html, body, * {
+  font-family: inherit;
 }
 
 #root {
@@ -113,7 +181,6 @@ footer {
 
 button {
   cursor: pointer;
-  font-family: "Noway", Arial, sans-serif;
   outline: none;
 }
 
@@ -129,6 +196,6 @@ button {
     --color-naranja-principal-background: var(--color-azul-background);
     --color-grafico-naranja: var(--color-azul-background);
     --color-grafico-naranja-claro: var(--color-azul-background-2);
-  
+    --apartado-dinero: var(--color-negro);
   }
 }

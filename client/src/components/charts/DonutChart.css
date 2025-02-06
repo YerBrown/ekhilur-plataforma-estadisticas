@@ -2,16 +2,17 @@
     height: 100%;
     width: 100%;
     display: flex;
+    gap: 1rem;
 }
 
 .donut-chart .donut-canvas {
     height: 100%;
-    width: 60%;
+    width: 50%;
 }
 
 .donut-chart .legends-container {
     height: 100%;
-    width: 40%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,12 +28,17 @@
 
 }
 
+.legend-label {
+    font-family: 'montserrat-600';
+}
 
 .legend .legend-value {
-    grid-column-start: 2
+    grid-column-start: 2;
+    font-family: 'montserrat-700';
+    font-size: 1.4rem;
 }
 
 .legend p {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }

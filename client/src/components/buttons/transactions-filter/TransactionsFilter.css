@@ -3,12 +3,12 @@
     justify-content: center;
     align-items: center;
     background-color: var(--color-background-principal);
-    border-radius: 8px;
+    border-radius: 20px;
     width: 100%;
     box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .transactions-button {
@@ -16,6 +16,7 @@
     background-color: transparent;
     border: none;
     font-size: 16px;
+    font-family: 'montserrat-600';
     color: var(--color-naranja-principal);
     cursor: pointer;
     transition: color 0.3s ease;
@@ -38,7 +39,7 @@
     left: 0;
     height: 100%;
     background-color: var(--color-naranja-principal);
-    border-radius: 8px;
+    border-radius: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, width 0.3s ease;
 }

@@ -96,7 +96,7 @@ input {
     flex-direction: row;
     padding: 1rem;
     padding-bottom: 2rem;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 
 /* Grupo de filtros */

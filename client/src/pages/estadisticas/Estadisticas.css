@@ -11,7 +11,7 @@
     padding-top: 0px;
     gap: 10px;  
  /* Estilos de tarjeta */
-    background-color: var(--background-color-principal);
+
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
     padding: 0.5rem;
@@ -38,7 +38,7 @@
     font-weight: 500;
 }
 .amount-ingresos {
-    color: var(--color-grafico-naranja);
+    color: var(--color-letra);
     font-size: 24px;
 }
 .amount-gastos {

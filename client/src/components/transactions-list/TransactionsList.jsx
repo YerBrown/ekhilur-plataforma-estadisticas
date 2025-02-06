@@ -62,42 +62,40 @@ const TransactionList = ({ transactions }) => {
     };
 
     return (
-        <div className="transaction-list-container">
-            {sortedDates.map((fecha) => (
-                <div key={fecha} className="transaction-group-container">
-                    <div className="transaction-group-header">
-                        <h2 className="transaction-group-title">{formatDate(fecha)}</h2>
-                    </div>
-                    <div className="transaction-group-list">
-                        {groupedTransactions[fecha].map((transaction, index) => (
-                            <div key={index} className="transaction-item">
-                                <div className="transaction-item-header">
-                                    <p className="transaction-item-time">{transaction.hora}</p>
-                                </div>
-                                <div className="transaction-item-content">
-                                    <div className="transaction-item-image-container">
-                                        <img
-                                            src="/isotipo.png"
-                                            alt={transaction.usuario_asociado || transaction.movimiento}
-                                            className="transaction-item-image"
-                                        />
-                                        <div className="transaction-item-name-container">
+        <>
+            <div className="transaction-list-container">
+                {sortedDates.map((fecha) => (
+                    <div key={fecha} className="transaction-group-container">
+                        <div className="transaction-group-header">
+                            <h2 className="transaction-group-title">{formatDate(fecha)}</h2>
+                        </div>
+                        <div className="transaction-group-list">
+                            {groupedTransactions[fecha].map((transaction, index) => (
+                                <div key={index} className="transaction-item">
+                                    <div className="transaction-item-header">
+                                        <p className="transaction-item-time">{transaction.hora}</p>
+                                        <div className="transaction-item-content-container">
+                                            <img
+                                                src="/isotipo.png"
+                                                alt={transaction.usuario_asociado || transaction.movimiento}
+                                                className="transaction-item-image"
+                                            />
                                             <p className="transaction-item-name">{transaction.usuario_asociado || transaction.movimiento}</p>
                                         </div>
                                     </div>
                                     <div className="transaction-item-amounts-container">
-                                        <p className={`transaction-item-amount ${transaction.cantidad < 0 ? 'negative' : 'positive'}`}>
-                                            {transaction.cantidad}
+                                        <p className={`transaction-item-amount ${transaction.cantidad.toString().includes('-') ? 'negative' : 'positive'}`}>
+                                            {transaction.cantidad} €
                                         </p>
-                                        <p className="transaction-item-remaining">{transaction.saldo}</p>
+                                        <p className="transaction-item-remaining">{transaction.saldo} €</p>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
-                </div>
-            ))}
-        </div>
+                ))}
+            </div>
+        </>
     );
 };
 
