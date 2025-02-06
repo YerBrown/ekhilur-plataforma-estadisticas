@@ -34,13 +34,13 @@ const UserPage = () => {
 
     return (
         <>
-            
+
 
             {isLoading ? (
                 <div className="loading-message">Cargando datos...</div>
             ) : (
                 <div className="user-profile-container">
-                    
+
                     <div className="user-profile-info">
                         <div className="info-group">
                             <span className="info-label">{t.username}:</span>
@@ -49,12 +49,14 @@ const UserPage = () => {
 
                         <div className="info-group">
                             <span className="info-label">{t.phone}:</span>
-                            <span className="info-value">
-                                {showPhone ? apiData.telefono : `${apiData.telefono?.slice(0, 3)}*** *** ***`}
-                            </span>
-                            <button onClick={() => setShowPhone(!showPhone)} className="toggle-button">
-                                {showPhone ? <EyeOff size={16} /> : <Eye size={16} />}
-                            </button>
+                            <div className="info-container">
+                                <span className="info-value">
+                                    {showPhone ? apiData.telefono : `${apiData.telefono?.slice(0, 3)}*** *** ***`}
+                                </span>
+                                <button onClick={() => setShowPhone(!showPhone)} className="toggle-button">
+                                    {showPhone ? <EyeOff size={16} /> : <Eye size={16} />}
+                                </button>
+                            </div>
                         </div>
 
                         <div className="info-group">
