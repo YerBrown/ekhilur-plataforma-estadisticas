@@ -1,14 +1,8 @@
 from flask import Blueprint, jsonify
-<<<<<<< HEAD
-import sqlite3
-import pandas as pd
-import os #! Importar solo los paquetes necesarios
-=======
 from sqlite3 import connect, OperationalError
 from os.path import join, dirname, exists
 from os import makedirs
 from pandas import read_sql_query, DataFrame
->>>>>>> ed4aff4a6a1a75b4c79493bf5cc85a14a1908c65
 
 # Crear el blueprint
 cashback_listado_bp = Blueprint('listado_cashback_por_tipo_y_mes', __name__)
