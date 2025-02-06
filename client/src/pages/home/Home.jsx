@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../../contexts/LanguageContext.jsx";
 import { GoPlusCircle } from "react-icons/go";
+import { TbPigMoney } from "react-icons/tb";
 import DonutChart from "../../components/charts/DonutChart";
 import ProfileAvatar from "../../components/ProfileAvatar";
 import GraficoLibrerias from "../../components/charts/BarChartNew";
@@ -173,6 +174,9 @@ const Home = () => {
             </header>
             <main>
                 <div className="wallet-chart">
+                    <div className="wallet-icon">
+                        <TbPigMoney size={50}/>
+                    </div>
                     <DonutChart
                         data={walletData}
                         options={walletOptions}
@@ -273,7 +277,7 @@ const Home = () => {
                     <button className="transactions-home-button" onClick={() => handleNavigate("/transactions")}>
                         <TransactionList transactions={mockData.slice(0, 3)} />
                         <button className="add-button">
-                            <GoPlusCircle size={32}/>
+                            <GoPlusCircle size={32} />
                         </button>
                     </button>
                 </div>

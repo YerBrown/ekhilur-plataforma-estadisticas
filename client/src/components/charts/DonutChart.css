@@ -12,6 +12,7 @@
 .donut-chart .legends-container {
     height: 100%;
     width: 40%;
+    gap: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,9 +28,14 @@
 
 }
 
+.legend-label {
+    font-family: 'montserrat-600';
+}
 
 .legend .legend-value {
-    grid-column-start: 2
+    grid-column-start: 2;
+    font-family: 'montserrat-700';
+    font-size: 1.4rem;
 }
 
 .legend p {
