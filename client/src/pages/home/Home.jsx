@@ -179,7 +179,9 @@ const Home = () => {
             <header>
                 <img src="logo_dos.png" alt="Logo Ekhidata" />
                 <div className="header-content">
-                    <ProfileAvatar />
+                    <div onClick={() => setShowAside(true)}>
+                        <ProfileAvatar />
+                    </div>
                 </div>
             </header>
 
@@ -189,6 +191,15 @@ const Home = () => {
                         className="aside-overlay"
                         onClick={() => setShowAside(false)}
                     />
+                    <div ref={modalRef} className={`logout-modal ${isModalOpen ? "active" : ""}`}>
+                        <div className="language-selector">
+                            <button onClick={setSpanish}>ES</button>
+                            <button onClick={setBasque}>EU</button>
+                        </div>
+                        <button onClick={() => navigate("/user")}>{t.viewProfile}</button>
+                        <button onClick={handleLogout}>{t.logout}</button>
+                    </div>
+                    <ProfileAvatar />
                     <aside className={`profile-aside ${theme}`}>
                         <button className="close-aside" onClick={() => setShowAside(false)}>
                             ×

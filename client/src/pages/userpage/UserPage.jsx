@@ -34,15 +34,13 @@ const UserPage = () => {
 
     return (
         <>
-            {error && <div className="error-message">{error}</div>}
+            
 
             {isLoading ? (
                 <div className="loading-message">Cargando datos...</div>
             ) : (
                 <div className="user-profile-container">
-                    <div className="user-profile-header">
-                        <img src="/logo_uno.png" alt="Foto de perfil" />
-                    </div>
+                    
                     <div className="user-profile-info">
                         <div className="info-group">
                             <span className="info-label">{t.username}:</span>
