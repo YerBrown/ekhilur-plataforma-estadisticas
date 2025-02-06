@@ -178,13 +178,13 @@ aside .user-profile-info {
             #FF9012 90%);
 }
 
-.square-button-statistics {
+.square-button-statistics, .square-button-sales {
     background-color: var(--color-grafico-naranja-claro);
 
 }
 
-.square-button-statistics h3 {
-    color: var(--color-naranja);
+.square-button-statistics h3, .square-button-sales h3 {
+    color: var(--color-naranja) !important;
     font-size: 1.4rem !important;
 }
 
