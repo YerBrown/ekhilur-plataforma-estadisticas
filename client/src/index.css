@@ -94,10 +94,10 @@
   --color-barras: rgb(66, 28, 4);
   --color-naranja: rgb(255, 102, 0, 1);
   --color-naranja-background: rgba(255, 144, 18, 0.8);
-  --color-naranja-background-2: rgb(252, 197, 138);
+  --color-naranja-background-2: rgba(255, 144, 18, 0.6);
   --color-azul: rgba(0, 71, 184, 1);
   --color-azul-background: rgba(0, 71, 184, 0.8);
-  --color-azul-background-2: rgba(152, 178, 226);
+  --color-azul-background-2: rgba(152, 178, 226, 0.6);
   --color-blanco: rgba(255, 255, 255, 1);
   --color-negro: rgba(0, 0, 0, 1);
   --color-placeholder-light: rgba(0, 0, 0, 0.6);
@@ -108,6 +108,7 @@
   --color-ingreso: rgba(0, 128, 0, 0.4);
   --naranja-light: rgba(255, 102, 0, 0.7);
   --naranja-degradado: rgba(255, 30, 0, 0.966);
+  --color-white-03:  rgba(247, 239, 234, 0.7);
  
 
   /*NEW COLORS*/

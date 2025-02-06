@@ -1,3 +1,30 @@
+.logo-login{
+    text-align: center;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-family: "noway", sans-serif;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom,
+        #FF9012 30%,
+        #0047ba 80%
+    );
+    padding: 2rem;
+}
+
+/* La sección de imagen está oculta en móvil */
+.login-image-section {
+    display: none;
+}
+
 .auth-window {
     display: flex;
     flex-direction: column;
@@ -7,12 +34,9 @@
     box-sizing: border-box;
     transition: opacity 0.2s ease-out;
     overflow: hidden;
-    background-color: var(--background-color-principal-05);
-    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     padding: 1rem;
 }
-
 
 .auth-window.fade-in {
     opacity: 1;
@@ -39,7 +63,9 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
 }
+
 
 .auth-window .form-container form {
     display: flex;
@@ -49,29 +75,33 @@
 
 .auth-window .form-container input {
     border: none;
-    background-color: var(--background-color-principal-05);
-    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 1rem;
     width: 100%;
     box-sizing: border-box;
     font-size: 1rem;
-
+    outline: none;
 }
 
-.auth-window .form-container input:focus {
-    outline: 2px solid var(--color-naranja-principal);
-}
 
 .auth-window .form-container .main-button {
     font-weight: bold;
-    background-color: var(--color-naranja-principal);
-    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    padding: 1rem;
-    color: var(--color-blanco);
-    border: none;
-    font-size: 1rem;
+    padding: 15px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-top: 2rem;
+    color: white;
+    height: 30%;
+    width: 50%;
+    border: 1px solid white;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+  
+   
 }
 
 .auth-window .form-container .message {
@@ -81,11 +111,11 @@
 }
 
 .message.success {
-    color: rgb(60, 255, 0);
+    color: white ;
 }
 
 .message.failed {
-    color: red;
+    color: orange;
 }
 
 
@@ -111,7 +141,7 @@
     background-color: transparent;
     border-radius: 8px;
     padding: 1rem;
-    color: var(--color-naranja-principal);
+    color: var(--color-letra-2-dark);
 }
 
 .auth-window .change-form button {
@@ -124,6 +154,14 @@
     text-decoration: underline;
 }
 
+.auth-window .form-container input::placeholder {
+    color: var(--color-letra-2-dark);
+    opacity: 1; /* Firefox */
+    font-size: 15px;
+}
+
+
+
 @media (max-width: 600px) {
 
     .auth-window .form-container .password-data {
@@ -135,4 +173,66 @@
     .auth-window .form-container .password-data .password-input {
         grid-column: span 1;
     }
+}@media (min-width: 1024px) {
+    .login-page {
+        padding: 0;
+        background: none;
+        /* Eliminar justify-content y align-items */
+    }
+
+    .login-container {
+        display: flex;
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    .login-image-section {
+        display: flex;
+        flex: 1;
+        background: linear-gradient(to bottom,
+            #FF9012 30%,
+            #0047ba 80%
+        );
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Ocultamos el header móvil en desktop */
+    .mobile-header {
+        display: none;
+    }
+
+    .auth-window {
+        flex: 1;
+        background: white;
+        max-width: none; /* Importante: quitar el max-width para desktop */
+        border-radius: 0; /* Quitar el border-radius en desktop */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    /* Contenedor del formulario en desktop */
+    .auth-window .form-container {
+        width: 100%;
+        max-width: 400px; /* Limitar el ancho del formulario */
+    }
+    .auth-window .form-container form {
+        width: 100%; /* Asegurar ancho completo del formulario */
+    }
+
+
+    .auth-window .form-container input,
+    .auth-window .form-container .password-input {
+        width: 100%;
+        box-sizing: border-box;
+    }
 }
+
+    /* Logo en desktop */
+    .login-image-section .logo-login {
+        color: white;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    }
+
