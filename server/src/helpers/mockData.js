@@ -1,9 +1,9 @@
 const mockData = [
     {
-        "fecha":"2025-01-09",
+        "fecha":"2025-01-20",
         "hora":"10:23",
         "movimiento":"Transferencia enviada",
-        "cantidad":95.17,
+        "cantidad":-95.17,
         "concepto":"Pago de servicio",
         "usuario_asociado":"Usuario 1",
         "saldo":148.89,
@@ -11,7 +11,7 @@ const mockData = [
         "categoria":"Moda y complementos"
     },
     {
-        "fecha":"2025-01-09",
+        "fecha":"2025-01-20",
         "hora":"08:22",
         "movimiento":"Ingreso recibido",
         "cantidad":8.57,
@@ -22,10 +22,10 @@ const mockData = [
         "categoria":"Industria y construcción"
     },
     {
-        "fecha":"2025-01-09",
+        "fecha":"2025-01-11",
         "hora":"01:20",
         "movimiento":"Pago a usuario",
-        "cantidad":81.0,
+        "cantidad":-81.0,
         "concepto":"Donación",
         "usuario_asociado":"Usuario 3",
         "saldo":366.02,
@@ -33,7 +33,7 @@ const mockData = [
         "categoria":"Arte y cultura"
     },
     {
-        "fecha":"2025-01-09",
+        "fecha":"2025-01-11",
         "hora":"08:29",
         "movimiento":"Ingreso recibido",
         "cantidad":80.66,
@@ -44,10 +44,10 @@ const mockData = [
         "categoria":"Servicios y comercio general"
     },
     {
-        "fecha":"2025-01-09",
+        "fecha":"2025-01-28",
         "hora":"09:09",
         "movimiento":"Pago a usuario",
-        "cantidad":68.24,
+        "cantidad":-68.24,
         "concepto":"Pago de servicio",
         "usuario_asociado":"Usuario 3",
         "saldo":309.82,
@@ -55,10 +55,10 @@ const mockData = [
         "categoria":"Hostelería"
     },
     {
-        "fecha":"2025-01-09",
+        "fecha":"2025-01-28",
         "hora":"03:49",
         "movimiento":"Pago a usuario",
-        "cantidad":71.33,
+        "cantidad":-71.33,
         "concepto":"Pago de servicio",
         "usuario_asociado":"Usuario 3",
         "saldo":400.64,
@@ -66,10 +66,10 @@ const mockData = [
         "categoria":"Asociaciones y cooperativas"
     },
     {
-        "fecha":"2025-01-09",
+        "fecha":"2025-01-14",
         "hora":"15:09",
         "movimiento":"Transferencia enviada",
-        "cantidad":17.64,
+        "cantidad":-17.64,
         "concepto":"Compra en tienda",
         "usuario_asociado":"Usuario 2",
         "saldo":273.3,
@@ -77,10 +77,10 @@ const mockData = [
         "categoria":"Industria y construcción"
     },
     {
-        "fecha":"2025-01-09",
+        "fecha":"2025-01-05",
         "hora":"01:53",
         "movimiento":"Transferencia enviada",
-        "cantidad":24.49,
+        "cantidad":-24.49,
         "concepto":"Donación",
         "usuario_asociado":"Usuario 2",
         "saldo":478.73,
@@ -88,10 +88,10 @@ const mockData = [
         "categoria":"Moda y complementos"
     },
     {
-        "fecha":"2025-01-09",
+        "fecha":"2025-01-05",
         "hora":"03:03",
         "movimiento":"Transferencia enviada",
-        "cantidad":34.35,
+        "cantidad":-34.35,
         "concepto":"Donación",
         "usuario_asociado":"Usuario 2",
         "saldo":224.07,
@@ -99,10 +99,10 @@ const mockData = [
         "categoria":"Moda y complementos"
     },
     {
-        "fecha":"2025-01-09",
+        "fecha":"2025-01-05",
         "hora":"01:04",
         "movimiento":"Pago a usuario",
-        "cantidad":67.86,
+        "cantidad":-67.86,
         "concepto":"Donación",
         "usuario_asociado":"Usuario 2",
         "saldo":41.0,
@@ -110,10 +110,10 @@ const mockData = [
         "categoria":"Salud y estética"
     },
     {
-        "fecha":"2025-01-09",
+        "fecha":"2025-01-30",
         "hora":"04:14",
         "movimiento":"Pago a usuario",
-        "cantidad":13.81,
+        "cantidad":-13.81,
         "concepto":"Compra en tienda",
         "usuario_asociado":"Usuario 1",
         "saldo":446.43,
@@ -121,7 +121,7 @@ const mockData = [
         "categoria":"Alimentación"
     },
     {
-        "fecha":"2025-01-09",
+        "fecha":"2025-01-30",
         "hora":"22:35",
         "movimiento":"Transferencia enviada",
         "cantidad":76.85,
@@ -132,7 +132,7 @@ const mockData = [
         "categoria":"Arte y cultura"
     },
     {
-        "fecha":"2025-01-09",
+        "fecha":"2025-01-30",
         "hora":"18:21",
         "movimiento":"Ingreso recibido",
         "cantidad":57.03,
@@ -143,7 +143,7 @@ const mockData = [
         "categoria":"Asociaciones y cooperativas"
     },
     {
-        "fecha":"2025-01-09",
+        "fecha":"2025-01-04",
         "hora":"11:06",
         "movimiento":"Ingreso recibido",
         "cantidad":44.39,
@@ -154,7 +154,7 @@ const mockData = [
         "categoria":"Alimentación"
     },
     {
-        "fecha":"2025-01-09",
+        "fecha":"2025-01-04",
         "hora":"12:34",
         "movimiento":"Transferencia enviada",
         "cantidad":88.61,
@@ -165,7 +165,7 @@ const mockData = [
         "categoria":"Deporte y ocio"
     },
     {
-        "fecha":"2025-01-09",
+        "fecha":"2025-01-04",
         "hora":"19:40",
         "movimiento":"Ingreso recibido",
         "cantidad":86.95,
@@ -176,10 +176,10 @@ const mockData = [
         "categoria":"Hostelería"
     },
     {
-        "fecha":"2025-01-09",
+        "fecha":"2025-01-04",
         "hora":"06:42",
         "movimiento":"Pago a usuario",
-        "cantidad":52.86,
+        "cantidad":-52.86,
         "concepto":"Donación",
         "usuario_asociado":"Usuario 2",
         "saldo":386.93,
@@ -187,7 +187,7 @@ const mockData = [
         "categoria":"Alimentación"
     },
     {
-        "fecha":"2025-01-09",
+        "fecha":"2025-01-07",
         "hora":"18:29",
         "movimiento":"Ingreso recibido",
         "cantidad":8.64,
@@ -212,7 +212,7 @@ const mockData = [
         "fecha":"2025-01-09",
         "hora":"19:41",
         "movimiento":"Pago a usuario",
-        "cantidad":65.14,
+        "cantidad":-65.14,
         "concepto":"Compra en tienda",
         "usuario_asociado":"Usuario 1",
         "saldo":384.67,
@@ -220,10 +220,10 @@ const mockData = [
         "categoria":"Salud y estética"
     },
     {
-        "fecha":"2024-12-15",
+        "fecha":"2024-12-07",
         "hora":"21:22",
         "movimiento":"Pago a usuario",
-        "cantidad":45.7,
+        "cantidad":-45.7,
         "concepto":"Compra en tienda",
         "usuario_asociado":"Usuario 1",
         "saldo":235.94,
@@ -231,10 +231,10 @@ const mockData = [
         "categoria":"Hostelería"
     },
     {
-        "fecha":"2024-12-15",
+        "fecha":"2024-12-07",
         "hora":"14:52",
         "movimiento":"Pago a usuario",
-        "cantidad":23.94,
+        "cantidad":-23.94,
         "concepto":"Compra en tienda",
         "usuario_asociado":"Usuario 1",
         "saldo":101.99,
@@ -242,7 +242,7 @@ const mockData = [
         "categoria":"Salud y estética"
     },
     {
-        "fecha":"2024-12-15",
+        "fecha":"2024-12-07",
         "hora":"07:19",
         "movimiento":"Transferencia enviada",
         "cantidad":26.03,
@@ -256,7 +256,7 @@ const mockData = [
         "fecha":"2024-12-15",
         "hora":"17:52",
         "movimiento":"Pago a usuario",
-        "cantidad":94.68,
+        "cantidad":-94.68,
         "concepto":"Compra en tienda",
         "usuario_asociado":"Ekhilur S.Coop.",
         "saldo":198.67,
@@ -275,7 +275,7 @@ const mockData = [
         "categoria":"Moda y complementos"
     },
     {
-        "fecha":"2024-12-15",
+        "fecha":"2024-12-01",
         "hora":"11:00",
         "movimiento":"Ingreso recibido",
         "cantidad":96.11,
@@ -286,10 +286,10 @@ const mockData = [
         "categoria":"Deporte y ocio"
     },
     {
-        "fecha":"2024-12-15",
+        "fecha":"2024-12-01",
         "hora":"21:44",
         "movimiento":"Pago a usuario",
-        "cantidad":19.62,
+        "cantidad":-19.62,
         "concepto":"Pago de servicio",
         "usuario_asociado":"Usuario 2",
         "saldo":229.67,
@@ -297,7 +297,7 @@ const mockData = [
         "categoria":"Moda y complementos"
     },
     {
-        "fecha":"2024-12-15",
+        "fecha":"2024-12-01",
         "hora":"05:15",
         "movimiento":"Ingreso recibido",
         "cantidad":82.06,
@@ -308,10 +308,10 @@ const mockData = [
         "categoria":"Alimentación"
     },
     {
-        "fecha":"2024-12-15",
+        "fecha":"2024-12-12",
         "hora":"07:39",
         "movimiento":"Pago a usuario",
-        "cantidad":31.24,
+        "cantidad":-31.24,
         "concepto":"Compra en tienda",
         "usuario_asociado":"Usuario 1",
         "saldo":32.43,
@@ -319,7 +319,7 @@ const mockData = [
         "categoria":"Asociaciones y cooperativas"
     },
     {
-        "fecha":"2024-12-15",
+        "fecha":"2024-12-12",
         "hora":"16:34",
         "movimiento":"Ingreso recibido",
         "cantidad":96.68,
@@ -330,7 +330,7 @@ const mockData = [
         "categoria":"Alimentación"
     },
     {
-        "fecha":"2024-12-15",
+        "fecha":"2024-12-12",
         "hora":"17:54",
         "movimiento":"Ingreso recibido",
         "cantidad":73.26,
@@ -341,7 +341,7 @@ const mockData = [
         "categoria":"Servicios y comercio general"
     },
     {
-        "fecha":"2024-12-15",
+        "fecha":"2024-12-12",
         "hora":"00:36",
         "movimiento":"Ingreso recibido",
         "cantidad":69.18,
@@ -352,7 +352,7 @@ const mockData = [
         "categoria":"Arte y cultura"
     },
     {
-        "fecha":"2024-12-15",
+        "fecha":"2024-12-25",
         "hora":"09:30",
         "movimiento":"Transferencia enviada",
         "cantidad":68.99,
@@ -363,10 +363,10 @@ const mockData = [
         "categoria":"Deporte y ocio"
     },
     {
-        "fecha":"2024-12-15",
+        "fecha":"2024-12-25",
         "hora":"22:16",
         "movimiento":"Pago a usuario",
-        "cantidad":51.41,
+        "cantidad":-51.41,
         "concepto":"Compra en tienda",
         "usuario_asociado":"Ekhilur S.Coop.",
         "saldo":294.29,
@@ -374,10 +374,10 @@ const mockData = [
         "categoria":"Alimentación"
     },
     {
-        "fecha":"2024-12-15",
+        "fecha":"2024-12-25",
         "hora":"06:04",
         "movimiento":"Pago a usuario",
-        "cantidad":79.53,
+        "cantidad":-79.53,
         "concepto":"Compra en tienda",
         "usuario_asociado":"Usuario 2",
         "saldo":474.71,
@@ -385,7 +385,7 @@ const mockData = [
         "categoria":"Servicios y comercio general"
     },
     {
-        "fecha":"2024-12-15",
+        "fecha":"2024-12-21",
         "hora":"16:44",
         "movimiento":"Transferencia enviada",
         "cantidad":42.1,
@@ -396,10 +396,10 @@ const mockData = [
         "categoria":"Industria y construcción"
     },
     {
-        "fecha":"2024-12-15",
+        "fecha":"2024-12-21",
         "hora":"23:53",
         "movimiento":"Pago a usuario",
-        "cantidad":46.43,
+        "cantidad":-46.43,
         "concepto":"Donación",
         "usuario_asociado":"Usuario 1",
         "saldo":328.53,
@@ -407,7 +407,7 @@ const mockData = [
         "categoria":"Hostelería"
     },
     {
-        "fecha":"2024-12-15",
+        "fecha":"2024-12-13",
         "hora":"20:54",
         "movimiento":"Transferencia enviada",
         "cantidad":33.4,
@@ -418,7 +418,7 @@ const mockData = [
         "categoria":"Servicios y comercio general"
     },
     {
-        "fecha":"2024-12-15",
+        "fecha":"2024-12-13",
         "hora":"23:23",
         "movimiento":"Ingreso recibido",
         "cantidad":72.32,
@@ -429,10 +429,10 @@ const mockData = [
         "categoria":"Moda y complementos"
     },
     {
-        "fecha":"2024-12-15",
+        "fecha":"2024-12-13",
         "hora":"13:22",
         "movimiento":"Pago a usuario",
-        "cantidad":82.63,
+        "cantidad":-82.63,
         "concepto":"Compra en tienda",
         "usuario_asociado":"Usuario 3",
         "saldo":54.92,
@@ -443,7 +443,7 @@ const mockData = [
         "fecha":"2024-11-20",
         "hora":"07:38",
         "movimiento":"Pago a usuario",
-        "cantidad":37.67,
+        "cantidad":-37.67,
         "concepto":"Cuota mensual",
         "usuario_asociado":"Usuario 1",
         "saldo":247.22,
@@ -451,10 +451,10 @@ const mockData = [
         "categoria":"Servicios y comercio general"
     },
     {
-        "fecha":"2024-11-20",
+        "fecha":"2024-11-02",
         "hora":"08:09",
         "movimiento":"Pago a usuario",
-        "cantidad":97.66,
+        "cantidad":-97.66,
         "concepto":"Cuota mensual",
         "usuario_asociado":"Usuario 3",
         "saldo":466.24,
@@ -462,10 +462,10 @@ const mockData = [
         "categoria":"Hostelería"
     },
     {
-        "fecha":"2024-11-20",
+        "fecha":"2024-11-02",
         "hora":"15:12",
         "movimiento":"Pago a usuario",
-        "cantidad":61.02,
+        "cantidad":-61.02,
         "concepto":"Cuota mensual",
         "usuario_asociado":"Usuario 1",
         "saldo":146.88,
@@ -473,7 +473,7 @@ const mockData = [
         "categoria":"Industria y construcción"
     },
     {
-        "fecha":"2024-11-20",
+        "fecha":"2024-11-02",
         "hora":"10:37",
         "movimiento":"Ingreso recibido",
         "cantidad":44.17,
@@ -484,7 +484,7 @@ const mockData = [
         "categoria":"Moda y complementos"
     },
     {
-        "fecha":"2024-11-20",
+        "fecha":"2024-11-05",
         "hora":"21:13",
         "movimiento":"Transferencia enviada",
         "cantidad":54.18,
@@ -495,7 +495,7 @@ const mockData = [
         "categoria":"Industria y construcción"
     },
     {
-        "fecha":"2024-11-20",
+        "fecha":"2024-11-05",
         "hora":"22:53",
         "movimiento":"Transferencia enviada",
         "cantidad":93.17,
@@ -506,7 +506,7 @@ const mockData = [
         "categoria":"Arte y cultura"
     },
     {
-        "fecha":"2024-11-20",
+        "fecha":"2024-11-05",
         "hora":"17:55",
         "movimiento":"Transferencia enviada",
         "cantidad":85.28,
@@ -517,7 +517,7 @@ const mockData = [
         "categoria":"Industria y construcción"
     },
     {
-        "fecha":"2024-11-20",
+        "fecha":"2024-11-05",
         "hora":"01:29",
         "movimiento":"Transferencia enviada",
         "cantidad":60.72,
@@ -528,7 +528,7 @@ const mockData = [
         "categoria":"Salud y estética"
     },
     {
-        "fecha":"2024-11-20",
+        "fecha":"2024-11-10",
         "hora":"22:01",
         "movimiento":"Transferencia enviada",
         "cantidad":31.81,
@@ -539,10 +539,10 @@ const mockData = [
         "categoria":"Salud y estética"
     },
     {
-        "fecha":"2024-11-20",
+        "fecha":"2024-11-10",
         "hora":"13:17",
         "movimiento":"Pago a usuario",
-        "cantidad":45.05,
+        "cantidad":-45.05,
         "concepto":"Compra en tienda",
         "usuario_asociado":"Usuario 1",
         "saldo":202.73,
@@ -550,10 +550,10 @@ const mockData = [
         "categoria":"Alimentación"
     },
     {
-        "fecha":"2024-11-20",
+        "fecha":"2024-11-10",
         "hora":"16:07",
         "movimiento":"Pago a usuario",
-        "cantidad":44.39,
+        "cantidad":-44.39,
         "concepto":"Donación",
         "usuario_asociado":"Usuario 2",
         "saldo":364.8,
@@ -561,7 +561,7 @@ const mockData = [
         "categoria":"Alimentación"
     },
     {
-        "fecha":"2024-11-20",
+        "fecha":"2024-11-10",
         "hora":"11:46",
         "movimiento":"Ingreso recibido",
         "cantidad":44.88,
@@ -572,7 +572,7 @@ const mockData = [
         "categoria":"Hostelería"
     },
     {
-        "fecha":"2024-11-20",
+        "fecha":"2024-11-26",
         "hora":"19:49",
         "movimiento":"Ingreso recibido",
         "cantidad":19.11,
@@ -583,7 +583,7 @@ const mockData = [
         "categoria":"Deporte y ocio"
     },
     {
-        "fecha":"2024-11-20",
+        "fecha":"2024-11-26",
         "hora":"06:45",
         "movimiento":"Transferencia enviada",
         "cantidad":18.4,
@@ -594,7 +594,7 @@ const mockData = [
         "categoria":"Asociaciones y cooperativas"
     },
     {
-        "fecha":"2024-11-20",
+        "fecha":"2024-11-23",
         "hora":"09:16",
         "movimiento":"Transferencia enviada",
         "cantidad":75.97,
@@ -605,7 +605,7 @@ const mockData = [
         "categoria":"Asociaciones y cooperativas"
     },
     {
-        "fecha":"2024-11-20",
+        "fecha":"2024-11-21",
         "hora":"20:28",
         "movimiento":"Transferencia enviada",
         "cantidad":79.45,
@@ -616,7 +616,7 @@ const mockData = [
         "categoria":"Industria y construcción"
     },
     {
-        "fecha":"2024-11-20",
+        "fecha":"2024-11-19",
         "hora":"23:10",
         "movimiento":"Transferencia enviada",
         "cantidad":75.81,
@@ -627,7 +627,7 @@ const mockData = [
         "categoria":"Arte y cultura"
     },
     {
-        "fecha":"2024-11-20",
+        "fecha":"2024-11-29",
         "hora":"00:08",
         "movimiento":"Ingreso recibido",
         "cantidad":62.24,
@@ -638,10 +638,10 @@ const mockData = [
         "categoria":"Industria y construcción"
     },
     {
-        "fecha":"2024-11-20",
+        "fecha":"2024-11-30",
         "hora":"18:36",
         "movimiento":"Pago a usuario",
-        "cantidad":71.11,
+        "cantidad":-71.11,
         "concepto":"Cuota mensual",
         "usuario_asociado":"Ekhilur S.Coop.",
         "saldo":249.04,
@@ -649,10 +649,10 @@ const mockData = [
         "categoria":"Servicios y comercio general"
     },
     {
-        "fecha":"2024-11-20",
+        "fecha":"2024-11-30",
         "hora":"02:30",
         "movimiento":"Pago a usuario",
-        "cantidad":19.14,
+        "cantidad":-19.14,
         "concepto":"Pago de servicio",
         "usuario_asociado":"Usuario 3",
         "saldo":121.17,

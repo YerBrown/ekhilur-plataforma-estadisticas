@@ -1,5 +1,6 @@
 import { apiRequest } from "./apiRequest.js";
 import { response } from "express";
+import mockData from "../helpers/mockData.js";
 
 const completarMesesFaltantesBonificacionesEmitidas = (
     data,
@@ -314,6 +315,59 @@ const completarMesesGastosCategoria = (data, anioInicio, anioFin) => {
     return gastosCompletos.sort((a, b) => a.año - b.año || a.mes - b.mes);
 };
 
+// TRANSACCIONES
+async function getTransactions(req, res) {
+    try {
+        const response = mockData;
+        res.status(200).json(response);
+    } catch (error) {
+        console.error("Error al obtener las transacciones:", error);
+        res.status(500).json({ error: "Error al obtener las transacciones" });
+    }
+}
+async function getTransactionsByMonth(req, res) {
+    try {
+        const { año, mes } = req.query;
+        const response = mockData;
+
+        const filteredResponse = response.filter((item) => {
+            const itemDate = new Date(item.fecha);
+            const itemYear = itemDate.getFullYear();
+            const itemMonth = itemDate.getMonth() + 1; // getMonth() devuelve valores de 0 a 11
+
+            return (!mes || itemMonth === parseInt(mes)) && (!año || itemYear === parseInt(año));
+        });
+
+        res.status(200).json(filteredResponse);
+    } catch (error) {
+        console.error("Error al filtrar las transacciones:", error);
+        res.status(500).json({ error: "Error interno del servidor" });
+    }
+}
+
+async function getTransactionsCashbacksByMonth(req, res) {
+    try {
+        const { año, mes } = req.query;
+        const response = mockData;
+
+        const goodResponse = response.filter((item) => item.cantidad > 0);
+
+        const filteredResponse = goodResponse.filter((item) => {
+            const itemDate = new Date(item.fecha);
+            const itemYear = itemDate.getFullYear();
+            const itemMonth = itemDate.getMonth() + 1; // getMonth() devuelve valores de 0 a 11
+
+            return (!mes || itemMonth === parseInt(mes)) && (!año || itemYear === parseInt(año));
+        });
+
+        res.status(200).json(filteredResponse);
+    } catch (error) {
+        console.error("Error al filtrar las transacciones:", error);
+        res.status(500).json({ error: "Error interno del servidor" });
+    }
+}
+
+
 // USER
 async function getUserInfo(req, res) {
     try {
@@ -426,6 +480,7 @@ async function getCategoryExpensesByMonth(req, res) {
             `/compras_categoria_mes_año/${req.user.username}`,
             "GET"
         );
+        console.log(response);
         const goodResponse = completarMesesGastosCategoria(
             response,
             2022,
@@ -585,6 +640,9 @@ async function getHomeDataForCommerce(req, res) {
 }
 
 export default {
+    getTransactions,
+    getTransactionsByMonth,
+    getTransactionsCashbacksByMonth,
     getUserInfo,
     getUserAccounts,
     getCashbacksIssuedByMonth,
