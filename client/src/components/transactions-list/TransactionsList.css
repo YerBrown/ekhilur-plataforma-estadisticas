@@ -21,6 +21,7 @@
     color: var(--color-letra);
     padding-left: 1rem;
     margin: 0;
+    padding-top: 1rem;
 }
 
 /* Lista de transacciones */
