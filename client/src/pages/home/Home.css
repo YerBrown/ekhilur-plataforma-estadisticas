@@ -249,7 +249,7 @@ aside .user-profile-info {
     right: 0;
     top: 0;
     height: 100vh;
-    width: 50vw; /* Mitad del ancho de la pantalla */
+    width: 35vw; /* Mitad del ancho de la pantalla */
     min-width: 300px; /* Ancho mínimo para mantener legibilidad */
     max-width: 600px; /* Ancho máximo para pantallas muy anchas */
     background: var(--background-color);
