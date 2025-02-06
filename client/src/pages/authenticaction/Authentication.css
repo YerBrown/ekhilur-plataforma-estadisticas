@@ -57,7 +57,16 @@
 }
 
 .login-page .desktop-login .right-side input {
-    color: var(--opcion-ok-background-claro);
+    color: var(--color-letra);
+}
+
+.login-page .desktop-login .right-side input::placeholder {
+    color: var(--color-placeholder);
+}
+
+.login-page .desktop-login .right-side .main-button {
+    color: var(--color-letra);
+    border-color: var(--color-letra);
 }
 
 /* La sección de imagen está oculta en móvil */
