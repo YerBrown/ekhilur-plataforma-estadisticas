@@ -55,9 +55,9 @@ const UserPage = () => {
                                     {showPhone
                                         ? apiData.telefono
                                         : `${apiData.telefono?.slice(
-                                              0,
-                                              3
-                                          )}*** *** ***`}
+                                            0,
+                                            3
+                                        )}*** *** ***`}
                                 </span>
                                 <button
                                     onClick={() => setShowPhone(!showPhone)}
@@ -84,8 +84,8 @@ const UserPage = () => {
                                     {showAddress
                                         ? apiData.direccion
                                         : `***************${apiData.direccion?.slice(
-                                              15
-                                          )}`}
+                                            38
+                                        )}`}
                                 </span>
                                 <button
                                     onClick={() => setShowAddress(!showAddress)}
@@ -121,9 +121,9 @@ const UserPage = () => {
                                     {showIban
                                         ? apiData.iban
                                         : `${apiData.iban?.slice(
-                                              0,
-                                              3
-                                          )}****************`}
+                                            0,
+                                            2
+                                        )}****************`}
                                 </span>
                                 <button
                                     onClick={() => setShowIban(!showIban)}

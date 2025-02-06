@@ -227,18 +227,19 @@ const Home = () => {
                     />
 
                     <aside className={`profile-aside ${theme}`}>
-                        <button
-                            className="close-aside"
-                            onClick={() => setShowAside(false)}
-                        >
-                            ×
-                        </button>
-                        <div className="language-selector">
-                            <button onClick={setSpanish}>ES</button>
-                            <button onClick={setBasque}>EU</button>
+                            <button
+                                className="button-no"
+                                onClick={() => setShowAside(false)}
+                            >
+                                ×
+                            </button>
+                        <div className="user-buttons">
+                            <div className="language-selector">
+                                <button className="button-yes" onClick={setSpanish}>ES</button>
+                                <button className="button-yes" onClick={setBasque}>EU</button>
+                            </div>
+                            <button className="button-yes" onClick={handleLogout}>{t.logout}</button>
                         </div>
-
-                        <button onClick={handleLogout}>{t.logout}</button>
                         <UserPage />
                     </aside>
                 </>

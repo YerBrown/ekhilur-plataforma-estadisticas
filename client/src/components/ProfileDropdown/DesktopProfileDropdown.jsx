@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLanguage } from "../../contexts/LanguageContext.jsx";
 import { Eye, EyeOff } from "lucide-react";
-import "./DesktopProfileDropdown.css"; // Estilos específicos para este componente
+//import "./DesktopProfileDropdown.css"; // Estilos específicos para este componente
 
 const DesktopProfileDropdown = ({ userData }) => {
     const { t } = useLanguage();
@@ -45,7 +45,7 @@ const DesktopProfileDropdown = ({ userData }) => {
                 <div className="info-group">
                     <span className="info-label">{t.iban}:</span>
                     <span className="info-value">
-                        {showIban ? userData.iban : `${userData.iban?.slice(0, 3)}****************`}
+                        {showIban ? userData.iban : `${userData.iban?.slice(0, 3)}*****************`}
                     </span>
                     <button onClick={() => setShowIban(!showIban)} className="toggle-button">
                         {showIban ? <EyeOff size={16} /> : <Eye size={16} />}

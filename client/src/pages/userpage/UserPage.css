@@ -65,9 +65,8 @@
     align-items: center;
     justify-content: space-between;
     /* Alinea el texto a la izquierda y el botón a la derecha */
-    padding: 10px;
     font-size: 1.2rem;
-    color: var(--color-letra-2);
+    color: var(--color-light);
 }
 
 /* Modificación aquí */
