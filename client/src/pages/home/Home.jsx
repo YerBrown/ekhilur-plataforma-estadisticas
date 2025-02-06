@@ -101,7 +101,7 @@ const Home = () => {
             },
         },
         cutout: "85%", // Ajusta el tamaño del agujero central del donut
-        radius: "70%",
+        radius: "90%",
         elements: {
             arc: {
                 borderWidth: 0,

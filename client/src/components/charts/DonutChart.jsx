@@ -1,7 +1,6 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { FaCircle } from "react-icons/fa";
 import { PiCoinsBold } from "react-icons/pi";
 
 import ChartDataLabels from "chartjs-plugin-datalabels";
@@ -37,17 +36,14 @@ const DonutChart = ({ data, options, legendValues }) => {
     return (
         <div className="donut-chart">
             <div className="donut-canvas">
-                <div className="coin-icon">
-                    <PiCoinsBold size={24} color="#FF9012" /> {/* Ajusta el tamaño y color según necesites */}
-                </div>
                 <Doughnut data={data} options={options} />
             </div>
             <div className="legends-container">
                 {legendValues.map((item) => (
                     <div className="legend" key={item.label}>
-                        <FaCircle
+                        <PiCoinsBold
                             color={item.color}
-                            fontSize={15}
+                            fontSize={20}
                             className="legend-symbol"
                         />
 
