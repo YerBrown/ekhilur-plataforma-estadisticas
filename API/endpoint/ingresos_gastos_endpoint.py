@@ -30,6 +30,7 @@ def ingresos_gastos(tabla_usuario):
         }, 500
     
     try:
+        # Consulta mejorada para obtener los ingresos y gastos mes a mes
         query = f"""
         SELECT 
             strftime('%Y', Fecha) AS año,

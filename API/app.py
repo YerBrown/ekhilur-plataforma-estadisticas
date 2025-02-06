@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f9a9d318fc5470c34ded34dc186b5389b206aaf7
 from flask import Flask, jsonify
 from endpoint.cashback_emitido_año_endpoint import cashback_emitido_bp as cashback_emitido_año_bp
 from endpoint.cashback_emitido_mes_año_endpoint import cashback_emitido_bp as cashback_emitido_mes_bp
@@ -255,5 +258,9 @@ def home():
     })
 
 if __name__ == '__main__':
+<<<<<<< HEAD
     app.run(host='0.0.0.0', port=5000, debug=True) 
 >>>>>>> 040cffd83bd40274ad9dce243d2f3cfcb37b00cd
+=======
+    app.run(host="0.0.0.0.", port= 5000, debug=True)
+>>>>>>> f9a9d318fc5470c34ded34dc186b5389b206aaf7

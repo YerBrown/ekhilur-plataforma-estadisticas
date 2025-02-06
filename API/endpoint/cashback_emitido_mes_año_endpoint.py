@@ -14,12 +14,13 @@ DATABASE_PATH = join(DATABASE_DIR, 'datos_sqlite.db')
 # Asegurarnos de que el directorio existe
 makedirs(DATABASE_DIR, exist_ok=True)
 
+# Función para calcular cashback emitido agrupado por mes y año
 def cashback_emitido_mes_año(tabla_usuario):
     # Validamos que la tabla esté permitida
     tablas_permitidas = {"fotostorres"}
     if tabla_usuario not in tablas_permitidas:
-        return {"error": "Este endpoint solo está disponible para la tabla fotostorres."}, 400
-    
+        return {"error": "Nombre de tabla no permitido."}, 400
+
     try:
         conexion = connect(DATABASE_PATH)
     except OperationalError as e:
@@ -28,24 +29,19 @@ def cashback_emitido_mes_año(tabla_usuario):
             "detalles": str(e),
             "ruta_bd": DATABASE_PATH
         }, 500
-    
+
     try:
+        # Construcción de la consulta SQL
         query = f"""
         SELECT 
-            strftime('%Y', Fecha) AS año,
+            strftime('%Y', Fecha) AS anio,
             strftime('%m', Fecha) AS mes,
-            SUM(CASE 
-                WHEN Movimiento = 'Bonificación por compra' THEN ABS(Cantidad) 
-                ELSE 0 
-            END) AS bonificaciones_recibidas,
-            SUM(CASE 
-                WHEN Movimiento = 'Descuento automático' THEN -ABS(Cantidad) 
-                ELSE 0 
-            END) AS bonificaciones_emitidas
+            SUM(CASE WHEN Movimiento = 'Bonificación por compra' THEN Cantidad ELSE 0 END) AS total_cashback_recibido,
+            SUM(CASE WHEN Movimiento = 'Descuento automático' THEN ABS(Cantidad) ELSE 0 END) AS total_cashback_emitido
         FROM {tabla_usuario}
         WHERE Movimiento IN ('Descuento automático', 'Bonificación por compra')
-        GROUP BY año, mes
-        ORDER BY año, mes;
+        GROUP BY anio, mes
+        ORDER BY anio, mes;
         """
         
         df = read_sql_query(query, conexion)
@@ -60,19 +56,24 @@ def cashback_emitido_mes_año(tabla_usuario):
             })
         
         conexion.close()
-        return resultado
+
+        return df.to_dict(orient='records')
     except Exception as e:
         return {
             "error": "Error al ejecutar la consulta",
             "detalles": str(e)
         }, 500
 
+# Definir el endpoint para obtener cashback emitido
 @cashback_emitido_bp.route('/cashback_emitido_mes_año/<string:tabla_usuario>', methods=['GET'])
 def get_cashback_emitido_mes_año(tabla_usuario):
     """
     Endpoint para obtener cashback emitido agrupado por mes y año según la tabla de usuario.
     """
     resultado = cashback_emitido_mes_año(tabla_usuario)
+
+    # Si la función devuelve un error, lo retornamos como JSON
     if isinstance(resultado, tuple):
         return jsonify({"error": resultado[0]}), resultado[1]
+
     return jsonify(resultado)

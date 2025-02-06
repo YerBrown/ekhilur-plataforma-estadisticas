@@ -30,6 +30,7 @@ def get_ventas_tipo_año(tabla_usuario):
         }, 500
     
     try:
+        # Query mejorada para obtener ventas por tipo de movimiento
         query = f"""
         SELECT 
             strftime('%Y', Fecha) AS año,
@@ -50,7 +51,7 @@ def get_ventas_tipo_año(tabla_usuario):
         resultado = []
         for _, row in df.iterrows():
             resultado.append({
-                "año": str(row['año']),
+                "anio": str(row['anio']),
                 "tipo_movimiento": str(row['tipo_movimiento']),
                 "num_operaciones": int(row['num_operaciones']),
                 "importe_total": float(row['importe_total']),

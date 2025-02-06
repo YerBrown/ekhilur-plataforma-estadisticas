@@ -8,7 +8,8 @@ from utils.crypto_utils import cipher, data_cipher
 # Crear el blueprint
 scraper_cuentas_bp = Blueprint('scraper_cuentas', __name__)
 
-# Credenciales cifradas
+# Credenciales de usuarios
+#! CREDENCIALES HARDCODEADAS
 CREDENTIALS = {
     "alomorga": {
         "username": cipher.encrypt("alomorga"),

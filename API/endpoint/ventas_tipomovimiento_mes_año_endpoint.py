@@ -30,6 +30,7 @@ def get_ventas_tipo_mes_año(tabla_usuario):
         }, 500
     
     try:
+        # Query mejorada para obtener ventas por tipo de movimiento y mes
         query = f"""
         SELECT 
             strftime('%Y', Fecha) AS año,

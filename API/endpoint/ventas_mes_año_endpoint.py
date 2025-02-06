@@ -30,6 +30,7 @@ def get_ventas_mes_año(tabla_usuario):
         }, 500
     
     try:
+        # Query mejorada para obtener ventas mensuales
         query = f"""
         SELECT 
             strftime('%Y', Fecha) AS año,

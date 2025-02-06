@@ -14,6 +14,7 @@ DATABASE_PATH = join(DATABASE_DIR, 'datos_sqlite.db')
 # Asegurarnos de que el directorio existe
 makedirs(DATABASE_DIR, exist_ok=True)
 
+# Función para calcular cashback total agrupado por mes y año
 def cashback_generado_total_mes_año(tabla_usuario):
     # Validamos que la tabla esté permitida
     tablas_permitidas = {"fotostorres"}
@@ -30,9 +31,10 @@ def cashback_generado_total_mes_año(tabla_usuario):
         }, 500
     
     try:
+        # Construcción de la consulta SQL
         query = f"""
         SELECT 
-            strftime('%Y', Fecha) AS año,
+            strftime('%Y', Fecha) AS anio,
             strftime('%m', Fecha) AS mes,
             SUM(CASE 
                 WHEN Movimiento = 'Bonificación por compra' THEN ABS(Cantidad) 
@@ -59,20 +61,25 @@ def cashback_generado_total_mes_año(tabla_usuario):
             })
         
         conexion.close()
-        return resultado
+
+        return df.to_dict(orient='records')
     except Exception as e:
         return {
             "error": "Error al ejecutar la consulta",
             "detalles": str(e)
         }, 500
 
+# Definir el endpoint para obtener cashback total
 @cashback_total_bp.route('/cashback_generado_total_mes_año/<string:tabla_usuario>', methods=['GET'])
 def get_cashback_generado_total_mes_año(tabla_usuario):
     """
     Endpoint para obtener el total de cashback generado por mes y año.
     """
     resultado = cashback_generado_total_mes_año(tabla_usuario)
+
+    # Si la función devuelve un error, lo retornamos como JSON
     if isinstance(resultado, tuple):
         return jsonify({"error": resultado[0]}), resultado[1]
+
     return jsonify(resultado)
 

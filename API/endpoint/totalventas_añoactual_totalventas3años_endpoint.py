@@ -31,6 +31,7 @@ def get_total_ventas_años(tabla_usuario):
         }, 500
     
     try:
+        # Query mejorada para obtener ventas por año
         query = f"""
         WITH año_actual AS (
             SELECT 

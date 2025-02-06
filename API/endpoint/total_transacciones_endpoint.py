@@ -1,3 +1,4 @@
+
 from flask import Blueprint, jsonify
 from sqlite3 import connect, OperationalError
 from os.path import join, dirname, exists
@@ -30,6 +31,7 @@ def get_total_transacciones(tabla_usuario):
         }, 500
     
     try:
+        # Consulta SQL mejorada
         query = f"""
         SELECT 
             COUNT(*) as total_movimientos,
