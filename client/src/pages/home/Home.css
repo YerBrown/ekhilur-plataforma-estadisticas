@@ -296,7 +296,7 @@
     .aside-overlay {
         display: none !important; /* Asegura que el overlay no se muestre */
     }
-
+}
 .square-button-bonifications {
     background: linear-gradient(45deg,
             #FFF 0%,
@@ -390,5 +390,4 @@
     right: 10px;
     border: none;
     cursor: pointer;
-
 }
