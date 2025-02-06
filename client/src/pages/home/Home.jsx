@@ -6,8 +6,7 @@ import { TbPigMoney } from "react-icons/tb";
 import DonutChart from "../../components/charts/DonutChart";
 import ProfileAvatar from "../../components/ProfileAvatar";
 import TransactionList from "../../components/transactions-list/TransactionsList";
-import mockData from "../../components/transactions-list/mockData.js";
-import { getUserHomeData, getCommerceHomeData } from "../../api/realData.js";
+import { getUserHomeData, getCommerceHomeData, getTransactions } from "../../api/realData.js";
 import { useTheme } from "../../contexts/ThemeContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import "./Home.css";
@@ -19,6 +18,7 @@ const Home = () => {
     const [filteredTransactions, setFilteredTransactions] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const [userData, setUserData] = useState(null);
+    const [transData, setTransData] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -36,12 +36,15 @@ const Home = () => {
             try {
                 if (user?.role === "commerce") {
                     const userData = await getCommerceHomeData(); // Llama a la API para obtener los datos
-                    console.log(userData);
+                    const transData = await getTransactions();
                     setUserData(userData);
+                    setTransData(transData);
                 } else {
                     const userData = await getUserHomeData(); // Llama a la API para obtener los datos
-                    console.log("datos home", userData);
+                    const transData = await getTransactions();
+                    console.log("transdata", transData);
                     setUserData(userData);
+                    setTransData(transData);
                 }
             } catch (error) {
                 console.error("Error al obtener los datos del usuario:", error);
@@ -279,7 +282,7 @@ const Home = () => {
                 </div>
                 <div className="transactions-section">
                     <button className="transactions-home-button" onClick={() => handleNavigate("/transactions")}>
-                        <TransactionList transactions={mockData.slice(0, 3)} />
+                        <TransactionList transactions={transData.slice(0, 3)} />
                         <button className="add-button">
                             <GoPlusCircle size={32} />
                         </button>

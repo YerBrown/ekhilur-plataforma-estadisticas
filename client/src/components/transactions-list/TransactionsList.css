@@ -3,7 +3,7 @@
     width: 100%;
     border-radius: 20px;
     box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.2);
-    background-color: var(--background-color-principal);
+    background-color: var(--color-grafico-naranja-claro);
     padding-bottom: 10px;
 }
 
