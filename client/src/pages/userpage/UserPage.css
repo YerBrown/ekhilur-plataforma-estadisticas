@@ -4,7 +4,11 @@
     max-width: 850px;
     margin: 0 auto;
     padding: 20px;
-    border-radius: 8px;
+    background-color: var(--background-color-principal-05);
+    border-radius: 20px;
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+
 }
 
 .user-profile-header {
@@ -32,7 +36,7 @@
     gap: 20px;
     /* Espacio entre los grupos de información */
     padding: 1rem;
-    border-radius: 5px;
+    border-radius: 20px;;
 }
 
 .info-group {
@@ -50,6 +54,8 @@
 
 /* Modificación aquí */
 .info-value {
+    border: 0.5px solid var(--color-placeholder);
+    border-radius: 20px;
     padding: 10px;
     font-size: 0.7rem;
     color: var(--color-letra-2);

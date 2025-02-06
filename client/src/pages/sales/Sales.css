@@ -12,9 +12,7 @@
     flex-direction: column;
     gap: 60px;
     padding: 20px;
-
     margin-top: 20px;
-    /* Distancia desde el date filter */
 }
 
 .image-container {
@@ -26,10 +24,9 @@
     align-items: center;
     background-color: #ffffff;
     border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
     padding: 10px;
-    /* Añade un pequeño padding */
 }
 
 .image-container img {

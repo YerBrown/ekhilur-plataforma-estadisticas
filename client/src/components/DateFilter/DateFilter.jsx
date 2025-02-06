@@ -81,7 +81,7 @@ const DateFilter = ({ onDateFilter }) => {
                     </button>
 
                     {isMonthOpen && (
-                        <div className="dropdown-content">
+                        <div className="dropdown-content-month">
                             {availableMonths.map((month, index) => (
                                 <button
                                     key={index}
@@ -113,7 +113,7 @@ const DateFilter = ({ onDateFilter }) => {
                     </button>
 
                     {isYearOpen && (
-                        <div className="dropdown-content">
+                        <div className="dropdown-content-year">
                             {availableYears.map((year) => (
                                 <button
                                     key={year}

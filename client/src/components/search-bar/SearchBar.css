@@ -102,34 +102,27 @@ input {
 /* Grupo de filtros */
 .filter-group {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 1rem;
-
-}
-
-.filter-label {
-    font-size: 16px;
-    color: var(--color-letra);
-    font-weight: bold;
-}
-
-.filter-dates,
-.filter-amounts {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    padding-bottom: 2rem;
 }
 
 .search-bar-date-input,
 .filter-input {
     border: 0.5px solid var(--color-placeholder);
     border-radius: 20px;
-    padding: 10px;
+    padding: 0.6rem 0.4rem 0.6rem 1rem;
     font-size: 16px;
     outline: none;
     transition: border-color 0.3s;
+    box-sizing: border-box;
 }
+
 
 .search-bar-date-input:focus,
 .filter-input:focus {

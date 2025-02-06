@@ -1,7 +1,6 @@
-.logo-login{
+.logo-login {
     text-align: center;
     font-size: 3.5rem;
-    margin-bottom: 20px;
     font-family: "noway", sans-serif;
     font-weight: bold;
     color: #fff;
@@ -14,10 +13,60 @@
     justify-content: center;
     align-items: center;
     background: linear-gradient(to bottom,
-        #FF9012 30%,
-        #0047ba 80%
-    );
+            #FF9012 30%,
+            #0047ba 80%);
     padding: 2rem;
+}
+
+.login-page .mobile-login {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-page .desktop-login {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.login-page .desktop-login .left-side {
+    width: 50%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom,
+            #FF9012 30%,
+            #0047ba 80%);
+    padding: 2rem;
+}
+
+.login-page .desktop-login .right-side {
+    width: 50%;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--opcion-ok-background-claro);
+    ;
+}
+
+.login-page .desktop-login .right-side input {
+    color: var(--color-letra);
+}
+
+.login-page .desktop-login .right-side input::placeholder {
+    color: var(--color-placeholder);
+}
+
+.login-page .desktop-login .right-side .main-button {
+    color: var(--color-letra);
+    border-color: var(--color-letra);
 }
 
 /* La sección de imagen está oculta en móvil */
@@ -25,174 +74,161 @@
     display: none;
 }
 
-.auth-window {
+.login-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    max-width: 500px;
-    box-sizing: border-box;
-    transition: opacity 0.2s ease-out;
-    overflow: hidden;
-    border-radius: 8px;
-    padding: 1rem;
-}
-
-.auth-window.fade-in {
-    opacity: 1;
-    /* Contenido visible */
-}
-
-.auth-window.fade-out {
-    opacity: 0;
-    /* Contenido invisible */
+    align-items: center;
+    width: 90%;
+    max-width: 350px;
+    gap: 1.5rem;
 }
 
 
-.auth-window header {
+header {
     background-color: transparent;
     padding: 0;
 }
 
-.auth-window header h3 {
+header h3 {
     margin: 0;
     text-align: center;
 }
 
-.auth-window .form-container {
+form {
     display: flex;
     flex-direction: column;
     gap: 20px;
     width: 100%;
 }
 
-
-.auth-window .form-container form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.auth-window .form-container input {
+form input {
     border: none;
     background-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    padding: 1rem;
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 10px;
     width: 100%;
     box-sizing: border-box;
     font-size: 1rem;
     outline: none;
-}
-
-
-.auth-window .form-container .main-button {
-    font-weight: bold;
-    border-radius: 8px;
-    padding: 15px;
-    padding-left: 4px;
-    padding-right: 4px;
-    margin-top: 2rem;
     color: white;
-    height: 30%;
-    width: 50%;
-    border: 1px solid white;
-    font-size: 16px;
-    margin-left: auto;
-    margin-right: auto;
-  
-   
+    font-size: .9rem;
 }
 
-.auth-window .form-container .message {
+form input::placeholder {
+    color: rgba(255, 255, 255, 0.465);
+}
+
+
+form .main-button {
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 10px;
+    color: white;
+    max-width: 150px;
+    width: 90%;
+    border: 1px solid white;
+    font-size: .9rem;
+    background-color: transparent;
+    border: 1px solid white;
+    margin-top: 1rem;
+}
+
+form .message {
     margin: 0;
     padding: 5px;
     font-size: .8rem;
 }
 
 .message.success {
-    color: white ;
+    color: white;
+    width: 95%;
 }
 
 .message.failed {
-    color: orange;
+    color: #FF9012;
+    width: 95%;
 }
 
 
-.auth-window .form-container .password-data {
+form.password-data {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px 0;
 
 }
 
-.auth-window .form-container .password-data p {
+form .password-data p {
     display: flex;
     align-items: center;
     gap: 5px;
     margin: 0;
 }
 
-.auth-window .form-container .password-data .password-input {
+form .password-data .password-input {
     grid-column: span 2;
 }
 
-.auth-window .form-container button {
+form button {
     background-color: transparent;
-    border-radius: 8px;
+    border-radius: 20px;
     padding: 1rem;
     color: var(--color-letra-2-dark);
 }
 
-.auth-window .change-form button {
+.change-form button {
     background-color: transparent;
     border: none;
     font-size: 1rem;
 }
 
-.auth-window .change-form button:hover {
+.change-form button:hover {
     text-decoration: underline;
 }
 
-.auth-window .form-container input::placeholder {
+form input::placeholder {
     color: var(--color-letra-2-dark);
-    opacity: 1; /* Firefox */
+    opacity: 1;
+    /* Firefox */
     font-size: 15px;
 }
 
-
-
 @media (max-width: 600px) {
 
-    .auth-window .form-container .password-data {
+    form.password-data {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(5, 1fr);
         gap: 0;
     }
 
-    .auth-window .form-container .password-data .password-input {
+    form.password-data .password-input {
         grid-column: span 1;
     }
-}@media (min-width: 1024px) {
+
+
+}
+
+@media (min-width: 1024px) {
     .login-page {
         padding: 0;
         background: none;
         /* Eliminar justify-content y align-items */
     }
 
-    .login-container {
+    .login-page .desktop-login {
         display: flex;
-        width: 100%;
-        min-height: 100vh;
+    }
+
+    .login-page .mobile-login {
+        display: none;
     }
 
     .login-image-section {
         display: flex;
         flex: 1;
         background: linear-gradient(to bottom,
-            #FF9012 30%,
-            #0047ba 80%
-        );
+                #FF9012 30%,
+                #0047ba 80%);
         align-items: center;
         justify-content: center;
     }
@@ -202,37 +238,23 @@
         display: none;
     }
 
-    .auth-window {
-        flex: 1;
-        background: white;
-        max-width: none; /* Importante: quitar el max-width para desktop */
-        border-radius: 0; /* Quitar el border-radius en desktop */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 2rem;
-    }
 
     /* Contenedor del formulario en desktop */
-    .auth-window .form-container {
+    form {
         width: 100%;
-        max-width: 400px; /* Limitar el ancho del formulario */
+        max-width: 400px;
+        /* Limitar el ancho del formulario */
     }
-    .auth-window .form-container form {
-        width: 100%; /* Asegurar ancho completo del formulario */
+
+    formform {
+        width: 100%;
+        /* Asegurar ancho completo del formulario */
     }
 
 
-    .auth-window .form-container input,
-    .auth-window .form-container .password-input {
+    forminput,
+    form.password-input {
         width: 100%;
         box-sizing: border-box;
     }
 }
-
-    /* Logo en desktop */
-    .login-image-section .logo-login {
-        color: white;
-        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
-    }
-
