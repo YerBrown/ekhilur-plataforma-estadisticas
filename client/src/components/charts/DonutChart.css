@@ -3,6 +3,7 @@
     width: 100%;
     display: flex;
     gap: 1rem;
+    margin-left: 0.5rem;
 }
 
 .donut-chart .donut-canvas {
