@@ -73,9 +73,9 @@ const Transactions = () => {
         if (filter === t.all) {
             setFilteredTransactions(apiData);
         } else if (filter === t.incomes) {
-            setFilteredTransactions(apiData.filter(transaction => parseAmount(transaction.cantidad) > 0));
+            setFilteredTransactions(apiData.filter(transaction => transaction.cantidad > 0));
         } else if (filter === t.expenses) {
-            setFilteredTransactions(apiData.filter(transaction => parseAmount(transaction.cantidad) < 0));
+            setFilteredTransactions(apiData.filter(transaction => transaction.cantidad < 0));
         }
     };
     
