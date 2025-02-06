@@ -5,7 +5,6 @@ import { GoPlusCircle } from "react-icons/go";
 import { TbPigMoney } from "react-icons/tb";
 import DonutChart from "../../components/charts/DonutChart";
 import ProfileAvatar from "../../components/ProfileAvatar";
-import GraficoLibrerias from "../../components/charts/BarChartNew";
 import TransactionList from "../../components/transactions-list/TransactionsList";
 import mockData from "../../components/transactions-list/mockData.js";
 import { getUserHomeData, getCommerceHomeData } from "../../api/realData.js";
@@ -14,7 +13,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import "./Home.css";
 
 const Home = () => {
-    const { t, setSpanish, setBasque } = useLanguage();
+    const { t } = useLanguage();
     const { theme } = useTheme();
     const { user } = useContext(AuthContext);
     const [filteredTransactions, setFilteredTransactions] = useState();
@@ -102,7 +101,7 @@ const Home = () => {
             },
         },
         cutout: "85%", // Ajusta el tamaño del agujero central del donut
-        radius: "70%",
+        radius: "90%",
         elements: {
             arc: {
                 borderWidth: 0,
@@ -174,18 +173,6 @@ const Home = () => {
             <header>
                 <img src="logo_dos.png" alt="Logo Ekhidata" />
                 <div className="header-content">
-                    <div className="language-button-container">
-                        <button
-                            className="language-button"
-                            onClick={setSpanish}
-                        >
-                            ES
-                        </button>
-                        <p>|</p>
-                        <button className="language-button" onClick={setBasque}>
-                            EU
-                        </button>
-                    </div>
                     <ProfileAvatar />
                 </div>
             </header>

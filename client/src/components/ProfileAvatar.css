@@ -44,3 +44,15 @@ button.user-avatar:hover {
     text-decoration: none;
     background-color: var(--color-naranja-principal-background);
 }
+
+/* Nuevos estilos para el contenedor de idiomas */
+.language-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espacio entre botones de idioma */
+}
+
+.language-selector button {
+    min-width: 45px; /* Ancho mínimo para los botones de idioma */
+}
