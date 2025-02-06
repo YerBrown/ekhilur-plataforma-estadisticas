@@ -36,11 +36,6 @@ const SalesCommerce = () => {
         const filteredData = mockData.filter((transaction) => {
             const transactionYear = parseInt(transaction.año, 10);
             const transactionMonth = parseInt(transaction.mes, 10);
-            console.log(
-                "transactionYear",
-                transactionYear,
-                "transactionMonth",
-                transactionMonth)
 
             return (
                 transactionYear === selectedPeriod.year &&
