@@ -9,7 +9,7 @@ import SalesCommerce from "./pages/sales/SalesCommerce";
 import UserBonifications from "./pages/bonifications/UserBonifications";
 import CommerceBonifications from "./pages/commerce-bonifications/CommerceBonifications";
 import Estadisticas from "./pages/estadisticas/Estadisticas";
-import UserPage from "./pages/userpage/UserPage";
+import UserMobile from "./pages/userpage/UserMobile";
 
 import MapPage from "./pages/map/MapPage";
 
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
                 path: "/user",
                 element: (
                     <ProtectedRoute allowedRoles={["user", "commerce"]}>
-                        <UserPage />
+                        <UserMobile />
                     </ProtectedRoute>
                 ),
             },
