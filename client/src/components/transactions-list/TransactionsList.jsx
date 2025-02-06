@@ -7,39 +7,40 @@ const TransactionList = ({ transactions }) => {
     // AGRUPAR TRANSACCIONES POR FECHA
     const groupedTransactions = transactions.reduce((groups, transaction) => {
         const fecha = transaction.fecha;
+        console.log(fecha);
+
         if (!groups[fecha]) {
             groups[fecha] = [];
         }
         groups[fecha].push(transaction);
+        groups[fecha].sort((a, b) => {
+            const timeA = a.hora.split(":").map(Number);
+            const timeB = b.hora.split(":").map(Number);
+            return timeB[0] - timeA[0] || timeB[1] - timeA[1];
+        });
         return groups;
     }, {});
 
+    const sortedDates = Object.keys(groupedTransactions).sort((a, b) => new Date(b) - new Date(a));
+
     // FORMATEAR FECHAS PARA EL TITULO
     const formatDate = (dateString) => {
-        let date;
+        const [year, month, day] = dateString.split("-").map(Number);
+        const date = new Date(year, month - 1, day);
 
-        // Detectar formato y parsearlo correctamente
-        if (dateString.includes("/")) {
-            // Formato DD/MM/YYYY
-            const [day, month, year] = dateString.split("/").map(Number);
-            date = new Date(year, month - 1, day);
-        } else if (dateString.includes("-")) {
-            // Formato YYYY-MM-DD
-            date = new Date(dateString);
-        } else {
-            return dateString; // En caso de formato inesperado, devolver sin cambios
+        if (isNaN(date.getTime())) {
+            console.error("Fecha inválida:", dateString);
+            return dateString;
         }
 
-        // Si el idioma es euskera, usamos inglés y luego reemplazamos los valores
         if (language === "eus") {
             const locale = "en-GB";
             const weekday = new Intl.DateTimeFormat(locale, { weekday: "long" }).format(date);
             const month = new Intl.DateTimeFormat(locale, { month: "long" }).format(date);
             const day = new Intl.DateTimeFormat(locale, { day: "numeric" }).format(date);
 
-            let formattedDate = `${month} ${day}, ${weekday}`; // `Friday, May 27`
+            let formattedDate = `${month} ${day}, ${weekday}`;
 
-            // Reemplazar los nombres de días y meses por sus equivalentes en euskera
             Object.keys(t.dateTranslations).forEach(engWord => {
                 const eusWord = t.dateTranslations[engWord];
                 formattedDate = formattedDate.replace(engWord, eusWord);
@@ -48,7 +49,6 @@ const TransactionList = ({ transactions }) => {
             return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
         }
 
-        // Si el idioma es español, aseguramos el formato correcto: `Viernes, 27 de mayo`
         if (language === "es") {
             const locale = "es-ES";
             const weekday = new Intl.DateTimeFormat(locale, { weekday: "long" }).format(date);
@@ -64,7 +64,7 @@ const TransactionList = ({ transactions }) => {
     return (
         <>
             <div className="transaction-list-container">
-                {Object.keys(groupedTransactions).sort().reverse().map((fecha) => (
+                {sortedDates.map((fecha) => (
                     <div key={fecha} className="transaction-group-container">
                         <div className="transaction-group-header">
                             <h2 className="transaction-group-title">{formatDate(fecha)}</h2>

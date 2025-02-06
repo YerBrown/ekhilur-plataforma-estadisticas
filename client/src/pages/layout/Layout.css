@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: var(--background-color-principal);
+  background-color: var(--opcion-ok-background-claro);
 }
 
 .page-header {
@@ -46,4 +46,5 @@
   justify-content: flex-start;
   margin-top: 4rem;
   gap: 1rem;
+  background-color: var(--opcion-ok-background-claro);
 }

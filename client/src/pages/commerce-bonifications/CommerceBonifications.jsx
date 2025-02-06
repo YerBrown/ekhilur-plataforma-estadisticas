@@ -7,7 +7,7 @@ import DateFilter from "../../components/DateFilter/DateFilter.jsx";
 import { getCashbacksByMonth } from "../../api/realData.js";
 import BonificationsFilter from "../../components/buttons/bonifications-filter/BonificationsFilter.jsx";
 import TransactionList from "../../components/transactions-list/TransactionsList";
-import mockData from "../../components/transactions-list/mockData.js";
+import mockData from "../../api/mockDataBonificationCommerce.js";
 
 const CommerceBonifications = () => {
     const { t } = useLanguage();
@@ -33,6 +33,22 @@ const CommerceBonifications = () => {
         { año: "2024", mes: "03", valor: 300, otroValor: 270 },
     ]);
     const [filteredTransactions, setFilteredTransactions] = useState(mockData);
+
+    useEffect(() => {
+        // Filtrar las transacciones basadas en el periodo seleccionado
+        const filteredData = mockData.filter((transaction) => {
+            const transactionYear = parseInt(transaction.año, 10);
+            const transactionMonth = parseInt(transaction.mes, 10);
+
+            return (
+                transactionYear === selectedPeriod.year &&
+                transactionMonth === selectedPeriod.month + 1
+            );
+        });
+
+        setFilteredTransactions(filteredData);
+    }, [selectedPeriod]);
+
     const loadApiData = async () => {
         setIsLoading(true);
         setError(null);
@@ -150,8 +166,13 @@ const CommerceBonifications = () => {
                             showFilters={true}
                         />
                     </div>
-                    <BonificationsFilter onFilterChange={handleFilterChange} />
-                    <TransactionList transactions={filteredTransactions} />
+                    {filteredTransactions.length === 0 ? (
+                        <>
+                        </>
+                    ) : (
+                        <BonificationsFilter onFilterChange={handleFilterChange} />,
+                        <TransactionList transactions={filteredTransactions} />
+                    )}
                 </div>
             )}
         </Layout>

@@ -1,6 +1,8 @@
 const mockData = [
     {
-        "fecha": "2022-05-09",
+        "fecha": "2024-12-09",
+        "mes": "12",
+        "año": "2024",
         "hora": "11:11",
         "movimiento": "Pago a usuario",
         "cantidad": "15,00",
@@ -10,7 +12,9 @@ const mockData = [
         "cuenta": "Ekhi Hernani"
     },
     {
-        "fecha": "2022-05-09",
+        "fecha": "2024-12-09",
+        "mes": "12",
+        "año": "2024",
         "hora": "11:11",
         "movimiento": "Pago a usuario",
         "cantidad": "1,00",
@@ -20,7 +24,9 @@ const mockData = [
         "cuenta": "Ekhi"
     },
     {
-        "fecha": "2022-05-09",
+        "fecha": "2024-12-09",
+        "mes": "12",
+        "año": "2024",
         "hora": "11:11",
         "movimiento": "Pago a usuario",
         "cantidad": "-1,00",
@@ -30,7 +36,9 @@ const mockData = [
         "cuenta": "Ekhi"
     },
     {
-        "fecha": "2022-05-13",
+        "fecha": "2024-12-13",
+        "mes": "12",
+        "año": "2024",
         "hora": "11:11",
         "movimiento": "Pago a usuario",
         "cantidad": "-1,00",
@@ -40,7 +48,9 @@ const mockData = [
         "cuenta": "Ekhi Hernani"
     },
     {
-        "fecha": "2022-05-13",
+        "fecha": "2024-12-13",
+        "mes": "12",
+        "año": "2024",
         "hora": "11:11",
         "movimiento": "Pago a usuario",
         "cantidad": "1,00",
@@ -50,7 +60,9 @@ const mockData = [
         "cuenta": "Ekhi"
     },
     {
-        "fecha": "2022-05-17",
+        "fecha": "2024-12-17",
+        "mes": "12",
+        "año": "2024",
         "hora": "11:11",
         "movimiento": "Recarga por tarjeta",
         "cantidad": "50,00",
@@ -60,7 +72,9 @@ const mockData = [
         "cuenta": "Euro"
     },
     {
-        "fecha": "2022-05-17",
+        "fecha": "2024-12-17",
+        "mes": "12",
+        "año": "2024",
         "hora": "11:11",
         "movimiento": "Pago a usuario",
         "cantidad": "-32,55",
@@ -70,7 +84,9 @@ const mockData = [
         "cuenta": "Euro"
     },
     {
-        "fecha": "2022-05-19",
+        "fecha": "2024-12-19",
+        "mes": "12",
+        "año": "2024",
         "hora": "11:11",
         "movimiento": "Pago a usuario",
         "cantidad": "-1,40",
@@ -80,7 +96,9 @@ const mockData = [
         "cuenta": "Euro"
     },
     {
-        "fecha": "2022-05-20",
+        "fecha": "2024-12-20",
+        "mes": "12",
+        "año": "2024",
         "hora": "11:11",
         "movimiento": "Recarga por tarjeta",
         "cantidad": "100,00",
@@ -90,7 +108,9 @@ const mockData = [
         "cuenta": "Euro"
     },
     {
-        "fecha": "2022-05-23",
+        "fecha": "2024-12-23",
+        "mes": "12",
+        "año": "2024",
         "hora": "11:11",
         "movimiento": "Pago a usuario",
         "cantidad": "-7,30",
@@ -100,7 +120,9 @@ const mockData = [
         "cuenta": "Ekhi Hernani"
     },
     {
-        "fecha": "2022-05-23",
+        "fecha": "2024-12-23",
+        "mes": "12",
+        "año": "2024",
         "hora": "11:11",
         "movimiento": "Pago a usuario",
         "cantidad": "-1,00",
@@ -110,7 +132,9 @@ const mockData = [
         "cuenta": "Ekhi"
     },
     {
-        "fecha": "2022-05-23",
+        "fecha": "2024-12-23",
+        "mes": "12",
+        "año": "2024",
         "hora": "11:11",
         "movimiento": "Pago a usuario",
         "cantidad": "1,00",
@@ -120,7 +144,9 @@ const mockData = [
         "cuenta": "Ekhi Hernani"
     },
     {
-        "fecha": "2022-05-24",
+        "fecha": "2024-12-24",
+        "mes": "12",
+        "año": "2024",
         "hora": "11:11",
         "movimiento": "Pago a usuario",
         "cantidad": "-1,00",
@@ -130,7 +156,9 @@ const mockData = [
         "cuenta": "Euro"
     },
     {
-        "fecha": "2022-05-24",
+        "fecha": "2024-12-24",
+        "mes": "12",
+        "año": "2024",
         "hora": "11:11",
         "movimiento": "Pago a usuario",
         "cantidad": "1,00",
@@ -140,7 +168,9 @@ const mockData = [
         "cuenta": "Ekhi"
     },
     {
-        "fecha": "2022-05-24",
+        "fecha": "2024-12-24",
+        "mes": "12",
+        "año": "2024",
         "hora": "11:11",
         "movimiento": "Pago a usuario",
         "cantidad": "-1,00",
@@ -150,7 +180,9 @@ const mockData = [
         "cuenta": "Ekhi"
     },
     {
-        "fecha": "2022-05-24",
+        "fecha": "2024-12-24",
+        "mes": "12",
+        "año": "2024",
         "hora": "11:11",
         "movimiento": "Pago a usuario",
         "cantidad": "1,00",
@@ -160,7 +192,9 @@ const mockData = [
         "cuenta": "Ekhi"
     },
     {
-        "fecha": "2022-05-25",
+        "fecha": "2024-12-25",
+        "mes": "12",
+        "año": "2024",
         "hora": "11:11",
         "movimiento": "Pago a usuario",
         "cantidad": "-15,94",
@@ -170,7 +204,9 @@ const mockData = [
         "cuenta": "Euro"
     },
     {
-        "fecha": "2022-05-27",
+        "fecha": "2024-12-27",
+        "mes": "12",
+        "año": "2024",
         "hora": "11:11",
         "movimiento": "Pago a usuario",
         "cantidad": "-1,00",
@@ -180,7 +216,9 @@ const mockData = [
         "cuenta": "Euro"
     },
     {
-        "fecha": "2022-05-27",
+        "fecha": "2024-12-27",
+        "mes": "12",
+        "año": "2024",
         "hora": "11:11",
         "movimiento": "Pago a usuario",
         "cantidad": "1,00",

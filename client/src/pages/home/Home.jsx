@@ -7,8 +7,12 @@ import { logout } from "../../api/auth.js";
 import DonutChart from "../../components/charts/DonutChart";
 import ProfileAvatar from "../../components/ProfileAvatar";
 import TransactionList from "../../components/transactions-list/TransactionsList";
-import mockData from "../../components/transactions-list/mockData.js";
-import { getUserHomeData, getCommerceHomeData } from "../../api/realData.js";
+import GraficoLibrerias from "../../components/charts/BarChartNew.jsx";
+import {
+    getUserHomeData,
+    getCommerceHomeData,
+    getTransactions,
+} from "../../api/realData.js";
 import { useTheme } from "../../contexts/ThemeContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import "./Home.css";
@@ -22,6 +26,7 @@ const Home = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [userData, setUserData] = useState(null);
     const [showAside, setShowAside] = useState(false);
+    const [transData, setTransData] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -44,12 +49,15 @@ const Home = () => {
             try {
                 if (user?.role === "commerce") {
                     const userData = await getCommerceHomeData(); // Llama a la API para obtener los datos
-                    console.log(userData);
+                    const transData = await getTransactions();
                     setUserData(userData);
+                    setTransData(transData);
                 } else {
                     const userData = await getUserHomeData(); // Llama a la API para obtener los datos
-                    console.log("datos home", userData);
+                    const transData = await getTransactions();
+                    console.log("transdata", transData);
                     setUserData(userData);
+                    setTransData(transData);
                 }
             } catch (error) {
                 console.error("Error al obtener los datos del usuario:", error);
@@ -110,8 +118,8 @@ const Home = () => {
                 total: `${walletTotalValue}€`,
             },
         },
-        cutout: "85%", // Ajusta el tamaño del agujero central del donut
-        radius: "90%",
+        cutout: "80%", // Ajusta el tamaño del agujero central del donut
+        radius: "80%",
         elements: {
             arc: {
                 borderWidth: 0,
@@ -248,7 +256,7 @@ const Home = () => {
             <main>
                 <div className="wallet-chart">
                     <div className="wallet-icon">
-                        <TbPigMoney size={50} />
+                        <TbPigMoney size={35} />
                     </div>
                     <DonutChart
                         data={walletData}
@@ -274,7 +282,7 @@ const Home = () => {
                             </div>
                         </button>
                         <button
-                            className="square-button-bonifications"
+                            className="square-button-bonifications-2"
                             onClick={() => handleNavigate("/bonifications")}
                         >
                             <div className="info">
@@ -347,7 +355,7 @@ const Home = () => {
                             </div>
                         </button>
                         <button
-                            className="square-button-bonifications"
+                            className="square-button-bonifications-received"
                             onClick={() =>
                                 handleNavigate("/bonifications-shop")
                             }
@@ -369,42 +377,69 @@ const Home = () => {
                     </div>
                 )}
                 <div className="statistics-section">
+                    <div className="mobile-statistics">
+                        <button
+                            className="square-button-statistics"
+                            onClick={() => handleNavigate("/statistics")}
+                        >
+                            <div className="info">
+                                <h3>{t.incomes}</h3>
+                            </div>
+                            <div className="value">
+                                <GoPlusCircle />
+                                <h4>
+                                    {income
+                                        .toFixed(2)
+                                        .replace(".", ",")
+                                        .replace(".", ",")}
+                                </h4>
+                            </div>
+                        </button>
+                        <button
+                            className="square-button-statistics"
+                            onClick={() => handleNavigate("/statistics")}
+                        >
+                            <div className="info">
+                                <h3>{t.expenses}</h3>
+                            </div>
+                            <div className="value">
+                                <GoPlusCircle />
+                                <h4>{expenses.toFixed(2).replace(".", ",")}</h4>
+                            </div>
+                        </button>
+                    </div>
                     <button
-                        className="square-button-statistics"
-                        onClick={() => handleNavigate("/statistics")}
+                        className="desktop-statistics"
+                        onClick={() => navigate("/statistics")}
                     >
-                        <div className="info">
-                            <h3>{t.incomes}</h3>
-                        </div>
-                        <div className="value">
-                            <GoPlusCircle />
-                            <h4>
-                                {income
-                                    .toFixed(2)
-                                    .replace(".", ",")
-                                    .replace(".", ",")}
-                            </h4>
-                        </div>
-                    </button>
-                    <button
-                        className="square-button-statistics"
-                        onClick={() => handleNavigate("/statistics")}
-                    >
-                        <div className="info">
-                            <h3>{t.expenses}</h3>
-                        </div>
-                        <div className="value">
-                            <GoPlusCircle />
-                            <h4>{expenses.toFixed(2).replace(".", ",")}</h4>
-                        </div>
+                        <h3>{t.statisticsTitle}</h3>
+                        <GraficoLibrerias
+                            data={userData.gastosIngresos}
+                            targetYear={new Date().getFullYear()}
+                            targetMonth={new Date().getMonth()}
+                            primaryKey={"gastos"}
+                            secondaryKey={"ingresos"}
+                            showFilters={false}
+                        />
                     </button>
                 </div>
-                <div className="transactions-section">
+                <div
+                    className={
+                        user?.role === "commerce"
+                            ? "transactions-section commerce"
+                            : "transactions-section "
+                    }
+                >
                     <button
                         className="transactions-home-button"
                         onClick={() => handleNavigate("/transactions")}
                     >
-                        <TransactionList transactions={mockData.slice(0, 3)} />
+                        <TransactionList
+                            transactions={transData.slice(
+                                0,
+                                user?.role === "commerce" ? 1 : 3
+                            )}
+                        />
                         <button className="add-button">
                             <GoPlusCircle size={32} />
                         </button>

@@ -221,8 +221,8 @@ const GraficoLibrerias = ({
                 >
                     <defs>
                         <linearGradient id={singleGradient.id} x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stopColor={singleGradient.colors.start} stopOpacity={0.8} />
-                            <stop offset="100%" stopColor={singleGradient.colors.end} stopOpacity={0.9} />
+                            <stop offset="20%" stopColor={singleGradient.colors.start} stopOpacity={0.8} />
+                            <stop offset="80%" stopColor={singleGradient.colors.end} stopOpacity={0.9} />
                         </linearGradient>
                         <linearGradient id={dualGradient1.id} x1="0" y1="0" x2="0" y2="1">
                             <stop offset="0%" stopColor={dualGradient1.colors.start} stopOpacity={0.8} />

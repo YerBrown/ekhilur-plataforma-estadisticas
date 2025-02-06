@@ -26,7 +26,7 @@
   color: var(--color-letra);
   background-color: transparent;
   border: none;
-  border-radius: 4px;
+  border-radius: 20px;
   cursor: pointer;
   text-align: center;
   display: flex;
@@ -38,27 +38,38 @@
   background-color: var();
 }
 
-.dropdown-content {
+.dropdown-content-year {
   position: absolute;
   top: 100%;
-  left: 0;
-  right: 0;
-
+  left: -130px;
   margin-top: 0.5rem;
   background-color: transparent;
-  border-bottom: 2px solid var(--color-naranja-principal);
-  border-radius: 4px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 4px solid var(--color-naranja-principal);
+  border-radius: 20px;
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   display: grid;
-  /* Cambiamos a grid */
   grid-template-columns: repeat(2, 1fr);
-  /* Dos columnas iguales */
   width: 240px;
-  /* Ancho fijo para el dropdown */
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(60px);
+}
 
+.dropdown-content-month {
+  position: absolute;
+  top: 100%;
+  right: -100px;
+  margin-top: 0.5rem;
+  background-color: transparent;
+  border-bottom: 4px solid var(--color-naranja-principal);
+  border-radius: 20px;
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 240px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(60px);
 }
 
 .dropdown-item {
