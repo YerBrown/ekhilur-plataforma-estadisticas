@@ -6,6 +6,7 @@ import { TbPigMoney } from "react-icons/tb";
 import DonutChart from "../../components/charts/DonutChart";
 import ProfileAvatar from "../../components/ProfileAvatar";
 import TransactionList from "../../components/transactions-list/TransactionsList";
+import GraficoLibrerias from "../../components/charts/BarChartNew.jsx";
 import {
     getUserHomeData,
     getCommerceHomeData,
@@ -368,15 +369,31 @@ const Home = () => {
                             </div>
                         </button>
                     </div>
+                    <button
+                        className="desktop-statistics"
+                        onClick={() => navigate("/statistics")}
+                    >
+                        <GraficoLibrerias
+                            data={userData.gastosIngresos}
+                            targetYear={new Date().getFullYear()}
+                            targetMonth={new Date().getMonth()}
+                            primaryKey={"gastos"}
+                            secondaryKey={"ingresos"}
+                            showFilters={false}
+                        />
+                    </button>
                 </div>
-                {/* <div className="transactions-section">
-                    <button className="transactions-home-button" onClick={() => handleNavigate("/transactions")}>
+                <div className="transactions-section">
+                    <button
+                        className="transactions-home-button"
+                        onClick={() => handleNavigate("/transactions")}
+                    >
                         <TransactionList transactions={transData.slice(0, 3)} />
                         <button className="add-button">
                             <GoPlusCircle size={32} />
                         </button>
                     </button>
-                </div> */}
+                </div>
                 {/* <button onClick={() => handleNavigate("/map")}>
                     <h3>Mapa</h3>
                 </button> */}
