@@ -86,7 +86,7 @@
 
   /*Colors*/
   --background-blanco:  rgba(252, 248, 244, 0.9);
-  --background-negro:  rgba(0, 0, 0, 0.9);
+  --background-negro:  rgba(37, 37, 37, 0.9);
   --background-color-light: white;
   --background-color-light-05: rgba(255, 255, 255, 0.5);
   --background-color-dark: rgb(30, 30, 30);
@@ -99,7 +99,7 @@
   --color-naranja-background-2: rgba(255, 242, 227, 0.5);
   --color-azul: rgba(0, 71, 184, 1);
   --color-azul-background: rgba(0, 71, 184, 0.8);
-  --color-azul-background-2: rgba(152, 178, 226, 0.6);
+  --color-azul-background-2: rgba(91, 107, 138, 0.4);
   --color-blanco: rgba(255, 255, 255, 1);
   --color-negro: rgba(0, 0, 0, 1);
   --color-placeholder-light: rgba(0, 0, 0, 0.6);
