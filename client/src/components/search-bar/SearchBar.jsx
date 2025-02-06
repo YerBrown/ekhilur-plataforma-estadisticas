@@ -14,6 +14,7 @@ const SearchBar = ({ onSearch }) => {
     const [maxAmount, setMaxAmount] = useState("");
     const searchBarRef = useRef(null);
     const buttonRef = useRef(null);
+    const searchTimeout = useRef(null);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -38,88 +39,39 @@ const SearchBar = ({ onSearch }) => {
         setIsOpen((prev) => !prev);
     };
 
-    // Convierte el valor introducido en un formato con dos decimales
-    const formatToCurrency = (value) => {
-        const numericValue = value.replace(/\D/g, ""); // Elimina cualquier carácter no numérico
-        if (!numericValue) return ""; // Si está vacío, retorna una cadena vacía
+    const triggerSearch = () => {
+        clearTimeout(searchTimeout.current);
+        searchTimeout.current = setTimeout(() => {
+            onSearch({
+                date: startDate && endDate ? { startDate, endDate } : null,
+                name: searchTerm || null,
+                amount: minAmount && maxAmount ? { minAmount, maxAmount } : null,
+            });
 
-        const integerPart = numericValue.slice(0, -2) || "0"; // Parte entera
-        const decimalPart = numericValue.slice(-2).padStart(2, "0"); // Parte decimal
-
-        return `${parseInt(integerPart, 10).toLocaleString("es-ES")},${decimalPart}`;
-    };
-
-    // Maneja los cambios en los campos de importe
-    const handleAmountChange = (value, type) => {
-        const formattedValue = formatToCurrency(value);
-        if (type === "min") {
-            setMinAmount(formattedValue);
-        } else {
-            setMaxAmount(formattedValue);
-        }
-
-        // Actualiza la búsqueda con los valores actuales
-        handleSearch(
-            type === "min" ? formattedValue : minAmount,
-            type === "max" ? formattedValue : maxAmount
-        );
-    };
-
-    const handleSearch = (min = minAmount, max = maxAmount) => {
-        const filters = {
-            date: startDate || endDate ? { startDate, endDate } : null,
-            name: searchTerm ? searchTerm : null,
-            amount: min || max ? { minAmount: min, maxAmount: max } : null,
-        };
-        onSearch(filters);
+            // Solo ejecutar la búsqueda si los filtros de fecha o importe están completos
+            if ((startDate && endDate) || (minAmount && maxAmount)) {
+                onSearch(filters);
+            }
+        }, 500); // 1 segundo de espera
     };
 
     const handleNameChange = (e) => {
         setSearchTerm(e.target.value);
-        handleSearch();
+        triggerSearch();
     };
 
-    const formatDate = (value) => {
-        // Elimina caracteres no numéricos
-        const numericValue = value.replace(/\D/g, "");
-
-        // Separa los valores en DD, MM y AAAA
-        let day = numericValue.slice(0, 2);
-        let month = numericValue.slice(2, 4);
-        let year = numericValue.slice(4, 8);
-
-        // Construye la fecha con el formato DD/MM/AAAA
-        let formattedDate = day;
-        if (month) formattedDate += `/${month}`;
-        if (year) formattedDate += `/${year}`;
-
-        return formattedDate;
-    };
-
-    const handleDateInput = (event, type) => {
-        const formattedDate = formatDate(event.target.value);
-        if (type === "start") {
-            setStartDate(formattedDate);
+    const handleAmountChange = (event, type) => {
+        const value = event.target.value;
+        if (type === "min") {
+            setMinAmount(value);
         } else {
-            setEndDate(formattedDate);
+            setMaxAmount(value);
         }
-        if (formattedDate.length === 10 && (type === "start" ? endDate : startDate)?.length === 10) {
-            handleSearch();
-        }
-    };
-
-    const getCurrentDate = () => {
-        const today = new Date();
-        const day = String(today.getDate()).padStart(2, "0");
-        const month = String(today.getMonth() + 1).padStart(2, "0"); // Los meses van de 0 a 11
-        const year = today.getFullYear();
-        return `${day}/${month}/${year}`;
+        triggerSearch();
     };
 
     const clearFilters = () => {
         setSearchTerm("");
-        setStartDate(null);
-        setEndDate(null);
         setMinAmount("");
         setMaxAmount("");
         onSearch({ date: null, name: null, amount: null });
@@ -149,52 +101,26 @@ const SearchBar = ({ onSearch }) => {
                         </div>
                     </div>
 
-                    <div className="search-bar-filters">
-                        <div className="filter-group">
-                            <label className="filter-label">{t.filterDate}</label>
-                            <div className="filter-dates">
-                                <input
-                                    type="text"
-                                    placeholder={getCurrentDate()}
-                                    value={startDate || ""}
-                                    onChange={(e) => handleDateInput(e, "start")}
-                                    maxLength="10"
-                                    className="search-bar-date-input"
-                                />
-                                <input
-                                    type="text"
-                                    placeholder={getCurrentDate()}
-                                    value={endDate || ""}
-                                    onChange={(e) => handleDateInput(e, "end")}
-                                    maxLength="10"
-                                    className="search-bar-date-input"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="filter-group">
-                            <label className="filter-label">{t.filterImport}</label>
-                            <div className="filter-amounts">
-                                <input
-                                    type="text"
-                                    placeholder={t.inputImportMin}
-                                    value={minAmount}
-                                    onChange={(e) => handleAmountChange(e.target.value, "min")}
-                                    className="filter-input"
-                                />
-                                <input
-                                    type="text"
-                                    placeholder={t.inputImportMax}
-                                    value={maxAmount}
-                                    onChange={(e) => handleAmountChange(e.target.value, "max")}
-                                    className="filter-input"
-                                />
-                            </div>
-                        </div>
+                    <div className="filter-group">
+                        <input
+                            type="text"
+                            placeholder={t.inputImportMin}
+                            value={minAmount}
+                            onChange={(e) => handleAmountChange(e, "min")}
+                            className="filter-input"
+                        />
+                        <input
+                            type="text"
+                            placeholder={t.inputImportMax}
+                            value={maxAmount}
+                            onChange={(e) => handleAmountChange(e, "max")}
+                            className="filter-input"
+                        />
                     </div>
                 </div>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 };
 
