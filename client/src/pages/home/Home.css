@@ -71,7 +71,7 @@
     justify-content: center;
     border-radius: 20px;
     background-color: var(--color-grafico-naranja-claro);
-    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
 }
 
 .wallet-icon {
@@ -79,7 +79,7 @@
     left: 10px;
     top: 10px;
     height: 100%;
-    color: #FF9012
+    color: var(--color-letra);
 }
 
 .bonifications-section,
@@ -102,14 +102,16 @@
 
 .square-button-bonifications,
 .square-button-sales,
-.square-button-statistics {
+.square-button-statistics,
+.square-button-bonifications-received,
+.square-button-bonifications-2 {
     border: none;
     width: 100%;
     aspect-ratio: 1/1;
     padding: 1rem;
     box-sizing: border-box;
     justify-content: center;
-    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     text-align: center;
     gap: 20px;
@@ -120,9 +122,14 @@
 
 .square-button-bonifications {
     background: linear-gradient(45deg,
-            #FFF 0%,
-            #FF9012 40%,
+            #FF9012 0%,
             #0047ba 90%);
+}
+
+.square-button-bonifications-received, .square-button-bonifications-2 {
+    background: linear-gradient(45deg,
+            #0047ba 0%,
+            #FF9012 90%);
 }
 
 .square-button-statistics {
@@ -135,7 +142,7 @@
 }
 
 
-.square-button-bonifications h3 {
+.square-button-bonifications h3, .square-button-sales h3, .square-button-bonifications-received h3, .square-button-bonifications-2 h3 {
     color: var(--color-blanco);
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
@@ -191,7 +198,6 @@
     position: relative;
     border: none;
     width: 100%;
-    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     padding: 0;
     text-align: start;

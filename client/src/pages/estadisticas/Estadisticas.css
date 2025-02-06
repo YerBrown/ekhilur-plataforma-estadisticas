@@ -3,28 +3,31 @@
     width: 100%;
     max-width: 650px;
 }
+
 .container-ingresos-gastos {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     padding-top: 0px;
-    gap: 10px;  
- /* Estilos de tarjeta */
-
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    gap: 10px;
+    /* Estilos de tarjeta */
+    background-color: var(--color-grafico-naranja-claro);
+    border-radius: 20px;
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
     padding: 0.5rem;
     box-sizing: border-box;
     margin-bottom: 1rem;
 }
+
 .item-ingresos-gastos {
     flex: 1;
     text-align: center;
     padding: 10px;
 }
 
-.label-ingresos, .label-gastos {
+.label-ingresos,
+.label-gastos {
     color: var(--color-letra);
     font-weight: bold;
     font-size: 24px;
@@ -33,15 +36,18 @@
     font-size: 20px;
 }
 
-.amount-ingresos, .amount-gastos {
+.amount-ingresos,
+.amount-gastos {
     font-size: 1.2rem;
     font-weight: 500;
 }
+
 .amount-ingresos {
-    color: var(--color-letra);
+    color: #0047b8;
     font-size: 24px;
 }
+
 .amount-gastos {
-    color: var(--color-grafico-naranja-claro);
+    color: var(--color-naranja);
     font-size: 24px;
 }

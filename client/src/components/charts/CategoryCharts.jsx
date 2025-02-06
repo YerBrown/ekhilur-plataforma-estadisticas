@@ -18,55 +18,55 @@ import {
 const categoryTemplate = [
     {
         label: "Alimentación",
-        color: "#0047ba",
+        color: "var(--color-naranja)",
         "color-dark": "#001d4d",
         icon: FaAppleAlt,
     },
     {
         label: "Hostelería",
-        color: "#26C485",
+        color: "var(--color-naranja)",
         "color-dark": "#0c402b",
         icon: FaCoffee,
     },
     {
         label: "Moda y Complementos",
-        color: "#54a9cd",
+        color: "var(--color-naranja)",
         "color-dark": "#112f3b",
         icon: FaTshirt,
     },
     {
         label: "Salud y Estética",
-        color: "#ffc412",
+        color: "var(--color-naranja)",
         "color-dark": "#4d3900",
         icon: FaHeart,
     },
     {
         label: "Servicios y Comercio General",
-        color: "#6f9ef0",
+        color: "var(--color-naranja)",
         "color-dark": "#071e45",
         icon: FaStore,
     },
     {
         label: "Industria y Construcción",
-        color: "#ffef21",
+        color: "var(--color-naranja)",
         "color-dark": "#4d4700",
         icon: FaIndustry,
     },
     {
         label: "Arte y Cultura",
-        color: "#ff9d6d",
+        color: "var(--color-naranja)",
         "color-dark": "#4d1a00",
         icon: FaPaintBrush,
     },
     {
         label: "Deporte y Ocio",
-        color: "#382ef2",
+        color: "var(--color-naranja)",
         "color-dark": "#080548",
         icon: FaFutbol,
     },
     {
         label: "Asociaciones y Cooperativas",
-        color: "#ff9012",
+        color: "var(--color-naranja)",
         "color-dark": "#4d2900",
         icon: FaHandsHelping,
     },
@@ -94,7 +94,7 @@ const CategoryChart = ({ categoryDataJson }) => {
 
     return (
         <div className="category-charts">
-            <h2>{t.categoriesTitle}</h2>
+            <h2 className="category-title">{t.categoriesTitle}</h2>
             <div className="category-extra">
                 <div className="category-container">
                     {categories.map((category) => {
