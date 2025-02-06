@@ -31,7 +31,7 @@ const Authentication = () => {
                 </div>
     
                 <div className="right-side">
-                <img src="isotipo.png" alt="logo" height={200}/>
+                <img src="isotipo.png" alt="logo" height={150}/>
                     <LoginForm />
                 </div>
             </div>
