@@ -111,9 +111,10 @@ Nuestra solución transforma esta experiencia optimizando y organizando la infor
 2. Instrucciones de Configuración
 
 1. Clonar el repositorio
-
-git clone https://github.com/tu-usuario/ekhidata.git
-cd ekhidata
+   ´´´bash
+   git clone https://github.com/tu-usuario/ekhidata.git
+   cd ekhidata
+   ```
 
 2. Configuración del entorno
 
