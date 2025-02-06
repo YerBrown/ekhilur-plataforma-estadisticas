@@ -13,8 +13,8 @@
     gap: 10px;
     /* Estilos de tarjeta */
     background-color: var(--color-grafico-naranja-claro);
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
     padding: 0.5rem;
     box-sizing: border-box;
     margin-bottom: 1rem;

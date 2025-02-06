@@ -103,8 +103,8 @@ const Home = () => {
                 total: `${walletTotalValue}€`, // Pasar el total calculado
             },
         },
-        cutout: "85%", // Ajusta el tamaño del agujero central del donut
-        radius: "90%",
+        cutout: "80%", // Ajusta el tamaño del agujero central del donut
+        radius: "80%",
         elements: {
             arc: {
                 borderWidth: 0,
@@ -182,7 +182,7 @@ const Home = () => {
             <main>
                 <div className="wallet-chart">
                     <div className="wallet-icon">
-                        <TbPigMoney size={50} />
+                        <TbPigMoney size={35} />
                     </div>
                     <DonutChart
                         data={walletData}
