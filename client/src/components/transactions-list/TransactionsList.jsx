@@ -7,6 +7,8 @@ const TransactionList = ({ transactions }) => {
     // AGRUPAR TRANSACCIONES POR FECHA
     const groupedTransactions = transactions.reduce((groups, transaction) => {
         const fecha = transaction.fecha;
+        console.log(fecha);
+
         if (!groups[fecha]) {
             groups[fecha] = [];
         }
@@ -14,32 +16,26 @@ const TransactionList = ({ transactions }) => {
         return groups;
     }, {});
 
+    const sortedDates = Object.keys(groupedTransactions).sort((a, b) => new Date(b) - new Date(a));
+
     // FORMATEAR FECHAS PARA EL TITULO
     const formatDate = (dateString) => {
-        let date;
+        const [year, month, day] = dateString.split("-").map(Number);
+        const date = new Date(year, month - 1, day);
 
-        // Detectar formato y parsearlo correctamente
-        if (dateString.includes("/")) {
-            // Formato DD/MM/YYYY
-            const [day, month, year] = dateString.split("/").map(Number);
-            date = new Date(year, month - 1, day);
-        } else if (dateString.includes("-")) {
-            // Formato YYYY-MM-DD
-            date = new Date(dateString);
-        } else {
-            return dateString; // En caso de formato inesperado, devolver sin cambios
+        if (isNaN(date.getTime())) {
+            console.error("Fecha inválida:", dateString);
+            return dateString;
         }
 
-        // Si el idioma es euskera, usamos inglés y luego reemplazamos los valores
         if (language === "eus") {
             const locale = "en-GB";
             const weekday = new Intl.DateTimeFormat(locale, { weekday: "long" }).format(date);
             const month = new Intl.DateTimeFormat(locale, { month: "long" }).format(date);
             const day = new Intl.DateTimeFormat(locale, { day: "numeric" }).format(date);
 
-            let formattedDate = `${month} ${day}, ${weekday}`; // `Friday, May 27`
+            let formattedDate = `${month} ${day}, ${weekday}`;
 
-            // Reemplazar los nombres de días y meses por sus equivalentes en euskera
             Object.keys(t.dateTranslations).forEach(engWord => {
                 const eusWord = t.dateTranslations[engWord];
                 formattedDate = formattedDate.replace(engWord, eusWord);
@@ -48,7 +44,6 @@ const TransactionList = ({ transactions }) => {
             return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
         }
 
-        // Si el idioma es español, aseguramos el formato correcto: `Viernes, 27 de mayo`
         if (language === "es") {
             const locale = "es-ES";
             const weekday = new Intl.DateTimeFormat(locale, { weekday: "long" }).format(date);
@@ -62,44 +57,42 @@ const TransactionList = ({ transactions }) => {
     };
 
     return (
-        <>
-            <div className="transaction-list-container">
-                {Object.keys(groupedTransactions).sort().reverse().map((fecha) => (
-                    <div key={fecha} className="transaction-group-container">
-                        <div className="transaction-group-header">
-                            <h2 className="transaction-group-title">{formatDate(fecha)}</h2>
-                        </div>
-                        <div className="transaction-group-list">
-                            {groupedTransactions[fecha].map((transaction, index) => (
-                                <div key={index} className="transaction-item">
-                                    <div className="transaction-item-header">
-                                        <p className="transaction-item-time">{transaction.hora}</p>
+        <div className="transaction-list-container">
+            {sortedDates.map((fecha) => (
+                <div key={fecha} className="transaction-group-container">
+                    <div className="transaction-group-header">
+                        <h2 className="transaction-group-title">{formatDate(fecha)}</h2>
+                    </div>
+                    <div className="transaction-group-list">
+                        {groupedTransactions[fecha].map((transaction, index) => (
+                            <div key={index} className="transaction-item">
+                                <div className="transaction-item-header">
+                                    <p className="transaction-item-time">{transaction.hora}</p>
+                                </div>
+                                <div className="transaction-item-content">
+                                    <div className="transaction-item-image-container">
+                                        <img
+                                            src="/isotipo.png"
+                                            alt={transaction.usuario_asociado || transaction.movimiento}
+                                            className="transaction-item-image"
+                                        />
+                                        <div className="transaction-item-name-container">
+                                            <p className="transaction-item-name">{transaction.usuario_asociado || transaction.movimiento}</p>
+                                        </div>
                                     </div>
-                                    <div className="transaction-item-content">
-                                        <div className="transaction-item-image-container">
-                                            <img
-                                                src="/isotipo.png"
-                                                alt={transaction.usuario_asociado || transaction.movimiento}
-                                                className="transaction-item-image"
-                                            />
-                                            <div className="transaction-item-name-container">
-                                                <p className="transaction-item-name">{transaction.usuario_asociado || transaction.movimiento}</p>
-                                            </div>
-                                        </div>
-                                        <div className="transaction-item-amounts-container">
-                                            <p className={`transaction-item-amount ${transaction.cantidad.toString().includes('-') ? 'negative' : 'positive'}`}>
-                                                {transaction.cantidad}
-                                            </p>
-                                            <p className="transaction-item-remaining">{transaction.saldo}</p>
-                                        </div>
+                                    <div className="transaction-item-amounts-container">
+                                        <p className={`transaction-item-amount ${transaction.cantidad < 0 ? 'negative' : 'positive'}`}>
+                                            {transaction.cantidad}
+                                        </p>
+                                        <p className="transaction-item-remaining">{transaction.saldo}</p>
                                     </div>
                                 </div>
-                            ))}
-                        </div>
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
-        </>
+                </div>
+            ))}
+        </div>
     );
 };
 
