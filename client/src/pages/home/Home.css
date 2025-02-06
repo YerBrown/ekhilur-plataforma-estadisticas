@@ -137,6 +137,15 @@ aside .user-profile-info {
 }
 
 .square-button-bonifications,
+.square-button-bonifications-received,
+.square-button-bonifications-2{
+    color:white
+}
+
+
+
+
+.square-button-bonifications,
 .square-button-sales,
 .square-button-statistics,
 .square-button-bonifications-received,
@@ -168,19 +177,19 @@ aside .user-profile-info {
             #FF9012 90%);
 }
 
-.square-button-statistics {
+.square-button-statistics, .square-button-sales {
     background-color: var(--color-grafico-naranja-claro);
 
 }
 
-.square-button-statistics h3 {
-    color: var(--color-naranja);
+.square-button-statistics h3, .square-button-sales h3 {
+    color: var(--color-naranja) !important;
+    font-size: 1.4rem !important;
 }
 
 
 .square-button-bonifications h3 {
     color: var(--color-blanco);
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .square-button-sales {
@@ -235,6 +244,7 @@ aside .user-profile-info {
     border-radius: 20px;
     padding: 0;
     text-align: start;
+    background: transparent;
 }
 
 .home-page .transaction-list-container {
