@@ -6,7 +6,11 @@ import { TbPigMoney } from "react-icons/tb";
 import DonutChart from "../../components/charts/DonutChart";
 import ProfileAvatar from "../../components/ProfileAvatar";
 import TransactionList from "../../components/transactions-list/TransactionsList";
-import { getUserHomeData, getCommerceHomeData, getTransactions } from "../../api/realData.js";
+import {
+    getUserHomeData,
+    getCommerceHomeData,
+    getTransactions,
+} from "../../api/realData.js";
 import { useTheme } from "../../contexts/ThemeContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import "./Home.css";
@@ -126,50 +130,80 @@ const Home = () => {
     // Obtener la abreviatura del mes en español
     const getMonthAbbreviation = (monthNumber) => {
         const date = new Date(2025, monthNumber - 1); // Crear una fecha con el mes dado
-        const monthShort = date.toLocaleString("es-ES", { month: "short" }).toLowerCase().replace('.', ''); // Quitar el punto si existe
+        const monthShort = date
+            .toLocaleString("es-ES", { month: "short" })
+            .toLowerCase()
+            .replace(".", ""); // Quitar el punto si existe
         return t.monthsAbbreviations[monthShort] || monthShort; // Usar la traducción o la abreviatura original
     };
 
     // Formatear las fechas correctamente
-    const previousMonthFormatted = `${getMonthAbbreviation(previousMonth)} ${previousYearShort}`;
-    const currentMonthFormatted = `${getMonthAbbreviation(currentMonth)} ${currentYearShort}`;
-
+    const previousMonthFormatted = `${getMonthAbbreviation(
+        previousMonth
+    )} ${previousYearShort}`;
+    const currentMonthFormatted = `${getMonthAbbreviation(
+        currentMonth
+    )} ${currentYearShort}`;
 
     // BUSCAR BONIFICACIONES
-    const currentBonus = userData.bonificaciones.find(
-        (b) => parseInt(b.mes) === currentMonth && parseInt(b.año) === currentYear
-    )?.bonificaciones || 0;
+    const currentBonus =
+        userData.bonificaciones.find(
+            (b) =>
+                parseInt(b.mes) === currentMonth &&
+                parseInt(b.año) === currentYear
+        )?.bonificaciones || 0;
 
-    const previousBonus = userData.bonificaciones.find(
-        (b) => parseInt(b.mes) === previousMonth && parseInt(b.año) === previousYear
-    )?.bonificaciones || 0;
+    const previousBonus =
+        userData.bonificaciones.find(
+            (b) =>
+                parseInt(b.mes) === previousMonth &&
+                parseInt(b.año) === previousYear
+        )?.bonificaciones || 0;
 
     // BUSCAR BONIFICACIONES DE COMERCIO
-    const emmitedShopBonus = userData.bonificaciones.find(
-        (b) => parseInt(b.mes) === currentMonth && parseInt(b.año) === currentYear
-    )?.bonificaciones_emitidas || 0;
+    const emmitedShopBonus =
+        userData.bonificaciones.find(
+            (b) =>
+                parseInt(b.mes) === currentMonth &&
+                parseInt(b.año) === currentYear
+        )?.bonificaciones_emitidas || 0;
 
-    const receivedShopBonus = userData.bonificaciones.find(
-        (b) => parseInt(b.mes) === currentMonth && parseInt(b.año) === currentYear
-    )?.bonificaciones_recibidas || 0;
+    const receivedShopBonus =
+        userData.bonificaciones.find(
+            (b) =>
+                parseInt(b.mes) === currentMonth &&
+                parseInt(b.año) === currentYear
+        )?.bonificaciones_recibidas || 0;
 
     // BUSCAR GASTOS E INGRESOS
-    const expenses = userData.bonificaciones.find(
-        (b) => parseInt(b.mes) === currentMonth && parseInt(b.año) === currentYear
-    )?.gastos || 0;
+    const expenses =
+        userData.bonificaciones.find(
+            (b) =>
+                parseInt(b.mes) === currentMonth &&
+                parseInt(b.año) === currentYear
+        )?.gastos || 0;
 
-    const income = userData.bonificaciones.find(
-        (b) => parseInt(b.mes) === currentMonth && parseInt(b.año) === currentYear
-    )?.ingresos || 0;
+    const income =
+        userData.bonificaciones.find(
+            (b) =>
+                parseInt(b.mes) === currentMonth &&
+                parseInt(b.año) === currentYear
+        )?.ingresos || 0;
 
     // BUSCAR VENTAS
-    const currentSales = userData.bonificaciones.find(
-        (b) => parseInt(b.mes) === currentMonth && parseInt(b.año) === currentYear
-    )?.ventas || 0;
+    const currentSales =
+        userData.bonificaciones.find(
+            (b) =>
+                parseInt(b.mes) === currentMonth &&
+                parseInt(b.año) === currentYear
+        )?.ventas || 0;
 
-    const previousSales = userData.bonificaciones.find(
-        (b) => parseInt(b.mes) === previousMonth && parseInt(b.año) === previousYear
-    )?.ventas || 0;
+    const previousSales =
+        userData.bonificaciones.find(
+            (b) =>
+                parseInt(b.mes) === previousMonth &&
+                parseInt(b.año) === previousYear
+        )?.ventas || 0;
 
     return (
         <div className="home-page">
@@ -192,102 +226,157 @@ const Home = () => {
                 </div>
                 {user?.role === "user" && (
                     <div className="bonifications-section">
-                        <button className="square-button-bonifications" onClick={() => handleNavigate("/bonifications")}>
+                        <button
+                            className="square-button-bonifications"
+                            onClick={() => handleNavigate("/bonifications")}
+                        >
                             <div className="info">
                                 <h3>{t.bonificationTitle}</h3>
                                 <p>{previousMonthFormatted}</p>
                             </div>
                             <div className="value">
                                 <GoPlusCircle />
-                                <h4>{previousBonus.toFixed(2).replace(".", ",")}</h4>
+                                <h4>
+                                    {previousBonus.toFixed(2).replace(".", ",")}
+                                </h4>
                             </div>
                         </button>
-                        <button className="square-button-bonifications" onClick={() => handleNavigate("/bonifications")}>
+                        <button
+                            className="square-button-bonifications"
+                            onClick={() => handleNavigate("/bonifications")}
+                        >
                             <div className="info">
                                 <h3>{t.bonificationTitle}</h3>
                                 <p>{currentMonthFormatted}</p>
                             </div>
                             <div className="value">
                                 <GoPlusCircle />
-                                <h4>{currentBonus.toFixed(2).replace(".", ",")}</h4>
+                                <h4>
+                                    {currentBonus.toFixed(2).replace(".", ",")}
+                                </h4>
                             </div>
                         </button>
                     </div>
                 )}
                 {user?.role === "commerce" && (
                     <div className="sales-section">
-                        <button className="square-button-sales" onClick={() => handleNavigate("/sales")}>
+                        <button
+                            className="square-button-sales"
+                            onClick={() => handleNavigate("/sales")}
+                        >
                             <div className="info">
                                 <h3>{t.salesTitle}</h3>
                                 <p>{previousMonthFormatted}</p>
                             </div>
                             <div className="value">
                                 <GoPlusCircle />
-                                <h4>{previousSales.toFixed(2).replace(".", ",")}</h4>
+                                <h4>
+                                    {previousSales.toFixed(2).replace(".", ",")}
+                                </h4>
                             </div>
                         </button>
-                        <button className="square-button-sales" onClick={() => handleNavigate("/sales")}>
+                        <button
+                            className="square-button-sales"
+                            onClick={() => handleNavigate("/sales")}
+                        >
                             <div className="info">
                                 <h3>{t.salesTitle}</h3>
                                 <p>{currentMonthFormatted}</p>
                             </div>
                             <div className="value">
                                 <GoPlusCircle />
-                                <h4>{currentSales.toFixed(2).replace(".", ",")}</h4>
+                                <h4>
+                                    {currentSales.toFixed(2).replace(".", ",")}
+                                </h4>
                             </div>
                         </button>
                     </div>
                 )}
                 {user?.role === "commerce" && (
                     <div className="bonifications-section">
-                        <button className="square-button-bonifications" onClick={() => handleNavigate("/bonifications-shop")}>
+                        <button
+                            className="square-button-bonifications"
+                            onClick={() =>
+                                handleNavigate("/bonifications-shop")
+                            }
+                        >
                             <div className="info">
-                                <h3>{t.bonificationTitle} {t.emmited}</h3>
+                                <h3>
+                                    {t.bonificationTitle} {t.emmited}
+                                </h3>
                             </div>
                             <div className="value">
                                 <GoPlusCircle />
-                                <h4>{emmitedShopBonus.toFixed(2).replace(".", ",")}</h4>
+                                <h4>
+                                    {emmitedShopBonus
+                                        .toFixed(2)
+                                        .replace(".", ",")}
+                                </h4>
                             </div>
                         </button>
-                        <button className="square-button-bonifications" onClick={() => handleNavigate("/bonifications-shop")}>
+                        <button
+                            className="square-button-bonifications"
+                            onClick={() =>
+                                handleNavigate("/bonifications-shop")
+                            }
+                        >
                             <div className="info">
-                                <h3>{t.bonificationTitle} {t.received}</h3>
+                                <h3>
+                                    {t.bonificationTitle} {t.received}
+                                </h3>
                             </div>
                             <div className="value">
                                 <GoPlusCircle />
-                                <h4>{receivedShopBonus.toFixed(2).replace(".", ",")}</h4>
+                                <h4>
+                                    {receivedShopBonus
+                                        .toFixed(2)
+                                        .replace(".", ",")}
+                                </h4>
                             </div>
                         </button>
                     </div>
                 )}
                 <div className="statistics-section">
-                    <button className="square-button-statistics" onClick={() => handleNavigate("/statistics")}>
-                        <div className="info">
-                            <h3>{t.incomes}</h3>
-                        </div>
-                        <div className="value">
-                            <GoPlusCircle />
-                            <h4>{income.toFixed(2).replace(".", ",").replace(".", ",")}</h4>
-                        </div>
-                    </button>
-                    <button className="square-button-statistics" onClick={() => handleNavigate("/statistics")}>
-                        <div className="info">
-                            <h3>{t.expenses}</h3>
-                        </div>
-                        <div className="value">
-                            <GoPlusCircle />
-                            <h4>{expenses.toFixed(2).replace(".", ",")}</h4>
-                        </div>
-                    </button>
+                    <div className="mobile-statistics">
+                        <button
+                            className="square-button-statistics"
+                            onClick={() => handleNavigate("/statistics")}
+                        >
+                            <div className="info">
+                                <h3>{t.incomes}</h3>
+                            </div>
+                            <div className="value">
+                                <GoPlusCircle />
+                                <h4>
+                                    {income
+                                        .toFixed(2)
+                                        .replace(".", ",")
+                                        .replace(".", ",")}
+                                </h4>
+                            </div>
+                        </button>
+                        <button
+                            className="square-button-statistics"
+                            onClick={() => handleNavigate("/statistics")}
+                        >
+                            <div className="info">
+                                <h3>{t.expenses}</h3>
+                            </div>
+                            <div className="value">
+                                <GoPlusCircle />
+                                <h4>{expenses.toFixed(2).replace(".", ",")}</h4>
+                            </div>
+                        </button>
+                    </div>
                 </div>
-                <div className="transactions-section">
+                {/* <div className="transactions-section">
                     <button className="transactions-home-button" onClick={() => handleNavigate("/transactions")}>
                         <TransactionList transactions={transData.slice(0, 3)} />
                         <button className="add-button">
                             <GoPlusCircle size={32} />
                         </button>
                     </button>
-                </div>
+                </div> */}
                 {/* <button onClick={() => handleNavigate("/map")}>
                     <h3>Mapa</h3>
                 </button> */}
