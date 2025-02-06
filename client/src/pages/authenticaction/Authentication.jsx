@@ -29,7 +29,9 @@ const Authentication = () => {
                 <div className="left-side">
                     <h2 className="logo-login">ekhidata</h2>
                 </div>
+    
                 <div className="right-side">
+                <img src="isotipo.png" alt="logo" height={200}/>
                     <LoginForm />
                 </div>
             </div>
