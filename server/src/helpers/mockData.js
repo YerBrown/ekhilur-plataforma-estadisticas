@@ -5,7 +5,7 @@ const mockData = [
         "movimiento":"Transferencia enviada",
         "cantidad":-95.17,
         "concepto":"Pago de servicio",
-        "usuario_asociado":"Usuario 1",
+        "usuario_asociado":"Goiz Eguzki Jatetxea",
         "saldo":148.89,
         "cuenta":"Cuenta 3",
         "categoria":"Moda y complementos"
@@ -16,7 +16,7 @@ const mockData = [
         "movimiento":"Ingreso recibido",
         "cantidad":8.57,
         "concepto":"Compra en tienda",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Tranbia taberna",
         "saldo":314.66,
         "cuenta":"Cuenta 3",
         "categoria":"Industria y construcción"
@@ -27,7 +27,7 @@ const mockData = [
         "movimiento":"Pago a usuario",
         "cantidad":-81.0,
         "concepto":"Donación",
-        "usuario_asociado":"Usuario 3",
+        "usuario_asociado":"Aliprox",
         "saldo":366.02,
         "cuenta":"Cuenta 2",
         "categoria":"Arte y cultura"
@@ -38,7 +38,7 @@ const mockData = [
         "movimiento":"Ingreso recibido",
         "cantidad":80.66,
         "concepto":"Cuota mensual",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Garin Harategia",
         "saldo":66.0,
         "cuenta":"Cuenta 1",
         "categoria":"Servicios y comercio general"
@@ -71,7 +71,7 @@ const mockData = [
         "movimiento":"Transferencia enviada",
         "cantidad":-17.64,
         "concepto":"Compra en tienda",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Garin Harategia",
         "saldo":273.3,
         "cuenta":"Cuenta 2",
         "categoria":"Industria y construcción"
@@ -82,7 +82,7 @@ const mockData = [
         "movimiento":"Transferencia enviada",
         "cantidad":-24.49,
         "concepto":"Donación",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Garin Harategia",
         "saldo":478.73,
         "cuenta":"Cuenta 2",
         "categoria":"Moda y complementos"
@@ -93,7 +93,7 @@ const mockData = [
         "movimiento":"Transferencia enviada",
         "cantidad":-34.35,
         "concepto":"Donación",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Garin Harategia",
         "saldo":224.07,
         "cuenta":"Cuenta 3",
         "categoria":"Moda y complementos"
@@ -104,7 +104,7 @@ const mockData = [
         "movimiento":"Pago a usuario",
         "cantidad":-67.86,
         "concepto":"Donación",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Garin Harategia",
         "saldo":41.0,
         "cuenta":"Cuenta 1",
         "categoria":"Salud y estética"
@@ -115,7 +115,7 @@ const mockData = [
         "movimiento":"Pago a usuario",
         "cantidad":-13.81,
         "concepto":"Compra en tienda",
-        "usuario_asociado":"Usuario 1",
+        "usuario_asociado":"Goiz Eguzki Jatetxea",
         "saldo":446.43,
         "cuenta":"Cuenta 2",
         "categoria":"Alimentación"
@@ -126,7 +126,7 @@ const mockData = [
         "movimiento":"Transferencia enviada",
         "cantidad":76.85,
         "concepto":"Pago de servicio",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Garin Harategia",
         "saldo":307.54,
         "cuenta":"Ekhi Hernani",
         "categoria":"Arte y cultura"
@@ -148,7 +148,7 @@ const mockData = [
         "movimiento":"Ingreso recibido",
         "cantidad":44.39,
         "concepto":"Pago de servicio",
-        "usuario_asociado":"Usuario 1",
+        "usuario_asociado":"Goiz Eguzki Jatetxea",
         "saldo":461.7,
         "cuenta":"Ekhi Hernani",
         "categoria":"Alimentación"
@@ -181,7 +181,7 @@ const mockData = [
         "movimiento":"Pago a usuario",
         "cantidad":-52.86,
         "concepto":"Donación",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Garin Harategia",
         "saldo":386.93,
         "cuenta":"Cuenta 1",
         "categoria":"Alimentación"
@@ -192,7 +192,7 @@ const mockData = [
         "movimiento":"Ingreso recibido",
         "cantidad":8.64,
         "concepto":"Pago de servicio",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Garin Harategia",
         "saldo":51.66,
         "cuenta":"Ekhi Hernani",
         "categoria":"Alimentación"
@@ -203,7 +203,7 @@ const mockData = [
         "movimiento":"Ingreso recibido",
         "cantidad":5.86,
         "concepto":"Donación",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Tranbia taberna",
         "saldo":174.16,
         "cuenta":"Cuenta 1",
         "categoria":"Salud y estética"
@@ -214,7 +214,7 @@ const mockData = [
         "movimiento":"Pago a usuario",
         "cantidad":-65.14,
         "concepto":"Compra en tienda",
-        "usuario_asociado":"Usuario 1",
+        "usuario_asociado":"Goiz Eguzki Jatetxea",
         "saldo":384.67,
         "cuenta":"Cuenta 2",
         "categoria":"Salud y estética"
@@ -225,7 +225,7 @@ const mockData = [
         "movimiento":"Pago a usuario",
         "cantidad":-45.7,
         "concepto":"Compra en tienda",
-        "usuario_asociado":"Usuario 1",
+        "usuario_asociado":"Oa Gozotegia",
         "saldo":235.94,
         "cuenta":"Cuenta 1",
         "categoria":"Hostelería"
@@ -236,7 +236,7 @@ const mockData = [
         "movimiento":"Pago a usuario",
         "cantidad":-23.94,
         "concepto":"Compra en tienda",
-        "usuario_asociado":"Usuario 1",
+        "usuario_asociado":"Oa Gozotegia",
         "saldo":101.99,
         "cuenta":"Ekhi Hernani",
         "categoria":"Salud y estética"
@@ -247,7 +247,7 @@ const mockData = [
         "movimiento":"Transferencia enviada",
         "cantidad":26.03,
         "concepto":"Cuota mensual",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Tranbia taberna",
         "saldo":72.42,
         "cuenta":"Cuenta 3",
         "categoria":"Asociaciones y cooperativas"
@@ -269,7 +269,7 @@ const mockData = [
         "movimiento":"Ingreso recibido",
         "cantidad":90.63,
         "concepto":"Cuota mensual",
-        "usuario_asociado":"Usuario 1",
+        "usuario_asociado":"Oa Gozotegia",
         "saldo":199.1,
         "cuenta":"Ekhi Hernani",
         "categoria":"Moda y complementos"
@@ -280,7 +280,7 @@ const mockData = [
         "movimiento":"Ingreso recibido",
         "cantidad":96.11,
         "concepto":"Compra en tienda",
-        "usuario_asociado":"Usuario 1",
+        "usuario_asociado":"Oa Gozotegia",
         "saldo":407.22,
         "cuenta":"Ekhi Hernani",
         "categoria":"Deporte y ocio"
@@ -291,7 +291,7 @@ const mockData = [
         "movimiento":"Pago a usuario",
         "cantidad":-19.62,
         "concepto":"Pago de servicio",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Tranbia taberna",
         "saldo":229.67,
         "cuenta":"Cuenta 2",
         "categoria":"Moda y complementos"
@@ -313,7 +313,7 @@ const mockData = [
         "movimiento":"Pago a usuario",
         "cantidad":-31.24,
         "concepto":"Compra en tienda",
-        "usuario_asociado":"Usuario 1",
+        "usuario_asociado":"Oa Gozotegia",
         "saldo":32.43,
         "cuenta":"Cuenta 3",
         "categoria":"Asociaciones y cooperativas"
@@ -324,7 +324,7 @@ const mockData = [
         "movimiento":"Ingreso recibido",
         "cantidad":96.68,
         "concepto":"Cuota mensual",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Tripontzi Jatetxea",
         "saldo":383.65,
         "cuenta":"Cuenta 1",
         "categoria":"Alimentación"
@@ -357,7 +357,7 @@ const mockData = [
         "movimiento":"Transferencia enviada",
         "cantidad":68.99,
         "concepto":"Pago de servicio",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Tripontzi Jatetxea",
         "saldo":265.74,
         "cuenta":"Cuenta 2",
         "categoria":"Deporte y ocio"
@@ -379,7 +379,7 @@ const mockData = [
         "movimiento":"Pago a usuario",
         "cantidad":-79.53,
         "concepto":"Compra en tienda",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Tripontzi Jatetxea",
         "saldo":474.71,
         "cuenta":"Cuenta 2",
         "categoria":"Servicios y comercio general"
@@ -412,7 +412,7 @@ const mockData = [
         "movimiento":"Transferencia enviada",
         "cantidad":33.4,
         "concepto":"Compra en tienda",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Tripontzi Jatetxea",
         "saldo":261.87,
         "cuenta":"Ekhi Hernani",
         "categoria":"Servicios y comercio general"
@@ -423,7 +423,7 @@ const mockData = [
         "movimiento":"Ingreso recibido",
         "cantidad":72.32,
         "concepto":"Pago de servicio",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Tripontzi Jatetxea",
         "saldo":381.03,
         "cuenta":"Ekhi Hernani",
         "categoria":"Moda y complementos"
@@ -434,7 +434,7 @@ const mockData = [
         "movimiento":"Pago a usuario",
         "cantidad":-82.63,
         "concepto":"Compra en tienda",
-        "usuario_asociado":"Usuario 3",
+        "usuario_asociado":"Aliprox",
         "saldo":54.92,
         "cuenta":"Cuenta 1",
         "categoria":"Industria y construcción"
@@ -456,7 +456,7 @@ const mockData = [
         "movimiento":"Pago a usuario",
         "cantidad":-97.66,
         "concepto":"Cuota mensual",
-        "usuario_asociado":"Usuario 3",
+        "usuario_asociado":"Aliprox",
         "saldo":466.24,
         "cuenta":"Ekhi Hernani",
         "categoria":"Hostelería"
@@ -489,7 +489,7 @@ const mockData = [
         "movimiento":"Transferencia enviada",
         "cantidad":54.18,
         "concepto":"Donación",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Tranbia taberna",
         "saldo":52.37,
         "cuenta":"Ekhi Hernani",
         "categoria":"Industria y construcción"
@@ -522,7 +522,7 @@ const mockData = [
         "movimiento":"Transferencia enviada",
         "cantidad":60.72,
         "concepto":"Pago de servicio",
-        "usuario_asociado":"Usuario 3",
+        "usuario_asociado":"Aliprox",
         "saldo":243.54,
         "cuenta":"Cuenta 3",
         "categoria":"Salud y estética"
@@ -555,7 +555,7 @@ const mockData = [
         "movimiento":"Pago a usuario",
         "cantidad":-44.39,
         "concepto":"Donación",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Tranbia taberna",
         "saldo":364.8,
         "cuenta":"Cuenta 2",
         "categoria":"Alimentación"
@@ -577,7 +577,7 @@ const mockData = [
         "movimiento":"Ingreso recibido",
         "cantidad":19.11,
         "concepto":"Compra en tienda",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Tranbia taberna",
         "saldo":306.21,
         "cuenta":"Cuenta 2",
         "categoria":"Deporte y ocio"
@@ -588,7 +588,7 @@ const mockData = [
         "movimiento":"Transferencia enviada",
         "cantidad":18.4,
         "concepto":"Donación",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Tranbia taberna",
         "saldo":254.84,
         "cuenta":"Cuenta 3",
         "categoria":"Asociaciones y cooperativas"
@@ -599,7 +599,7 @@ const mockData = [
         "movimiento":"Transferencia enviada",
         "cantidad":75.97,
         "concepto":"Cuota mensual",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Tranbia taberna",
         "saldo":238.26,
         "cuenta":"Cuenta 1",
         "categoria":"Asociaciones y cooperativas"
@@ -610,7 +610,7 @@ const mockData = [
         "movimiento":"Transferencia enviada",
         "cantidad":79.45,
         "concepto":"Compra en tienda",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Tranbia taberna",
         "saldo":88.66,
         "cuenta":"Ekhi Hernani",
         "categoria":"Industria y construcción"
@@ -621,7 +621,7 @@ const mockData = [
         "movimiento":"Transferencia enviada",
         "cantidad":75.81,
         "concepto":"Donación",
-        "usuario_asociado":"Usuario 2",
+        "usuario_asociado":"Tranbia taberna",
         "saldo":481.49,
         "cuenta":"Cuenta 3",
         "categoria":"Arte y cultura"
@@ -654,7 +654,7 @@ const mockData = [
         "movimiento":"Pago a usuario",
         "cantidad":-19.14,
         "concepto":"Pago de servicio",
-        "usuario_asociado":"Usuario 3",
+        "usuario_asociado":"Aliprox",
         "saldo":121.17,
         "cuenta":"Ekhi Hernani",
         "categoria":"Deporte y ocio"

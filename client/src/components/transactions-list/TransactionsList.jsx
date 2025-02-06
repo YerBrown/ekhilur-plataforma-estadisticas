@@ -13,6 +13,11 @@ const TransactionList = ({ transactions }) => {
             groups[fecha] = [];
         }
         groups[fecha].push(transaction);
+        groups[fecha].sort((a, b) => {
+            const timeA = a.hora.split(":").map(Number);
+            const timeB = b.hora.split(":").map(Number);
+            return timeB[0] - timeA[0] || timeB[1] - timeA[1];
+        });
         return groups;
     }, {});
 
