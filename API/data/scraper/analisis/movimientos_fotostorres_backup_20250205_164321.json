@@ -1,0 +1,5262 @@
+[
+    {
+        "fecha": "2025-01-07",
+        "hora": "15:32:13",
+        "movimiento": "Comisión por retirada",
+        "cantidad": "-8,56",
+        "concepto": "  ",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "42,48",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2025-01-07",
+        "hora": "15:32:12",
+        "movimiento": "Retirada a cuenta bancaria",
+        "cantidad": "-698,78",
+        "concepto": "  ",
+        "usuario_asociado": "Retirada a cuenta bancaria",
+        "saldo": "51,04",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2025-01-07",
+        "hora": "15:28:24",
+        "movimiento": "Conversión a €",
+        "cantidad": "707,34",
+        "concepto": "  Ingresar en cuenta",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2025-01-07",
+        "hora": "08:23:58",
+        "movimiento": "Cuota variable",
+        "cantidad": "-3,10",
+        "concepto": "  Cuota variable | 12/2024",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "749,82",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2025-01-07",
+        "hora": "08:22:57",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,19",
+        "concepto": "  Cuota aportación mensual | 12/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2025-01-07",
+        "hora": "08:22:47",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "2,91",
+        "concepto": "  Cuota aportación mensual | 12/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-12-23",
+        "hora": "17:42:29",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-30,00",
+        "concepto": "  ",
+        "usuario_asociado": "Iratxe Eizagirre Aranburu",
+        "saldo": "752,92",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-23",
+        "hora": "17:39:18",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,64",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Iratxe Eizagirre Aranburu",
+        "saldo": "782,92",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-23",
+        "hora": "17:39:17",
+        "movimiento": "Pago a usuario",
+        "cantidad": "64,00",
+        "concepto": "  iratxe",
+        "usuario_asociado": "Iratxe Eizagirre Aranburu",
+        "saldo": "783,56",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-23",
+        "hora": "13:00:12",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,14",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Lur Etxeberria Iradi",
+        "saldo": "719,56",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-23",
+        "hora": "13:00:08",
+        "movimiento": "Pago a usuario",
+        "cantidad": "14,00",
+        "concepto": "  Lur",
+        "usuario_asociado": "Lur Etxeberria Iradi",
+        "saldo": "719,70",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-23",
+        "hora": "12:21:53",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,19",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Leire Goñi Iradi",
+        "saldo": "705,70",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-23",
+        "hora": "12:21:51",
+        "movimiento": "Pago a usuario",
+        "cantidad": "18,80",
+        "concepto": "  ",
+        "usuario_asociado": "Leire Goñi Iradi",
+        "saldo": "705,89",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-19",
+        "hora": "18:09:30",
+        "movimiento": "Pago a usuario",
+        "cantidad": "25,00",
+        "concepto": "  oihane mendilore",
+        "usuario_asociado": "Mendi Lore Loredenda",
+        "saldo": "687,09",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-19",
+        "hora": "12:12:37",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,07",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Mikel Casuso Lomas",
+        "saldo": "662,09",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-19",
+        "hora": "12:12:36",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,20",
+        "concepto": "  ",
+        "usuario_asociado": "Mikel Casuso Lomas",
+        "saldo": "662,16",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-18",
+        "hora": "19:23:17",
+        "movimiento": "Pago a usuario",
+        "cantidad": "26,50",
+        "concepto": "  ",
+        "usuario_asociado": "Mª Luisa Elosegi Aduriz",
+        "saldo": "654,96",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-18",
+        "hora": "18:46:09",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "628,46",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-18",
+        "hora": "18:46:04",
+        "movimiento": "Pago a usuario",
+        "cantidad": "0,50",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "628,47",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-16",
+        "hora": "18:40:45",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,12",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Leire Bilbao Agirrebengoa",
+        "saldo": "627,97",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-16",
+        "hora": "18:40:43",
+        "movimiento": "Pago a usuario",
+        "cantidad": "11,95",
+        "concepto": "  ",
+        "usuario_asociado": "Leire Bilbao Agirrebengoa",
+        "saldo": "628,09",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-13",
+        "hora": "17:31:58",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,15",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Mikel Casuso Lomas",
+        "saldo": "616,14",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-13",
+        "hora": "17:31:56",
+        "movimiento": "Pago a usuario",
+        "cantidad": "15,10",
+        "concepto": "  ",
+        "usuario_asociado": "Mikel Casuso Lomas",
+        "saldo": "616,29",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-13",
+        "hora": "11:22:47",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,08",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "M Jose Salaberria Aranburu",
+        "saldo": "601,19",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-13",
+        "hora": "11:22:45",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,90",
+        "concepto": "  ",
+        "usuario_asociado": "M Jose Salaberria Aranburu",
+        "saldo": "601,27",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-13",
+        "hora": "11:22:06",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,08",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "M Jose Salaberria Aranburu",
+        "saldo": "593,37",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-13",
+        "hora": "11:22:04",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,90",
+        "concepto": "  ",
+        "usuario_asociado": "M Jose Salaberria Aranburu",
+        "saldo": "593,45",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-12",
+        "hora": "11:20:12",
+        "movimiento": "Descuento automático",
+        "cantidad": "-5,13",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "585,55",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-12",
+        "hora": "11:20:07",
+        "movimiento": "Pago a usuario",
+        "cantidad": "513,40",
+        "concepto": "  begoña loyarte fotos",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "590,68",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-11",
+        "hora": "17:13:36",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "77,28",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-11",
+        "hora": "17:13:34",
+        "movimiento": "Pago a usuario",
+        "cantidad": "0,50",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "77,29",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-09",
+        "hora": "17:54:59",
+        "movimiento": "Bonificación por compra",
+        "cantidad": "30,73",
+        "concepto": "  Mila esker Hernanin erosteagatik! Hernaniko Udala.",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "76,79",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2024-12-09",
+        "hora": "17:54:58",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-439,00",
+        "concepto": "  Eli Lujambio",
+        "usuario_asociado": "Amegar etxetresnak",
+        "saldo": "46,06",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-09",
+        "hora": "17:51:58",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,02",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "485,06",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-09",
+        "hora": "17:51:56",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,50",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "485,08",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-05",
+        "hora": "11:57:41",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,28",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "ainhoa del saz orozco sagarna",
+        "saldo": "483,58",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-05",
+        "hora": "11:57:39",
+        "movimiento": "Pago a usuario",
+        "cantidad": "28,20",
+        "concepto": "  ",
+        "usuario_asociado": "ainhoa del saz orozco sagarna",
+        "saldo": "483,86",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-03",
+        "hora": "17:50:56",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,09",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "ainhoa del saz orozco sagarna",
+        "saldo": "455,66",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-03",
+        "hora": "17:50:54",
+        "movimiento": "Pago a usuario",
+        "cantidad": "8,55",
+        "concepto": "  ",
+        "usuario_asociado": "ainhoa del saz orozco sagarna",
+        "saldo": "455,75",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-12-03",
+        "hora": "13:17:00",
+        "movimiento": "Cuota variable",
+        "cantidad": "-2,35",
+        "concepto": "  Cuota variable | 11/2024",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "447,20",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2024-12-03",
+        "hora": "13:15:37",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "2,28",
+        "concepto": "  Cuota aportación mensual | 11/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-12-03",
+        "hora": "13:15:33",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,07",
+        "concepto": "  Cuota aportación mensual | 11/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-11-21",
+        "hora": "11:22:45",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,24",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Begoña Leonet Klaber",
+        "saldo": "449,55",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-21",
+        "hora": "11:22:43",
+        "movimiento": "Pago a usuario",
+        "cantidad": "23,95",
+        "concepto": "  ",
+        "usuario_asociado": "Begoña Leonet Klaber",
+        "saldo": "449,79",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-18",
+        "hora": "16:58:48",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "425,84",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-18",
+        "hora": "16:58:46",
+        "movimiento": "Pago a usuario",
+        "cantidad": "0,50",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "425,85",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-15",
+        "hora": "09:51:50",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Begoña Ormazabal Esteban",
+        "saldo": "425,35",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-15",
+        "hora": "09:51:48",
+        "movimiento": "Pago a usuario",
+        "cantidad": "0,95",
+        "concepto": "  ",
+        "usuario_asociado": "Begoña Ormazabal Esteban",
+        "saldo": "425,36",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-14",
+        "hora": "17:53:42",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,07",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Begoña Ormazabal Esteban",
+        "saldo": "424,41",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-14",
+        "hora": "17:53:41",
+        "movimiento": "Pago a usuario",
+        "cantidad": "6,65",
+        "concepto": "  ",
+        "usuario_asociado": "Begoña Ormazabal Esteban",
+        "saldo": "424,48",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-13",
+        "hora": "18:29:19",
+        "movimiento": "Pago a usuario",
+        "cantidad": "0,65",
+        "concepto": "  ",
+        "usuario_asociado": "Ane Izagirre Korta",
+        "saldo": "417,83",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-12",
+        "hora": "18:51:01",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,02",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "417,18",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-12",
+        "hora": "18:51:00",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,90",
+        "concepto": "  Potemkin",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "417,20",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-11",
+        "hora": "17:46:25",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,75",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "maria cristina quintanilla benito",
+        "saldo": "415,30",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-11",
+        "hora": "17:46:23",
+        "movimiento": "Pago a usuario",
+        "cantidad": "75,00",
+        "concepto": "  ",
+        "usuario_asociado": "maria cristina quintanilla benito",
+        "saldo": "416,05",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-11",
+        "hora": "17:45:24",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-75,00",
+        "concepto": "  Ingreso",
+        "usuario_asociado": "maria cristina quintanilla benito",
+        "saldo": "341,05",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-08",
+        "hora": "11:22:42",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,13",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Mirari Pagola Iraola",
+        "saldo": "416,05",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-08",
+        "hora": "11:22:08",
+        "movimiento": "Pago a usuario",
+        "cantidad": "13,20",
+        "concepto": "  torres",
+        "usuario_asociado": "Mirari Pagola Iraola",
+        "saldo": "416,18",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-08",
+        "hora": "10:26:07",
+        "movimiento": "Cuota variable",
+        "cantidad": "-2,12",
+        "concepto": "  Cuota variable | 10/2024",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "402,98",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2024-11-08",
+        "hora": "10:24:54",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,07",
+        "concepto": "  Cuota aportación mensual | 10/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-11-08",
+        "hora": "10:24:53",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "2,05",
+        "concepto": "  Cuota aportación mensual | 10/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-11-05",
+        "hora": "18:43:14",
+        "movimiento": "Descuento automático",
+        "cantidad": "-1,29",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Jon Ansorena Mugica",
+        "saldo": "405,10",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-05",
+        "hora": "18:43:12",
+        "movimiento": "Pago a usuario",
+        "cantidad": "128,80",
+        "concepto": "  ",
+        "usuario_asociado": "Jon Ansorena Mugica",
+        "saldo": "406,39",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-05",
+        "hora": "18:42:27",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-150,00",
+        "concepto": "  ",
+        "usuario_asociado": "Jon Ansorena Mugica",
+        "saldo": "277,59",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-04",
+        "hora": "18:43:41",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "427,59",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-11-04",
+        "hora": "18:43:39",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,00",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "427,60",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-10-31",
+        "hora": "16:27:04",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,15",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "426,60",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-10-31",
+        "hora": "16:27:03",
+        "movimiento": "Pago a usuario",
+        "cantidad": "15,00",
+        "concepto": "  fotocopias cartel cine",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "426,75",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-10-30",
+        "hora": "18:03:42",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,06",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "José Manuel Zabaleta Mercader",
+        "saldo": "411,75",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-10-30",
+        "hora": "18:03:40",
+        "movimiento": "Pago a usuario",
+        "cantidad": "5,90",
+        "concepto": "  ",
+        "usuario_asociado": "José Manuel Zabaleta Mercader",
+        "saldo": "411,81",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-10-30",
+        "hora": "07:35:40",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-3,01",
+        "concepto": "  Huevos",
+        "usuario_asociado": "Gurutzeta Baserria (Arkupeak)",
+        "saldo": "405,91",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-10-29",
+        "hora": "18:02:33",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,02",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "MIREN NEKANE GOÑI GARIN",
+        "saldo": "408,92",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-10-29",
+        "hora": "18:02:31",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,90",
+        "concepto": "  ",
+        "usuario_asociado": "MIREN NEKANE GOÑI GARIN",
+        "saldo": "408,94",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-10-28",
+        "hora": "17:26:34",
+        "movimiento": "Pago a usuario",
+        "cantidad": "0,15",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "407,04",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-10-23",
+        "hora": "16:20:38",
+        "movimiento": "Cuota variable",
+        "cantidad": "-2,88",
+        "concepto": "  Cuota variable | 9/2024",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "406,89",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2024-10-23",
+        "hora": "16:17:49",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,07",
+        "concepto": "  Cuota aportación mensual | 9/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-10-23",
+        "hora": "16:17:40",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "2,81",
+        "concepto": "  Cuota aportación mensual | 9/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-10-23",
+        "hora": "11:05:27",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,22",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Lide Agirrezabala Goñi",
+        "saldo": "409,77",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-10-23",
+        "hora": "11:05:26",
+        "movimiento": "Pago a usuario",
+        "cantidad": "22,00",
+        "concepto": "  ",
+        "usuario_asociado": "Lide Agirrezabala Goñi",
+        "saldo": "409,99",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-10-16",
+        "hora": "18:25:09",
+        "movimiento": "Pago a usuario",
+        "cantidad": "3,20",
+        "concepto": "  ",
+        "usuario_asociado": "Ane Izagirre Korta",
+        "saldo": "387,99",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-10-07",
+        "hora": "10:00:53",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,03",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Ramon Cruz Etxeberria Ihartza",
+        "saldo": "384,79",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-10-07",
+        "hora": "10:00:52",
+        "movimiento": "Pago a usuario",
+        "cantidad": "2,95",
+        "concepto": "  ",
+        "usuario_asociado": "Ramon Cruz Etxeberria Ihartza",
+        "saldo": "384,82",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-10-02",
+        "hora": "12:30:07",
+        "movimiento": "Descuento automático",
+        "cantidad": "-1,05",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "381,87",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-10-02",
+        "hora": "12:30:05",
+        "movimiento": "Pago a usuario",
+        "cantidad": "105,00",
+        "concepto": "  ",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "382,92",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-30",
+        "hora": "18:40:28",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "277,92",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-30",
+        "hora": "18:40:26",
+        "movimiento": "Pago a usuario",
+        "cantidad": "0,95",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "277,93",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-26",
+        "hora": "11:34:34",
+        "movimiento": "Pago a usuario",
+        "cantidad": "20,00",
+        "concepto": "  oihane",
+        "usuario_asociado": "Mendi Lore Loredenda",
+        "saldo": "276,98",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-24",
+        "hora": "09:16:39",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,08",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Hiru Haur Arropa Denda",
+        "saldo": "256,98",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-24",
+        "hora": "09:16:38",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,90",
+        "concepto": "  ",
+        "usuario_asociado": "Hiru Haur Arropa Denda",
+        "saldo": "257,06",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-19",
+        "hora": "15:05:27",
+        "movimiento": "Pago a usuario",
+        "cantidad": "68,00",
+        "concepto": "  oihane flores",
+        "usuario_asociado": "Mendi Lore Loredenda",
+        "saldo": "249,16",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-19",
+        "hora": "11:54:44",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Ainara Garcia Noble",
+        "saldo": "181,16",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-19",
+        "hora": "11:54:42",
+        "movimiento": "Pago a usuario",
+        "cantidad": "0,95",
+        "concepto": "  ",
+        "usuario_asociado": "Ainara Garcia Noble",
+        "saldo": "181,17",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-17",
+        "hora": "17:29:25",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,55",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "MIREN NEKANE GOÑI GARIN",
+        "saldo": "180,22",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-17",
+        "hora": "17:29:24",
+        "movimiento": "Pago a usuario",
+        "cantidad": "54,90",
+        "concepto": "  ",
+        "usuario_asociado": "MIREN NEKANE GOÑI GARIN",
+        "saldo": "180,77",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-17",
+        "hora": "10:12:07",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,05",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "josefa iradi Otaegui",
+        "saldo": "125,87",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-17",
+        "hora": "10:12:05",
+        "movimiento": "Pago a usuario",
+        "cantidad": "4,75",
+        "concepto": "  ",
+        "usuario_asociado": "josefa iradi Otaegui",
+        "saldo": "125,92",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-11",
+        "hora": "10:57:12",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Ainara Garcia Noble",
+        "saldo": "121,17",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-11",
+        "hora": "10:57:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "0,65",
+        "concepto": "  ",
+        "usuario_asociado": "Ainara Garcia Noble",
+        "saldo": "121,18",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-11",
+        "hora": "10:54:28",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Ainara Garcia Noble",
+        "saldo": "120,53",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-11",
+        "hora": "10:54:27",
+        "movimiento": "Pago a usuario",
+        "cantidad": "0,65",
+        "concepto": "  ",
+        "usuario_asociado": "Ainara Garcia Noble",
+        "saldo": "120,54",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-11",
+        "hora": "10:37:07",
+        "movimiento": "Comisión por retirada",
+        "cantidad": "-13,31",
+        "concepto": "  ",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "119,89",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2024-09-11",
+        "hora": "10:37:05",
+        "movimiento": "Retirada a cuenta bancaria",
+        "cantidad": "-1.086,69",
+        "concepto": "  ",
+        "usuario_asociado": "Retirada a cuenta bancaria",
+        "saldo": "133,20",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2024-09-10",
+        "hora": "16:45:24",
+        "movimiento": "Conversión a €",
+        "cantidad": "1.100,00",
+        "concepto": "  cambio a euros",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-09-07",
+        "hora": "11:23:30",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,24",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Patxi Ibarguren Etxeberria",
+        "saldo": "1.219,89",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-07",
+        "hora": "11:23:29",
+        "movimiento": "Pago a usuario",
+        "cantidad": "24,00",
+        "concepto": "  argazkia",
+        "usuario_asociado": "Patxi Ibarguren Etxeberria",
+        "saldo": "1.220,13",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-04",
+        "hora": "16:43:12",
+        "movimiento": "Cuota variable",
+        "cantidad": "-5,59",
+        "concepto": "  Cuota variable | 8/2024",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "1.196,13",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2024-09-04",
+        "hora": "16:42:21",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,07",
+        "concepto": "  Cuota aportación mensual | 8/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-09-04",
+        "hora": "16:42:17",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "5,52",
+        "concepto": "  Cuota aportación mensual | 8/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-09-04",
+        "hora": "12:53:34",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,19",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Ainara Garcia Noble",
+        "saldo": "1.201,72",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-04",
+        "hora": "12:53:32",
+        "movimiento": "Pago a usuario",
+        "cantidad": "19,00",
+        "concepto": "  ",
+        "usuario_asociado": "Ainara Garcia Noble",
+        "saldo": "1.201,91",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-02",
+        "hora": "11:31:39",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,04",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "josefa iradi Otaegui",
+        "saldo": "1.182,91",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-09-02",
+        "hora": "11:31:38",
+        "movimiento": "Pago a usuario",
+        "cantidad": "3,80",
+        "concepto": "  ",
+        "usuario_asociado": "josefa iradi Otaegui",
+        "saldo": "1.182,95",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-30",
+        "hora": "17:46:40",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,03",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "1.179,15",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-30",
+        "hora": "17:46:38",
+        "movimiento": "Pago a usuario",
+        "cantidad": "2,50",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "1.179,18",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-30",
+        "hora": "12:56:56",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,08",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Begoña Ormazabal Esteban",
+        "saldo": "1.176,68",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-30",
+        "hora": "12:56:54",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,90",
+        "concepto": "  ",
+        "usuario_asociado": "Begoña Ormazabal Esteban",
+        "saldo": "1.176,76",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-30",
+        "hora": "11:54:29",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,67",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Leire Goñi Iradi",
+        "saldo": "1.168,86",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-30",
+        "hora": "11:54:28",
+        "movimiento": "Pago a usuario",
+        "cantidad": "67,10",
+        "concepto": "  ",
+        "usuario_asociado": "Leire Goñi Iradi",
+        "saldo": "1.169,53",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-28",
+        "hora": "10:02:55",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,13",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Maria Jesus Salvador Gonzalez",
+        "saldo": "1.102,43",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-28",
+        "hora": "10:02:54",
+        "movimiento": "Cobro desde QR",
+        "cantidad": "12,95",
+        "concepto": "  Usb",
+        "usuario_asociado": "Maria Jesus Salvador Gonzalez",
+        "saldo": "1.102,56",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-13",
+        "hora": "08:59:37",
+        "movimiento": "Cuota variable",
+        "cantidad": "-4,95",
+        "concepto": "  Cuota variable | 7/2024",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "1.089,61",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2024-08-13",
+        "hora": "08:58:54",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "4,88",
+        "concepto": "  Cuota aportación mensual | 7/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-08-13",
+        "hora": "08:58:52",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,07",
+        "concepto": "  Cuota aportación mensual | 7/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-08-12",
+        "hora": "11:00:10",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,07",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "josefa iradi Otaegui",
+        "saldo": "1.094,56",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-12",
+        "hora": "11:00:08",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,00",
+        "concepto": "  ",
+        "usuario_asociado": "josefa iradi Otaegui",
+        "saldo": "1.094,63",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-09",
+        "hora": "09:59:12",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,05",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Laket Arropa Denda",
+        "saldo": "1.087,63",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-09",
+        "hora": "09:59:10",
+        "movimiento": "Pago a usuario",
+        "cantidad": "4,95",
+        "concepto": "  ",
+        "usuario_asociado": "Laket Arropa Denda",
+        "saldo": "1.087,68",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-08",
+        "hora": "10:09:59",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,90",
+        "concepto": "  ",
+        "usuario_asociado": "Miren Iosune Iraola Eceiza",
+        "saldo": "1.082,73",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-07",
+        "hora": "10:12:52",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,13",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Monica Merceria",
+        "saldo": "1.074,83",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-07",
+        "hora": "10:12:50",
+        "movimiento": "Pago a usuario",
+        "cantidad": "12,60",
+        "concepto": "  ",
+        "usuario_asociado": "Monica Merceria",
+        "saldo": "1.074,96",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-06",
+        "hora": "11:15:10",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "1.062,36",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-06",
+        "hora": "11:15:08",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,00",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "1.062,37",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-02",
+        "hora": "10:47:23",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,06",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Xabier Lertxundi Asteasuinzarra",
+        "saldo": "1.061,37",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-02",
+        "hora": "10:47:22",
+        "movimiento": "Pago a usuario",
+        "cantidad": "6,40",
+        "concepto": "  ",
+        "usuario_asociado": "Xabier Lertxundi Asteasuinzarra",
+        "saldo": "1.061,43",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-01",
+        "hora": "10:28:31",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,02",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Ainara Garcia Noble",
+        "saldo": "1.055,03",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-08-01",
+        "hora": "10:28:29",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,90",
+        "concepto": "  ",
+        "usuario_asociado": "Ainara Garcia Noble",
+        "saldo": "1.055,05",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-22",
+        "hora": "12:58:53",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,14",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "NEKANE IDARRETA MENDIOLA",
+        "saldo": "1.053,15",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-22",
+        "hora": "12:58:52",
+        "movimiento": "Pago a usuario",
+        "cantidad": "14,40",
+        "concepto": "  argazkiak",
+        "usuario_asociado": "NEKANE IDARRETA MENDIOLA",
+        "saldo": "1.053,29",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-15",
+        "hora": "17:48:22",
+        "movimiento": "Pago a usuario",
+        "cantidad": "2,60",
+        "concepto": "  ",
+        "usuario_asociado": "Ane Izagirre Korta",
+        "saldo": "1.038,89",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-12",
+        "hora": "12:42:55",
+        "movimiento": "Pago a usuario",
+        "cantidad": "15,95",
+        "concepto": "  ",
+        "usuario_asociado": "juan Bautista Erausquin Mendizabal",
+        "saldo": "1.036,29",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-12",
+        "hora": "12:41:17",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "1.020,34",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-12",
+        "hora": "12:41:15",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,00",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "1.020,35",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-11",
+        "hora": "17:51:51",
+        "movimiento": "Pago a usuario",
+        "cantidad": "17,00",
+        "concepto": "  ",
+        "usuario_asociado": "Ane Izagirre Korta",
+        "saldo": "1.019,35",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-10",
+        "hora": "11:54:14",
+        "movimiento": "Descuento automático",
+        "cantidad": "-2,11",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "1.002,35",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-10",
+        "hora": "11:54:12",
+        "movimiento": "Pago a usuario",
+        "cantidad": "211,00",
+        "concepto": "  begoña loyarte",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "1.004,46",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-10",
+        "hora": "09:23:14",
+        "movimiento": "Cuota variable",
+        "cantidad": "-3,91",
+        "concepto": "  Cuota variable | 6/2024",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "793,46",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2024-07-10",
+        "hora": "09:22:21",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "3,86",
+        "concepto": "  Cuota aportación mensual | 6/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-07-10",
+        "hora": "09:22:20",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,05",
+        "concepto": "  Cuota aportación mensual | 6/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-07-09",
+        "hora": "09:43:44",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,03",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Ramon Cruz Etxeberria Ihartza",
+        "saldo": "797,37",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-09",
+        "hora": "09:43:42",
+        "movimiento": "Pago a usuario",
+        "cantidad": "2,50",
+        "concepto": "  ",
+        "usuario_asociado": "Ramon Cruz Etxeberria Ihartza",
+        "saldo": "797,40",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-08",
+        "hora": "11:05:20",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,17",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Jon Ansorena Mugica",
+        "saldo": "794,90",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-08",
+        "hora": "11:05:18",
+        "movimiento": "Pago a usuario",
+        "cantidad": "16,60",
+        "concepto": "  ",
+        "usuario_asociado": "Jon Ansorena Mugica",
+        "saldo": "795,07",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-03",
+        "hora": "11:42:01",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "778,47",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-03",
+        "hora": "11:41:59",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,00",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "778,48",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-02",
+        "hora": "18:07:36",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,08",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Leire Bilbao Agirrebengoa",
+        "saldo": "777,48",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-02",
+        "hora": "18:07:35",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,90",
+        "concepto": "  ",
+        "usuario_asociado": "Leire Bilbao Agirrebengoa",
+        "saldo": "777,56",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-02",
+        "hora": "11:44:05",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "769,66",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-02",
+        "hora": "11:44:04",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,20",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "769,67",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-07-01",
+        "hora": "12:06:17",
+        "movimiento": "Bonificación por compra",
+        "cantidad": "3,29",
+        "concepto": "  Mila esker Hernanin erosteagatik! Hernaniko Udala.",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "768,47",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2024-07-01",
+        "hora": "12:06:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-47,00",
+        "concepto": "  Marco",
+        "usuario_asociado": "ArteTokia",
+        "saldo": "765,18",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-28",
+        "hora": "10:39:49",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,07",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "CARLOTA ZUBIARRAIN LOMBIDE",
+        "saldo": "812,18",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-28",
+        "hora": "10:39:47",
+        "movimiento": "Pago a usuario",
+        "cantidad": "6,55",
+        "concepto": "  Carlota",
+        "usuario_asociado": "CARLOTA ZUBIARRAIN LOMBIDE",
+        "saldo": "812,25",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-20",
+        "hora": "12:59:27",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,61",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Jaione Irazu Nuñez",
+        "saldo": "805,70",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-20",
+        "hora": "12:59:25",
+        "movimiento": "Pago a usuario",
+        "cantidad": "61,20",
+        "concepto": "  ",
+        "usuario_asociado": "Jaione Irazu Nuñez",
+        "saldo": "806,31",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-20",
+        "hora": "09:50:27",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,95",
+        "concepto": "  ",
+        "usuario_asociado": "Miren Eukene Gamino Pascual",
+        "saldo": "745,11",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-19",
+        "hora": "17:13:20",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,24",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "CARLOTA ZUBIARRAIN LOMBIDE",
+        "saldo": "737,16",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-19",
+        "hora": "17:13:18",
+        "movimiento": "Pago a usuario",
+        "cantidad": "24,00",
+        "concepto": "  Carlota",
+        "usuario_asociado": "CARLOTA ZUBIARRAIN LOMBIDE",
+        "saldo": "737,40",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-18",
+        "hora": "07:35:24",
+        "movimiento": "Bonificación por compra",
+        "cantidad": "0,64",
+        "concepto": "  Mila esker Hernanin erosteagatik! Hernaniko Udala.",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "713,40",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2024-06-18",
+        "hora": "07:35:18",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-16,00",
+        "concepto": "  Torres",
+        "usuario_asociado": "Gurutzeta Baserria (Arkupeak)",
+        "saldo": "712,76",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-17",
+        "hora": "12:14:07",
+        "movimiento": "Pago a usuario",
+        "cantidad": "4,20",
+        "concepto": "  ",
+        "usuario_asociado": "Miren Eukene Gamino Pascual",
+        "saldo": "728,76",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-15",
+        "hora": "14:54:33",
+        "movimiento": "Bonificación por compra",
+        "cantidad": "3,29",
+        "concepto": "  Mila esker Hernanin erosteagatik! Hernaniko Udala.",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "724,56",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2024-06-15",
+        "hora": "14:54:27",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-47,00",
+        "concepto": "  Gracias",
+        "usuario_asociado": "ArteTokia",
+        "saldo": "721,27",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-13",
+        "hora": "18:20:49",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,11",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "NEKANE IDARRETA MENDIOLA",
+        "saldo": "768,27",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-13",
+        "hora": "18:20:47",
+        "movimiento": "Pago a usuario",
+        "cantidad": "11,40",
+        "concepto": "  argazkiak",
+        "usuario_asociado": "NEKANE IDARRETA MENDIOLA",
+        "saldo": "768,38",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-12",
+        "hora": "09:25:04",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,22",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Ziortza Irazustabarrena Arbelaiz",
+        "saldo": "756,98",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-12",
+        "hora": "09:25:02",
+        "movimiento": "Pago a usuario",
+        "cantidad": "22,00",
+        "concepto": "  ",
+        "usuario_asociado": "Ziortza Irazustabarrena Arbelaiz",
+        "saldo": "757,20",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-11",
+        "hora": "18:36:33",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,08",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "NEKANE IDARRETA MENDIOLA",
+        "saldo": "735,20",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-11",
+        "hora": "18:36:32",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,60",
+        "concepto": "  argaz",
+        "usuario_asociado": "NEKANE IDARRETA MENDIOLA",
+        "saldo": "735,28",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-10",
+        "hora": "10:43:13",
+        "movimiento": "Cuota variable",
+        "cantidad": "-2,73",
+        "concepto": "  Cuota variable | 5/2024",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "727,68",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2024-06-10",
+        "hora": "10:42:23",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "2,70",
+        "concepto": "  Cuota aportación mensual | 5/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-06-10",
+        "hora": "10:42:21",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,03",
+        "concepto": "  Cuota aportación mensual | 5/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-06-06",
+        "hora": "09:55:08",
+        "movimiento": "Pago a usuario",
+        "cantidad": "22,65",
+        "concepto": "  ",
+        "usuario_asociado": "Izaskun Romeo Amiama",
+        "saldo": "730,41",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-05",
+        "hora": "18:37:02",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "707,76",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-05",
+        "hora": "18:37:00",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,00",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "707,77",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-04",
+        "hora": "18:53:19",
+        "movimiento": "Cobro desde QR",
+        "cantidad": "76,00",
+        "concepto": "  Camara",
+        "usuario_asociado": "Xabier Etxeberria Aranburu",
+        "saldo": "706,77",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-06-04",
+        "hora": "18:51:13",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-100,00",
+        "concepto": "  ",
+        "usuario_asociado": "Xabier Etxeberria Aranburu",
+        "saldo": "630,77",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-31",
+        "hora": "17:58:36",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,18",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Maialen Cano Recalde",
+        "saldo": "730,77",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-31",
+        "hora": "17:58:35",
+        "movimiento": "Pago a usuario",
+        "cantidad": "18,25",
+        "concepto": "  ",
+        "usuario_asociado": "Maialen Cano Recalde",
+        "saldo": "730,95",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-31",
+        "hora": "10:46:00",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,02",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Gurutzeta Baserria (Arkupeak)",
+        "saldo": "712,70",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-31",
+        "hora": "10:45:58",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,50",
+        "concepto": "  ",
+        "usuario_asociado": "Gurutzeta Baserria (Arkupeak)",
+        "saldo": "712,72",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-30",
+        "hora": "12:52:02",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,95",
+        "concepto": "  ",
+        "usuario_asociado": "Miren Eukene Gamino Pascual",
+        "saldo": "711,22",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-24",
+        "hora": "11:24:51",
+        "movimiento": "Pago a usuario",
+        "cantidad": "4,20",
+        "concepto": "  ",
+        "usuario_asociado": "Miren Eukene Gamino Pascual",
+        "saldo": "703,27",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-23",
+        "hora": "09:52:38",
+        "movimiento": "Pago a usuario",
+        "cantidad": "3,80",
+        "concepto": "  ",
+        "usuario_asociado": "Koldo Hernandez Moreno",
+        "saldo": "699,07",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-22",
+        "hora": "17:00:58",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,95",
+        "concepto": "  ",
+        "usuario_asociado": "Ane Izagirre Korta",
+        "saldo": "695,27",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-21",
+        "hora": "16:58:28",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,07",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "693,32",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-21",
+        "hora": "16:58:27",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,00",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "693,39",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-17",
+        "hora": "11:59:56",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,90",
+        "concepto": "  ",
+        "usuario_asociado": "Josune Zabaleta Azkoitia",
+        "saldo": "686,39",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-16",
+        "hora": "19:17:14",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,90",
+        "concepto": "  fotos carnet Amets",
+        "usuario_asociado": "Jaione Yera Garmendia",
+        "saldo": "678,49",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-16",
+        "hora": "12:44:09",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,77",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "670,59",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-16",
+        "hora": "12:44:07",
+        "movimiento": "Pago a usuario",
+        "cantidad": "77,40",
+        "concepto": "  ",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "671,36",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-16",
+        "hora": "11:32:07",
+        "movimiento": "Descuento automático",
+        "cantidad": "-1,57",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Ziortza Irazustabarrena Arbelaiz",
+        "saldo": "593,96",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-16",
+        "hora": "11:32:05",
+        "movimiento": "Pago a usuario",
+        "cantidad": "157,00",
+        "concepto": "  ",
+        "usuario_asociado": "Ziortza Irazustabarrena Arbelaiz",
+        "saldo": "595,53",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-16",
+        "hora": "11:31:30",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-250,00",
+        "concepto": "  Pago",
+        "usuario_asociado": "Ziortza Irazustabarrena Arbelaiz",
+        "saldo": "438,53",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-15",
+        "hora": "13:32:53",
+        "movimiento": "Descuento automático",
+        "cantidad": "-3,75",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "688,53",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-15",
+        "hora": "13:32:52",
+        "movimiento": "Pago a usuario",
+        "cantidad": "375,00",
+        "concepto": "  BEGOÑA LOYARTE",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "692,28",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-15",
+        "hora": "11:39:59",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,16",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "CARLOTA ZUBIARRAIN LOMBIDE",
+        "saldo": "317,28",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-15",
+        "hora": "11:39:57",
+        "movimiento": "Pago a usuario",
+        "cantidad": "15,95",
+        "concepto": "  Carlota",
+        "usuario_asociado": "CARLOTA ZUBIARRAIN LOMBIDE",
+        "saldo": "317,44",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-13",
+        "hora": "18:25:59",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,32",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Jose Ramon Leiza Rekondo",
+        "saldo": "301,49",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-13",
+        "hora": "18:25:58",
+        "movimiento": "Pago a usuario",
+        "cantidad": "31,85",
+        "concepto": "  ",
+        "usuario_asociado": "Jose Ramon Leiza Rekondo",
+        "saldo": "301,81",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-10",
+        "hora": "16:16:09",
+        "movimiento": "Cuota variable",
+        "cantidad": "-1,53",
+        "concepto": "  Cuota variable | 4/2024",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "269,96",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2024-05-10",
+        "hora": "16:15:40",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "1,51",
+        "concepto": "  Cuota aportación mensual | 4/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-05-10",
+        "hora": "16:15:38",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,02",
+        "concepto": "  Cuota aportación mensual | 4/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-05-09",
+        "hora": "16:38:37",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,03",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "271,49",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-09",
+        "hora": "16:38:35",
+        "movimiento": "Pago a usuario",
+        "cantidad": "2,75",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "271,52",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-09",
+        "hora": "12:37:15",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,14",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "268,77",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-09",
+        "hora": "12:37:14",
+        "movimiento": "Pago a usuario",
+        "cantidad": "14,30",
+        "concepto": "  fotos",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "268,91",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-07",
+        "hora": "11:59:20",
+        "movimiento": "Pago a usuario",
+        "cantidad": "72,50",
+        "concepto": "  ",
+        "usuario_asociado": "Jon Ansorena Mugica",
+        "saldo": "254,61",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-07",
+        "hora": "11:58:44",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-200,00",
+        "concepto": "  ",
+        "usuario_asociado": "Jon Ansorena Mugica",
+        "saldo": "182,11",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-05-03",
+        "hora": "19:23:49",
+        "movimiento": "Bonificación por compra",
+        "cantidad": "2,38",
+        "concepto": "  Mila esker Hernanin erosteagatik! Hernaniko Udala.",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "382,11",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2024-05-03",
+        "hora": "19:23:43",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-34,00",
+        "concepto": "  ",
+        "usuario_asociado": "Mariscos Hernani",
+        "saldo": "379,73",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-30",
+        "hora": "17:30:47",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,08",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Janire Urrestarazu Aizpurua",
+        "saldo": "413,73",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-30",
+        "hora": "17:30:45",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,90",
+        "concepto": "  ",
+        "usuario_asociado": "Janire Urrestarazu Aizpurua",
+        "saldo": "413,81",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-30",
+        "hora": "11:13:49",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Peines ileapaindegia",
+        "saldo": "405,91",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-30",
+        "hora": "11:13:47",
+        "movimiento": "Cobro desde QR",
+        "cantidad": "1,30",
+        "concepto": "  Fotos",
+        "usuario_asociado": "Peines ileapaindegia",
+        "saldo": "405,92",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-26",
+        "hora": "17:45:57",
+        "movimiento": "Pago a usuario",
+        "cantidad": "5,70",
+        "concepto": "  argazkia",
+        "usuario_asociado": "NEKANE IDARRETA MENDIOLA",
+        "saldo": "404,62",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-24",
+        "hora": "18:30:31",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,20",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Oihana Hernandorena Castrillo",
+        "saldo": "398,92",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-24",
+        "hora": "18:30:30",
+        "movimiento": "Pago a usuario",
+        "cantidad": "20,00",
+        "concepto": "  ",
+        "usuario_asociado": "Oihana Hernandorena Castrillo",
+        "saldo": "399,12",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-24",
+        "hora": "17:20:50",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,10",
+        "concepto": "  fotos",
+        "usuario_asociado": "Oihala Denda",
+        "saldo": "379,12",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-24",
+        "hora": "13:23:17",
+        "movimiento": "Cuota variable",
+        "cantidad": "-0,75",
+        "concepto": "  Cuota variable | 3/2024",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "372,02",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2024-04-24",
+        "hora": "13:22:40",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,18",
+        "concepto": "  Cuota aportación mensual | 3/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-04-24",
+        "hora": "13:22:38",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,57",
+        "concepto": "  Cuota aportación mensual | 3/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-04-22",
+        "hora": "12:16:09",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Peines ileapaindegia",
+        "saldo": "372,77",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-22",
+        "hora": "12:16:05",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,30",
+        "concepto": "  fotos",
+        "usuario_asociado": "Peines ileapaindegia",
+        "saldo": "372,78",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-19",
+        "hora": "10:02:55",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,06",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Mikel Tolosa Albistur",
+        "saldo": "371,48",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-19",
+        "hora": "10:02:54",
+        "movimiento": "Pago a usuario",
+        "cantidad": "5,70",
+        "concepto": "  ",
+        "usuario_asociado": "Mikel Tolosa Albistur",
+        "saldo": "371,54",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-17",
+        "hora": "18:46:02",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,65",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Leire Goñi Iradi",
+        "saldo": "365,84",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-17",
+        "hora": "18:46:01",
+        "movimiento": "Pago a usuario",
+        "cantidad": "65,25",
+        "concepto": "  ",
+        "usuario_asociado": "Leire Goñi Iradi",
+        "saldo": "366,49",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-17",
+        "hora": "17:34:25",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,31",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "maribel rafael blanco",
+        "saldo": "301,24",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-17",
+        "hora": "17:34:23",
+        "movimiento": "Pago a usuario",
+        "cantidad": "31,45",
+        "concepto": "  ",
+        "usuario_asociado": "maribel rafael blanco",
+        "saldo": "301,55",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-16",
+        "hora": "07:42:29",
+        "movimiento": "Bonificación por compra",
+        "cantidad": "0,24",
+        "concepto": "  Mila esker Hernanin erosteagatik! Hernaniko Udala.",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "270,10",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2024-04-16",
+        "hora": "07:42:23",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-6,00",
+        "concepto": "  Flores",
+        "usuario_asociado": "Gurutzeta Baserria (Arkupeak)",
+        "saldo": "269,86",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-15",
+        "hora": "18:30:40",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "275,86",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-15",
+        "hora": "18:30:38",
+        "movimiento": "Pago a usuario",
+        "cantidad": "0,50",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "275,87",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-12",
+        "hora": "18:02:26",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,06",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Monica Merceria",
+        "saldo": "275,37",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-12",
+        "hora": "18:02:24",
+        "movimiento": "Pago a usuario",
+        "cantidad": "5,90",
+        "concepto": "  ",
+        "usuario_asociado": "Monica Merceria",
+        "saldo": "275,43",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-12",
+        "hora": "10:15:19",
+        "movimiento": "Pago a usuario",
+        "cantidad": "6,50",
+        "concepto": "  ",
+        "usuario_asociado": "Miren Eukene Gamino Pascual",
+        "saldo": "269,53",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-11",
+        "hora": "18:06:53",
+        "movimiento": "Pago a usuario",
+        "cantidad": "15,95",
+        "concepto": "  ",
+        "usuario_asociado": "Koldo Hernandez Moreno",
+        "saldo": "263,03",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-11",
+        "hora": "18:06:14",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-40,00",
+        "concepto": "  Carga",
+        "usuario_asociado": "Koldo Hernandez Moreno",
+        "saldo": "247,08",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-10",
+        "hora": "11:54:24",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,85",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Inés Villaverde Galerón",
+        "saldo": "287,08",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-10",
+        "hora": "11:54:22",
+        "movimiento": "Pago a usuario",
+        "cantidad": "85,00",
+        "concepto": "  Fotos",
+        "usuario_asociado": "Inés Villaverde Galerón",
+        "saldo": "287,93",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-09",
+        "hora": "18:50:26",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,32",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Amaiur Larrarte Arbiol",
+        "saldo": "202,93",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-09",
+        "hora": "18:50:24",
+        "movimiento": "Pago a usuario",
+        "cantidad": "31,60",
+        "concepto": "  ",
+        "usuario_asociado": "Amaiur Larrarte Arbiol",
+        "saldo": "203,25",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-09",
+        "hora": "18:41:16",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,12",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Oihana Hernandorena Castrillo",
+        "saldo": "171,65",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-09",
+        "hora": "18:41:15",
+        "movimiento": "Pago a usuario",
+        "cantidad": "12,00",
+        "concepto": "  ",
+        "usuario_asociado": "Oihana Hernandorena Castrillo",
+        "saldo": "171,77",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-08",
+        "hora": "18:48:45",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,04",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "159,77",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-08",
+        "hora": "18:48:43",
+        "movimiento": "Pago a usuario",
+        "cantidad": "3,50",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "159,81",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-08",
+        "hora": "11:56:25",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,12",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Begoña Ormazabal Esteban",
+        "saldo": "156,31",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-08",
+        "hora": "11:56:23",
+        "movimiento": "Pago a usuario",
+        "cantidad": "12,00",
+        "concepto": "  ",
+        "usuario_asociado": "Begoña Ormazabal Esteban",
+        "saldo": "156,43",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-08",
+        "hora": "09:54:38",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,03",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Ramon Cruz Etxeberria Ihartza",
+        "saldo": "144,43",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-04-08",
+        "hora": "09:54:36",
+        "movimiento": "Pago a usuario",
+        "cantidad": "2,50",
+        "concepto": "  ",
+        "usuario_asociado": "Ramon Cruz Etxeberria Ihartza",
+        "saldo": "144,46",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-03-21",
+        "hora": "17:37:47",
+        "movimiento": "Pago a usuario",
+        "cantidad": "19,60",
+        "concepto": "  ",
+        "usuario_asociado": "Ane Izagirre Korta",
+        "saldo": "141,96",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-03-18",
+        "hora": "19:14:47",
+        "movimiento": "Cuota variable",
+        "cantidad": "-3,17",
+        "concepto": "  Cuota variable | 2/2024",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "122,36",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2024-03-18",
+        "hora": "19:13:42",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "2,83",
+        "concepto": "  Cuota aportación mensual | 2/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-03-18",
+        "hora": "19:13:40",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,34",
+        "concepto": "  Cuota aportación mensual | 2/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-03-14",
+        "hora": "19:17:27",
+        "movimiento": "Bonificación por compra",
+        "cantidad": "3,07",
+        "concepto": "  Mila esker Hernanin erosteagatik! Hernaniko Udala.",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "125,53",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2024-03-14",
+        "hora": "19:17:19",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-76,78",
+        "concepto": "  ",
+        "usuario_asociado": "Urrats Oinetakoak",
+        "saldo": "122,46",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2024-03-13",
+        "hora": "17:03:38",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,31",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "199,24",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-03-13",
+        "hora": "17:03:36",
+        "movimiento": "Pago a usuario",
+        "cantidad": "31,00",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "199,55",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-03-06",
+        "hora": "12:00:06",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,93",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "168,55",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-03-06",
+        "hora": "12:00:03",
+        "movimiento": "Pago a usuario",
+        "cantidad": "92,70",
+        "concepto": "  ",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "169,48",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-29",
+        "hora": "18:29:06",
+        "movimiento": "Comisión por retirada",
+        "cantidad": "-5,52",
+        "concepto": "  ",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "76,78",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2024-02-29",
+        "hora": "18:29:06",
+        "movimiento": "Retirada a cuenta bancaria",
+        "cantidad": "-450,51",
+        "concepto": "  ",
+        "usuario_asociado": "Retirada a cuenta bancaria",
+        "saldo": "82,30",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2024-02-29",
+        "hora": "18:15:09",
+        "movimiento": "Conversión a €",
+        "cantidad": "456,03",
+        "concepto": "  Ingresar en cuenta",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-02-26",
+        "hora": "12:23:04",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Patxi Ibarguren Etxeberria",
+        "saldo": "532,81",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-26",
+        "hora": "12:23:03",
+        "movimiento": "Pago a usuario",
+        "cantidad": "0,95",
+        "concepto": "  argazkia",
+        "usuario_asociado": "Patxi Ibarguren Etxeberria",
+        "saldo": "532,82",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-22",
+        "hora": "10:55:58",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,10",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Axun Goñi Garin",
+        "saldo": "531,87",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-22",
+        "hora": "10:55:57",
+        "movimiento": "Pago a usuario",
+        "cantidad": "10,35",
+        "concepto": "  ",
+        "usuario_asociado": "Axun Goñi Garin",
+        "saldo": "531,97",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-21",
+        "hora": "11:37:40",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Ramon Cruz Etxeberria Ihartza",
+        "saldo": "521,62",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-21",
+        "hora": "11:37:39",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,00",
+        "concepto": "  ",
+        "usuario_asociado": "Ramon Cruz Etxeberria Ihartza",
+        "saldo": "521,63",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-16",
+        "hora": "18:35:10",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,05",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "520,63",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-16",
+        "hora": "18:35:09",
+        "movimiento": "Pago a usuario",
+        "cantidad": "4,50",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "520,68",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-16",
+        "hora": "16:23:09",
+        "movimiento": "Bonificación por compra",
+        "cantidad": "19,95",
+        "concepto": "  Mila esker Hernanin erosteagatik! Hernaniko Udala.",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "516,18",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2024-02-16",
+        "hora": "16:23:04",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-285,00",
+        "concepto": "  Factura",
+        "usuario_asociado": "On Bit Informatika",
+        "saldo": "496,23",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-15",
+        "hora": "09:44:21",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,03",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Ramon Cruz Etxeberria Ihartza",
+        "saldo": "781,23",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-15",
+        "hora": "09:44:20",
+        "movimiento": "Pago a usuario",
+        "cantidad": "2,50",
+        "concepto": "  ",
+        "usuario_asociado": "Ramon Cruz Etxeberria Ihartza",
+        "saldo": "781,26",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-13",
+        "hora": "19:40:58",
+        "movimiento": "Cuota variable",
+        "cantidad": "-2,04",
+        "concepto": "  Cuota variable | 1/2024",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "778,76",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2024-02-13",
+        "hora": "19:38:25",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "1,76",
+        "concepto": "  Cuota aportación mensual | 1/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-02-13",
+        "hora": "19:38:25",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,28",
+        "concepto": "  Cuota aportación mensual | 1/2024",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-02-13",
+        "hora": "10:01:40",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,11",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Jaione Rodriguez Esnaola",
+        "saldo": "780,80",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-13",
+        "hora": "10:01:39",
+        "movimiento": "Pago a usuario",
+        "cantidad": "11,40",
+        "concepto": "  ",
+        "usuario_asociado": "Jaione Rodriguez Esnaola",
+        "saldo": "780,91",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-09",
+        "hora": "16:54:45",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,39",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "AINARA VILA MITXELENA",
+        "saldo": "769,51",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-09",
+        "hora": "16:54:43",
+        "movimiento": "Pago a usuario",
+        "cantidad": "39,00",
+        "concepto": "  argazkiak",
+        "usuario_asociado": "AINARA VILA MITXELENA",
+        "saldo": "769,90",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-08",
+        "hora": "17:33:02",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,22",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Marije Juan Diaz",
+        "saldo": "730,90",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-08",
+        "hora": "17:33:00",
+        "movimiento": "Pago a usuario",
+        "cantidad": "21,90",
+        "concepto": "  ",
+        "usuario_asociado": "Marije Juan Diaz",
+        "saldo": "731,12",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-08",
+        "hora": "17:14:37",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,60",
+        "concepto": "  ",
+        "usuario_asociado": "Ana Fernández Pelaez",
+        "saldo": "709,22",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-06",
+        "hora": "10:59:08",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,08",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "AINHOA APAOLAZA ARAMENDI",
+        "saldo": "707,62",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-06",
+        "hora": "10:59:07",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,90",
+        "concepto": "  ",
+        "usuario_asociado": "AINHOA APAOLAZA ARAMENDI",
+        "saldo": "707,70",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-02",
+        "hora": "13:11:00",
+        "movimiento": "Bonificación por compra",
+        "cantidad": "2,48",
+        "concepto": "  Mila esker Hernanin erosteagatik! Hernaniko Udala.",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "699,80",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2024-02-02",
+        "hora": "13:10:57",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-35,44",
+        "concepto": "  Almejas",
+        "usuario_asociado": "Mariscos Hernani",
+        "saldo": "697,32",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-01",
+        "hora": "16:47:54",
+        "movimiento": "Pago a usuario",
+        "cantidad": "65,00",
+        "concepto": "  ",
+        "usuario_asociado": "Ares Frutadenda",
+        "saldo": "732,76",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-01",
+        "hora": "12:52:42",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,44",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "maribel rafael blanco",
+        "saldo": "667,76",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-01",
+        "hora": "12:52:40",
+        "movimiento": "Pago a usuario",
+        "cantidad": "44,00",
+        "concepto": "  ",
+        "usuario_asociado": "maribel rafael blanco",
+        "saldo": "668,20",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-01",
+        "hora": "09:11:29",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,75",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Begoña Ormazabal Esteban",
+        "saldo": "624,20",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-02-01",
+        "hora": "09:11:28",
+        "movimiento": "Pago a usuario",
+        "cantidad": "75,00",
+        "concepto": "  ",
+        "usuario_asociado": "Begoña Ormazabal Esteban",
+        "saldo": "624,95",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-30",
+        "hora": "09:43:41",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,02",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "549,95",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-30",
+        "hora": "09:43:39",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,50",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "549,97",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-26",
+        "hora": "18:48:00",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Itziar Miner altuna",
+        "saldo": "548,47",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-26",
+        "hora": "18:47:58",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,00",
+        "concepto": "  ",
+        "usuario_asociado": "Itziar Miner altuna",
+        "saldo": "548,48",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-25",
+        "hora": "18:41:30",
+        "movimiento": "Pago a usuario",
+        "cantidad": "24,00",
+        "concepto": "  ",
+        "usuario_asociado": "Oihana Hernandorena Castrillo",
+        "saldo": "547,48",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-25",
+        "hora": "18:35:06",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,10",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "523,48",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-25",
+        "hora": "18:35:05",
+        "movimiento": "Pago a usuario",
+        "cantidad": "9,90",
+        "concepto": "  ",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "523,58",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-24",
+        "hora": "17:47:09",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,02",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "513,68",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-24",
+        "hora": "17:47:07",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,65",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "513,70",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-24",
+        "hora": "12:44:20",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,39",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "512,05",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-24",
+        "hora": "12:44:18",
+        "movimiento": "Pago a usuario",
+        "cantidad": "39,40",
+        "concepto": "  ",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "512,44",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-24",
+        "hora": "12:40:24",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,20",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "maribel rafael blanco",
+        "saldo": "473,04",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-24",
+        "hora": "12:40:22",
+        "movimiento": "Pago a usuario",
+        "cantidad": "19,90",
+        "concepto": "  ",
+        "usuario_asociado": "maribel rafael blanco",
+        "saldo": "473,24",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-22",
+        "hora": "18:52:57",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,16",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "453,34",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-22",
+        "hora": "18:52:55",
+        "movimiento": "Pago a usuario",
+        "cantidad": "16,00",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "453,50",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-22",
+        "hora": "17:06:14",
+        "movimiento": "Pago a usuario",
+        "cantidad": "2,40",
+        "concepto": "  ",
+        "usuario_asociado": "maria cristina quintanilla benito",
+        "saldo": "437,50",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-19",
+        "hora": "19:14:06",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,02",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Nagore Zubitur Aldabe",
+        "saldo": "435,10",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-19",
+        "hora": "19:14:04",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,80",
+        "concepto": "  ",
+        "usuario_asociado": "Nagore Zubitur Aldabe",
+        "saldo": "435,12",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-19",
+        "hora": "17:38:46",
+        "movimiento": "Pago a usuario",
+        "cantidad": "12,00",
+        "concepto": "  ",
+        "usuario_asociado": "Oihana Hernandorena Castrillo",
+        "saldo": "433,32",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-19",
+        "hora": "12:55:02",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,02",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Nagore Zubitur Aldabe",
+        "saldo": "421,32",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-19",
+        "hora": "12:55:00",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,80",
+        "concepto": "  ",
+        "usuario_asociado": "Nagore Zubitur Aldabe",
+        "saldo": "421,34",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-19",
+        "hora": "10:07:20",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,18",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Nagore Zubitur Aldabe",
+        "saldo": "419,54",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-19",
+        "hora": "10:07:18",
+        "movimiento": "Pago a usuario",
+        "cantidad": "18,40",
+        "concepto": "  ",
+        "usuario_asociado": "Nagore Zubitur Aldabe",
+        "saldo": "419,72",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-18",
+        "hora": "12:35:22",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,26",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Ander Lizeaga Arostegi",
+        "saldo": "401,32",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-18",
+        "hora": "12:35:20",
+        "movimiento": "Pago a usuario",
+        "cantidad": "26,20",
+        "concepto": "  ",
+        "usuario_asociado": "Ander Lizeaga Arostegi",
+        "saldo": "401,58",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-17",
+        "hora": "10:32:38",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,22",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Lurdes Arabaolaza Oruezabala",
+        "saldo": "375,38",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-17",
+        "hora": "10:32:37",
+        "movimiento": "Pago a usuario",
+        "cantidad": "21,50",
+        "concepto": "  ",
+        "usuario_asociado": "Lurdes Arabaolaza Oruezabala",
+        "saldo": "375,60",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-16",
+        "hora": "17:11:23",
+        "movimiento": "Cuota variable",
+        "cantidad": "-0,94",
+        "concepto": "  Cuota variable | 12/2023",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "354,10",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2024-01-16",
+        "hora": "17:10:38",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,26",
+        "concepto": "  Cuota aportación mensual | 12/2023",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-01-16",
+        "hora": "17:10:36",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,68",
+        "concepto": "  Cuota aportación mensual | 12/2023",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2024-01-15",
+        "hora": "10:27:35",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,01",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "355,04",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-15",
+        "hora": "10:27:34",
+        "movimiento": "Pago a usuario",
+        "cantidad": "0,50",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "355,05",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-11",
+        "hora": "17:24:47",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,21",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Kristina Iraola Peña",
+        "saldo": "354,55",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-11",
+        "hora": "17:24:46",
+        "movimiento": "Pago a usuario",
+        "cantidad": "21,00",
+        "concepto": "  ",
+        "usuario_asociado": "Kristina Iraola Peña",
+        "saldo": "354,76",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-11",
+        "hora": "11:40:31",
+        "movimiento": "Pago a usuario",
+        "cantidad": "15,60",
+        "concepto": "  ",
+        "usuario_asociado": "Maixabel Zabala Arrue",
+        "saldo": "333,76",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-10",
+        "hora": "17:45:18",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,50",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "M Jose Salaberria Aranburu",
+        "saldo": "318,16",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-10",
+        "hora": "17:45:16",
+        "movimiento": "Pago a usuario",
+        "cantidad": "49,95",
+        "concepto": "  ",
+        "usuario_asociado": "M Jose Salaberria Aranburu",
+        "saldo": "318,66",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-10",
+        "hora": "17:44:26",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-50,00",
+        "concepto": "  ",
+        "usuario_asociado": "M Jose Salaberria Aranburu",
+        "saldo": "268,71",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-10",
+        "hora": "17:20:56",
+        "movimiento": "Descuento automático",
+        "cantidad": "-0,02",
+        "concepto": "  Mila Esker! Fotos Torres",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "318,71",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-10",
+        "hora": "17:20:54",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,50",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "318,73",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-10",
+        "hora": "13:03:23",
+        "movimiento": "Pago a usuario",
+        "cantidad": "13,90",
+        "concepto": "  ",
+        "usuario_asociado": "Alazne Arotzena Oruezabala",
+        "saldo": "317,23",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-09",
+        "hora": "13:05:12",
+        "movimiento": "Pago a usuario",
+        "cantidad": "12,95",
+        "concepto": "  fotos",
+        "usuario_asociado": "Oihala Denda",
+        "saldo": "303,33",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-09",
+        "hora": "12:40:05",
+        "movimiento": "Pago a usuario",
+        "cantidad": "6,30",
+        "concepto": "  argazkiak",
+        "usuario_asociado": "NEKANE IDARRETA MENDIOLA",
+        "saldo": "290,38",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-03",
+        "hora": "18:19:59",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,20",
+        "concepto": "  ",
+        "usuario_asociado": "Marije Juan Diaz",
+        "saldo": "284,08",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-03",
+        "hora": "09:36:55",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,80",
+        "concepto": "  ",
+        "usuario_asociado": "Nagore Yuste Anabitarte",
+        "saldo": "276,88",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-02",
+        "hora": "18:19:10",
+        "movimiento": "Pago a usuario",
+        "cantidad": "30,95",
+        "concepto": "  ",
+        "usuario_asociado": "Garbiñe Zabala goiburu",
+        "saldo": "269,08",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2024-01-02",
+        "hora": "12:00:24",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,80",
+        "concepto": "  ",
+        "usuario_asociado": "Nagore Yuste Anabitarte",
+        "saldo": "238,13",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-12-29",
+        "hora": "12:50:13",
+        "movimiento": "Pago a usuario",
+        "cantidad": "23,40",
+        "concepto": "  ",
+        "usuario_asociado": "Nagore Yuste Anabitarte",
+        "saldo": "230,33",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-12-27",
+        "hora": "18:55:53",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,15",
+        "concepto": "  ",
+        "usuario_asociado": "Noelia Nieto Guerra",
+        "saldo": "206,93",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-12-22",
+        "hora": "13:12:51",
+        "movimiento": "Bonificación por compra",
+        "cantidad": "6,00",
+        "concepto": "  Bonificación del Ayuntamiento",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "199,78",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2023-12-22",
+        "hora": "13:12:47",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-60,00",
+        "concepto": "  Zapatos",
+        "usuario_asociado": "Urrats Oinetakoak",
+        "saldo": "193,78",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-12-21",
+        "hora": "12:28:55",
+        "movimiento": "Pago a usuario",
+        "cantidad": "24,00",
+        "concepto": "  ",
+        "usuario_asociado": "Ander Lizeaga Arostegi",
+        "saldo": "253,78",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-12-21",
+        "hora": "11:43:51",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,80",
+        "concepto": "  ",
+        "usuario_asociado": "Milagros Apezetxea Loiarte",
+        "saldo": "229,78",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-12-21",
+        "hora": "11:25:47",
+        "movimiento": "Pago a usuario",
+        "cantidad": "21,00",
+        "concepto": "  ",
+        "usuario_asociado": "Lopez Pentsuak",
+        "saldo": "221,98",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-12-21",
+        "hora": "11:02:18",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,20",
+        "concepto": "  ",
+        "usuario_asociado": "Ana Fernández Pelaez",
+        "saldo": "200,98",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-12-18",
+        "hora": "16:55:12",
+        "movimiento": "Pago a usuario",
+        "cantidad": "22,00",
+        "concepto": "  ",
+        "usuario_asociado": "Maria Lourdes Estibariz Rico",
+        "saldo": "199,78",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-12-14",
+        "hora": "12:31:10",
+        "movimiento": "Pago a usuario",
+        "cantidad": "17,50",
+        "concepto": "  ",
+        "usuario_asociado": "MªAntonia Simon Kortadi",
+        "saldo": "177,78",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-12-14",
+        "hora": "12:07:03",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,80",
+        "concepto": "  ",
+        "usuario_asociado": "Maria Jose Alberdi Burguete",
+        "saldo": "160,28",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-12-14",
+        "hora": "09:59:23",
+        "movimiento": "Pago a usuario",
+        "cantidad": "3,00",
+        "concepto": "  ",
+        "usuario_asociado": "Ramon Cruz Etxeberria Ihartza",
+        "saldo": "152,48",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-12-12",
+        "hora": "11:30:47",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,50",
+        "concepto": "  ",
+        "usuario_asociado": "Hiru Haur Arropa Denda",
+        "saldo": "149,48",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-12-11",
+        "hora": "13:26:18",
+        "movimiento": "Cuota variable",
+        "cantidad": "-1,98",
+        "concepto": "  Cuota variable | 11/2023",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "147,98",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2023-12-11",
+        "hora": "13:25:34",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,25",
+        "concepto": "  Cuota aportación mensual | 11/2023",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-12-11",
+        "hora": "13:25:33",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "1,73",
+        "concepto": "  Cuota aportación mensual | 11/2023",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-12-05",
+        "hora": "17:33:07",
+        "movimiento": "Pago a usuario",
+        "cantidad": "17,90",
+        "concepto": "  ",
+        "usuario_asociado": "Ander Lizeaga Arostegi",
+        "saldo": "149,96",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-12-04",
+        "hora": "17:59:54",
+        "movimiento": "Pago a usuario",
+        "cantidad": "12,00",
+        "concepto": "  ",
+        "usuario_asociado": "Oihana Hernandorena Castrillo",
+        "saldo": "132,06",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-12-02",
+        "hora": "10:53:59",
+        "movimiento": "Pago a usuario",
+        "cantidad": "23,40",
+        "concepto": "  ",
+        "usuario_asociado": "Ainara Garcia Noble",
+        "saldo": "120,06",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-12-01",
+        "hora": "10:32:30",
+        "movimiento": "Pago a usuario",
+        "cantidad": "9,00",
+        "concepto": "  ",
+        "usuario_asociado": "josefa iradi Otaegui",
+        "saldo": "96,66",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-11-27",
+        "hora": "17:46:01",
+        "movimiento": "Pago a usuario",
+        "cantidad": "9,60",
+        "concepto": "  argaz",
+        "usuario_asociado": "NEKANE IDARRETA MENDIOLA",
+        "saldo": "87,66",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-11-22",
+        "hora": "12:47:37",
+        "movimiento": "Pago a usuario",
+        "cantidad": "21,00",
+        "concepto": "  ",
+        "usuario_asociado": "Olatz Juantorena Aizpurua",
+        "saldo": "78,06",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-11-22",
+        "hora": "10:43:32",
+        "movimiento": "Comisión por retirada",
+        "cantidad": "-9,92",
+        "concepto": "  ",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "57,06",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2023-11-22",
+        "hora": "10:43:31",
+        "movimiento": "Retirada a cuenta bancaria",
+        "cantidad": "-810,08",
+        "concepto": "  ",
+        "usuario_asociado": "Retirada a cuenta bancaria",
+        "saldo": "66,98",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2023-11-22",
+        "hora": "10:42:15",
+        "movimiento": "Conversión a €",
+        "cantidad": "820,00",
+        "concepto": "  pasar a cuenta",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-11-17",
+        "hora": "17:52:46",
+        "movimiento": "Pago a usuario",
+        "cantidad": "43,20",
+        "concepto": "  ",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "877,06",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-11-14",
+        "hora": "17:57:59",
+        "movimiento": "Cuota variable",
+        "cantidad": "-1,21",
+        "concepto": "  Cuota variable | 10/2023",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "833,86",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2023-11-14",
+        "hora": "17:57:00",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "1,02",
+        "concepto": "  Cuota aportación mensual | 10/2023",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-11-14",
+        "hora": "17:56:56",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,19",
+        "concepto": "  Cuota aportación mensual | 10/2023",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-11-14",
+        "hora": "09:10:20",
+        "movimiento": "Pago a usuario",
+        "cantidad": "480,00",
+        "concepto": "  camara",
+        "usuario_asociado": "Jose Zuza Zabalegi",
+        "saldo": "835,07",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-11-13",
+        "hora": "12:03:18",
+        "movimiento": "Pago a usuario",
+        "cantidad": "29,40",
+        "concepto": "  ",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "355,07",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-11-10",
+        "hora": "12:23:55",
+        "movimiento": "Pago a usuario",
+        "cantidad": "10,55",
+        "concepto": "  ",
+        "usuario_asociado": "Begoña Ormazabal Esteban",
+        "saldo": "325,67",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-11-09",
+        "hora": "18:37:26",
+        "movimiento": "Pago a usuario",
+        "cantidad": "0,60",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "315,12",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-11-08",
+        "hora": "13:16:45",
+        "movimiento": "Pago a usuario",
+        "cantidad": "16,00",
+        "concepto": "  ",
+        "usuario_asociado": "Begoña Ormazabal Esteban",
+        "saldo": "314,52",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-11-06",
+        "hora": "16:52:57",
+        "movimiento": "Pago a usuario",
+        "cantidad": "3,90",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "298,52",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-10-31",
+        "hora": "12:28:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "99,80",
+        "concepto": "  ",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "294,62",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-10-30",
+        "hora": "10:34:28",
+        "movimiento": "Pago a usuario",
+        "cantidad": "46,40",
+        "concepto": "  ",
+        "usuario_asociado": "Begoña Loyarte Gines",
+        "saldo": "194,82",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-10-27",
+        "hora": "08:47:54",
+        "movimiento": "Bonificación por compra",
+        "cantidad": "0,50",
+        "concepto": "  Bonificación del Ayuntamiento",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "148,42",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2023-10-27",
+        "hora": "08:47:50",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-5,00",
+        "concepto": "  Tomate, huevos",
+        "usuario_asociado": "Gurutzeta Baserria (Arkupeak)",
+        "saldo": "147,92",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2023-10-20",
+        "hora": "11:12:31",
+        "movimiento": "Pago a usuario",
+        "cantidad": "16,50",
+        "concepto": "  ",
+        "usuario_asociado": "Lurdes Arabaolaza Oruezabala",
+        "saldo": "152,92",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-10-19",
+        "hora": "18:34:53",
+        "movimiento": "Pago a usuario",
+        "cantidad": "21,00",
+        "concepto": "  naiara santxiz",
+        "usuario_asociado": "Naiara Santxiz Arregi",
+        "saldo": "136,42",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-10-19",
+        "hora": "18:32:34",
+        "movimiento": "Cuota variable",
+        "cantidad": "-1,10",
+        "concepto": "  Cuota variable | 9/2023",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "115,42",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2023-10-19",
+        "hora": "18:31:34",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "1,01",
+        "concepto": "  Cuota aportación mensual | 9/2023",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-10-19",
+        "hora": "18:31:34",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,09",
+        "concepto": "  Cuota aportación mensual | 9/2023",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-10-18",
+        "hora": "16:33:34",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,50",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "116,52",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-10-18",
+        "hora": "09:23:30",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,20",
+        "concepto": "  ",
+        "usuario_asociado": "Ainara Garcia Noble",
+        "saldo": "115,02",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-10-17",
+        "hora": "09:25:04",
+        "movimiento": "Pago a usuario",
+        "cantidad": "14,70",
+        "concepto": "  ",
+        "usuario_asociado": "Ainara Garcia Noble",
+        "saldo": "113,82",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-10-16",
+        "hora": "16:37:13",
+        "movimiento": "Pago a usuario",
+        "cantidad": "2,00",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "99,12",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-10-16",
+        "hora": "11:08:57",
+        "movimiento": "Pago a usuario",
+        "cantidad": "43,20",
+        "concepto": "  revelado de fotos",
+        "usuario_asociado": "Peines ileapaindegia",
+        "saldo": "97,12",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-10-14",
+        "hora": "00:20:29",
+        "movimiento": "Bonificación por compra",
+        "cantidad": "35,68",
+        "concepto": "  Bonificación del Ayuntamiento",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "53,92",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2023-10-14",
+        "hora": "00:20:27",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-356,84",
+        "concepto": "  Cena",
+        "usuario_asociado": "Restaurante Iturralde Jatetxea",
+        "saldo": "18,24",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-10-10",
+        "hora": "11:08:20",
+        "movimiento": "Pago a usuario",
+        "cantidad": "11,80",
+        "concepto": "  fotos dni",
+        "usuario_asociado": "Maitane Guerrero Moriana",
+        "saldo": "375,08",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-10-06",
+        "hora": "12:16:29",
+        "movimiento": "Pago a usuario",
+        "cantidad": "15,60",
+        "concepto": "  torres argazkiak",
+        "usuario_asociado": "Mirari Pagola Iraola",
+        "saldo": "363,28",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-10-05",
+        "hora": "09:11:52",
+        "movimiento": "Bonificación por compra",
+        "cantidad": "1,48",
+        "concepto": "  Bonificación del Ayuntamiento",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "347,68",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2023-10-05",
+        "hora": "09:11:50",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-14,77",
+        "concepto": "  Pago Torres fotografo",
+        "usuario_asociado": "Gurutzeta Baserria (Arkupeak)",
+        "saldo": "346,20",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-09-29",
+        "hora": "11:36:03",
+        "movimiento": "Pago a usuario",
+        "cantidad": "24,00",
+        "concepto": "  ",
+        "usuario_asociado": "Ander Lizeaga Arostegi",
+        "saldo": "360,97",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-09-29",
+        "hora": "09:43:25",
+        "movimiento": "Pago a usuario",
+        "cantidad": "17,00",
+        "concepto": "  ",
+        "usuario_asociado": "Ramon Cruz Etxeberria Ihartza",
+        "saldo": "336,97",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-09-28",
+        "hora": "17:05:22",
+        "movimiento": "Pago a usuario",
+        "cantidad": "2,00",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "319,97",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-09-27",
+        "hora": "16:40:24",
+        "movimiento": "Pago a usuario",
+        "cantidad": "0,55",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "317,97",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-09-26",
+        "hora": "12:41:31",
+        "movimiento": "Pago a usuario",
+        "cantidad": "84,90",
+        "concepto": "  ",
+        "usuario_asociado": "ADOLFO MASID BALDA",
+        "saldo": "317,42",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-09-25",
+        "hora": "10:09:16",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,00",
+        "concepto": "  ",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "232,52",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-09-22",
+        "hora": "12:20:27",
+        "movimiento": "Pago a usuario",
+        "cantidad": "0,60",
+        "concepto": "  ",
+        "usuario_asociado": "Leire Bilbao Agirrebengoa",
+        "saldo": "231,52",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-09-20",
+        "hora": "12:23:11",
+        "movimiento": "Pago a usuario",
+        "cantidad": "12,00",
+        "concepto": "  ",
+        "usuario_asociado": "Koro Arabaolaza Oruezabala",
+        "saldo": "230,92",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-09-14",
+        "hora": "17:05:33",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,80",
+        "concepto": "  ",
+        "usuario_asociado": "Leire Bilbao Agirrebengoa",
+        "saldo": "218,92",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-09-13",
+        "hora": "17:49:51",
+        "movimiento": "Pago a usuario",
+        "cantidad": "3,00",
+        "concepto": "  ",
+        "usuario_asociado": "Lide Agirrezabala Goñi",
+        "saldo": "217,12",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-09-13",
+        "hora": "16:52:36",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,20",
+        "concepto": "  ",
+        "usuario_asociado": "maria cristina quintanilla benito",
+        "saldo": "214,12",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-09-13",
+        "hora": "09:22:48",
+        "movimiento": "Pago a usuario",
+        "cantidad": "26,55",
+        "concepto": "  fot0s",
+        "usuario_asociado": "Maribel Avila Marcos",
+        "saldo": "212,92",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-09-12",
+        "hora": "18:06:06",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,80",
+        "concepto": "  fotos Adei",
+        "usuario_asociado": "Maitane Guerrero Moriana",
+        "saldo": "186,37",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-09-11",
+        "hora": "18:17:08",
+        "movimiento": "Cuota variable",
+        "cantidad": "-0,36",
+        "concepto": "  Cuota variable | 8/2023",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "178,57",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2023-09-11",
+        "hora": "12:48:37",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,09",
+        "concepto": "  Cuota aportación mensual | 8/2023",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-09-11",
+        "hora": "12:48:35",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,27",
+        "concepto": "  Cuota aportación mensual | 8/2023",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-09-07",
+        "hora": "18:59:54",
+        "movimiento": "Pago a usuario",
+        "cantidad": "59,15",
+        "concepto": "  ",
+        "usuario_asociado": "Ainara Garcia Noble",
+        "saldo": "178,93",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-09-07",
+        "hora": "12:15:00",
+        "movimiento": "Pago a usuario",
+        "cantidad": "2,50",
+        "concepto": "  FOTO carnet",
+        "usuario_asociado": "Maitane Guerrero Moriana",
+        "saldo": "119,78",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-09-01",
+        "hora": "10:39:40",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,70",
+        "concepto": "  ",
+        "usuario_asociado": "Olatz Juantorena Aizpurua",
+        "saldo": "117,28",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-08-31",
+        "hora": "09:48:00",
+        "movimiento": "Cobro desde QR",
+        "cantidad": "68,95",
+        "concepto": "  Fotos",
+        "usuario_asociado": "Maria Jesus Salvador Gonzalez",
+        "saldo": "109,58",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-08-29",
+        "hora": "11:10:38",
+        "movimiento": "Pago a usuario",
+        "cantidad": "6,40",
+        "concepto": "  ",
+        "usuario_asociado": "Ander Lizeaga Arostegi",
+        "saldo": "40,63",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-08-09",
+        "hora": "14:08:00",
+        "movimiento": "Cuota variable",
+        "cantidad": "-2,06",
+        "concepto": "  Cuota variable | 7/2023",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "34,23",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2023-08-09",
+        "hora": "13:01:32",
+        "movimiento": "Pago a usuario",
+        "cantidad": "10,50",
+        "concepto": "  ",
+        "usuario_asociado": "Araitz Aira Urruzola",
+        "saldo": "36,29",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-08-09",
+        "hora": "11:04:42",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,07",
+        "concepto": "  Cuota aportación mensual | 7/2023",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-08-09",
+        "hora": "10:59:57",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "1,99",
+        "concepto": "  Cuota aportación mensual | 7/2023",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-08-08",
+        "hora": "11:21:25",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-420,00",
+        "concepto": "  Cambio",
+        "usuario_asociado": "Maria Jose Alberdi Burguete",
+        "saldo": "25,79",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-08-08",
+        "hora": "11:15:05",
+        "movimiento": "Pago a usuario",
+        "cantidad": "338,00",
+        "concepto": "  ",
+        "usuario_asociado": "Maria Jose Alberdi Burguete",
+        "saldo": "445,79",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-08-02",
+        "hora": "09:16:35",
+        "movimiento": "Comisión por retirada",
+        "cantidad": "-4,36",
+        "concepto": "  ",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "107,79",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2023-08-02",
+        "hora": "09:16:34",
+        "movimiento": "Retirada a cuenta bancaria",
+        "cantidad": "-355,64",
+        "concepto": "  ",
+        "usuario_asociado": "Retirada a cuenta bancaria",
+        "saldo": "112,15",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2023-07-28",
+        "hora": "16:29:04",
+        "movimiento": "Cobro desde QR",
+        "cantidad": "72,35",
+        "concepto": "  Fotos f",
+        "usuario_asociado": "Maria Jesus Salvador Gonzalez",
+        "saldo": "467,79",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-07-28",
+        "hora": "11:35:48",
+        "movimiento": "Pago a usuario",
+        "cantidad": "16,65",
+        "concepto": "  ",
+        "usuario_asociado": "Ander Lizeaga Arostegi",
+        "saldo": "395,44",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-07-20",
+        "hora": "17:58:59",
+        "movimiento": "Conversión a €",
+        "cantidad": "360,00",
+        "concepto": "  Cambio",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-07-14",
+        "hora": "19:12:20",
+        "movimiento": "Bonificación por compra",
+        "cantidad": "6,00",
+        "concepto": "  Bonificación del Ayuntamiento",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "378,79",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2023-07-14",
+        "hora": "19:12:12",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-60,00",
+        "concepto": "  Sandalias",
+        "usuario_asociado": "Urrats Oinetakoak",
+        "saldo": "372,79",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-07-14",
+        "hora": "19:00:50",
+        "movimiento": "Bonificación por compra",
+        "cantidad": "1,17",
+        "concepto": "  Bonificación del Ayuntamiento",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "432,79",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2023-07-14",
+        "hora": "19:00:40",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-11,73",
+        "concepto": "  ",
+        "usuario_asociado": "Elkar Hernani Liburudenda",
+        "saldo": "431,62",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-07-13",
+        "hora": "18:57:42",
+        "movimiento": "Cuota variable",
+        "cantidad": "-1,60",
+        "concepto": "  Cuota variable | 6/2023",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "443,35",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2023-07-13",
+        "hora": "18:48:37",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "1,55",
+        "concepto": "  Cuota aportación mensual | 6/2023",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-07-13",
+        "hora": "18:42:48",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,05",
+        "concepto": "  Cuota aportación mensual | 6/2023",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-07-10",
+        "hora": "10:08:24",
+        "movimiento": "Pago a usuario",
+        "cantidad": "14,95",
+        "concepto": "  ",
+        "usuario_asociado": "Josune Echarri Imaz",
+        "saldo": "444,95",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-07-07",
+        "hora": "12:16:56",
+        "movimiento": "Pago a usuario",
+        "cantidad": "17,90",
+        "concepto": "  ",
+        "usuario_asociado": "Ander Lizeaga Arostegi",
+        "saldo": "430,00",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-07-06",
+        "hora": "18:09:59",
+        "movimiento": "Pago a usuario",
+        "cantidad": "4,80",
+        "concepto": "  Argazkiak Torres , Urko",
+        "usuario_asociado": "Ainara Gorostizu Barandiaran",
+        "saldo": "412,10",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-07-04",
+        "hora": "11:03:54",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,20",
+        "concepto": "  ",
+        "usuario_asociado": "Lide Agirrezabala Goñi",
+        "saldo": "407,30",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-07-03",
+        "hora": "11:02:13",
+        "movimiento": "Pago a usuario",
+        "cantidad": "9,90",
+        "concepto": "  fotos niños",
+        "usuario_asociado": "Iván Martínez Ancïn",
+        "saldo": "400,10",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-06-29",
+        "hora": "09:45:44",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,80",
+        "concepto": "  ",
+        "usuario_asociado": "Xabier Lertxundi Asteasuinzarra",
+        "saldo": "390,20",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-06-20",
+        "hora": "17:32:23",
+        "movimiento": "Pago a usuario",
+        "cantidad": "62,00",
+        "concepto": "  fotokopiak",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "382,40",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-06-19",
+        "hora": "10:10:22",
+        "movimiento": "Pago a usuario",
+        "cantidad": "5,95",
+        "concepto": "  ",
+        "usuario_asociado": "Koldo Hernandez Moreno",
+        "saldo": "320,40",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-06-14",
+        "hora": "17:40:37",
+        "movimiento": "Pago a usuario",
+        "cantidad": "12,00",
+        "concepto": "  ",
+        "usuario_asociado": "Leire Bilbao Agirrebengoa",
+        "saldo": "314,45",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-06-12",
+        "hora": "17:13:50",
+        "movimiento": "Pago a usuario",
+        "cantidad": "13,75",
+        "concepto": "  ",
+        "usuario_asociado": "Itziar Miner altuna",
+        "saldo": "302,45",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-06-09",
+        "hora": "11:47:02",
+        "movimiento": "Pago a usuario",
+        "cantidad": "41,90",
+        "concepto": "  ",
+        "usuario_asociado": "igor Miner",
+        "saldo": "288,70",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-06-07",
+        "hora": "20:43:12",
+        "movimiento": "Cuota variable",
+        "cantidad": "-0,88",
+        "concepto": "  Cuota variable | 5/2023",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "246,80",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2023-06-07",
+        "hora": "20:37:57",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,05",
+        "concepto": "  Cuota aportación mensual | 5/2023",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-06-07",
+        "hora": "20:34:38",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,83",
+        "concepto": "  Cuota aportación mensual | 5/2023",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-05-31",
+        "hora": "12:36:44",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,80",
+        "concepto": "  ",
+        "usuario_asociado": "Mayi Lizarraga Etxeberria",
+        "saldo": "247,68",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-05-19",
+        "hora": "14:33:56",
+        "movimiento": "Pago a usuario",
+        "cantidad": "15,65",
+        "concepto": "  ",
+        "usuario_asociado": "Garin Harategia",
+        "saldo": "239,88",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-05-18",
+        "hora": "19:42:37",
+        "movimiento": "Pago a usuario",
+        "cantidad": "45,80",
+        "concepto": "  jaioneren argazkiak",
+        "usuario_asociado": "Jaione Rodriguez Esnaola",
+        "saldo": "224,23",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-05-18",
+        "hora": "10:27:28",
+        "movimiento": "Pago a usuario",
+        "cantidad": "9,00",
+        "concepto": "  ",
+        "usuario_asociado": "ELISEO ZULAIKA ILLARRAMENDI",
+        "saldo": "178,43",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-05-09",
+        "hora": "18:31:15",
+        "movimiento": "Pago a usuario",
+        "cantidad": "91,00",
+        "concepto": "  Kris Solano cámara de fotos",
+        "usuario_asociado": "Olatz Zabalegui Moda Hombre",
+        "saldo": "169,43",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-05-08",
+        "hora": "10:26:54",
+        "movimiento": "Pago a usuario",
+        "cantidad": "14,50",
+        "concepto": "  ",
+        "usuario_asociado": "amagoia urabayen uria",
+        "saldo": "78,43",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-05-05",
+        "hora": "13:27:32",
+        "movimiento": "Cuota variable",
+        "cantidad": "-1,25",
+        "concepto": "  Cuota variable | 4/2023",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "63,93",
+        "cuenta": "Cuota variable"
+    },
+    {
+        "fecha": "2023-05-05",
+        "hora": "13:25:33",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "0,05",
+        "concepto": "  Cuota aportación mensual | 4/2023",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-05-05",
+        "hora": "13:24:07",
+        "movimiento": "Transferencia a cuenta de cuotas variables",
+        "cantidad": "1,20",
+        "concepto": "  Cuota aportación mensual | 4/2023",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-05-05",
+        "hora": "10:41:25",
+        "movimiento": "Pago a usuario",
+        "cantidad": "2,70",
+        "concepto": "  fotos cumple Eider",
+        "usuario_asociado": "Juan Carlos Cortés Lazaro",
+        "saldo": "65,18",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-04-27",
+        "hora": "18:01:53",
+        "movimiento": "Pago a usuario",
+        "cantidad": "9,00",
+        "concepto": "  ",
+        "usuario_asociado": "igor Miner",
+        "saldo": "62,48",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-04-25",
+        "hora": "13:01:52",
+        "movimiento": "Pago a usuario",
+        "cantidad": "0,90",
+        "concepto": "  ",
+        "usuario_asociado": "Leire Bilbao Agirrebengoa",
+        "saldo": "53,48",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-04-24",
+        "hora": "17:43:47",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,80",
+        "concepto": "  ",
+        "usuario_asociado": "Leire Bilbao Agirrebengoa",
+        "saldo": "52,58",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-04-22",
+        "hora": "09:24:42",
+        "movimiento": "Pago a usuario",
+        "cantidad": "31,06",
+        "concepto": "  itxaspe",
+        "usuario_asociado": "Jose Ramon Leiza Rekondo",
+        "saldo": "50,78",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-04-17",
+        "hora": "11:21:22",
+        "movimiento": "Retirada a cuenta bancaria",
+        "cantidad": "-444,55",
+        "concepto": "  ",
+        "usuario_asociado": "Retirada a cuenta bancaria",
+        "saldo": "19,72",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2023-04-17",
+        "hora": "11:21:22",
+        "movimiento": "Comisión por retirada",
+        "cantidad": "-5,45",
+        "concepto": "  ",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "464,27",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2023-04-17",
+        "hora": "11:20:22",
+        "movimiento": "Conversión a €",
+        "cantidad": "450,00",
+        "concepto": "  ",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-04-17",
+        "hora": "10:59:23",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,80",
+        "concepto": "  ",
+        "usuario_asociado": "Eider Estibariz Luna",
+        "saldo": "469,72",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-04-14",
+        "hora": "10:32:58",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,00",
+        "concepto": "  kopiak",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "461,92",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-04-13",
+        "hora": "09:24:15",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,80",
+        "concepto": "  ",
+        "usuario_asociado": "MIREN NEKANE GOÑI GARIN",
+        "saldo": "460,92",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-04-12",
+        "hora": "11:45:21",
+        "movimiento": "Pago a usuario",
+        "cantidad": "14,50",
+        "concepto": "  Argazki kopiak",
+        "usuario_asociado": "Hiru Haur Arropa Denda",
+        "saldo": "453,12",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-04-04",
+        "hora": "16:48:49",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,95",
+        "concepto": "  idoia",
+        "usuario_asociado": "Idoia Noble Goikoetxea",
+        "saldo": "438,62",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-04-03",
+        "hora": "19:09:26",
+        "movimiento": "Pago a usuario",
+        "cantidad": "111,75",
+        "concepto": "  ",
+        "usuario_asociado": "maribel rafael blanco",
+        "saldo": "430,67",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-03-31",
+        "hora": "18:05:53",
+        "movimiento": "Pago a usuario",
+        "cantidad": "9,90",
+        "concepto": "  Ossmbela",
+        "usuario_asociado": "Amaia Osanbela Zubiarrain",
+        "saldo": "318,92",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-03-28",
+        "hora": "12:56:15",
+        "movimiento": "Pago a usuario",
+        "cantidad": "43,65",
+        "concepto": "  ",
+        "usuario_asociado": "maribel rafael blanco",
+        "saldo": "309,02",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-03-23",
+        "hora": "18:44:40",
+        "movimiento": "Pago a usuario",
+        "cantidad": "12,00",
+        "concepto": "  Torres",
+        "usuario_asociado": "Jose Ramon Leiza Rekondo",
+        "saldo": "265,37",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-03-23",
+        "hora": "12:44:38",
+        "movimiento": "Pago a usuario",
+        "cantidad": "23,00",
+        "concepto": "  ",
+        "usuario_asociado": "Miren Koldobike Querejeta Pinzolas",
+        "saldo": "253,37",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-03-22",
+        "hora": "19:34:51",
+        "movimiento": "Bonificación por compra",
+        "cantidad": "8,90",
+        "concepto": "  Bonificación del Ayuntamiento",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "230,37",
+        "cuenta": "Ekhi Hernani"
+    },
+    {
+        "fecha": "2023-03-22",
+        "hora": "19:34:45",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-89,00",
+        "concepto": "  ",
+        "usuario_asociado": "Urrats Oinetakoak",
+        "saldo": "221,47",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-03-17",
+        "hora": "11:37:35",
+        "movimiento": "Cobro desde QR",
+        "cantidad": "48,00",
+        "concepto": "  Fotos",
+        "usuario_asociado": "Neli gigorro Martinez",
+        "saldo": "310,47",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-03-16",
+        "hora": "12:54:03",
+        "movimiento": "Pago a usuario",
+        "cantidad": "57,85",
+        "concepto": "  ",
+        "usuario_asociado": "maribel rafael blanco",
+        "saldo": "262,47",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-03-14",
+        "hora": "12:32:08",
+        "movimiento": "Pago a usuario",
+        "cantidad": "27,90",
+        "concepto": "  ",
+        "usuario_asociado": "maribel rafael blanco",
+        "saldo": "204,62",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-03-08",
+        "hora": "18:39:39",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,80",
+        "concepto": "  fotokopiak",
+        "usuario_asociado": "Antxon Etxeberria Alberro",
+        "saldo": "176,72",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-03-01",
+        "hora": "09:56:53",
+        "movimiento": "Cobro desde QR",
+        "cantidad": "74,40",
+        "concepto": "  Fotos",
+        "usuario_asociado": "Maria Jesus Salvador Gonzalez",
+        "saldo": "174,92",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-02-28",
+        "hora": "10:42:06",
+        "movimiento": "Retirada a cuenta bancaria",
+        "cantidad": "-691,53",
+        "concepto": "  ",
+        "usuario_asociado": "Retirada a cuenta bancaria",
+        "saldo": "100,52",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2023-02-28",
+        "hora": "10:42:06",
+        "movimiento": "Comisión por retirada",
+        "cantidad": "-8,47",
+        "concepto": "  ",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "792,05",
+        "cuenta": "Euro"
+    },
+    {
+        "fecha": "2023-02-28",
+        "hora": "10:39:08",
+        "movimiento": "Conversión a €",
+        "cantidad": "700,00",
+        "concepto": "  ",
+        "usuario_asociado": "",
+        "saldo": "",
+        "cuenta": ""
+    },
+    {
+        "fecha": "2023-02-15",
+        "hora": "11:17:42",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,80",
+        "concepto": "  DNI",
+        "usuario_asociado": "Mikel Tolosa Albistur",
+        "saldo": "800,52",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-01-28",
+        "hora": "09:54:50",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-106,48",
+        "concepto": "  Factura 2095 Eskerruk asko",
+        "usuario_asociado": "On Bit Informatika",
+        "saldo": "792,72",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-01-13",
+        "hora": "13:29:25",
+        "movimiento": "Pago a usuario",
+        "cantidad": "14,90",
+        "concepto": "  album",
+        "usuario_asociado": "NEKANE IDARRETA MENDIOLA",
+        "saldo": "899,20",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-01-03",
+        "hora": "11:22:05",
+        "movimiento": "Pago a usuario",
+        "cantidad": "12,00",
+        "concepto": "  marko",
+        "usuario_asociado": "Nagore Legarreta Alcelay",
+        "saldo": "884,30",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2023-01-02",
+        "hora": "19:11:00",
+        "movimiento": "Pago a usuario",
+        "cantidad": "15,60",
+        "concepto": "  ",
+        "usuario_asociado": "Ana Rubio Salas",
+        "saldo": "872,30",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-12-30",
+        "hora": "18:50:30",
+        "movimiento": "Pago a usuario",
+        "cantidad": "11,85",
+        "concepto": "  ",
+        "usuario_asociado": "Olatz Juantorena Aizpurua",
+        "saldo": "856,70",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-12-24",
+        "hora": "10:48:19",
+        "movimiento": "Pago a usuario",
+        "cantidad": "17,00",
+        "concepto": "  ",
+        "usuario_asociado": "Jokin Madinabeitia Nogales",
+        "saldo": "844,85",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-12-23",
+        "hora": "10:58:46",
+        "movimiento": "Pago a usuario",
+        "cantidad": "25,90",
+        "concepto": "  fotos",
+        "usuario_asociado": "Maribel Avila Marcos",
+        "saldo": "827,85",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-12-22",
+        "hora": "17:36:42",
+        "movimiento": "Pago a usuario",
+        "cantidad": "19,00",
+        "concepto": "  fotos torres",
+        "usuario_asociado": "Kontxi Murillo Caballero",
+        "saldo": "801,95",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-12-19",
+        "hora": "12:33:15",
+        "movimiento": "Pago a usuario",
+        "cantidad": "2,00",
+        "concepto": "  andresenea jpg",
+        "usuario_asociado": "Patxi Ibarguren Etxeberria",
+        "saldo": "782,95",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-12-17",
+        "hora": "11:10:58",
+        "movimiento": "Pago a usuario",
+        "cantidad": "110,95",
+        "concepto": "  naiara santxiz",
+        "usuario_asociado": "Naiara Santxiz Arregi",
+        "saldo": "780,95",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-12-16",
+        "hora": "12:14:20",
+        "movimiento": "Pago a usuario",
+        "cantidad": "18,95",
+        "concepto": "  fotos",
+        "usuario_asociado": "Maribel Avila Marcos",
+        "saldo": "670,00",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-12-16",
+        "hora": "11:25:47",
+        "movimiento": "Pago a usuario",
+        "cantidad": "111,00",
+        "concepto": "  ",
+        "usuario_asociado": "Araitz Aira Urruzola",
+        "saldo": "651,05",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-12-16",
+        "hora": "11:23:57",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-70,00",
+        "concepto": "  ",
+        "usuario_asociado": "Araitz Aira Urruzola",
+        "saldo": "540,05",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-12-14",
+        "hora": "17:32:15",
+        "movimiento": "Pago a usuario",
+        "cantidad": "15,00",
+        "concepto": "  udane inprimaketa",
+        "usuario_asociado": "Patxi Ibarguren Etxeberria",
+        "saldo": "610,05",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-12-14",
+        "hora": "17:14:55",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-60,00",
+        "concepto": "  Compra",
+        "usuario_asociado": "Eukene Jantzidenda",
+        "saldo": "595,05",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-12-14",
+        "hora": "11:30:30",
+        "movimiento": "Pago a usuario",
+        "cantidad": "110,95",
+        "concepto": "  ",
+        "usuario_asociado": "Iker Osa Zelaia",
+        "saldo": "655,05",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-12-12",
+        "hora": "10:18:57",
+        "movimiento": "Cobro desde QR",
+        "cantidad": "107,80",
+        "concepto": "  Maike6",
+        "usuario_asociado": "Maria Jesus Salvador Gonzalez",
+        "saldo": "544,10",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-12-02",
+        "hora": "16:47:53",
+        "movimiento": "Pago a usuario",
+        "cantidad": "2,40",
+        "concepto": "  argazki txikiak udane",
+        "usuario_asociado": "Patxi Ibarguren Etxeberria",
+        "saldo": "436,30",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-11-30",
+        "hora": "12:42:01",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,80",
+        "concepto": "  ",
+        "usuario_asociado": "jon gurutz fernandez huarte",
+        "saldo": "433,90",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-11-28",
+        "hora": "18:17:15",
+        "movimiento": "Pago a usuario",
+        "cantidad": "7,80",
+        "concepto": "  idoia",
+        "usuario_asociado": "Idoia Noble Goikoetxea",
+        "saldo": "426,10",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-11-17",
+        "hora": "11:24:58",
+        "movimiento": "Cobro desde QR",
+        "cantidad": "55,00",
+        "concepto": "  Lienzo",
+        "usuario_asociado": "ELISEO ZULAIKA ILLARRAMENDI",
+        "saldo": "418,30",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-11-08",
+        "hora": "17:17:16",
+        "movimiento": "Pago a usuario",
+        "cantidad": "54,80",
+        "concepto": "  inprimaketak torres. udane amaia",
+        "usuario_asociado": "Patxi Ibarguren Etxeberria",
+        "saldo": "363,30",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-11-07",
+        "hora": "12:13:12",
+        "movimiento": "Cobro desde QR",
+        "cantidad": "24,80",
+        "concepto": "  Fotos",
+        "usuario_asociado": "ELISEO ZULAIKA ILLARRAMENDI",
+        "saldo": "308,50",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-10-25",
+        "hora": "17:17:35",
+        "movimiento": "Cobro desde QR",
+        "cantidad": "265,00",
+        "concepto": "  Cámara de fotos",
+        "usuario_asociado": "Maria Jesus Salvador Gonzalez",
+        "saldo": "283,70",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-10-01",
+        "hora": "10:17:01",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-54,00",
+        "concepto": "  Diferencia pagado de más",
+        "usuario_asociado": "Idoia Noble Goikoetxea",
+        "saldo": "18,70",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-09-30",
+        "hora": "17:33:56",
+        "movimiento": "Pago a usuario",
+        "cantidad": "71,70",
+        "concepto": "  ",
+        "usuario_asociado": "Idoia Noble Goikoetxea",
+        "saldo": "72,70",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-07-05",
+        "hora": "11:18:07",
+        "movimiento": "Pago a usuario",
+        "cantidad": "-1,00",
+        "concepto": "  ",
+        "usuario_asociado": "Alejandro Lopez Morgado",
+        "saldo": "1,00",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-07-05",
+        "hora": "11:16:40",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,00",
+        "concepto": "  Prueba",
+        "usuario_asociado": "Alejandro Lopez Morgado",
+        "saldo": "2,00",
+        "cuenta": "Ekhi"
+    },
+    {
+        "fecha": "2022-07-05",
+        "hora": "11:12:10",
+        "movimiento": "Pago a usuario",
+        "cantidad": "1,00",
+        "concepto": "  Ongi etorri ekhilur-era. Saldo gratuito para que hagais pruebas.",
+        "usuario_asociado": "Ekhilur S.Coop.",
+        "saldo": "1,00",
+        "cuenta": "Ekhi Hernani"
+    }
+]

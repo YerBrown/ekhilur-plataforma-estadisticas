@@ -6,12 +6,12 @@
         },
         {
             "tipo": "Euro",
-            "saldo": 12.87
+            "saldo": 0.0
         },
         {
             "tipo": "Ekhi Hernani",
-            "saldo": 5.13
+            "saldo": 42.48
         }
     ],
-    "saldo_total": 18.0
+    "saldo_total": 42.48
 }

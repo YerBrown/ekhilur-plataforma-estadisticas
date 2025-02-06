@@ -1,0 +1,9 @@
+{
+    "ajax_urls": [
+        "/includes/acciones_ses.php?a=keep_alive",
+        "/includes/acciones_ses.php?a=ses_status"
+    ],
+    "data_endpoints": [],
+    "form_actions": [],
+    "websocket_endpoints": []
+}
