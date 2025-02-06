@@ -63,7 +63,7 @@ const Home = () => {
     );
     const walletLabels = filteredData.map((item) => item.tipo);
     const walletValues = filteredData.map((item) => item.saldo);
-    const walletColors = [ "#0047ba","#FF9012"];
+    const walletColors = ["#0047ba", "#FF9012"];
     const legendData = walletLabels.map((label, index) => ({
         label,
         value: walletValues[index],
@@ -270,8 +270,11 @@ const Home = () => {
                     </button>
                 </div>
                 <div className="transactions-section">
-                    <button className="transactions-button" onClick={() => handleNavigate("/transactions")}>
+                    <button className="transactions-home-button" onClick={() => handleNavigate("/transactions")}>
                         <TransactionList transactions={mockData.slice(0, 3)} />
+                        <button className="add-button">
+                            <GoPlusCircle size={32}/>
+                        </button>
                     </button>
                 </div>
                 {/* <button onClick={() => handleNavigate("/map")}>

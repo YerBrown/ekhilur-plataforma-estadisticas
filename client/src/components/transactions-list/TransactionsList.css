@@ -1,14 +1,14 @@
 /* Estilos generales */
 .transaction-list-container {
     width: 100%;
-    border-radius: 5px;
+    border-radius: 20px;
     box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.2);
     background-color: var(--background-color-principal);
+    padding-bottom: 10px;
 }
 
 .transaction-group-container {
-    margin-bottom: 24px;
-    padding-bottom: 20px;
+    margin-bottom: 1.5rem;
 }
 
 .transaction-group-header {
@@ -17,10 +17,9 @@
 
 .transaction-group-title {
     font-size: 18px;
-    font-weight: bold;
+    font-family: 'montserrat-500';
     color: var(--color-letra);
     padding-left: 1rem;
-    padding-top: 1rem;
     margin: 0;
 }
 
@@ -28,62 +27,52 @@
 .transaction-group-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 0.5rem;
 }
 
 .transaction-item {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     background-color: var(--background-color-principal-05);
     padding: 1rem;
     margin-left: 1rem;
     margin-right: 1rem;
-    border-radius: 8px;
+    border-radius: 20px;
     box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
+}
+
+.transaction-item-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .transaction-item-time {
     font-size: 14px;
+    font-family: 'montserrat-500';
     color: var(--color-letra-2);
     margin: 0;
 }
 
-.transaction-item-content {
+.transaction-item-content-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.transaction-item-image-container {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
 }
 
 .transaction-item-image {
     width: 50px;
     height: 50px;
     object-fit: contain;
-    padding-top: 0.4rem;
     margin-right: 0.5rem;
 }
 
-.transaction-item-details {
-    flex: 1;
-    margin-left: 12px;
-}
-
 .transaction-item-name {
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 0.9rem;
+    font-family: 'montserrat-600';
     color: var(--color-letra);
     margin: 0;
-}
-
-.transaction-item-description {
-    font-size: 14px;
-    color: var(--color-letra);
-    margin: 4px 0 0;
 }
 
 .transaction-item-amounts-container {
@@ -92,26 +81,30 @@
 }
 
 .transaction-item-amount {
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 1.1rem;
+    font-family: 'montserrat-700';
     color: var(--color-letra);
     border-radius: 5px;
     padding: 0.2rem 0.4rem 0.2rem 0.4rem;
     margin-top: 0;
 }
 
+
 .transaction-item-amount.positive {
     background-color: var(--color-naranja-principal-background);
     color: white;
+    margin-bottom: 0.5rem;
 }
 
 .transaction-item-amount.negative {
     background-color: none;
+    margin-bottom: 0.5rem;
 }
 
 .transaction-item-remaining {
-    font-size: 14px;
+    font-size: 0.8rem;
+    font-family: 'montserrat-500';
     color: var(--color-letra-2);
-    margin-top: 4px;
+    margin: 0;
     padding-right: 0.3rem;
 }
