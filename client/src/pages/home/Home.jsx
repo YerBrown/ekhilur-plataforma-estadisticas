@@ -383,12 +383,23 @@ const Home = () => {
                         />
                     </button>
                 </div>
-                <div className="transactions-section">
+                <div
+                    className={
+                        user?.role === "commerce"
+                            ? "transactions-section commerce"
+                            : "transactions-section "
+                    }
+                >
                     <button
                         className="transactions-home-button"
                         onClick={() => handleNavigate("/transactions")}
                     >
-                        <TransactionList transactions={transData.slice(0, 3)} />
+                        <TransactionList
+                            transactions={transData.slice(
+                                0,
+                                user?.role === "commerce" ? 1 : 3
+                            )}
+                        />
                         <button className="add-button">
                             <GoPlusCircle size={32} />
                         </button>
