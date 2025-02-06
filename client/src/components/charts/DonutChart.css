@@ -28,9 +28,14 @@
 
 }
 
+.legend-label {
+    font-family: 'montserrat-600';
+}
 
 .legend .legend-value {
-    grid-column-start: 2
+    grid-column-start: 2;
+    font-family: 'montserrat-700';
+    font-size: 1.4rem;
 }
 
 .legend p {
