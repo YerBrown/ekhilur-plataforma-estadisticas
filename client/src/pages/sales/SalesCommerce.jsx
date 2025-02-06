@@ -6,7 +6,7 @@ import GraficoLibrerias from "../../components/charts/BarChartNew";
 import DateFilter from "../../components/DateFilter/DateFilter.jsx";
 import { getSalesByMonth } from "../../api/realData.js";
 import TransactionList from "../../components/transactions-list/TransactionsList.jsx";
-import mockData from "../../components/transactions-list/mockData.js";
+import mockData from "../../api/mockDataVentas.js";
 const SalesCommerce = () => {
     const { t } = useLanguage();
     const [selectedPeriod, setSelectedPeriod] = useState({
@@ -30,6 +30,27 @@ const SalesCommerce = () => {
         { año: "2024", mes: "03", valor: 300, otroValor: 270 },
     ]);
     const [filteredTransactions, setFilteredTransactions] = useState(mockData);
+
+    useEffect(() => {
+        // Filtrar las transacciones basadas en el periodo seleccionado
+        const filteredData = mockData.filter((transaction) => {
+            const transactionYear = parseInt(transaction.año, 10);
+            const transactionMonth = parseInt(transaction.mes, 10);
+            console.log(
+                "transactionYear",
+                transactionYear,
+                "transactionMonth",
+                transactionMonth)
+
+            return (
+                transactionYear === selectedPeriod.year &&
+                transactionMonth === selectedPeriod.month + 1
+            );
+        });
+
+        setFilteredTransactions(filteredData);
+    }, [selectedPeriod]);
+
     const loadApiData = async () => {
         setIsLoading(true);
         setError(null);
@@ -121,7 +142,7 @@ const SalesCommerce = () => {
                             showFilters={true}
                         />
                     </div>
-                    <TransactionList transactions={mockData} />
+                    <TransactionList transactions={filteredTransactions} />
                 </div>
             )}
         </Layout>
