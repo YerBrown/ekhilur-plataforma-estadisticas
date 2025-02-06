@@ -373,6 +373,7 @@ const Home = () => {
                         className="desktop-statistics"
                         onClick={() => navigate("/statistics")}
                     >
+                        <h3>{t.statisticsTitle}</h3>
                         <GraficoLibrerias
                             data={userData.gastosIngresos}
                             targetYear={new Date().getFullYear()}

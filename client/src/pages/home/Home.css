@@ -297,6 +297,14 @@
         display: flex;
         box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.3);
         background-color: var(--color-grafico-naranja-claro);
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .statistics-section .desktop-statistics h3 {
+        font-size: 2rem;
+        font-family: 'montserrat-700';
+        margin: auto;
     }
 
     .transactions-section {
