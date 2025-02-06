@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLanguage } from "../../contexts/LanguageContext";
-import DonutChart from "./DonutChart";
 import { useTheme } from "../../contexts/ThemeContext";
+
 import "./CategoryCharts.css";
 import {
     FaAppleAlt,
@@ -14,6 +14,7 @@ import {
     FaFutbol,
     FaHandsHelping,
 } from "react-icons/fa";
+
 const categoryTemplate = [
     {
         label: "Alimentación",
@@ -70,106 +71,61 @@ const categoryTemplate = [
         icon: FaHandsHelping,
     },
 ];
+
 const matchValues = (categoryValues) => {
-    const matchedCategories = categoryValues
+    return categoryValues
         .map((categoryValue) => {
             const match = categoryTemplate.find(
                 (category) => category.label === categoryValue.categoria
             );
             return match ? { ...match, ...categoryValue } : null;
         })
-        .filter((category) => category !== null);
-    return matchedCategories;
+        .filter((category) => category !== null)
+        .sort((a, b) => b.gasto - a.gasto); // Ordenar de mayor a menor
 };
 
 const CategoryChart = ({ categoryDataJson }) => {
     const { t } = useLanguage();
     const [categories, setCategories] = useState(matchValues(categoryDataJson));
-    console.log("normal-json", categoryDataJson);
-    console.log("match-values", matchValues(categoryDataJson));
     const { theme } = useTheme();
-    const getDataOptions = () => {
-        const categoryData = categories.map((category) => ({
-            datasets: [
-                {
-                    label: "Single Category",
-                    data: [category.gasto, totalCategoryValue - category.gasto],
-                    backgroundColor: [category.color, category["color-dark"]],
-                    hoverBackgroundColor: [
-                        category.color,
-                        category["color-dark"],
-                    ],
-                },
-            ],
-        }));
-        const categoryOption = categories.map((category) => ({
-            responsive: true,
-            maintainAspectRatio: false, // Permitir personalizar ancho y alto
-            plugins: {
-                legend: {
-                    display: false, // Ocultar leyenda
-                },
-                tooltip: {
-                    enabled: false, // Deshabilitar tooltips
-                },
-                centerText: {
-                    color: theme === "light" ? "#000000" : "#ffffff",
-                    total: `${category.gasto} €`, // Pasar el total calculado
-                },
-                datalabels: {
-                    display: false,
-                },
-            },
-            elements: {
-                arc: {
-                    borderWidth: 0,
-                },
-            },
-            cutout: "70%", // Ajustar el tamaño del agujero central
-            radius: "90%",
-        }));
 
-        const dataAndOptions = [];
-        for (let i = 0; i < categories.length; i++) {
-            dataAndOptions.push({
-                categoryJson: categories[i],
-                data: categoryData[i],
-                options: categoryOption[i],
-            });
-        }
-        return dataAndOptions;
-    };
+    // Obtener el gasto máximo para normalizar las barras
+    const maxGasto = Math.max(...categories.map((cat) => cat.gasto));
 
-    const categoryValues = categories.map((item) => item.gasto);
-    const totalCategoryValue =
-        categoryValues.length > 0
-            ? categoryValues.reduce(
-                  (acc, currentValue) => (acc += currentValue)
-              )
-            : 0;
     return (
         <div className="category-charts">
             <h2>{t.categoriesTitle}</h2>
             <div className="category-extra">
                 <div className="category-container">
-                    {getDataOptions().map((category) => (
-                        <div
-                            className="category-item"
-                            key={category.categoryJson.label}
-                        >
-                            {category.categoryJson.icon && (
-                                <category.categoryJson.icon size={24} />
-                            )}
-                            <h4>{category.categoryJson.label}</h4>
-                            <div className="donut">
-                                <DonutChart
-                                    data={category.data}
-                                    options={category.options}
-                                    className="category-donut"
-                                />
+                    {categories.map((category) => {
+                        const widthPercentage =
+                            (category.gasto / (maxGasto > 0 ? maxGasto : 1)) *
+                            100;
+                        return (
+                            <div className="category-item" key={category.label}>
+                                <div className="label">
+                                    {category.icon && (
+                                        <category.icon size={20} />
+                                    )}
+                                    <h4 className="label">
+                                        {t[category.label]}
+                                    </h4>
+                                </div>
+                                <div className="value">
+                                    <div className="gasto-bar">
+                                        <div
+                                            className="gasto-fill"
+                                            style={{
+                                                width: `${widthPercentage}%`,
+                                                backgroundColor: category.color,
+                                            }}
+                                        ></div>
+                                    </div>
+                                    <h4 className="gasto">{`${category.gasto} €`}</h4>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
         </div>
