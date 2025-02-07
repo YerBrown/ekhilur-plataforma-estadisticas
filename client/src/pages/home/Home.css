@@ -370,13 +370,13 @@ aside .user-profile-info {
 
 .square-button-statistics h3 {
     color: var(--color-blanco);
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+
 }
 
 
-.square-button-bonifications h3, .square-button-sales h3, .square-button-bonifications-received h3, .square-button-bonifications-2 h3 {
+.square-button-bonifications h3,  .square-button-bonifications-received h3, .square-button-bonifications-2 h3 {
     color: var(--color-blanco);
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+
 }
 
 .square-button-sales {
@@ -491,13 +491,13 @@ aside .user-profile-info {
 
 .square-button-statistics h3 {
     color: var(--color-blanco);
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+   
 }
 
 
 .square-button-bonifications h3, .square-button-sales h3, .square-button-bonifications-received h3, .square-button-bonifications-2 h3 {
     color: var(--color-blanco);
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+
 }
 
 .square-button-sales {
@@ -536,6 +536,7 @@ aside .user-profile-info {
     justify-content: space-between;
     width: 100%;
     font-size: 2rem;
+
 }
 
 .value h4 {

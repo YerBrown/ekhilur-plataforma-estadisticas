@@ -7,7 +7,7 @@
     gap: 10px;
     margin-bottom: 1rem;
     /* Estilos de tarjeta */
-    background-color: var(--background-color-principal);
+    background-color: var(--color-grafico-naranja-claro);
     border-radius: 20px;
     box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
     padding: 0.5rem;
@@ -37,12 +37,14 @@
     font-weight: 500;
 }
 
+
+
 .amount-recibidos {
-    color: var(--color-grafico-naranja);
+    color: #0047b8;;
     font-size: 24px;
 }
 
 .amount-emitidos {
-    color: var(--color-grafico-naranja-claro);
+    color: var(--color-naranja);
     font-size: 24px;
 }
